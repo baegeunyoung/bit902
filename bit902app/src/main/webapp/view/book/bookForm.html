@@ -1,59 +1,11 @@
 <div id="bookView" class="view">
-	<p id="brief"></p>
-	<div id="leftArea"> 
-	<h3>1.예약정보입력</h3><hr>
-	<p>ㄱ. 날짜선택</p>
-	<div id="datePicker"></div>
-		<div id="rChoose">
-			<form id="rForm">
-				<p>ㄴ.시간선택</p>
-				<select id="startTime" name="startTime">
-				</select>
-				<select id="endTime" name="endTime">
-				</select>
-				<button id="selectTimeChk"type="button">선택시간확인</button>
-				<button id="allTimeChk"type="button">모든예약확인</button>
-				<p>ㄷ.예약자정보</p>
-				아이디&nbsp&nbsp&nbsp&nbsp
-				<input type="text" name="memberId" placeholder="로그인 후 예약해 주세요"  readonly="readonly"><br>
-				전화번호
-				<input type="text" name="memberMobileNo" placeholder="숫자만 입력해주세요.">
-				<p>ㄹ.방선택</p>
-				<input type="radio" id="roomA" name="roomName" value="a">
-				<label for="roomA">a</label>
-				<input type="radio" id="roomB" name="roomName" value="b">
-				<label for="roomB">b</label>
-				<input type="radio" id="roomC" name="roomName" value="c">
-				<label for="roomC">c</label>
-				<input type="radio" id="roomD" name="roomName" value="d">
-				<label for="roomD">d</label>
-				<input type="radio" id="roomE" name="roomName" value="e">
-				<label for="roomE">e</label>
-				<input type="radio" id="roomF" name="roomName" value="f">
-				<label for="roomF">f</label>
-				<input type="radio" id="roomG" name="roomName" value="g">
-				<label for="roomG">g</label>
-				<p>ㅁ.인원수</p>
-				<input type="number" name="headCnt" id="headCnt" step="1" max="10" min="1" value="1">
-				<hr>
-				<button>예약</button>
-			</form>
-		</div>
-	</div>
-	<div id="centerArea">
-		<h3>2.스터디룸 한눈에 보기</h3><hr>
-		<img id="roomReservationInfo" width="500px" height="400px"/>
-		<hr>
-		<p><예약된방정보></p>
-		<div id="timeSheet"></div>
-	</div>
 	
 	<div id="rightArea">
-		<h3>3.선택한방 미리보기</h3><hr>
-		<img id="roomImg" width="300px" height="400px"/>
+		<h3>구매자확인</h3><hr>
+		<button type="button" id="roomImg">구매자확인</button>
 		<div id="roomInfo"></div>
 	</div>
-	<div id="bottom">
+	<div id="buyerList">
 	</div>
 </div>
 <script src="js/book/bookForm.js"></script>
