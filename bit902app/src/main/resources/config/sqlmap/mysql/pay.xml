@@ -9,12 +9,7 @@
  	<result column="id" property="id"/>
  	<result column="password" property="password"/>
  	<result column="name" property="name"/>
- 	<result column="phone_number" property="phoneNumber"/>
- 	<result column="addr_city" property="addrCity"/>
- 	<result column="addr_gu" property="addrGu"/>
- 	<result column="addr_dong" property="addrDong"/>
- 	<result column="addr_house_number" property="addrHouseNumber"/>
- 	<result column="total_point" property="totalPoint"/>
+ 	<result column="cellphone_number" property="cellphoneNumber"/>
 </resultMap>
 <!-- 예약시간 체크하기 -->
 <select id="selectBuyer" resultMap="buyerMap">

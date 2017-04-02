@@ -5,12 +5,7 @@ public class BuyerVO {
 	private String id;
 	private String password;
 	private String name;
-	private String phoneNumber;
-	private String addrCity;
-	private String addrGu;
-	private String addrDong;
-	private String addrHouseNumber;
-	private int totalPoint;
+	private String cellphoneNumber;
 	public int getBuyerNo() {
 		return buyerNo;
 	}
@@ -35,41 +30,11 @@ public class BuyerVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPhoneNumber() {
-		return phoneNumber;
+	public String getCellphoneNumber() {
+		return cellphoneNumber;
 	}
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setCellphoneNumber(String cellphoneNumber) {
+		this.cellphoneNumber = cellphoneNumber;
 	}
-	public String getAddrCity() {
-		return addrCity;
-	}
-	public void setAddrCity(String addrCity) {
-		this.addrCity = addrCity;
-	}
-	public String getAddrGu() {
-		return addrGu;
-	}
-	public void setAddrGu(String addrGu) {
-		this.addrGu = addrGu;
-	}
-	public String getAddrDong() {
-		return addrDong;
-	}
-	public void setAddrDong(String addrDong) {
-		this.addrDong = addrDong;
-	}
-	public String getAddrHouseNumber() {
-		return addrHouseNumber;
-	}
-	public void setAddrHouseNumber(String addrHouseNumber) {
-		this.addrHouseNumber = addrHouseNumber;
-	}
-	public int getTotalPoint() {
-		return totalPoint;
-	}
-	public void setTotalPoint(int totalPoint) {
-		this.totalPoint = totalPoint;
-	}
-	
+		
 }

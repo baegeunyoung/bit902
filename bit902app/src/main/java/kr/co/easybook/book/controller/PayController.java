@@ -21,7 +21,7 @@ public class PayController {
 		System.out.println("체크");
 		List<BuyerVO> list = payService.checkBuyer();
 		for(BuyerVO l : list) {
-			System.out.println(l.getAddrCity());
+			System.out.println(l.getName());
 		}
 		return list;
 	}
