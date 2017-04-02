@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<title>Easy Book</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" /> 
+<script src="js/jquery-3.1.1.js"></script>
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+<script src="js/common/sweetalert-dev.js"></script>
+<script src="js/common/sweetalert.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding-8 w3-card-2">
+    <a href="#home" id="main" class="w3-bar-item w3-button w3-margin-left">Easy Book</a>
+    <!-- Right-sided navbar links. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+   
+      <a id="book" class="w3-bar-item w3-button">예약</a>
+      <a id="chart" class="w3-bar-item w3-button">예약현황</a>
+      <a id="comm"  class="w3-bar-item w3-button">커뮤니티</a>
+      <a id="location" class="w3-bar-item w3-button ">위치안내</a>
+      <a id="memLogin" class="w3-bar-item w3-button" >로그인</a>
+      <a id="memJoin" class="w3-bar-item w3-button w3-margin-right" >회원가입</a>
+      <a id="memInfo" class="w3-bar-item w3-button w3-margin-right" style="display: none">마이페이지</a>
+      <a id="memLogout" class="w3-bar-item w3-button" style="display: none" onclick="signOut();" >로그아웃</a>
+     
+    </div>
+  </div>
+</div>
+<div id="container">
+
+</div>
+<script>
+$(document).ready( function() {
+	$("#container").load("view/book/bookForm.html");
+});
+$("#chart").click(function () {
+	$("#container").load("view/chart/chartList.html");
+});
+
+
+</script>
+
+<!-- Footer -->
+<footer class="w3-center w3-light-grey w3-padding-32">
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">EasyBook</a></p>
+</footer>
+
+</body>
+</html>
