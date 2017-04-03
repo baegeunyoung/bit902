@@ -8,8 +8,16 @@ public class StoreVO {
 	private double latitude;
 	private double longitude;
 	private int sellerNo;
+	private String content;
+	
 
 	
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
 	public int getStoreNo() {
 		return storeNo;
 	}

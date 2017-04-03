@@ -33,6 +33,7 @@ store_type varchar(1) not null,
 adress varchar(255),
 latitude double unsigned,
 longitude double unsigned,
+content varchar(300),
 seller_no int(6) unsigned,
 primary key(store_no),
 foreign key(seller_no) references tb_seller(seller_no)
@@ -43,7 +44,8 @@ select * from tb_store
 alter table tb_store drop column latitude;
 alter table tb_store drop column longitude;
 alter table tb_store add column latitude double after adress; 
-alter table tb_store add column longitude double after latitude; 
+alter table tb_store add column longitude double after latitude;
+alter table tb_store add column content varchar(300) after longitude; 
 -------------------------------------------------------
 --메뉴
 -------------------------------------------------------
@@ -72,7 +74,7 @@ create table tb_store_file(
 	foreign key (store_no) references tb_store(store_no),
 	foreign key (menu_no) references tb_menu(menu_no)
 );	
-
+select * from tb_store_file;
 drop table tb_store_file;
 -------------------------------------------------------
 --비콘테이블
