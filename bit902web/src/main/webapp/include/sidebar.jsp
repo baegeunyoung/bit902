@@ -10,7 +10,7 @@
 <body>
 	<div class="wrapper">
 <!-- 		사이드바 선택시 색과 배경 그림 설정 -->
-	    <div class="sidebar" data-color="purple" data-image="../material-dashboard-free-v1.1.0/assets/img/SmartPay1.gif">
+	    <div class="sidebar" data-color="purple" data-image="${pageContext.request.contextPath}/material-dashboard-free-v1.1.0/assets/img/SmartPay1.gif">
 			<div class="logo">
 				<a href="#" class="simple-text">
 					Smart Pay
@@ -20,32 +20,32 @@
 	    	<div class="sidebar-wrapper">
 				<ul class="nav">
 	                <li>
-	                    <a href="dashboard.html">
+	                    <a href="${pageContext.request.contextPath}/view/store/regist.jsp">
 	                        <p>상점정보등록</p>
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="user.html">
+	                    <a href="#">
 	                        <p>비콘등록</p>
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="table.html">
+	                    <a href="#">
 	                        <p>쿠폰관리</p>
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="typography.html">
+	                    <a href="#">
 	                        <p>주문현황</p>
 	                    </a>
 	                </li>
-	                <li class="active">
-	                    <a href="icons.html">
+	                <li>
+	                    <a href="#">
 	                        <p>일일정산</p>
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="maps.html">
+	                    <a href="#">
 	                        <p>월 누적 판매량</p>
 	                    </a>
 	                </li>

@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 	<div>
-		<c:import url="../include/d/sidebar.jsp" />	
+		<c:import url="../include/sidebar.jsp" />	
 	</div>
 <body>
 </body>
