@@ -1,0 +1,57 @@
+package kr.co.smartpayweb.repository.vo;
+
+public class StoreVO {
+	private int storeNo;
+	private String name;
+	private String storeType;
+	private String adress;
+	private double latitude;
+	private double longitude;
+	private int sellerNo;
+
+	
+	public int getStoreNo() {
+		return storeNo;
+	}
+	public void setStoreNo(int storeNo) {
+		this.storeNo = storeNo;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getStoreType() {
+		return storeType;
+	}
+	public void setStoreType(String storeType) {
+		this.storeType = storeType;
+	}
+	public String getAdress() {
+		return adress;
+	}
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+	public double getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+	public double getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+	public int getSellerNo() {
+		return sellerNo;
+	}
+	public void setSellerNo(int sellerNo) {
+		this.sellerNo = sellerNo;
+	}
+	
+	
+}

@@ -63,8 +63,9 @@ foreign key(store_no) references tb_store(store_no)
 create table tb_store_file(
 	store_file_no int(6) unsigned not null auto_increment,
 	ori_name varchar(50) not null,
-	save_path varchar(50) not null,
 	system_name varchar(50) not null,
+	file_path varchar(50) not null,
+	file_size varchar(50) not null,
 	store_no int(6) unsigned not null,
 	menu_no int(6) unsigned not null, 
 	primary key (store_file_no),
@@ -72,6 +73,7 @@ create table tb_store_file(
 	foreign key (menu_no) references tb_menu(menu_no)
 );	
 
+drop table tb_store_file;
 -------------------------------------------------------
 --비콘테이블
 -------------------------------------------------------			
