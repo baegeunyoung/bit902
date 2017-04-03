@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="wrapper">
+	
 <!-- 		사이드바 선택시 색과 배경 그림 설정 -->
 	    <div class="sidebar" data-color="purple" data-image="${pageContext.request.contextPath}/material-dashboard-free-v1.1.0/assets/img/SmartPay1.gif">
 			<div class="logo">
@@ -52,6 +52,6 @@
 	            </ul>
 	    	</div>
 		</div>
-	</div>
+	
 </body>
 </html>
