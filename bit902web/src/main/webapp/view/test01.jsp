@@ -7,9 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-	<div>
-		<c:import url="../include/sidebar.jsp" />	
-	</div>
+<div>
+</div>
 <body>
+	<div class="wrapper">
+		<c:import url="../include/sidebar.jsp" />
+		<div class="main-panel">
+			<c:import url="../include/footer.jsp" />
+		</div>
+	</div>
 </body>
 </html>
