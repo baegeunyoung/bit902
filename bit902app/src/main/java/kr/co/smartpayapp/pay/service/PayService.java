@@ -1,8 +1,8 @@
-package kr.co.easybook.book.service;
+package kr.co.smartpayapp.pay.service;
 
 import java.util.List;
 
-import kr.co.easybook.repository.vo.BuyerVO;
+import kr.co.smartpayapp.repository.vo.BuyerVO;
 
 public interface PayService {
 	public List<BuyerVO> checkBuyer();

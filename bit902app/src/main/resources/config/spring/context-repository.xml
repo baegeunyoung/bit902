@@ -48,13 +48,13 @@
    <!--4. Mybatis ¼³Á¤ -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="Log4DataSource" />
-  		<property name="typeAliasesPackage" value="kr.co.easybook.repository.vo" />			
+  		<property name="typeAliasesPackage" value="kr.co.smartpayapp.repository.vo" />			
         <property name="mapperLocations" value="classpath*:config/sqlmap/mysql/*.xml" />
 		<property name="configLocation" value="classpath:config/mybatis/sqlMapConfig.xml" />
     </bean>
     
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="kr.co.easybook.repository.mapper" />
+		<property name="basePackage" value="kr.co.smartpayapp.repository.mapper" />
 	</bean>
     
     <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">

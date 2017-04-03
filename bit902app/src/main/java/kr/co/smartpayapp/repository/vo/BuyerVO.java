@@ -1,4 +1,4 @@
-package kr.co.easybook.repository.vo;
+package kr.co.smartpayapp.repository.vo;
 
 public class BuyerVO {
 	private int buyerNo;

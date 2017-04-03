@@ -1,4 +1,4 @@
-package kr.co.easybook.book.controller;
+package kr.co.smartpayapp.pay.controller;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.co.easybook.book.service.PayService;
-import kr.co.easybook.repository.vo.BuyerVO;
+import kr.co.smartpayapp.pay.service.PayService;
+import kr.co.smartpayapp.repository.vo.BuyerVO;
 
 @RestController
 @RequestMapping("/book")

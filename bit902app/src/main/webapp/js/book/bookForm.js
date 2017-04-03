@@ -7,7 +7,7 @@
 			timeChk();
 		}); 
 		
-		// 예약시간 체크함수
+		// (db연결확인)구매자 확인
 		function timeChk() {
 			$.ajax({
 				url : "book/timeCheck.do",
@@ -25,8 +25,8 @@
 					for(i = 0; i < result.length; i++) {
 						html += "<p> 구매자번호 : " + result[i].buyerNo + " 이름 : " + result[i].name + " 비밀번호 : " + result[i].password +  " </p>";
 					}
-					swal("사용자 정보를 확인해 주세요.");
 					$("#buyerList").html(html);
+					alert("사용자 정보를 확인해 주세요.");
 				}
 			})
 		}
