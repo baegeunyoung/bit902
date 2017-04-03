@@ -20,7 +20,7 @@
 	    	<div class="sidebar-wrapper">
 				<ul class="nav">
 	                <li>
-	                    <a href="${pageContext.request.contextPath}/view/store/regist.jsp">
+	                    <a href="${pageContext.request.contextPath}/view/store/writeform.jsp">
 	                        <p>상점정보등록</p>
 	                    </a>
 	                </li>
