@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="import" href="../include/baseInclude.jsp">
+<!-- <link rel="import" href="../include/baseInclude.jsp"> -->
+<jsp:include page="../include/baseInclude.jsp" flush="true"></jsp:include>
 <title>Insert title here</title>
 </head>
 <body>
