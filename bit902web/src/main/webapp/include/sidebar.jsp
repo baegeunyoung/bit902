@@ -25,6 +25,11 @@
 	                    </a>
 	                </li>
 	                <li>
+	                    <a href="${pageContext.request.contextPath}/view/store/writeform.jsp">
+	                        <p>메뉴등록</p>
+	                    </a>
+	                </li>
+	                <li>
 	                    <a href="#">
 	                        <p>비콘등록</p>
 	                    </a>

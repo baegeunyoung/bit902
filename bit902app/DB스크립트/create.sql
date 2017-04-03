@@ -31,13 +31,19 @@ store_no int(6) unsigned not null auto_increment,
 name varchar(30) not null,
 store_type varchar(1) not null,
 adress varchar(255),
-latitude int(6) unsigned,
-longitude int(6) unsigned,
+latitude double unsigned,
+longitude double unsigned,
 seller_no int(6) unsigned,
 primary key(store_no),
 foreign key(seller_no) references tb_seller(seller_no)
 );
 
+select * from tb_store
+
+alter table tb_store drop column latitude;
+alter table tb_store drop column longitude;
+alter table tb_store add column latitude double after adress; 
+alter table tb_store add column longitude double after latitude; 
 -------------------------------------------------------
 --메뉴
 -------------------------------------------------------

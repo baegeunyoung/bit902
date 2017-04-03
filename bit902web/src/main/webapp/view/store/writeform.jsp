@@ -37,9 +37,9 @@
 							<form class="form-horizontal">
 							  <fieldset>
 							    <div class="form-group">
-							      <label for="inputEmail" class="col-lg-2 control-label">상호명</label>
+							      <label for="storeName" class="col-lg-2 control-label">상호명</label>
 							      <div class="col-lg-10">
-							        <input type="text" class="form-control" id="inputEmail" placeholder="상호명을입력하세요">
+							        <input type="text" class="form-control" id="storeName" name="stroeName" placeholder="상호명을입력하세요">
 							      </div>
 							    </div>
 							    <div class="form-group">
@@ -54,13 +54,13 @@
 							      <div class="col-lg-10">
 							        <div class="radio">
 							          <label>
-							            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+							            <input type="radio" name="storeType" id="pickup" value="1" checked="">
 							            픽업형
 							          </label>
 							        </div>
 							        <div class="radio">
 							          <label>
-							            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+							            <input type="radio" name="storeType" id="serving" value="2">
 							            서빙형
 							          </label>
 							        </div>
