@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="wrapper">
-		<c:import url="../../../include/sidebar.jsp" />
+		<c:import url="../../include/sidebar.jsp" />
 		<div class="main-panel">
 			<nav class="navbar navbar-transparent navbar-absolute">
 				<div class="container-fluid">
@@ -23,11 +23,10 @@
 					<div class="row">
 						<div class="col-md-12">
 							<ul class="nav nav-pills nav-pills-info">
-								<li class="active"><a href="#pill1" data-toggle="tab">일별보기</a></li>
-								<li><a href="#pill2" data-toggle="tab">월별보기</a></li>
+								<li id="day" class="active"><a href="#pill1" data-toggle="tab">일별보기</a></li>
+								<li id="month"><a href="#pill2" data-toggle="tab">월별보기</a></li>
 							</ul>
 							<br>
-							
 							<div class="card">
 								<div class="card-header" data-background-color="purple">
 									<h4 class="title">Simple Table</h4>
@@ -58,8 +57,14 @@
 					</div>
 				</div>
 			</div>
-			<c:import url="../../../include/footer.jsp" />
+			<c:import url="../../include/footer.jsp" />
 		</div>
 	</div>
+	
+	<script>
+		$("li[id=day]").click (function() {
+			
+		});
+	</script>
 </body>
 </html>
