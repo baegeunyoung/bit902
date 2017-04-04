@@ -32,7 +32,7 @@
 								<div class="card-header" data-background-color="purple">
 									<h4 class="title">${retrieveDayAdjust[0].storeName}의 일일 정산 내역</h4>
 									<p class="category"><fmt:formatDate value="${retrieveDayAdjust[0].adjustDate}" pattern="yyyy년 MM월 dd일" />
-									<i class="material-icons text-black">date_range</i></p>
+									<a href=#><i class="material-icons text-black">date_range</i></a></p>
 								</div>
 	                            <div class="card-content table-responsive">
 	                                <table class="table">
