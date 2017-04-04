@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,7 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div class="wrapper">
+	<div>
+		<c:import url="/include/sidebar.jsp"/>
+	</div>
+	<div class="main-panel">
 	<a href='buyer/list.do'>구매자확인</a>
 	<a href='adjust/dayAdjust.do'>양원주꺼</a>
+	</div>
+</div>
 </body>
 </html>
