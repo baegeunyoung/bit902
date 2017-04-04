@@ -3,7 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.smartpayweb.repository.mapper.BuyerMapper">
 
-<!-- ===================== 예약정보 ===================== -->
+ <!-- ===================== 예약정보 ===================== --> 
 <resultMap type="buyerVO" id="buyerMap">
  	<result column="buyer_no" property="buyerNo"/>
  	<result column="id" property="id"/>
@@ -11,7 +11,7 @@
  	<result column="name" property="name"/>
  	<result column="cellphone_number" property="cellphoneNumber"/>
 </resultMap>
-<!-- 예약시간 체크하기 -->
+ <!-- 예약시간 체크하기 -->
 <select id="selectBuyer" resultMap="buyerMap">
 	select * 
 	from tb_buyer

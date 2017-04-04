@@ -29,7 +29,7 @@ primary key(seller_no)
 create table tb_store (
 store_no int(6) unsigned not null auto_increment,
 name varchar(30) not null,
-store_type varchar(1) not null,
+store_type int(3) not null,
 adress varchar(255),
 latitude double unsigned,
 longitude double unsigned,
@@ -43,6 +43,8 @@ select * from tb_store
 
 alter table tb_store drop column latitude;
 alter table tb_store drop column longitude;
+alter table tb_store drop column store_type;
+alter table tb_store add column store_type int(3) after name; 
 alter table tb_store add column latitude double after adress; 
 alter table tb_store add column longitude double after latitude;
 alter table tb_store add column content varchar(300) after longitude; 
