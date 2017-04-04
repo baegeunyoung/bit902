@@ -31,8 +31,10 @@
 							<div class="card">
 								<div class="card-header" data-background-color="purple">
 									<h4 class="title">${retrieveDayAdjust[0].storeName}의 일일 정산 내역</h4>
-									<p class="category"><fmt:formatDate value="${retrieveDayAdjust[0].adjustDate}" pattern="yyyy년 MM월 dd일" />
-									<a href=#><i class="material-icons text-black">date_range</i></a></p>
+									<p class="category">
+									<fmt:formatDate value="${retrieveDayAdjust[0].adjustDate}" pattern="yyyy년 MM월 dd일" />
+									<i class="material-icons text-black" onclick="javascript:popupOpen();" style="cursor: pointer;">
+									date_range</i></p>
 								</div>
 	                            <div class="card-content table-responsive">
 	                                <table class="table">
@@ -64,7 +66,11 @@
 	</div>
 	
 	<script>
-		
+	function popupOpen() {
+		var popUrl = "${pageContext.request.contextPath}/view/adjust/calendar.html";
+	    var popOption = "width=400, height=500, resizable=yes, scrollbars=yes, status=no";
+		window.open(popUrl, "", popOption);
+	}
 	</script>
 </body>
 </html>

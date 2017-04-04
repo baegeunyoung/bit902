@@ -20,12 +20,14 @@
 		select *
 		from tb_adjust
 		where adjust_date = current_date()
+<!-- 		where adjust_date = "2017-04-02" -->
 	</select>
 
-	<select id="retrieveDayAdjustRe" resultMap="dayAdjustMap">
+<!-- 일일정산 날짜 선택 -->
+	<select id="retrieveDayAdjustRe" parameterType="string" resultMap="dayAdjustMap">
 		select *
 		from tb_adjust
-		where adjust_date = current_date() - convert(#{alpha}, unsigned)
+		where adjust_date = #{dDay}
 	</select>
 	
 </mapper>
