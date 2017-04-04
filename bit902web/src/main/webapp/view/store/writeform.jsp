@@ -34,7 +34,7 @@
 								<p class="category">본인의 상점 정보를 입력하세요</p>
 	                         </div>
 						<div class="card-content">	                            
-							<form class="form-horizontal" id="form1" runat="server">
+							<form class="form-horizontal" action="write.do "id="form1" runat="server" enctype="multipart/form-data" method="post">
 							  <fieldset>
 							    <div class="form-group">
 							      <label for="storeName" class="col-lg-2 control-label">상호명</label>
@@ -52,14 +52,13 @@
 							    <div class="form-group">
 							      <label class="col-lg-2 control-label">상점유형</label>
 							      <div class="col-lg-10">
-							        <div class="radio">
+							        <div class="form-group">
 							          <label>
 							            <input type="radio" name="storeType" id="pickup" value="1" checked="">
 							            픽업형
-							       
 							          </label>
 							        </div>
-							        <div class="radio">
+							        <div class="form-group">
 							          <label>
 							            <input type="radio" name="storeType" id="serving" value="2">
 							            서빙형
@@ -72,7 +71,7 @@
 							         <input type="file" name="attachFile" id="imgInp"/>
 							    </div>
 							    <div class="form-group">
-							      <label for="storeName" class="col-lg-2 control-label">주소</label>
+							      <label for="adress" class="col-lg-2 control-label">주소</label>
 							      <div class="col-lg-10">
 							        <input class="form-control" type="text" id="sample5_address"  placeholder="주소">
 							        <input class="btn btn-default btn-lg btn-block" type="button"  onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
@@ -151,7 +150,7 @@
                         // 마커를 결과값으로 받은 위치로 옮긴다.
                         marker.setPosition(coords)
                      	
-                        console.log(coords);
+                        console.log(coord);
                     }
                 });
             }
