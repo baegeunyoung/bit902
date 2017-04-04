@@ -138,4 +138,6 @@ public class StoreController {
 		attr.addFlashAttribute("msg", "게시물이 등록되었습니다");
 		return "a";
 	}
+
+
 }
