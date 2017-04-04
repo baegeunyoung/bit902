@@ -45,7 +45,7 @@
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="#">
+	                    <a href="${pageContext.request.contextPath}/adjust/dayAdjust.do">
 	                        <i class="material-icons text-gray">format_list_bulleted</i><p>일일정산</p>
 	                    </a>
 	                </li>

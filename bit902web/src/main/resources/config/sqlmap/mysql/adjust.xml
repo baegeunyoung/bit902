@@ -19,7 +19,7 @@
 	<select id="retrieveDayAdjust" resultMap="dayAdjustMap">
 		select *
 		from tb_adjust
-		where adjust_date = "2017-04-03"
+		where adjust_date = current_date()
 	</select>
 
 	<select id="retrieveDayAdjustRe" resultMap="dayAdjustMap">
