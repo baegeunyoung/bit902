@@ -13,6 +13,7 @@ public class LoginServiceImpl implements LoginService {
 	private LoginMapper dao;
 	
 	public SellerVO login(String id) throws Exception {
+		System.out.println(dao.getSellerInfo(id) + "impl성공");
 		return dao.getSellerInfo(id);
 		
 	}

@@ -41,7 +41,7 @@ public class LoginController {
 			SellerVO login = new SellerVO();
 			login.setId(seller.getId());
 			login.setPassword(seller.getPassword());
-			
+			System.out.println(seller.getId() + seller.getPassword());
 			session.setAttribute("seller", seller);
 			return "redirect:/index.jsp";
 		}
@@ -49,8 +49,7 @@ public class LoginController {
 			attr.addAttribute("msg", "입력하신 정보가 올바르지 않습니다.");
 			return "redirect:/login/loginForm";
 		}
-		
-	}
+}
 	
 //	@ResponseBody
 //	@RequestMapping("/searchSeller.do")
