@@ -8,5 +8,6 @@
 </head>
 <body>
 	<a href='buyer/list.do'>구매자확인</a>
+	<a href='adjust/dayAdjust.do'>양원주꺼</a>
 </body>
 </html>

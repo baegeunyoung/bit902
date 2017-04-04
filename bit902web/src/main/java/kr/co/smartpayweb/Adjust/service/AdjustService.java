@@ -6,5 +6,5 @@ import java.util.List;
 import kr.co.smartpayweb.repository.vo.dayAdjustVO;
 
 public interface AdjustService {
-	public List<dayAdjustVO> retrieveDayAdjust(Date date);
+	public List<dayAdjustVO> retrieveDayAdjust();
 }

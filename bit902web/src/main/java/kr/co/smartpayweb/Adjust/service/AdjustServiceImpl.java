@@ -13,7 +13,9 @@ import kr.co.smartpayweb.repository.vo.dayAdjustVO;
 public class AdjustServiceImpl implements AdjustService {
 	@Autowired
 	AdjustMapper mapper;
-	public List<dayAdjustVO> retrieveDayAdjust(Date date) {
-		return mapper.retrieveDayAdjust(date);
+	
+	// ---- 일일정산 ----
+	public List<dayAdjustVO> retrieveDayAdjust() {
+		return mapper.retrieveDayAdjust();
 	}
 }

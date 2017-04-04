@@ -1,16 +1,17 @@
 package kr.co.smartpayweb.Adjust.controller;
 
 import java.io.IOException;
+import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.smartpayweb.Adjust.service.AdjustService;
+import kr.co.smartpayweb.repository.vo.dayAdjustVO;
 
 @Controller
 @RequestMapping("/adjust")
@@ -19,8 +20,10 @@ public class AdjustController {
 	AdjustService adjustService;
 	
 	@RequestMapping("/dayAdjust.do")
-	public void retrieveDayAdjust(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+	public List<dayAdjustVO> retrieveDayAdjust() throws ServletException, IOException {
 		
+		List<dayAdjustVO> retrieveDayAdjust = adjustService.retrieveDayAdjust();
+		return retrieveDayAdjust;
 	}
 	
 }
