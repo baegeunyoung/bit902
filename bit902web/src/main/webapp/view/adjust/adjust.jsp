@@ -62,7 +62,7 @@
 	</div>
 	
 	<script>
-		$("li[id=day]").click (function() {
+ 		$("li[id=day]").click (function() {
 			
 		});
 	</script>

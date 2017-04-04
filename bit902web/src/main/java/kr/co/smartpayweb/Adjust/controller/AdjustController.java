@@ -1,4 +1,4 @@
-package kr.co.smartpayweb.dayAdjust.controller;
+package kr.co.smartpayweb.Adjust.controller;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import kr.co.smartpayweb.dayAdjust.service.AdjustService;
+import kr.co.smartpayweb.Adjust.service.AdjustService;
 
 @Controller
 @RequestMapping("/adjust")

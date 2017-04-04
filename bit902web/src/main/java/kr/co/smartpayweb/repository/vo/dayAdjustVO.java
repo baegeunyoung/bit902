@@ -2,7 +2,7 @@ package kr.co.smartpayweb.repository.vo;
 
 import java.util.Date;
 
-public class AdjustVO {
+public class dayAdjustVO {
 	private int adjustNo;
 	private int totalNumber;
 	private int totalSales;
