@@ -14,7 +14,7 @@ public class AdjustServiceImpl implements AdjustService {
 	@Autowired
 	AdjustMapper mapper;
 	
-	// ---- 일일정산 ----
+	// ---- 일일정산 첫화면----
 	public List<dayAdjustVO> retrieveDayAdjust() {
 		return mapper.retrieveDayAdjust();
 	}

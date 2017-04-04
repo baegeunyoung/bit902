@@ -19,10 +19,12 @@ public class AdjustController {
 	@Autowired
 	AdjustService adjustService;
 	
+	// ---- 일일정산 첫화면----
 	@RequestMapping("/dayAdjust.do")
 	public ModelAndView retrieveDayAdjust() throws ServletException, IOException {
 		
 		List<dayAdjustVO> retrieveDayAdjust = adjustService.retrieveDayAdjust();
+		System.out.println(retrieveDayAdjust.size());
 		ModelAndView mav = new ModelAndView("adjust/adjust");
 		mav.addObject("retrieveDayAdjust", retrieveDayAdjust);
 		return mav;

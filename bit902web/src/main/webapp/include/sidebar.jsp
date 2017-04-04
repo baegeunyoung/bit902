@@ -21,37 +21,37 @@
 				<ul class="nav">
 	                <li>
 	                    <a href="${pageContext.request.contextPath}/view/store/writeform.jsp">
-	                        <p>상점정보등록</p>
+	                        <i class="material-icons text-gray">store</i><p>상점정보등록</p>
 	                    </a>
 	                </li>
 	                <li>
 	                    <a href="${pageContext.request.contextPath}/view/store/writeform.jsp">
-	                        <p>메뉴등록</p>
+	                        <i class="material-icons text-gray">menu</i><p>메뉴등록</p>
 	                    </a>
 	                </li>
 	                <li>
 	                    <a href="#">
-	                        <p>비콘등록</p>
+	                        <i class="material-icons text-gray">settings_input_svideo</i><p>비콘등록</p>
 	                    </a>
 	                </li>
 	                <li>
 	                    <a href="#">
-	                        <p>쿠폰관리</p>
+	                        <i class="material-icons text-gray">monetization_on</i><p>이벤트관리</p>
 	                    </a>
 	                </li>
 	                <li>
 	                    <a href="#">
-	                        <p>주문현황</p>
+	                        <i class="material-icons text-gray">storage</i><p>주문현황</p>
 	                    </a>
 	                </li>
 	                <li>
 	                    <a href="#">
-	                        <p>일일정산</p>
+	                        <i class="material-icons text-gray">format_list_bulleted</i><p>일일정산</p>
 	                    </a>
 	                </li>
 	                <li>
 	                    <a href="#">
-	                        <p>월 누적 판매량</p>
+	                        <i class="material-icons text-gray">grid_on</i><p>월 누적 판매량</p>
 	                    </a>
 	                </li>
 	            </ul>
