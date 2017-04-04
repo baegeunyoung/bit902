@@ -29,7 +29,7 @@ public class BuyerController {
 			System.out.println(l.getName());
 		}
 		request.setAttribute("list", list);
-		RequestDispatcher rd = request.getRequestDispatcher("/view/jsp/buyer/list.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/view/buyer/list.jsp");
 		rd.forward(request, response);
 		
 	}

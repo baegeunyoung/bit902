@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.smartpayweb.repository.mapper.LoginMapper">
+
+<resultMap id="sellerMap" type="sellerVO">
+	<result column="seller_no" property="sellerNo"></result>
+	<result column="id" property="id"></result>
+	<result column="password" property="password"></result>
+	<result column="name" property="name"></result>
+	<result column="cellphone_number" property="cellphoneNumber"></result>
+	<result column="permit_yn" property="permitYn"></result>
+</resultMap>
+
+<select id="getSellerInfo" resultMap="sellerMap" parameterType="sellerVO">
+select *
+from tb_seller
+where id = #{id}
+</select>
+
+<!-- <resultMap id="buyerMap" type="buyerVO"> -->
+<!-- 	<result column="buyer_no" property="buyerNo"></result> -->
+<!-- 	<result column="id" property="id"></result> -->
+<!-- 	<result column="password" property="password"></result> -->
+<!-- 	<result column="name" property="name"></result> -->
+<!-- 	<result column="cellphone_number" property="cellphoneNumber"></result> -->
+<!-- </resultMap> -->
+
+<!-- <select id="searchBuyer" resultMap="buyerMap" parameterType="buyerVO"> -->
+<!-- select * -->
+<!-- from tb_buyer -->
+<!-- where id = #{id}  -->
+<!--       and password=#{password} -->
+<!-- </select> -->
+
+<!-- <insert id="insertBuyer" parameterType="buyerVO"> -->
+<!-- 				insert into tb_buyer(buyer_no, id, password, name, cellphone_number) -->
+<!-- 				values(buyer_seq.nextval, #{id}, #{password}, #{name}, #{cellphoneNumber}) -->
+<!-- </insert> -->
+
+<!-- <insert id="insertSeller" parameterType="sellerVO"> -->
+<!-- 				insert into tb_seller(seller_no, id, password, name, cellphone_number, permit_yn) -->
+<!-- 				values(seller_seq.nextval, #{id}, #{password}, #{name}, #{cellphoneNumber}, #{permitYn}) -->
+<!-- </insert> -->
+
+<!-- <update id="modifyBuyer" parameterType="buyerVO"> -->
+<!-- update tb_buyer -->
+<!-- set id = #{id}, -->
+<!-- 	password = #{password}, -->
+<!-- 	name = #{name}, -->
+<!-- 	cellphone_number = #{cellphoneNumber} -->
+	
+<!-- where buyer_no = #{buyerNo}	 -->
+<!-- </update> -->
+
+<!-- <update id="modifySeller" parameterType="sellerVO"> -->
+<!-- update tb_seller -->
+<!-- set id = #{id}, -->
+<!-- 	password = #{password}, -->
+<!-- 	name = #{name}, -->
+<!-- 	cellphone_number = #{cellphoneNumber}, -->
+<!-- 	permit_yn = #{permitYn} -->
+	
+<!-- where seller_no = #{sellerNo}	 -->
+<!-- </update> -->
+
+<!-- <delete id="deleteBuyer" parameterType="int"> -->
+<!-- delete -->
+<!-- from tb_buyer -->
+<!-- where buyer_no = #{buyerNo} -->
+<!-- </delete> -->
+
+<!-- <delete id="deleteSeller" parameterType="int"> -->
+<!-- delete -->
+<!-- from tb_seller -->
+<!-- where seller_no = #{sellerNo} -->
+<!-- </delete> -->
+
+</mapper>
