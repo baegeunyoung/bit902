@@ -40,7 +40,7 @@
 	<!-- 메인페이지 이동 -->
 	<mvc:view-controller path="/main/main.do" />
 	<!-- 예약 폼 이동 -->
-	<mvc:view-controller path="/book/bookForm.do" view-name="book/bookForm" />
+<!-- 	<mvc:view-controller path="/book/bookForm.do" view-name="book/bookForm" /> -->
 		
 	<mvc:default-servlet-handler />
 	<mvc:view-resolvers>
