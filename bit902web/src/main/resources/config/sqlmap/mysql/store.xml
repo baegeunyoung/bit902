@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="kr.co.smartpayweb.repository.mapper.StoreMapper">
+	    
+<resultMap id="storeMap" type="StoreVO" >
+		<result property="storeNo" column="store_no"/>
+		<result property="storeType" column="store_type"/>
+		<result property="name" column="name"/>
+		<result property="adress" column="adress"/>
+		<result property="latitude" column="latitude"/>
+		<result property="longitude" column="longitude"/>
+		<result property="sellerNo" column="seller_no"/>
+		<result property="content" column="content"/>
+</resultMap>
+
+<insert id="insertStore" parameterType="StoreVO">
+	    <selectKey keyProperty="storeNo" order="AFTER" resultType="int">
+	        select last_insert_id()
+<!-- 	        storeNo.nextval from dual -->
+	    </selectKey>        
+		insert into tb_store(
+<!-- 		   	store_no,  -->
+		   	store_type,
+		   	name,
+		   	adress,
+		    content,
+			latitude,
+			longitude
+		) values (
+<!-- 		    #{storeNo}, -->
+		    #{storeType},
+		    #{name},
+		    #{adress},
+		    #{content},
+		    #{latitude},
+		    #{longitude}
+		)    
+    </insert>
+    
+    
+    <!--  파일 -->
+     <resultMap id="storeFileMap" type="StoreFileVO" >
+		<result property="storeFileNo" column="store_file_no"/>
+		<result property="storeNo" column="store_no"/>
+		<result property="menuNo" column="menu_no"/>
+		<result property="oriName" column="ori_name"/>
+		<result property="systemName" column="system_name"/>
+		<result property="filePath" column="file_path"/>
+		<result property="fileSize" column="file_size"/>
+		
+	</resultMap>
+  <insert id="insertStoreFile" parameterType="StoreFileVO">
+		insert into tb_store_file (
+<!-- 			store_file_no, -->
+			store_no,         
+			ori_name, 
+			system_name, 
+			file_path, 
+			file_size
+		) values (
+<!-- 			#{storeFileNo}, -->
+			#{storeNo}, 
+			#{oriName}, 
+			#{systemName},
+			#{filePath}, 
+			#{fileSize}		
+		)
+	</insert>
+</mapper>

@@ -27,38 +27,38 @@
 		<div class="content">
 	    	<div class="container-fluid">
 	         	<div class="row">
-	             	<div class="col-md-10">
+	             	<div class="col-md-15">
 	                 	<div class="card">
 	                   		<div class="card-header" data-background-color="purple">
 	                         	<h4 class="title">상점등록하기</h4>
 								<p class="category">본인의 상점 정보를 입력하세요</p>
 	                         </div>
 						<div class="card-content">	                            
-							<form class="form-horizontal" action="write.do "id="form1" runat="server" enctype="multipart/form-data" method="post">
+							<form class="form-horizontal" action="${pageContext.request.contextPath}/store/write.do" id="form1" runat="server" enctype="multipart/form-data" method="post">
 							  <fieldset>
 							    <div class="form-group">
 							      <label for="storeName" class="col-lg-2 control-label">상호명</label>
 							      <div class="col-lg-10">
-							        <input type="text" class="form-control" id="storeName" name="stroeName" placeholder="상호명을입력하세요">
+							        <input type="text" class="form-control" id="storeName" name="storeName" placeholder="상호명을입력하세요">
 							      </div>
 							    </div>
 							    <div class="form-group">
 							      <label for="textArea" class="col-lg-2 control-label">Textarea</label>
 							      <div class="col-lg-10">
-							        <textarea class="form-control" rows="5" id="textArea" placeholder="상점의 간단한 소개를 해주세요"></textarea>
+							        <textarea class="form-control" rows="5" name="content" id="textArea" placeholder="상점의 간단한 소개를 해주세요"></textarea>
 							        <span class="help-block">상점의 간단한 소개를 해주세요</span>
 							      </div>
 							    </div>
 							    <div class="form-group">
 							      <label class="col-lg-2 control-label">상점유형</label>
 							      <div class="col-lg-10">
-							        <div class="form-group">
+							        <div class="radio">
 							          <label>
 							            <input type="radio" name="storeType" id="pickup" value="1" checked="">
 							            픽업형
 							          </label>
 							        </div>
-							        <div class="form-group">
+							        <div class="radio">
 							          <label>
 							            <input type="radio" name="storeType" id="serving" value="2">
 							            서빙형
@@ -73,13 +73,18 @@
 							    <div class="form-group">
 							      <label for="adress" class="col-lg-2 control-label">주소</label>
 							      <div class="col-lg-10">
-							        <input class="form-control" type="text" id="sample5_address"  placeholder="주소">
+							        <input class="form-control" type="text" id="sample5_address" name="adress" placeholder="주소">
 							        <input class="btn btn-default btn-lg btn-block" type="button"  onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
 							        <div id="map" style="width:300px;height:300px;margin-top:10px;border:dotted 3px purple; float:left;" ></div>
 <!-- 							        <div id="map" style="width:300px;height:300px;margin-top:10px;display:none; float:left" ></div> -->
 							         <div><img id="blah"  style="width:300px;height:300px;margin-top:10px; border:dotted 3px purple"/></div><br>
 <!-- 							         <div><img id="blah" src="#" alt="대표이미지"  style="width:300px;height:300px;margin-top:10px; border- " /></div><br> -->
 							      </div>
+							    </div>
+							    <div>
+							    	  <input type="text" name="lat" id="lat" style="display:none"/> 
+	          	 					 <input type="text" name="lng" id="lng" style="display:none"/> 
+	          	
 							    </div>
 							     <button type="submit" class="btn btn-primary pull-right">등록하기</button>
 								 <div class="clearfix"></div>
@@ -91,6 +96,7 @@
 				</div>
 			</div>
 		</div>
+		<c:import url="../../include/footer.jsp" />
 	</div>
 </div>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -150,7 +156,14 @@
                         // 마커를 결과값으로 받은 위치로 옮긴다.
                         marker.setPosition(coords)
                      	
-                        console.log(coord);
+                        
+                        console.log(coords);
+                        console.log(coords.gb);   //lat
+                        console.log(coords.hb);   //lng
+                        
+                        document.getElementById("lat").value = coords.gb;
+                  	 	document.getElementById("lng").value = coords.hb;
+                  	  	 
                     }
                 });
             }

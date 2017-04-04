@@ -3,7 +3,7 @@ package kr.co.smartpayweb.repository.vo;
 public class StoreVO {
 	private int storeNo;
 	private String name;
-	private String storeType;
+	private int storeType;
 	private String adress;
 	private double latitude;
 	private double longitude;
@@ -30,10 +30,11 @@ public class StoreVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getStoreType() {
+
+	public int getStoreType() {
 		return storeType;
 	}
-	public void setStoreType(String storeType) {
+	public void setStoreType(int storeType) {
 		this.storeType = storeType;
 	}
 	public String getAdress() {

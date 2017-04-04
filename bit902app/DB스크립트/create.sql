@@ -56,7 +56,7 @@ menu_no int(6) unsigned not null auto_increment,
 store_no int(6) unsigned not null,
 name varchar(100) not null,
 price int(10) unsigned not null,
-size varchar(20) not null,
+size varchar(20),
 primary key(menu_no),
 foreign key(store_no) references tb_store(store_no)
 );
@@ -70,14 +70,15 @@ create table tb_store_file(
 	system_name varchar(50) not null,
 	file_path varchar(50) not null,
 	file_size varchar(50) not null,
-	store_no int(6) unsigned not null,
-	menu_no int(6) unsigned not null, 
+	store_no int(6) unsigned,
+	menu_no int(6) unsigned, 
 	primary key (store_file_no),
 	foreign key (store_no) references tb_store(store_no),
 	foreign key (menu_no) references tb_menu(menu_no)
 );	
 select * from tb_store_file;
 drop table tb_store_file;
+alter table tb_store_file modify menu_no null;
 -------------------------------------------------------
 --비콘테이블
 -------------------------------------------------------			
@@ -98,7 +99,7 @@ order_no int(6) unsigned not null auto_increment,
 order_date timestamp default current_timestamp not null,
 store_no int(6) unsigned not null,
 menu_no int(6) unsigned not null,
-beacon_no int(6) unsigned not null,
+beacon_no int(6) unsigned,
 primary key(order_no),
 foreign key(store_no) references tb_store(store_no),
 foreign key(menu_no) references tb_menu(menu_no),
