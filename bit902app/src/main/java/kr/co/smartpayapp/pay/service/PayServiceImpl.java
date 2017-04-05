@@ -15,4 +15,7 @@ public class PayServiceImpl implements PayService{
 	public List<BuyerVO> checkBuyer() {
 		return mapper.selectBuyer();
 	}
+	public int registBuyer(BuyerVO buyerVO) {
+		return mapper.insertBuyer(buyerVO);
+	}
 }

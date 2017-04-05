@@ -17,6 +17,21 @@
 	from tb_buyer
 </select> 
 
+<insert id="insertBuyer" >
+	insert into tb_buyer (
+		id,
+		password,
+		name,
+		cellphone_number
+	)
+	values (
+		#{id},
+		#{password},
+		#{name},
+		#{cellphoneNumber}
+	)
+	
+</insert>
 </mapper>
 
 
