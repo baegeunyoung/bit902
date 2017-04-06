@@ -14,7 +14,8 @@
 		<p class="copyright pull-right">
 			&copy;
 			<script>
-				document.write(new Date().getFullYear())
+				var date = new Date();
+				document.write(date.getFullYear());
 			</script>
 			<a href="http://www.naver.com">2조</a>
 			, made with love for a better web

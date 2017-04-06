@@ -225,6 +225,9 @@ function EvtChangeMonthYear(dateText) {
 		//  일일정산 페이지를 선택한 날짜의 정산 내역으로 변경
 		var html = "";
 		html += "<tbody id='tbody'>\n"
+		
+		var sum = 0;
+		
 		for (var i = 0 ; i < result.length ; i++) {
 			html += "<tr>\n";
 			var date = new Date(result[i].adjustDate);
@@ -239,10 +242,15 @@ function EvtChangeMonthYear(dateText) {
 			html += "<td>" + result[i].totalNumber + "</td>\n";
 			html += "<td>" + totalSales + "원</td>\n";
 			html += "</tr>\n";
+			
+			sum += result[i].totalSales;
 		}
 		html += "</tbody>";
 		
+		var sumComma = setComma(sum) +"원";
+		
 		$(opener.document).find("#tbody").replaceWith(html).trigger("create");
+		$(opener.document).find("#sum").text(sumComma).trigger("create");
 		self.close();
 		
 	}).fail(function() {

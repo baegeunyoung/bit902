@@ -36,22 +36,22 @@
 	                </li>
 	                <li>
 	                    <a href="#">
-	                        <i class="material-icons text-gray">monetization_on</i><p>이벤트관리</p>
+	                        <i class="material-icons text-gray">wifi_tethering</i><p>이벤트관리</p>
 	                    </a>
 	                </li>
 	                <li>
 	                    <a href="#">
-	                        <i class="material-icons text-gray">storage</i><p>주문현황</p>
+	                        <i class="material-icons text-gray">notifications</i><p>주문현황</p>
 	                    </a>
 	                </li>
 	                <li>
 	                    <a href="${pageContext.request.contextPath}/adjust/dayAdjust.do">
-	                        <i class="material-icons text-gray">format_list_bulleted</i><p>일일정산</p>
+	                        <i class="material-icons text-gray">content_paste</i><p>일일정산</p>
 	                    </a>
 	                </li>
 	                <li>
 	                    <a href="#">
-	                        <i class="material-icons text-gray">grid_on</i><p>월 누적 판매량</p>
+	                        <i class="material-icons text-gray">library_books</i><p>월 누적 판매량</p>
 	                    </a>
 	                </li>
 	            </ul>

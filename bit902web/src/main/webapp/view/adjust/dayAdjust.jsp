@@ -23,39 +23,43 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-md-12">
-<!-- 							<ul class="nav nav-pills nav-pills-info"> -->
-<!-- 								<li id="day" class="active"><a href="#pill1" data-toggle="tab">일별보기</a></li> -->
-<!-- 								<li id="month"><a href="#pill2" data-toggle="tab">월별보기</a></li> -->
-<!-- 							</ul> -->
 							<br>
 							<div class="card">
 								<div class="card-header" data-background-color="purple">
-									<h4 class="title">${retrieveDayAdjust[0].storeName}의 일일 정산 내역</h4>
+									<h4 class="title">일일 정산 내역</h4>
 									<p class="category">
-									<span id="cDate" ></span>
-<%-- 									<fmt:formatDate value="${retrieveDayAdjust[0].adjustDate}" pattern="yyyy년 MM월 dd일" /> --%>
+									<span id="cDate"></span>
 									<i class="material-icons text-black" onclick="javascript:popupOpen();" style="cursor: pointer;">
 									date_range</i></p>
 								</div>
 	                            <div class="card-content table-responsive">
 	                                <table id="table" class="table">
 	                                    <thead class="text-primary">
-	                                    	<th>날짜</th>
-	                                    	<th>상품명</th>
-	                                    	<th>판매수</th>
-											<th>매출액</th>
+	                                    	<tr>
+		                                    	<th>날짜</th>
+		                                    	<th>상품명</th>
+		                                    	<th>판매수</th>
+												<th>매출액</th>
+											</tr>
 										</thead>
 											
 										<tbody id="tbody">
+											<c:set var="sum" value="0" />
  											<c:forEach var="list" items="${retrieveDayAdjust}"> 
 											<tr>
 												<td><fmt:formatDate value="${list.adjustDate}" pattern="yyyy-MM-dd" /></td>
 												<td>${list.menuName}</td>
 												<td>${list.totalNumber}</td>
 												<td><fmt:formatNumber value="${list.totalSales}" pattern="#,###" />원</td>
+												<c:set var="sum" value="${sum + list.totalSales}" />
 											</tr>
+											<input type="hidden" value="${list.totalSales}"/>
 											</c:forEach>
 										</tbody>
+										<tr>
+											<td colspan="3" style="text-align:center">매출액 총 합 :</td>
+											<td id="sum"><fmt:formatNumber value="${sum}" pattern="#,###" />원</td>
+										</tr>
 									</table>
 								</div>
 							</div>
