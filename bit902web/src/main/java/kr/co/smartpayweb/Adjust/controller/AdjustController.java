@@ -30,7 +30,7 @@ public class AdjustController {
 		
 		List<dayAdjustVO> retrieveDayAdjust = adjustService.retrieveDayAdjust();
 		System.out.println("콘트롤러 첫화면" + retrieveDayAdjust.size());
-		ModelAndView mav = new ModelAndView("adjust/adjust");
+		ModelAndView mav = new ModelAndView("adjust/dayAdjust");
 		mav.addObject("retrieveDayAdjust", retrieveDayAdjust);
 		return mav;
 	}

@@ -163,6 +163,7 @@
 </style>	
 <script>
 
+// datepicker 사용하여 달력 만들기
 $(function() {
     $( "#testDatepicker" ).datepicker({
     	closeText: '닫기',
@@ -191,9 +192,27 @@ $(function() {
     });
 });
 
+// 달력 팝업
 function EvtChangeMonthYear(dateText) {
 	
+	// datepicker에서 날짜 가져옴 (yy-mm-dd)
 	var dDay = $("#testDatepicker").val();
+	
+	// 제목 아래 날짜 표시
+	console.log(dDay);
+	var dDaySplit = dDay.split("-");
+	var changeDateForm = dDaySplit[0] + "년 " + dDaySplit[1] + "월 " + dDaySplit[2] + "일 ";
+	
+	var changeDate = "";
+	changeDate += "<p class='category'>";
+	changeDate += changeDateForm;
+	changeDate += "<i class='material-icons text-black' onclick='javascript:popupOpen();' style='cursor: pointer;'>";
+	changeDate += "date_range</i></p>";
+	
+	$(opener.document).find(".category").replaceWith(changeDate).trigger("create");
+	
+	
+	// 	달력의 날짜 클릭시 그 날짜의 정산 내역으로 변경
 	$.ajax({
 		
 		url : "/bit902web/adjust/dayAdjustRe.do",
@@ -202,10 +221,9 @@ function EvtChangeMonthYear(dateText) {
 		dataType : "JSON"
 		
 	}).done( function(result) {
-				
+		
+		//  일일정산 페이지를 선택한 날짜의 정산 내역으로 변경
 		var html = "";
-		var changeDate = "";
-		changeDate += "<p class='category'>";
 		html += "<tbody id='tbody'>\n"
 		for (var i = 0 ; i < result.length ; i++) {
 			html += "<tr>\n";
@@ -214,28 +232,35 @@ function EvtChangeMonthYear(dateText) {
 			var month = date.getMonth() + 1;
 			var day = date.getDay() + 2;
 			var retVal = year + "-" + (month < 10 ? "0" + month : month) + "-" + (day < 10 ? "0" + day : day);
-			var changeDatePlus = year + "년 " + (month < 10 ? "0" + month : month) + "월 " + (day < 10 ? "0" + day : day) + "일 ";
+			
+			var totalSales = setComma(result[i].totalSales);
 			html += "<td>" + retVal + "</td>\n";
 			html += "<td>" + result[i].menuName + "</td>\n";
 			html += "<td>" + result[i].totalNumber + "</td>\n";
-// 			html += "<td><fmt:formatNumber value='" + result[i].totalSales + "' pattern='#,###' />원</td>\n";
-			html += "<td>" + result[i].totalSales + "원</td>\n";
+			html += "<td>" + totalSales + "원</td>\n";
 			html += "</tr>\n";
 		}
 		html += "</tbody>";
 		
-		changeDate += changeDatePlus;
-		changeDate += "<i class='material-icons text-black' onclick='javascript:popupOpen();' style='cursor: pointer;'>";
-		changeDate += "date_range</i></p>";
-				
-		console.log(html);
-		console.log(changeDate);
-		$(opener.document).find(".category").replaceWith(changeDate).trigger("create");
 		$(opener.document).find("#tbody").replaceWith(html).trigger("create");
-// 		self.close();
+		self.close();
+		
+	}).fail(function() {
+		alert("일일 정산 내역 호출 실패");
 	});
 }
 
+// 매출액 1000단위마다 , 찍기
+function setComma(num) {
+	if(num == null || num == ''){
+		return 0;
+	}
+	var reg = /(^[+-]?\d+)(\d{3})/;   
+	num = num.toString();                          
+	while (reg.test(num))
+		num = num.replace(reg, '$1' + ',' + '$2');
+	return num;
+}
 </script>
 </head>
 <body>

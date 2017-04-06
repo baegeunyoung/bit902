@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<body onunload="closePopup();">
+<body>
 	<div class="wrapper">
 		<c:import url="../../include/sidebar.jsp" />
 		<div class="main-panel">
@@ -32,7 +32,8 @@
 								<div class="card-header" data-background-color="purple">
 									<h4 class="title">${retrieveDayAdjust[0].storeName}의 일일 정산 내역</h4>
 									<p class="category">
-									<fmt:formatDate value="${retrieveDayAdjust[0].adjustDate}" pattern="yyyy년 MM월 dd일" />
+									<span id="cDate" ></span>
+<%-- 									<fmt:formatDate value="${retrieveDayAdjust[0].adjustDate}" pattern="yyyy년 MM월 dd일" /> --%>
 									<i class="material-icons text-black" onclick="javascript:popupOpen();" style="cursor: pointer;">
 									date_range</i></p>
 								</div>
@@ -87,21 +88,31 @@
 	</div>
 	
 	<script>
+	
+	// 달력 팝업 띄우기
 	function popupOpen() {
 		var popUrl = "${pageContext.request.contextPath}/view/adjust/calendar.html";
 	    var popOption = "width=400, height=500, resizable=yes, scrollbars=yes, status=no";
 		objPopup = window.open(popUrl, "", popOption);
 		objPopup.focus();
 	}
-
+	
+	// 달력 팝업 닫기
 	function closePopup() {
 		if(objPopup!= null) objPopup.close(); 
 	}
 	
+	// 첫화면에 오늘 날짜 출력
+	var date = new Date();
+	var y = date.getFullYear();
+	var m = date.getMonth() + 1;
+	var d = date.getDate();
+	var currentDate = y + "년 " + (m < 10 ? "0" + m : m) + "월 " + (d < 10 ? "0" + d : d) + "일 ";
+	document.getElementById('cDate').innerHTML = currentDate;
 	
+	// 그래프 관련
 	var table = document.getElementById("table");
 	var rowsCount = table.rows.length;
-	
 	
 // 	$(document).ready(function(){
 
