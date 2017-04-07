@@ -61,6 +61,9 @@ primary key(menu_no),
 foreign key(store_no) references tb_store(store_no)
 );
 
+
+alter table tb_menu add column content varchar(300) after name; 
+select * from tb_menu
 -------------------------------------------------------
 --상점,메뉴 파일테이블
 -------------------------------------------------------							 
