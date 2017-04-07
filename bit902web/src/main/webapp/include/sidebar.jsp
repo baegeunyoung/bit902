@@ -50,7 +50,7 @@
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="#">
+	                    <a href="${pageContext.request.contextPath}/adjust/monthAdjust.do">
 	                        <i class="material-icons text-gray">library_books</i><p>월 누적 판매량</p>
 	                    </a>
 	                </li>

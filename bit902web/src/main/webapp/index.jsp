@@ -14,7 +14,6 @@
 	</div>
 	<div class="main-panel">
 	<a href='buyer/list.do'>구매자확인</a>
-	<a href='adjust/dayAdjust.do'>양원주꺼</a>
 	</div>
 </div>
 </body>

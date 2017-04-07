@@ -3,7 +3,7 @@
  	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.smartpayweb.repository.mapper.AdjustMapper">
 
-	<resultMap type="dayAdjustVO" id="dayAdjustMap">
+	<resultMap type="DayAdjustVO" id="DayAdjustMap">
 		<result column="adjust_no" property="adjustNo" />
 		<result column="total_number" property="totalNumber" />
 		<result column="total_sales" property="totalSales" />
@@ -16,7 +16,7 @@
 
 
 <!-- 일일정산 첫화면 -->
-	<select id="retrieveDayAdjust" resultMap="dayAdjustMap">
+	<select id="retrieveDayAdjust" resultMap="DayAdjustMap">
 		select *
 		from tb_adjust
 		where adjust_date = current_date()
@@ -24,10 +24,34 @@
 	</select>
 
 <!-- 일일정산 날짜 선택 -->
-	<select id="retrieveDayAdjustRe" parameterType="string" resultMap="dayAdjustMap">
+	<select id="retrieveDayAdjustRe" parameterType="string" resultMap="DayAdjustMap">
 		select *
 		from tb_adjust
 		where adjust_date = #{dDay}
 	</select>
-	
+
+
+	<resultMap type="MonthAdjustVO" id="MonthAdjustMap">
+		<result column="adjust_month_no" property="adjustMonthNo" />
+		<result column="total_month_sales" property="totalMonthSales" />
+		<result column="adjust_month_date" property="adjustMonthDate" />
+		<result column="store_no" property="storeNo" />
+	</resultMap>
+
+
+<!-- 월별정산 첫화면 -->
+	<select id="retrieveMonthAdjust" resultMap="MonthAdjustMap">
+		select *
+		  from tb_adjust_month
+		 where month(adjust_month_date) = month(now())
+		 order by adjust_month_date
+	</select>
+
+<!-- 월별정산 달 선택 -->
+	<select id="retrieveMonthAdjustRe" parameterType="collection" resultMap="MonthAdjustMap">
+		select *
+		  from tb_adjust_month
+		 where year(adjust_month_date) = #{cYear} and month(adjust_month_date) = #{cMonth}
+		 order by adjust_month_date
+	</select>
 </mapper>
