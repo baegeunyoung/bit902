@@ -55,6 +55,11 @@ insert into tb_adjust (total_number, total_sales, adjust_date, store_no, store_n
 
 select * from tb_adjust;
 
+select * from tb_adjust where year(adjust_date) = "2017" && month(adjust_date) = "03";
+
+select * from tb_adjust where date(adjust_date) = date(now());
+
+select * from tb_adjust where month(adjust_date) = month(now());
 -----------------------------------------------------------------------------------------------------------------------------
 
 insert into tb_menu (store_no, name, price) values
