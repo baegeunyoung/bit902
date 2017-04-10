@@ -115,8 +115,8 @@
 	document.getElementById('cDate').innerHTML = currentDate;
 	
 	// 그래프 관련
-	var table = document.getElementById("table");
-	var rowsCount = table.rows.length;
+// 	var table = document.getElementById("table");
+// 	var rowsCount = table.rows.length;
 	
 // 	$(document).ready(function(){
 

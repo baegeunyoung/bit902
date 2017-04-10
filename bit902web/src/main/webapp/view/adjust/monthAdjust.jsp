@@ -20,6 +20,7 @@
 				</div>
 			</nav>
 			
+			
 			<div class="content">
 				<div class="container-fluid">
 					<div class="row">
@@ -130,7 +131,7 @@
 			html += "</tbody>";
 			
 			// 제목 아래 날짜를 바꾸기
-			var changeDateForm = cYear + "년 " + (cMonth < 10 ? "0" + month : month) + "월 ";
+			var changeDateForm = cYear + "년 " + (cMonth < 10 ? "0" + cMonth : cMonth) + "월 ";
 			var changeDate = "";
 
 			var sumComma = setComma(sum) +"원";
@@ -189,7 +190,7 @@
 			html += "</tbody>";
 			
 			// 제목 아래 날짜를 바꾸기
-			var changeDateForm = cYear + "년 " + (cMonth < 10 ? "0" + month : month) + "월 ";
+			var changeDateForm = cYear + "년 " + (cMonth < 10 ? "0" + cMonth : cMonth) + "월 ";
 			var changeDate = "";
 			
 			var sumComma = setComma(sum) +"원";
