@@ -31,7 +31,7 @@
 									<h4 class="title">월별 정산 내역</h4>
 									<p class="category">
 										<i class="material-icons text-black" onclick="javascript:preMonth()" style="cursor: pointer;">navigate_before</i>
-										<span id="cDate"><fmt:formatDate value="${now}" pattern="yyyy년 MM월 " var="today"/><c:out value="${today}"/></span>
+										<span id="cDate"><fmt:formatDate value="${now}" pattern="yyyy년 MM월 " var="today"/>${today}</span>
 										<i class="material-icons text-black" onclick="javascript:nextMonth()" style="cursor: pointer;">navigate_next</i>
 									</p>
 								</div>
@@ -116,7 +116,7 @@
 				var date = new Date(result[i].adjustMonthDate);
 				var year = date.getFullYear();
 				var month = date.getMonth() + 1;
-				var day = date.getDay() + 2;
+				var day = date.getDate();
 				var retVal = year + "-" + (month < 10 ? "0" + month : month) + "-" + (day < 10 ? "0" + day : day);
 				
 				var totalSales = setComma(result[i].totalMonthSales);
@@ -165,7 +165,7 @@
 			
 			// 월별정산 페이지를 선택한 달의 정산 내역으로 변경
 			var html = "";
-			html += "<tbody id='tbody'>\n"
+			html += "<tbody id='tbody'>\n";
 			
 			var sum = 0;
 			
@@ -175,7 +175,7 @@
 				var date = new Date(result[i].adjustMonthDate);
 				var year = date.getFullYear();
 				var month = date.getMonth() + 1;
-				var day = date.getDay() + 2;
+				var day = date.getDate();
 				var retVal = year + "-" + (month < 10 ? "0" + month : month) + "-" + (day < 10 ? "0" + day : day);
 				
 				var totalSales = setComma(result[i].totalMonthSales);

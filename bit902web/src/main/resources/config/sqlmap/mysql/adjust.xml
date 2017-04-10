@@ -43,12 +43,12 @@
 	<select id="retrieveMonthAdjust" resultMap="MonthAdjustMap">
 		select *
 		  from tb_adjust_month
-		 where month(adjust_month_date) = month(now())
+		 where year(adjust_month_date) = year(now()) and month(adjust_month_date) = month(now())
 		 order by adjust_month_date
 	</select>
 
 <!-- 월별정산 달 선택 -->
-	<select id="retrieveMonthAdjustRe" parameterType="collection" resultMap="MonthAdjustMap">
+	<select id="retrieveMonthAdjustRe" parameterType="hashMap" resultMap="MonthAdjustMap">
 		select *
 		  from tb_adjust_month
 		 where year(adjust_month_date) = #{cYear} and month(adjust_month_date) = #{cMonth}
