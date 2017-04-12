@@ -9,9 +9,6 @@
 </head>
 <body>
 <div class="wrapper">
-	<div>
-		<c:import url="/include/sidebar.jsp"/>
-	</div>
 	<div class="main-panel">
 	<a href='buyer/list.do'>구매자확인</a>
 	</div>
