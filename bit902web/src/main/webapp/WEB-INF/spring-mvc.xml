@@ -38,7 +38,7 @@
 	</bean>
 
 	<!-- 메인페이지 이동 -->
-	<mvc:view-controller path="/main/main.do" />
+	<mvc:view-controller path="/main/main.do" view-name="main/main" />
 	<!-- 예약 폼 이동 -->
 <!-- 	<mvc:view-controller path="/book/bookForm.do" view-name="book/bookForm" /> -->
 <!-- 	로그인 폼 이동 -->

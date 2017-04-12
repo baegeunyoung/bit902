@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.co.smartpayweb.Adjust.service.AdjustService;
 import kr.co.smartpayweb.repository.vo.DayAdjustVO;
 import kr.co.smartpayweb.repository.vo.MonthAdjustVO;
+import kr.co.smartpayweb.repository.vo.SellerVO;
 
 @Controller
 @RequestMapping("/adjust")
@@ -27,7 +29,10 @@ public class AdjustController {
 	
 	// ---- 일일정산 첫화면 ----
 	@RequestMapping("/dayAdjust.do")
-	public ModelAndView retrieveDayAdjust() throws ServletException, IOException {
+	public ModelAndView retrieveDayAdjust(HttpSession session) throws ServletException, IOException {
+		
+		SellerVO seller = (SellerVO)session.getAttribute("seller");
+		System.out.println("dd" + seller.getSellerNo());
 		
 		List<DayAdjustVO> retrieveDayAdjust = adjustService.retrieveDayAdjust();
 		System.out.println("콘트롤러 첫화면" + retrieveDayAdjust.size());
