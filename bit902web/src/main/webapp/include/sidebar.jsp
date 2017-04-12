@@ -25,7 +25,7 @@
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="${pageContext.request.contextPath}/view/menu/menuwriteform.jsp">
+	                    <a href="${pageContext.request.contextPath}/view/menu/list.jsp">
 	                        <i class="material-icons text-gray">menu</i><p>메뉴등록</p>
 	                    </a>
 	                </li>
