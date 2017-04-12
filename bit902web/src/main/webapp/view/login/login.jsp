@@ -18,7 +18,7 @@
 <button id="login">로그인</button>
 </form>
 
-<form name="Form" action="{pageContext.request.contextPath}/login/insertSeller.do" method="get">
+<form name="Form" action="/bit902web/view/login/insertSeller.jsp" method="post">
 <button id="reg">회원가입</button>
 </form>
 
