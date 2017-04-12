@@ -19,7 +19,8 @@ import kr.co.smartpayapp.repository.vo.BuyerVO;
 public class PayController {
 	@Autowired
 	PayService payService;
-
+	
+	@CrossOrigin(origins = "*")
 	@RequestMapping("/timeCheck.do")
 	public List<BuyerVO> bookTimeCheck() {
 		System.out.println("체크");
@@ -29,7 +30,7 @@ public class PayController {
 		}
 		return list;
 	}
-	@CrossOrigin(origins = "http://localhost:8100")
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
 	public Map<String,Object> buyerRegist(/*HttpServletRequest request*/@RequestBody BuyerVO buyerVO) {
 //		System.out.println(request.getParameter("id"));

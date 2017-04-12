@@ -1,0 +1,18 @@
+<ion-menu [content]="content">
+  <ion-content>
+    <ion-list>
+      <ion-list no-lines>
+        <ion-list-header>스마트결제</ion-list-header>
+        <button ion-item (click)="openPage(rootPage)">주문하기</button>
+        <button ion-item (click)="openPage(registerPage)">회원등록</button>
+        <button ion-item (click)="openPage(loginPage)">로컬로그인</button>
+        <button ion-item (click)="openPage(loginPage)">소셜로그인</button>
+        <button ion-item (click)="openPage(ibeaconPage)">Ibeacon</button>
+        <button ion-item (click)="openPage(homePage)">BLE비콘</button>
+        <ion-list-header>나의 계정</ion-list-header>
+        <button ion-item (click)="logout()">로그아웃</button>
+      </ion-list>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-nav id="nav" #content [root]="rootPage"></ion-nav>

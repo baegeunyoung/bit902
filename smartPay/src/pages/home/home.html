@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons end>
+        <button (click) = "startScanning()" >Scan</button>
+    </ion-buttons>
+    <ion-title>
+     Devices
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list inset>
+        <ion-item-sliding *ngFor="let device of devices" #slidingItem>
+        <button ion-item (click)="connectToDevice(device)">
+            <h2>{{device.name}}</h2>
+            <p>{{device.id}}</p>
+            <p>{{device.rssi}}</p>
+            <p>{{device.advertising}}</p>
+        </button>
+        </ion-item-sliding>
+    </ion-list>
+    <ion-spinner *ngIf="isScanning==true" name="circles"></ion-spinner>
+    {{keys}}
+</ion-content>
+
