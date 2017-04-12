@@ -41,7 +41,8 @@
 	<mvc:view-controller path="/main/main.do" />
 	<!-- 예약 폼 이동 -->
 <!-- 	<mvc:view-controller path="/book/bookForm.do" view-name="book/bookForm" /> -->
-		
+<!-- 	로그인 폼 이동 -->
+<!-- 	<mvc:view-controller path="/login/loginForm.do" view-name="login/login" />	 -->
 	<mvc:default-servlet-handler />
 	<mvc:view-resolvers>
 		<mvc:jsp prefix="/view/" suffix=".jsp" />

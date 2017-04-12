@@ -8,7 +8,7 @@ public interface LoginMapper {
 	
 //	public List<BuyerVO> searchBuyer(String id, String password) throws Exception;
 	
-//	public SellerVO insertSeller(SellerVO seller) throws Exception;
+	public void insertSeller(SellerVO seller) throws Exception;
 	
 //	public BuyerVO insertBuyer(BuyerVO Buyer) throws Exception;
 	

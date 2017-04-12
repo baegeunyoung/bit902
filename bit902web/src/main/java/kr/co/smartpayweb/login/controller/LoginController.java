@@ -1,39 +1,53 @@
 package kr.co.smartpayweb.login.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.smartpayweb.login.service.LoginService;
 import kr.co.smartpayweb.repository.vo.SellerVO;
 
 @Controller
-public class LoginController {
+public class LoginController extends HttpServlet{
 
 	@Autowired
 	private LoginService service;
 	
-	@ResponseBody
 	@RequestMapping("/login/logout.do")
-	public String logout(HttpSession session) throws Exception {
-		session.invalidate();
-		return "redirect:/index.jsp";	
+	public Map<String, Object> logout(HttpSession session,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		Map<String, Object> map = new HashMap<>();
+		session.invalidate();	
+		map.put("msg", "로그아웃되었습니다.");
+		RequestDispatcher rd = request.getRequestDispatcher("../view/login/login.jsp");
+		rd.forward(request, response);
+		return map;	
 	}
 	
-	@ResponseBody
 	@RequestMapping("/login/login.do")
-	public String login(
+	public Map<String, Object> login(
 			String id, String password, HttpSession session,
-			RedirectAttributes attr) throws Exception {
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		
+		Map<String, Object> map = new HashMap<>();
 		SellerVO seller = service.login(id);
+		
 		if(seller == null) {
-			attr.addAttribute("msg", "입력하신 정보가 올바르지 않습니다.");
-			return "redirect:/login/loginForm";
+			map.put("msg", "입력하신 정보가 올바르지 않습니다.");
+			System.out.println("2");
+			RequestDispatcher rd = request.getRequestDispatcher("../view/login/login.jsp");
+			rd.forward(request, response);
+			return map;
 		
 		}
 		
@@ -42,14 +56,24 @@ public class LoginController {
 			login.setId(seller.getId());
 			login.setPassword(seller.getPassword());
 			System.out.println(seller.getId() + seller.getPassword());
+			map.put("msg", "로그인성공");
 			session.setAttribute("seller", seller);
-			return "redirect:/index.jsp";
+			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+			rd.forward(request, response);
+			return map;
 		}
+		
 		else {
-			attr.addAttribute("msg", "입력하신 정보가 올바르지 않습니다.");
-			return "redirect:/login/loginForm";
+			map.put("msg", "입력하신 정보가 올바르지 않습니다.");
+			System.out.println("4");
+			RequestDispatcher rd = request.getRequestDispatcher("../view/login/login.jsp");
+			rd.forward(request, response);
+			return map;
 		}
 }
+
+
+	
 	
 //	@ResponseBody
 //	@RequestMapping("/searchSeller.do")
@@ -72,12 +96,14 @@ public class LoginController {
 //		return service.insertBuyer(buyer);
 //	}
 	
-//	@ResponseBody
-//	@RequestMapping("/insertSeller.do")
-//	public Map<String, Object> insertSeller(SellerVO seller) throws Exception {
-//		Map<String, Object> map = new HashMap<>();
-//		return service.insertSeller(seller);
-//	}
+
+	@RequestMapping("/login/insertSeller.do")
+	public void insertSeller(SellerVO seller, 
+	HttpServletRequest request, HttpServletResponse response) throws Exception {
+		service.insertSeller(seller);
+		RequestDispatcher rd = request.getRequestDispatcher("../view/login/login.jsp");
+		rd.forward(request, response);
+	}
 	
 //	@ResponseBody
 //	@RequestMapping("/modifyBuyer.do")

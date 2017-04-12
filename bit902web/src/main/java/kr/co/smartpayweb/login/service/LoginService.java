@@ -10,7 +10,7 @@ public interface LoginService {
 	
 //	public Map<String, Object> insertBuyer(BuyerVO buyer) throws Exception;
 	
-//	public Map<String, Object> insertSeller(SellerVO buyer) throws Exception;
+	public void insertSeller(SellerVO seller) throws Exception;
 	
 //	public Map<String, Object> modifyBuyer(BuyerVO buyer) throws Exception;
 	

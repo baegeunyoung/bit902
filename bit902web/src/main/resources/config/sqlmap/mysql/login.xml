@@ -38,10 +38,10 @@ where id = #{id}
 <!-- 				values(buyer_seq.nextval, #{id}, #{password}, #{name}, #{cellphoneNumber}) -->
 <!-- </insert> -->
 
-<!-- <insert id="insertSeller" parameterType="sellerVO"> -->
-<!-- 				insert into tb_seller(seller_no, id, password, name, cellphone_number, permit_yn) -->
-<!-- 				values(seller_seq.nextval, #{id}, #{password}, #{name}, #{cellphoneNumber}, #{permitYn}) -->
-<!-- </insert> -->
+<insert id="insertSeller" parameterType="sellerVO">
+				insert into tb_seller(id, password, name, cellphone_number)
+				values(#{id}, #{password}, #{name}, #{cellphoneNumber})
+</insert>
 
 <!-- <update id="modifyBuyer" parameterType="buyerVO"> -->
 <!-- update tb_buyer -->

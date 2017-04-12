@@ -13,8 +13,8 @@ public class LoginServiceImpl implements LoginService {
 	private LoginMapper dao;
 	
 	public SellerVO login(String id) throws Exception {
-		System.out.println(dao.getSellerInfo(id) + "impl성공");
 		return dao.getSellerInfo(id);
+		
 		
 	}
 	
@@ -24,11 +24,9 @@ public class LoginServiceImpl implements LoginService {
 //		return map;
 //	}
 	
-//	public Map<String, Object> insertSeller(SellerVO seller) throws Exception {
-//		Map<String, Object> map = new HashMap<>();
-//		map.put("list", dao.insertSeller(seller));
-//		return map;
-//	}
+	public void insertSeller(SellerVO seller) throws Exception {	
+		dao.insertSeller(seller);
+	}
 	
 //	public Map<String, Object> insertBuyer(BuyerVO buyer) throws Exception {
 //		Map<String, Object> map = new HashMap<>();
