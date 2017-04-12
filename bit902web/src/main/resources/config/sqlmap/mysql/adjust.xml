@@ -16,11 +16,15 @@
 
 
 <!-- 일일정산 첫화면 -->
-	<select id="retrieveDayAdjust" resultMap="DayAdjustMap">
+	<select id="retrieveDayAdjust" parameterType="int" resultMap="DayAdjustMap">
 		select *
-		from tb_adjust
-		where adjust_date = current_date()
-<!-- 		where adjust_date = "2017-04-02" -->
+		  from tb_adjust a
+		 where a.store_no = (
+		 		select s.store_no
+				  from tb_store s
+				 where seller_no = #{sellerNo}
+				) and
+				adjust_date = current_date()
 	</select>
 
 <!-- 일일정산 날짜 선택 -->

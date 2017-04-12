@@ -13,6 +13,7 @@
 		<c:import url="/include/sidebar.jsp"/>
 	</div>
 	<div class="main-panel">
+		<button type="button" onclick="location.href='/bit902web/view/login/login.jsp'">로그인</button>
 	<a href='buyer/list.do'>구매자확인</a>
 	</div>
 </div>

@@ -16,8 +16,9 @@ public class AdjustServiceImpl implements AdjustService {
 	AdjustMapper mapper;
 	
 	// ---- 일일정산 첫화면----
-	public List<DayAdjustVO> retrieveDayAdjust() {
-		return mapper.retrieveDayAdjust();
+	public List<DayAdjustVO> retrieveDayAdjust(int sellerNo) {
+		System.out.println("impl : " + sellerNo);
+		return mapper.retrieveDayAdjust(sellerNo);
 	}
 	// ---- 일일정산 날짜 선택----
 	public List<DayAdjustVO> retrieveDayAdjustRe(String dDay) {

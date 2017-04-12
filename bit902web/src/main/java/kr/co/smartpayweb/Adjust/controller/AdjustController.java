@@ -32,9 +32,10 @@ public class AdjustController {
 	public ModelAndView retrieveDayAdjust(HttpSession session) throws ServletException, IOException {
 		
 		SellerVO seller = (SellerVO)session.getAttribute("seller");
-		System.out.println("dd" + seller.getSellerNo());
+		int sellerNo =  seller.getSellerNo();
 		
-		List<DayAdjustVO> retrieveDayAdjust = adjustService.retrieveDayAdjust();
+		System.out.println("contl : " + sellerNo);
+		List<DayAdjustVO> retrieveDayAdjust = adjustService.retrieveDayAdjust(sellerNo);
 		System.out.println("콘트롤러 첫화면" + retrieveDayAdjust.size());
 		ModelAndView mav = new ModelAndView("adjust/dayAdjust");
 		mav.addObject("retrieveDayAdjust", retrieveDayAdjust);
