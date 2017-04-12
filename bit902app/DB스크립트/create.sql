@@ -112,16 +112,16 @@ foreign key(beacon_no) references tb_beacon(beacon_no)
 -------------------------------------------------------
 --통계(판매자)
 -------------------------------------------------------
-create table tb_adjust(
-adjust_no int(6) unsigned not null auto_increment,
-total_number int(12) unsigned not null,
-total_sales int(12) unsigned not null,
-adjust_date date not null,
+create table tb_day_adjust(
+day_adjust_no int(6) unsigned not null auto_increment,
+day_total_number int(12) unsigned not null,
+day_total_sales int(12) unsigned not null,
+day_adjust_date date not null,
 store_no int(6) unsigned not null,
 store_name varchar(30) not null,
 menu_no int(6) unsigned not null,
 menu_name varchar(100) not null,
-primary key(adjust_no),
+primary key(day_adjust_no),
 foreign key(store_no) references tb_store(store_no),
 foreign key(menu_no) references tb_menu(menu_no)
 );
@@ -129,12 +129,12 @@ foreign key(menu_no) references tb_menu(menu_no)
 -------------------------------------------------------
 --월별 통계(판매자) 
 -------------------------------------------------------
-create table tb_adjust_month(
-adjust_month_no int(6) unsigned not null auto_increment,
-total_month_sales int(12) unsigned not null,
-adjust_month_date date not null,
+create table tb_month_adjust(
+month_adjust_no int(6) unsigned not null auto_increment,
+month_total_sales int(12) unsigned not null,
+month_adjust_date date not null,
 store_no int(6) unsigned not null,
-primary key(adjust_month_no),
+primary key(month_adjust_no),
 foreign key(store_no) references tb_store(store_no)
 );
 

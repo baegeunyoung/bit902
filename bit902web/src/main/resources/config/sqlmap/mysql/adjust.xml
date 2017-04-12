@@ -24,7 +24,7 @@
 				  from tb_store s
 				 where seller_no = #{sellerNo}
 				) and
-				adjust_date = current_date()
+			   adjust_date = current_date()
 	</select>
 
 <!-- 일일정산 날짜 선택 -->
