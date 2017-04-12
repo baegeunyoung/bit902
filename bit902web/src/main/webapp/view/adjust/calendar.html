@@ -230,20 +230,22 @@ function EvtChangeMonthYear(dateText) {
 		
 		for (var i = 0 ; i < result.length ; i++) {
 			html += "<tr>\n";
-			var date = new Date(result[i].adjustDate);
+			
+			var date = new Date(result[i].dayAdjustDate);
 			var year = date.getFullYear();
 			var month = date.getMonth() + 1;
-			var day = date.getDay() + 2;
+			var day = date.getDate();
 			var retVal = year + "-" + (month < 10 ? "0" + month : month) + "-" + (day < 10 ? "0" + day : day);
 			
-			var totalSales = setComma(result[i].totalSales);
+			var dayTotalSales = setComma(result[i].dayTotalSales);
+			
 			html += "<td>" + retVal + "</td>\n";
 			html += "<td>" + result[i].menuName + "</td>\n";
-			html += "<td>" + result[i].totalNumber + "</td>\n";
-			html += "<td>" + totalSales + "원</td>\n";
+			html += "<td>" + result[i].dayTotalNumber + "</td>\n";
+			html += "<td>" + dayTotalSales + "원</td>\n";
 			html += "</tr>\n";
 			
-			sum += result[i].totalSales;
+			sum += result[i].dayTotalSales;
 		}
 		html += "</tbody>";
 		

@@ -11,7 +11,7 @@ public interface AdjustService {
 	// ---- 일일정산 첫화면----
 	public List<DayAdjustVO> retrieveDayAdjust(int sellerNo);
 	// ---- 일일정산 날짜 선택----
-	public List<DayAdjustVO> retrieveDayAdjustRe(String dDay);
+	public List<DayAdjustVO> retrieveDayAdjustRe(Map<String, Object> data);
 	// ---- 월별정산 첫화면 ----
 	public List<MonthAdjustVO> retrieveMonthAdjust();
 	// ---- 월별정산 월 선택으로 조회 ----

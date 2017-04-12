@@ -47,9 +47,9 @@
 											<c:set var="sum" value="0" />
  											<c:forEach var="list" items="${retrieveMonthAdjust}"> 
 											<tr>
-												<td><fmt:formatDate value="${list.adjustMonthDate}" pattern="yyyy-MM-dd" /></td>
-												<td><fmt:formatNumber value="${list.totalMonthSales}" pattern="#,###" />원</td>
-												<c:set var="sum" value="${sum + list.totalMonthSales}" />
+												<td><fmt:formatDate value="${list.monthAdjustDate}" pattern="yyyy-MM-dd" /></td>
+												<td><fmt:formatNumber value="${list.monthTotalSales}" pattern="#,###" />원</td>
+												<c:set var="sum" value="${sum + list.monthTotalSales}" />
 											</tr>
 											</c:forEach>
 										</tbody>
@@ -113,19 +113,19 @@
 			for (var i = 0 ; i < result.length ; i++) {
 				html += "<tr>\n";
 				
-				var date = new Date(result[i].adjustMonthDate);
+				var date = new Date(result[i].monthAdjustDate);
 				var year = date.getFullYear();
 				var month = date.getMonth() + 1;
 				var day = date.getDate();
 				var retVal = year + "-" + (month < 10 ? "0" + month : month) + "-" + (day < 10 ? "0" + day : day);
 				
-				var totalSales = setComma(result[i].totalMonthSales);
+				var totalSales = setComma(result[i].monthTotalSales);
 				
 				html += "<td>" + retVal + "</td>\n";
 				html += "<td>" + totalSales + "원</td>\n";
 				html += "</tr>\n";
 				
-				sum += result[i].totalMonthSales;
+				sum += result[i].monthTotalSales;
 				console.log(sum);
 			}
 			html += "</tbody>";
@@ -172,19 +172,19 @@
 			for (var i = 0 ; i < result.length ; i++) {
 				html += "<tr>\n";
 				
-				var date = new Date(result[i].adjustMonthDate);
+				var date = new Date(result[i].monthAdjustDate);
 				var year = date.getFullYear();
 				var month = date.getMonth() + 1;
 				var day = date.getDate();
 				var retVal = year + "-" + (month < 10 ? "0" + month : month) + "-" + (day < 10 ? "0" + day : day);
 				
-				var totalSales = setComma(result[i].totalMonthSales);
+				var totalSales = setComma(result[i].monthTotalSales);
 				
 				html += "<td>" + retVal + "</td>\n";
 				html += "<td>" + totalSales + "원</td>\n";
 				html += "</tr>\n";
 				
-				sum += result[i].totalMonthSales;
+				sum += result[i].monthTotalSales;
 				console.log(sum);
 			}
 			html += "</tbody>";

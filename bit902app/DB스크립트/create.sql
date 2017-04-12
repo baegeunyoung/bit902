@@ -110,7 +110,7 @@ foreign key(beacon_no) references tb_beacon(beacon_no)
 );
 
 -------------------------------------------------------
---통계(판매자)
+--일일 통계(판매자)
 -------------------------------------------------------
 create table tb_day_adjust(
 day_adjust_no int(6) unsigned not null auto_increment,

@@ -47,13 +47,13 @@
 											<c:set var="sum" value="0" />
  											<c:forEach var="list" items="${retrieveDayAdjust}"> 
 											<tr>
-												<td><fmt:formatDate value="${list.adjustDate}" pattern="yyyy-MM-dd" /></td>
+												<td><fmt:formatDate value="${list.dayAdjustDate}" pattern="yyyy-MM-dd" /></td>
 												<td>${list.menuName}</td>
-												<td>${list.totalNumber}</td>
-												<td><fmt:formatNumber value="${list.totalSales}" pattern="#,###" />원</td>
-												<c:set var="sum" value="${sum + list.totalSales}" />
+												<td>${list.dayTotalNumber}</td>
+												<td><fmt:formatNumber value="${list.dayTotalSales}" pattern="#,###" />원</td>
+												<c:set var="sum" value="${sum + list.dayTotalSales}" />
 											</tr>
-											<input type="hidden" value="${list.totalSales}"/>
+											<input type="hidden" value="${list.dayTotalSales}"/>
 											</c:forEach>
 										</tbody>
 										<tr>
@@ -102,9 +102,7 @@
 	}
 	
 	// 달력 팝업 닫기
-	function closePopup() {
-		if(objPopup!= null) objPopup.close(); 
-	}
+
 	
 	// 첫화면에 오늘 날짜 출력
 	var date = new Date();

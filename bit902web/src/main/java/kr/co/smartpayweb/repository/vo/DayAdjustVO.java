@@ -3,38 +3,37 @@ package kr.co.smartpayweb.repository.vo;
 import java.util.Date;
 
 public class DayAdjustVO {
-	private int adjustNo;
-	private int totalNumber;
-	private int totalSales;
-	private Date adjustDate;
+	private int dayAdjustNo;
+	private int dayTotalNumber;
+	private int dayTotalSales;
+	private Date dayAdjustDate;
 	private int storeNo;
 	private String storeName;
 	private int menuNo;
 	private String menuName;
-	
-	public int getAdjustNo() {
-		return adjustNo;
+	public int getDayAdjustNo() {
+		return dayAdjustNo;
 	}
-	public void setAdjustNo(int adjustNo) {
-		this.adjustNo = adjustNo;
+	public void setDayAdjustNo(int dayAdjustNo) {
+		this.dayAdjustNo = dayAdjustNo;
 	}
-	public int getTotalNumber() {
-		return totalNumber;
+	public int getDayTotalNumber() {
+		return dayTotalNumber;
 	}
-	public void setTotalNumber(int totalNumber) {
-		this.totalNumber = totalNumber;
+	public void setDayTotalNumber(int dayTotalNumber) {
+		this.dayTotalNumber = dayTotalNumber;
 	}
-	public int getTotalSales() {
-		return totalSales;
+	public int getDayTotalSales() {
+		return dayTotalSales;
 	}
-	public void setTotalSales(int totalSales) {
-		this.totalSales = totalSales;
+	public void setDayTotalSales(int dayTotalSales) {
+		this.dayTotalSales = dayTotalSales;
 	}
-	public Date getAdjustDate() {
-		return adjustDate;
+	public Date getDayAdjustDate() {
+		return dayAdjustDate;
 	}
-	public void setAdjustDate(Date adjustDate) {
-		this.adjustDate = adjustDate;
+	public void setDayAdjustDate(Date dayAdjustDate) {
+		this.dayAdjustDate = dayAdjustDate;
 	}
 	public int getStoreNo() {
 		return storeNo;

@@ -32,6 +32,7 @@ public class AdjustController {
 	public ModelAndView retrieveDayAdjust(HttpSession session) throws ServletException, IOException {
 		
 		SellerVO seller = (SellerVO)session.getAttribute("seller");
+		System.out.println(seller);
 		int sellerNo =  seller.getSellerNo();
 		
 		System.out.println("contl : " + sellerNo);
@@ -45,12 +46,20 @@ public class AdjustController {
 	// ---- 일일정산 날짜로 조회 ----
 	@RequestMapping("/dayAdjustRe.do")
 	@ResponseBody
-	public List<DayAdjustVO> retrieveDayAdjustRe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public List<DayAdjustVO> retrieveDayAdjustRe(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws ServletException, IOException {
+		
+		SellerVO seller = (SellerVO)session.getAttribute("seller");
+		int sellerNo =  seller.getSellerNo();
+		
+		Map<String, Object> data = new HashMap<>();
 		
 		String dDay = request.getParameter("dDay");
 		System.out.println(dDay);
 		
-		List<DayAdjustVO> retrieveDayAdjust = adjustService.retrieveDayAdjustRe(dDay);
+		data.put("sellerNo", sellerNo);
+		data.put("dDay", dDay);
+		
+		List<DayAdjustVO> retrieveDayAdjust = adjustService.retrieveDayAdjustRe(data);
 		System.out.println("콘트롤러 달력누르고" + retrieveDayAdjust.size());
 		return retrieveDayAdjust;
 	}

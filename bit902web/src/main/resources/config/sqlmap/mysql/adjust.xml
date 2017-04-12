@@ -4,10 +4,10 @@
 <mapper namespace="kr.co.smartpayweb.repository.mapper.AdjustMapper">
 
 	<resultMap type="DayAdjustVO" id="DayAdjustMap">
-		<result column="adjust_no" property="adjustNo" />
-		<result column="total_number" property="totalNumber" />
-		<result column="total_sales" property="totalSales" />
-		<result column="adjust_date" property="adjustDate" />
+		<result column="day_adjust_no" property="dayAdjustNo" />
+		<result column="day_total_number" property="dayTotalNumber" />
+		<result column="day_total_sales" property="dayTotalSales" />
+		<result column="day_adjust_date" property="dayAdjustDate" />
 		<result column="store_no" property="storeNo" />
 		<result column="store_name" property="storeName" />
 		<result column="menu_no" property="menuNo" />
@@ -18,27 +18,32 @@
 <!-- 일일정산 첫화면 -->
 	<select id="retrieveDayAdjust" parameterType="int" resultMap="DayAdjustMap">
 		select *
-		  from tb_adjust a
+		  from tb_day_adjust a
 		 where a.store_no = (
 		 		select s.store_no
 				  from tb_store s
 				 where seller_no = #{sellerNo}
 				) and
-			   adjust_date = current_date()
+			   day_adjust_date = current_date()
 	</select>
 
 <!-- 일일정산 날짜 선택 -->
-	<select id="retrieveDayAdjustRe" parameterType="string" resultMap="DayAdjustMap">
+	<select id="retrieveDayAdjustRe" parameterType="hashMap" resultMap="DayAdjustMap">
 		select *
-		from tb_adjust
-		where adjust_date = #{dDay}
+		  from tb_day_adjust a
+		 where a.store_no = (
+				select s.store_no
+				  from tb_store s
+				 where seller_no = #{sellerNo}
+				) and
+			   day_adjust_date = #{dDay}
 	</select>
 
 
 	<resultMap type="MonthAdjustVO" id="MonthAdjustMap">
-		<result column="adjust_month_no" property="adjustMonthNo" />
-		<result column="total_month_sales" property="totalMonthSales" />
-		<result column="adjust_month_date" property="adjustMonthDate" />
+		<result column="month_adjust_no" property="monthAdjustNo" />
+		<result column="month_total_sales" property="monthTotalSales" />
+		<result column="month_adjust_date" property="monthAdjustDate" />
 		<result column="store_no" property="storeNo" />
 	</resultMap>
 
@@ -46,16 +51,16 @@
 <!-- 월별정산 첫화면 -->
 	<select id="retrieveMonthAdjust" resultMap="MonthAdjustMap">
 		select *
-		  from tb_adjust_month
-		 where year(adjust_month_date) = year(now()) and month(adjust_month_date) = month(now())
-		 order by adjust_month_date
+		  from tb_month_adjust
+		 where year(month_adjust_date) = year(now()) and month(month_adjust_date) = month(now())
+		 order by month_adjust_date
 	</select>
 
 <!-- 월별정산 달 선택 -->
 	<select id="retrieveMonthAdjustRe" parameterType="hashMap" resultMap="MonthAdjustMap">
 		select *
-		  from tb_adjust_month
-		 where year(adjust_month_date) = #{cYear} and month(adjust_month_date) = #{cMonth}
-		 order by adjust_month_date
+		  from tb_month_adjust
+		 where year(month_adjust_date) = #{cYear} and month(month_adjust_date) = #{cMonth}
+		 order by month_adjust_date
 	</select>
 </mapper>

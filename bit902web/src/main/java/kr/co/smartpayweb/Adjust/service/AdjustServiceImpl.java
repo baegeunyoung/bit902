@@ -21,8 +21,9 @@ public class AdjustServiceImpl implements AdjustService {
 		return mapper.retrieveDayAdjust(sellerNo);
 	}
 	// ---- 일일정산 날짜 선택----
-	public List<DayAdjustVO> retrieveDayAdjustRe(String dDay) {
-		List<DayAdjustVO> allSales = mapper.retrieveDayAdjustRe(dDay);
+	public List<DayAdjustVO> retrieveDayAdjustRe(Map<String, Object> data) {
+		List<DayAdjustVO> allSales = mapper.retrieveDayAdjustRe(data);
+		System.out.println("임플 : " + allSales.size());
 		return allSales;
 	}
 	// ---- 월별정산 첫화면 ----
