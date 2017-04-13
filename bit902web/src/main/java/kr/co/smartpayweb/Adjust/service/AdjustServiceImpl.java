@@ -12,18 +12,17 @@ import kr.co.smartpayweb.repository.vo.MonthAdjustVO;
 
 @Service
 public class AdjustServiceImpl implements AdjustService {
+	
 	@Autowired
 	AdjustMapper mapper;
 	
 	// ---- 일일정산 첫화면----
 	public List<DayAdjustVO> retrieveDayAdjust(int sellerNo) {
-		System.out.println("impl : " + sellerNo);
 		return mapper.retrieveDayAdjust(sellerNo);
 	}
 	// ---- 일일정산 날짜 선택----
 	public List<DayAdjustVO> retrieveDayAdjustRe(Map<String, Object> data) {
 		List<DayAdjustVO> allSales = mapper.retrieveDayAdjustRe(data);
-		System.out.println("임플 : " + allSales.size());
 		return allSales;
 	}
 	// ---- 월별정산 첫화면 ----

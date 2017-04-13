@@ -34,9 +34,7 @@ public class AdjustController {
 		SellerVO seller = (SellerVO)session.getAttribute("seller");
 		int sellerNo =  seller.getSellerNo();
 		
-		System.out.println("contl : " + sellerNo);
 		List<DayAdjustVO> retrieveDayAdjust = adjustService.retrieveDayAdjust(sellerNo);
-		System.out.println("콘트롤러 첫화면" + retrieveDayAdjust.size());
 		ModelAndView mav = new ModelAndView("adjust/dayAdjust");
 		mav.addObject("retrieveDayAdjust", retrieveDayAdjust);
 		return mav;
@@ -53,7 +51,6 @@ public class AdjustController {
 		Map<String, Object> data = new HashMap<>();
 		
 		String dDay = request.getParameter("dDay");
-		System.out.println(dDay);
 		
 		data.put("sellerNo", sellerNo);
 		data.put("dDay", dDay);

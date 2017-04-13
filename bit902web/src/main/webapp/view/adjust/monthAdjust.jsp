@@ -126,7 +126,6 @@
 				html += "</tr>\n";
 				
 				sum += result[i].monthTotalSales;
-				console.log(sum);
 			}
 			html += "</tbody>";
 			
