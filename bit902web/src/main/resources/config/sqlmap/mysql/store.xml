@@ -21,7 +21,7 @@
 <!-- 	        storeNo.nextval from dual -->
 	    </selectKey>        
 		insert into tb_store(
-<!-- 		   	store_no,  -->
+		   	seller_no, 
 		   	store_type,
 		   	name,
 		   	adress,
@@ -29,7 +29,7 @@
 			latitude,
 			longitude
 		) values (
-<!-- 		    #{storeNo}, -->
+			1,
 		    #{storeType},
 		    #{name},
 		    #{adress},

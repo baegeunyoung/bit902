@@ -23,6 +23,7 @@ permit_yn varchar(1),
 primary key(seller_no)
 );
 
+select * from tb_seller;
 -------------------------------------------------------
 --상점테이블
 -------------------------------------------------------
@@ -53,16 +54,40 @@ alter table tb_store add column content varchar(300) after longitude;
 -------------------------------------------------------
 create table tb_menu (
 menu_no int(6) unsigned not null auto_increment,
-store_no int(6) unsigned not null,
+store_no int(6) unsigned,
+seller_no int(6) unsigned,
 name varchar(100) not null,
+content varchar(300),
 price int(10) unsigned not null,
 size varchar(20),
 primary key(menu_no),
-foreign key(store_no) references tb_store(store_no)
+foreign key(store_no) references tb_store(store_no),
+foreign key(seller_no) references tb_seller(seller_no)
 );
 
+show create table tb_menu;
+
+alter table tb_menu drop foreign key tb_menu_ibfk_2;
+
 alter table tb_menu add column content varchar(300) after name; 
-select * from tb_menu
+alter table tb_menu add column seller_no int(6) after store_no; 
+alter table tb_menu add column store_no int(6) after size; 
+alter table tb_menu add foreign key (seller_no) references tb_seller(seller_no);
+alter table tb_menu add foreign key (store_no) references tb_store(store_no);
+
+
+alter table tb_menu drop foreign key tb_menu_ibfk_1;
+alter table tb_menu drop column store_no;
+
+SET foreign_key_checks = 0;
+alter table tb_menu add foreign key(seller_no) references tb_seller(selller_no);
+SET foreign_key_checks = 1;
+
+select * from tb_menu 
+
+
+
+
 -------------------------------------------------------
 --상점,메뉴 파일테이블
 -------------------------------------------------------							 
@@ -171,6 +196,7 @@ drop table tb_event;
 drop table tb_buyer_stamp;
 drop table tb_seller_stamp;
 drop table tb_adjust;
+drop table tb_adjust_month;
 drop table tb_order;
 drop table tb_beacon;
 drop table tb_store_file;
