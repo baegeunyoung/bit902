@@ -56,7 +56,6 @@ public class AdjustController {
 		data.put("dDay", dDay);
 		
 		List<DayAdjustVO> retrieveDayAdjust = adjustService.retrieveDayAdjustRe(data);
-		System.out.println("콘트롤러 달력누르고" + retrieveDayAdjust.size());
 		return retrieveDayAdjust;
 	}
 	

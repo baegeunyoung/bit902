@@ -2,10 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<jsp:useBean id="now" class="java.util.Date" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/material-dashboard-free-v1.1.0/assets/css/demo.css">
 <title>일일 정산 내역</title>
 </head>
 <body>
@@ -28,7 +30,7 @@
 								<div class="card-header" data-background-color="purple">
 									<h4 class="title">일일 정산 내역</h4>
 									<p class="category">
-									<span id="cDate"></span>
+									<span id="cDate"><fmt:formatDate value="${now}" pattern="yyyy년 MM월 dd일 " var="today"/>${today}</span>
 									<i class="material-icons text-black" onclick="javascript:popupOpen();" style="cursor: pointer;">
 									date_range</i></p>
 								</div>
@@ -68,21 +70,21 @@
 						
 						
 						<!-- 상품별 매출 그래프 -->
-<!-- 						<div class="col-md-4"> -->
-<!-- 							<div class="card"> -->
-<!-- 								<div class="card-header card-chart" data-background-color="orange"> -->
-<!-- 									<div class="ct-chart" id="emailsSubscriptionChart"></div> -->
-<!-- 								</div> -->
-<!-- 								<div class="card-content"> -->
-<!-- 									<h4 class="title">상품별 매출액</h4> -->
-<!-- 								</div> -->
-<!-- 								<div class="card-footer"> -->
-<!-- 									<div class="stats"> -->
-<!-- 										일일 정산 그래프 -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
+						<div class="col-md-4">
+							<div class="card">
+								<div class="card-header card-chart" data-background-color="orange">
+									<div class="ct-chart" id="emailsSubscriptionChart"></div>
+								</div>
+								<div class="card-content">
+									<h4 class="title">상품별 매출액</h4>
+								</div>
+								<div class="card-footer">
+									<div class="stats">
+										일일 정산 그래프
+									</div>
+								</div>
+							</div>
+						</div>
 						
 					</div>
 				</div>
@@ -93,6 +95,10 @@
 	
 	<script>
 	
+	$(".sidebar-wrapper.nav > li").removeClass();
+	$(".sidebar-wrapper.nav:nth-child(6)").addClass('active');
+	
+	
 	// 달력 팝업 띄우기
 	function popupOpen() {
 		var popUrl = "${pageContext.request.contextPath}/view/adjust/calendar.html";
@@ -101,65 +107,54 @@
 		objPopup.focus();
 	}
 	
-	// 달력 팝업 닫기
-
-	
-	// 첫화면에 오늘 날짜 출력
-	var date = new Date();
-	var y = date.getFullYear();
-	var m = date.getMonth() + 1;
-	var d = date.getDate();
-	var currentDate = y + "년 " + (m < 10 ? "0" + m : m) + "월 " + (d < 10 ? "0" + d : d) + "일 ";
-	document.getElementById('cDate').innerHTML = currentDate;
-	
 	// 그래프 관련
-// 	var table = document.getElementById("table");
-// 	var rowsCount = table.rows.length;
+	drawGraph();
 	
-// 	$(document).ready(function(){
-
+	function drawGraph() {
 		
-//         /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
-		
-//         var arr1[rowsCount];
-//         var arr2[rowsCount];
-        	
-//         for (var i = 1 ; i <= rowsCount ; i++) {
-//         	 arr1[i] = $('#table').rows[i].cells[0].innerHTML
-//         	 arr2[i] = $('#table').rows[i].cells[3].innerHTML
-        	 
-//         }
-//         var dataEmailsSubscriptionChart = {
-//           labels: arr1,
-//           series: [
-//             arr2
+		var rowsCount = $('#tbody tr').length;
+        var arr1 = new Array(rowsCount);
+        var arr2 = new Array(rowsCount);
+        var highSales = 0;
+        
+        for (var i = 0 ; i < rowsCount ; i++) {
+			
+	       	arr1[i] = document.getElementById("table").rows[i + 1].cells[1].innerHTML;
+	       	console.log(arr1[i]);
+		    arr2[i] = parseInt(document.getElementById("table").rows[i + 1].cells[3].innerHTML.slice(0, -1).split(',').join(''));
+		    console.log(arr2[i]);
+        	if (highSales < arr2[i]) {
+        		highSales = arr2[i];
+        	}
+       }
+       var dataEmailsSubscriptionChart = {
+         labels: arr1,
+         series: [arr2]
+       };
+       var optionsEmailsSubscriptionChart = {
+           axisX: {
+               showGrid: false
+            },
+            low: 0,
+            high: highSales + 100,
+            chartPadding: { top: 0, right: 10, bottom: 0, left: 0}
+        };
+        var responsiveOptions = [
+          ['screen and (max-width: 1200px)', {
+            seriesBarDistance: 5,
+            axisX: {
+              labelInterpolationFnc: function (value) {
+                return value[0];
+              }
+            }
+          }]
+        ];
+        var emailsSubscriptionChart = Chartist.Bar('#emailsSubscriptionChart', dataEmailsSubscriptionChart, optionsEmailsSubscriptionChart, responsiveOptions);
 
-//           ]
-//         };
-//         var optionsEmailsSubscriptionChart = {
-//             axisX: {
-//                 showGrid: false
-//             },
-//             low: 0,
-//             high: 1000,
-//             chartPadding: { top: 0, right: 10, bottom: 0, left: 0}
-//         };
-//         var responsiveOptions = [
-//           ['screen and (max-width: 1200px)', {
-//             seriesBarDistance: 5,
-//             axisX: {
-//               labelInterpolationFnc: function (value) {
-//                 return value[0];
-//               }
-//             }
-//           }]
-//         ];
-//         var emailsSubscriptionChart = Chartist.Bar('#emailsSubscriptionChart', dataEmailsSubscriptionChart, optionsEmailsSubscriptionChart, responsiveOptions);
+        //start animation for the Emails Subscription Chart
+        md.startAnimationForBarChart(emailsSubscriptionChart);
 
-//         //start animation for the Emails Subscription Chart
-//         md.startAnimationForBarChart(emailsSubscriptionChart);
-
-// 	});
+	}
 	
 	</script>
 </body>
