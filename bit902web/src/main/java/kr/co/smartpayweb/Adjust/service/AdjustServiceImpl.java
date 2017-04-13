@@ -27,11 +27,11 @@ public class AdjustServiceImpl implements AdjustService {
 		return allSales;
 	}
 	// ---- 월별정산 첫화면 ----
-	public List<MonthAdjustVO> retrieveMonthAdjust() {
-		return mapper.retrieveMonthAdjust();
+	public List<MonthAdjustVO> retrieveMonthAdjust(int sellerNo) {
+		return mapper.retrieveMonthAdjust(sellerNo);
 	}
 	// ---- 월별정산 월 선택으로 조회 ----
-	public List<MonthAdjustVO> retrieveMonthAdjustRe(Map<String, String> paramDate) {
+	public List<MonthAdjustVO> retrieveMonthAdjustRe(Map<String, Object> paramDate) {
 		return mapper.retrieveMonthAdjustRe(paramDate);
 	}
 }

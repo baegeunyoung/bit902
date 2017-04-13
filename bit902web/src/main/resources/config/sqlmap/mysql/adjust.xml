@@ -3,6 +3,7 @@
  	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.smartpayweb.repository.mapper.AdjustMapper">
 
+<!-- 일일정산 resultMap -->
 	<resultMap type="DayAdjustVO" id="DayAdjustMap">
 		<result column="day_adjust_no" property="dayAdjustNo" />
 		<result column="day_total_number" property="dayTotalNumber" />
@@ -39,7 +40,7 @@
 			   day_adjust_date = #{dDay}
 	</select>
 
-
+<!-- 월별정산 resultMap -->
 	<resultMap type="MonthAdjustVO" id="MonthAdjustMap">
 		<result column="month_adjust_no" property="monthAdjustNo" />
 		<result column="month_total_sales" property="monthTotalSales" />
@@ -49,18 +50,30 @@
 
 
 <!-- 월별정산 첫화면 -->
-	<select id="retrieveMonthAdjust" resultMap="MonthAdjustMap">
+	<select id="retrieveMonthAdjust" parameterType="int" resultMap="MonthAdjustMap">
 		select *
-		  from tb_month_adjust
-		 where year(month_adjust_date) = year(now()) and month(month_adjust_date) = month(now())
-		 order by month_adjust_date
+		  from tb_month_adjust a
+		 where a.store_no = (
+		 		select s.store_no
+		 		  from tb_store s
+		 		 where seller_no = #{sellerNo}
+		 		) and
+				year(a.month_adjust_date) = year(now()) and
+				month(a.month_adjust_date) = month(now())
+		 order by a.month_adjust_date
 	</select>
 
 <!-- 월별정산 달 선택 -->
 	<select id="retrieveMonthAdjustRe" parameterType="hashMap" resultMap="MonthAdjustMap">
 		select *
-		  from tb_month_adjust
-		 where year(month_adjust_date) = #{cYear} and month(month_adjust_date) = #{cMonth}
+		  from tb_month_adjust a
+		 where a.store_no = (
+		 		select s.store_no
+		 		  from tb_store s
+		 		 where seller_no = #{sellerNo}
+		 		) and
+		 		year(a.month_adjust_date) = #{cYear} and
+		 		month(a.month_adjust_date) = #{cMonth}
 		 order by month_adjust_date
 	</select>
 </mapper>

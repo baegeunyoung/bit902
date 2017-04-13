@@ -12,7 +12,7 @@
 <!-- 		사이드바 선택시 색과 배경 그림 설정 -->
 	    <div class="sidebar" data-color="purple" data-image="${pageContext.request.contextPath}/material-dashboard-free-v1.1.0/assets/img/SmartPay1.gif">
 			<div class="logo">
-				<a href="#" class="simple-text">
+				<a href="${pageContext.request.contextPath}/main/main.do" class="simple-text">
 					Smart Pay
 				</a>
 			</div>

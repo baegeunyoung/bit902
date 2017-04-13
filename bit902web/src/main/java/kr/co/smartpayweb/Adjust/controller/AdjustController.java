@@ -32,7 +32,6 @@ public class AdjustController {
 	public ModelAndView retrieveDayAdjust(HttpSession session) throws ServletException, IOException {
 		
 		SellerVO seller = (SellerVO)session.getAttribute("seller");
-		System.out.println(seller);
 		int sellerNo =  seller.getSellerNo();
 		
 		System.out.println("contl : " + sellerNo);
@@ -66,10 +65,12 @@ public class AdjustController {
 	
 	// ---- 월별정산 첫화면 ----
 	@RequestMapping("/monthAdjust.do")
-	public ModelAndView retrieveMonthAdjust() throws ServletException, IOException {
+	public ModelAndView retrieveMonthAdjust(HttpSession session) throws ServletException, IOException {
 		
-		List<MonthAdjustVO> retrieveMonthAdjust = adjustService.retrieveMonthAdjust();
-		System.out.println("콘트롤러 첫화면 : " + retrieveMonthAdjust.size());
+		SellerVO seller = (SellerVO)session.getAttribute("seller");
+		int sellerNo =  seller.getSellerNo();
+		
+		List<MonthAdjustVO> retrieveMonthAdjust = adjustService.retrieveMonthAdjust(sellerNo);
 		
 		ModelAndView mav = new ModelAndView("adjust/monthAdjust");
 		mav.addObject("retrieveMonthAdjust", retrieveMonthAdjust);
@@ -79,18 +80,22 @@ public class AdjustController {
 	// ---- 월별정산 월 선택으로 조회 ----
 	@RequestMapping("/monthAdjustRe.do")
 	@ResponseBody
-	public List<MonthAdjustVO> retrieveMonthAdjustRe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public List<MonthAdjustVO> retrieveMonthAdjustRe(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws ServletException, IOException {
+		
+		SellerVO seller = (SellerVO)session.getAttribute("seller");
+		int sellerNo =  seller.getSellerNo();
 		
 		String cYear = request.getParameter("cYear");
 		String cMonth = request.getParameter("cMonth");
-		System.out.println(cYear);
-		System.out.println(cMonth);
-		Map<String, String> paramDate = new HashMap<String, String>();
+		
+		Map<String, Object> paramDate = new HashMap<>();
+		
 		paramDate.put("cYear", cYear);
 		paramDate.put("cMonth", cMonth);
+		paramDate.put("sellerNo", sellerNo);
 		
 		List<MonthAdjustVO> retrieveMonthAdjust = adjustService.retrieveMonthAdjustRe(paramDate);
-		System.out.println("콘트롤러 달력누르고 : " + retrieveMonthAdjust.size());
+		
 		return retrieveMonthAdjust;
 	}
 }

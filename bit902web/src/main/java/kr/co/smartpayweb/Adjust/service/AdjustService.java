@@ -13,7 +13,7 @@ public interface AdjustService {
 	// ---- 일일정산 날짜 선택----
 	public List<DayAdjustVO> retrieveDayAdjustRe(Map<String, Object> data);
 	// ---- 월별정산 첫화면 ----
-	public List<MonthAdjustVO> retrieveMonthAdjust();
+	public List<MonthAdjustVO> retrieveMonthAdjust(int sellerNo);
 	// ---- 월별정산 월 선택으로 조회 ----
-	public List<MonthAdjustVO> retrieveMonthAdjustRe(Map<String, String> paramDate);
+	public List<MonthAdjustVO> retrieveMonthAdjustRe(Map<String, Object> paramDate);
 }
