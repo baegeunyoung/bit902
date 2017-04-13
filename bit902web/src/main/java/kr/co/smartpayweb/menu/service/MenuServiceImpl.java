@@ -27,7 +27,7 @@ public class MenuServiceImpl implements MenuService {
 	public Map<String, Object> list(int sellerNo) throws Exception {
 		Map<String, Object> result = new HashMap<>();
 		result.put("menu",dao.getStoreByStoreNo(sellerNo));
-		result.put("menufile",dao.selectStoreFileByNo(sellerNo));
+		result.put("menuFile",dao.selectStoreFileByNo(sellerNo));
 	
 		System.out.println("임플까지");
 		return result;

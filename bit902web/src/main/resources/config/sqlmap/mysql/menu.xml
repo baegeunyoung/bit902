@@ -32,7 +32,8 @@
     	select m.name, 
     		   m.content,
     		   m.price,
-    		   m.size
+    		   m.size,
+    		   m.menu_no
     	  from tb_menu m
     inner join tb_store st
     		on m.store_no = st.store_no
@@ -92,9 +93,14 @@
     
  
 	 <select id="selectStoreFileByNo" parameterType="int" resultMap="menuFileMap">
-	    select *
+	    select store_file_no,
+	    	   menu_no,
+	    	   seller_no,
+	    	   file_path,	
+	    	   ori_name,
+	    	   system_name
 	      from tb_store_file 
-	  	where menu_no = #{menuNo}      
+	  	where seller_no = #{sellerNo}      
 	</select>  
 
 

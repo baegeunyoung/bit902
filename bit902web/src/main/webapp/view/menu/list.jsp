@@ -121,26 +121,24 @@ function makeMenu(){
 		dataType: "JSON"
 	})
 	.done(function (result){
-		console.log("zzzzz");
 		var html = "";
 		
-// 		var menus = result.getkey(menu);
 		var menus = result.menu;
-		var files = result.menufile;
+		var file = result.menuFile;
 		
+		console.log(menus.length);
+		console.log(file.length);
 		
 		for(var i=0; i < menus.length; i++){
-	
-		html+=                      "<tr style='height:100px;width:100%''>"
+  		console.log("메뉴:" + menus[i].menuNo);
+		html+= "<tr style='height:100px;width:100%''>"
 			
-// 		if(menus[i].menuNo == files.menuNo){
-// 		html+=						"<div>"		
-// 		html+= 							"<img src=" + files.filePath + "style='height: 200px; width: 200px;'>";
-// 		html+=						"</div>"		
-// 										}
-			
-		html+=                       	"<td><img src=" + files[i].filePath + "/" + files[i].systemName + "style='height: 200px; width: 200px;'></td>"
-			
+			for(var j=0; j < file.length; j++){
+				if(menus[i].menuNo == file[j].menuNo){
+ 			console.log("파일:" + file[j].menuNo);
+		html+=                  	"<td><img src='/bit902web/upload"+file[j].filePath+"/"+file[j].systemName + "'style='height: 100px; width: 100px;'></td>"
+				}
+			}
 		html+=                       	"<td>"+menus[i].name+"</td>"
 		html+=                       	"<td>"+menus[i].size+"</td>"
 		html+=                       	"<td>"+menus[i].price+"</td>"

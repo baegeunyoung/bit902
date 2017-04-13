@@ -50,7 +50,6 @@ public class MenuController {
 		int sellerNo = seller.getSellerNo();
 		System.out.println("컨트롤러셀러넘버:" + sellerNo);
 		
-		
 		return service.list(sellerNo);
 	}
 	
@@ -118,7 +117,6 @@ public class MenuController {
 		}
 		
 		service.write(param);
-		System.out.println("배바지");
 		attr.addFlashAttribute("msg", "게시물이 등록되었습니다");
 		
 		return "redirect:list.do";
