@@ -10,6 +10,7 @@ public class MenuVO {
 	private String size;
 	
 	
+	
 	public int getSellerNo() {
 		return sellerNo;
 	}

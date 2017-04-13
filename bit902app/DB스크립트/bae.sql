@@ -98,14 +98,21 @@ create table tb_store_file(
 	file_path varchar(50) not null,
 	file_size varchar(50) not null,
 	store_no int(6) unsigned,
-	menu_no int(6) unsigned, 
+	menu_no int(6) unsigned,
+	seller_no int(6) unsigned,
 	primary key (store_file_no),
 	foreign key (store_no) references tb_store(store_no),
-	foreign key (menu_no) references tb_menu(menu_no)
+	foreign key (menu_no) references tb_menu(menu_no),
+	foreign key (seller_no) references tb_seller(seller_no)
 );	
+
 select * from tb_store_file;
+
+show create table tb_store_file;
 drop table tb_store_file;
 alter table tb_store_file modify menu_no null;
+alter table tb_store_file add column seller_no int(6) after store_no; 
+alter table tb_store_file add foreign key (seller_no) references tb_seller(seller_no);
 -------------------------------------------------------
 --비콘테이블
 -------------------------------------------------------			

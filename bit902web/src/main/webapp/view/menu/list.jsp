@@ -126,12 +126,21 @@ function makeMenu(){
 		
 // 		var menus = result.getkey(menu);
 		var menus = result.menu;
+		var files = result.menufile;
+		
 		
 		for(var i=0; i < menus.length; i++){
 	
-		html+=                      "<tr style='height:150px;width:100%''>"
-// 		html+= 						"<img src=" + tf.filePath + "style='height: 200px; width: 200px;'>";
-// 		html+=                       	"<td><img src='${pageContext.request.contextPath}/upload${donation.filePath}/${donation.systemName}' width='100px' height='100px'></img></td>"
+		html+=                      "<tr style='height:100px;width:100%''>"
+			
+// 		if(menus[i].menuNo == files.menuNo){
+// 		html+=						"<div>"		
+// 		html+= 							"<img src=" + files.filePath + "style='height: 200px; width: 200px;'>";
+// 		html+=						"</div>"		
+// 										}
+			
+		html+=                       	"<td><img src=" + files[i].filePath + "/" + files[i].systemName + "style='height: 200px; width: 200px;'></td>"
+			
 		html+=                       	"<td>"+menus[i].name+"</td>"
 		html+=                       	"<td>"+menus[i].size+"</td>"
 		html+=                       	"<td>"+menus[i].price+"</td>"
@@ -141,7 +150,7 @@ function makeMenu(){
 	
 			
 		}
-		if (result.length == 0) {
+		if (menus.length == 0) {
 			html += '게시글이 없습니다';
 		}
 		$("#list").html(html);

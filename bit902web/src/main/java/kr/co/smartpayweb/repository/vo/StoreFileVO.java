@@ -8,8 +8,16 @@ public class StoreFileVO {
 	private String systemName;
 	private String filePath;
 	private long fileSize;
+	private int sellerNo;
+	
 
 	
+	public int getSellerNo() {
+		return sellerNo;
+	}
+	public void setSellerNo(int sellerNo) {
+		this.sellerNo = sellerNo;
+	}
 	public int getStoreFileNo() {
 		return storeFileNo;
 	}

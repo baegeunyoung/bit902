@@ -38,7 +38,7 @@ public class MenuServiceImpl implements MenuService {
 		MenuVO menu = (MenuVO)param.get("menu");
 		dao.insertMenu(menu);
 		StoreFileVO menuFile = (StoreFileVO)param.get("menuFile");
-		System.out.println(menuFile.getFilePath());
+		System.out.println("메뉴이동결로 저장:" + menuFile.getFilePath());
 		if (menuFile != null) {
 			System.out.println("파일옴");
 			menuFile.setMenuNo(menu.getMenuNo());
