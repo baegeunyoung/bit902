@@ -252,6 +252,7 @@ function EvtChangeMonthYear(dateText) {
 		
 		$(opener.document).find("#tbody").replaceWith(html).trigger("create");
 		$(opener.document).find("#sum").text(sumComma).trigger("create");
+		opener.drawGraph();
 		self.close();
 		
 	}).fail(function() {
