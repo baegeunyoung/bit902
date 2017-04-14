@@ -4,19 +4,23 @@ import kr.co.smartpayweb.repository.vo.SellerVO;
 
 public interface LoginMapper {
 
+	// 로그인
 	public SellerVO getSellerInfo(String id) throws Exception;
 	
+	// 회원가입
+	public void insertSeller(SellerVO seller) throws Exception;
+
+	// 회원정보수정
+	public SellerVO modifySeller(SellerVO seller) throws Exception;
+
+	// 회원탈퇴
+	public void deleteSeller(int sellerNo) throws Exception;
+
 //	public List<BuyerVO> searchBuyer(String id, String password) throws Exception;
 	
-	public void insertSeller(SellerVO seller) throws Exception;
-	
 //	public BuyerVO insertBuyer(BuyerVO Buyer) throws Exception;
-	
-//	public SellerVO modifySeller(SellerVO seller) throws Exception;
-	
+		
 //	public BuyerVO modifyBuyer(BuyerVO Buyer) throws Exception;
-	
-//	public void deleteSeller(int sellerNo) throws Exception;
 	
 //	public void deleteBuyer(int buyerNo) throws Exception;
 	

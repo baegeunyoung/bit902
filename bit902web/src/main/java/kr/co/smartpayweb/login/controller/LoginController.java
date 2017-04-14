@@ -21,18 +21,8 @@ public class LoginController extends HttpServlet{
 
 	@Autowired
 	private LoginService service;
-	
-	@RequestMapping("/login/logout.do")
-	public Map<String, Object> logout(HttpSession session,
-			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		Map<String, Object> map = new HashMap<>();
-		session.invalidate();	
-		map.put("msg", "로그아웃되었습니다.");
-		RequestDispatcher rd = request.getRequestDispatcher("../view/login/login.jsp");
-		rd.forward(request, response);
-		return map;	
-	}
-	
+		
+	// 로그인
 	@RequestMapping("/login/login.do")
 	public Map<String, Object> login(
 			String id, String password, HttpSession session,
@@ -42,6 +32,7 @@ public class LoginController extends HttpServlet{
 		Map<String, Object> map = new HashMap<>();
 		SellerVO seller = service.login(id);
 		
+		// 아이디나 비밀번호가 db에 없을 때
 		if(seller == null) {
 			map.put("msg", "입력하신 정보가 올바르지 않습니다.");
 			System.out.println("2");
@@ -51,6 +42,7 @@ public class LoginController extends HttpServlet{
 		
 		}
 		
+		// 아이디와 비밀번호가 일치할 때
 		if(id.equals(seller.getId()) && password.equals(seller.getPassword())) {
 			SellerVO login = new SellerVO();
 			login.setId(seller.getId());
@@ -63,6 +55,7 @@ public class LoginController extends HttpServlet{
 			return map;
 		}
 		
+		// 아이디와 비밀번호 중 하나만 일치할 때
 		else {
 			map.put("msg", "입력하신 정보가 올바르지 않습니다.");
 			System.out.println("4");
@@ -72,7 +65,43 @@ public class LoginController extends HttpServlet{
 		}
 }
 
+	// 로그아웃
+	@RequestMapping("/login/logout.do")
+	public Map<String, Object> logout(HttpSession session,
+				HttpServletRequest request, HttpServletResponse response) throws Exception {
+			Map<String, Object> map = new HashMap<>();
+			session.invalidate();	
+			map.put("msg", "로그아웃되었습니다.");
+			RequestDispatcher rd = request.getRequestDispatcher("../view/login/login.jsp");
+			rd.forward(request, response);
+			return map;	
+		}
 
+	// 회원가입
+	@RequestMapping("/login/insertSeller.do")
+	public void insertSeller(SellerVO seller, 
+	HttpServletRequest request, HttpServletResponse response) throws Exception {
+		service.insertSeller(seller);
+		RequestDispatcher rd = request.getRequestDispatcher("../view/login/login.jsp");
+		rd.forward(request, response);
+	}
+	
+
+	// 회원정보수정
+	@RequestMapping("/login/modifySeller.do")
+	public Map<String, Object> modifySeller(SellerVO seller) throws Exception {
+		Map<String, Object> map = new HashMap<>();
+		return service.modifySeller(seller);
+	}
+	
+	// 회원탈퇴
+		@RequestMapping("/login/deleteSeller.do")
+		public void deleteSeller(int sellerNo, 
+		HttpServletRequest request, HttpServletResponse response) throws Exception {
+			service.deleteSeller(sellerNo);
+			RequestDispatcher rd = request.getRequestDispatcher("../view/login/login.jsp");
+			rd.forward(request, response);
+    }
 	
 	
 //	@ResponseBody
@@ -96,15 +125,6 @@ public class LoginController extends HttpServlet{
 //		return service.insertBuyer(buyer);
 //	}
 	
-
-	@RequestMapping("/login/insertSeller.do")
-	public void insertSeller(SellerVO seller, 
-	HttpServletRequest request, HttpServletResponse response) throws Exception {
-		service.insertSeller(seller);
-		RequestDispatcher rd = request.getRequestDispatcher("../view/login/login.jsp");
-		rd.forward(request, response);
-	}
-	
 //	@ResponseBody
 //	@RequestMapping("/modifyBuyer.do")
 //	public Map<String, Object> modifyBuyer(BuyerVO buyer) throws Exception {
@@ -113,22 +133,10 @@ public class LoginController extends HttpServlet{
 //	}
 	
 //	@ResponseBody
-//	@RequestMapping("/modifySeller.do")
-//	public Map<String, Object> modifySeller(SellerVO seller) throws Exception {
-//		Map<String, Object> map = new HashMap<>();
-//		return service.modifySeller(seller);
-//	}
-	
-//	@ResponseBody
 //	@RequestMapping("/deleteBuyer.do")
 //	public void deleteBuyer(int buyerNo) throws Exception {
 //		service.deleteBuyer(buyerNo);
-//	}
 	
-//	@ResponseBody
-//	@RequestMapping("/deleteSeller.do")
-//	public void deleteSeller(int sellerNo) throws Exception {
-//		service.deleteSeller(sellerNo);
-//	}
+
 	
 }
