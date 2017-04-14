@@ -1,30 +1,45 @@
 <ion-header>
-
   <ion-navbar>
-    <button ion-button icon-only menuToggle>
+     <button ion-button icon-only menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-buttons end>
-        <button (click) = "startScanning()" >Scan</button>
+    <button *ngIf="isScanning==true" (click) = "startScanning()" >중지</button>
+    <ion-spinner end *ngIf="isScanning==true" name="circles"></ion-spinner>
     </ion-buttons>
     <ion-title>
-     Devices
+      편리한 주문
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-    <ion-list inset>
-        <ion-item-sliding *ngFor="let device of devices" #slidingItem>
-        <button ion-item (click)="connectToDevice(device)">
-            <h2>{{device.name}}</h2>
-            <p>{{device.id}}</p>
-            <p>{{device.rssi}}</p>
-            <p>{{device.advertising}}</p>
-        </button>
-        </ion-item-sliding>
-    </ion-list>
-    <ion-spinner *ngIf="isScanning==true" name="circles"></ion-spinner>
-    {{keys}}
-</ion-content>
+  <ion-list no-lines>
 
+    <ion-item *ngFor="let beacon of beacons">
+    <ion-grid>
+      <ion-row>
+        <ion-col>Major</ion-col>
+        <ion-col>{{beacon.major}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Minor</ion-col>
+        <ion-col>{{beacon.minor}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>RSSI</ion-col>
+        <ion-col>{{beacon.rssi}}dB</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>TX</ion-col>
+        <ion-col>{{beacon.tx}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>ACCURACY</ion-col>
+        <ion-col>{{beacon.accuracy}}</ion-col>
+      </ion-row>
+    </ion-grid>
+    </ion-item>
+
+  </ion-list>   
+</ion-content>

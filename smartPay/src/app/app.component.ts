@@ -8,7 +8,6 @@ import { PlaygroundPage } from '../pages/Playground/Playground';
 import { RegisterPage } from '../pages/register/register';
 import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
-import { IbeaconPage } from '../pages/ibeacon/ibeacon';
 
 @Component({
   templateUrl: 'app.html'
@@ -16,11 +15,11 @@ import { IbeaconPage } from '../pages/ibeacon/ibeacon';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage = PlaygroundPage; 
-  registerPage: any = RegisterPage;
+  rootPage = HomePage; 
+  playgroundPage = PlaygroundPage;
+  registerPage = RegisterPage;
   loginPage =  LoginPage;
-  homePage = HomePage;
-  ibeaconPage = IbeaconPage;
+  
   constructor(public menu: MenuController, platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
       console.log("platform ready");
