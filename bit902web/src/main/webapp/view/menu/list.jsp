@@ -64,10 +64,7 @@
 												</div>
 	                                        </div>
 	                               			<div><img id="blah"  style="width:300px;height:150px; border:dotted 1px purple"/></div>
-	                               		
-	                               
 	                               </div>
-<!-- 	                               <a href="javascript:writeform();" class="btn btn-primary pull-right">등록하기</a> -->
 	                               <button type="submit" class="btn btn-primary pull-right">등록하기</button>    
 								   </form>
 								</div>
@@ -91,16 +88,7 @@
 	                                    	<th>가격</th>
 	                                    	<th>설명</th>
 	                                    </thead>
-	                                    <tbody id="list">
-<!-- 	                                        <tr style="height:150px;width:100%"> -->
-<!-- 	                                        	<td>1abbb</td> -->
-<!-- 	                                        	<td>Dakota Rice</td> -->
-<!-- 	                                        	<td>$36,738</td> -->
-<!-- 	                                        	<td>Niger</td> -->
-<!-- 	                                        	<td>Oud-Turnhout123123</td> -->
-<!-- 	                                        	<td style="widht:10px"><button>수정</button><button>삭제</button></td> -->
-<!-- 	                                        </tr> -->
-	                                    </tbody>
+	                                    <tbody id="list"></tbody>
 	                                </table>
 	                            </div>
 	                        </div>
@@ -134,6 +122,7 @@ function makeMenu(){
 		html+= "<tr style='height:100px;width:100%''>"
 			
 			for(var j=0; j < file.length; j++){
+				
 				if(menus[i].menuNo == file[j].menuNo){
  			console.log("파일:" + file[j].menuNo);
 		html+=                  	"<td><img src='/bit902web/upload"+file[j].filePath+"/"+file[j].systemName + "'style='height: 100px; width: 100px;'></td>"
@@ -152,6 +141,7 @@ function makeMenu(){
 			html += '게시글이 없습니다';
 		}
 		$("#list").html(html);
+		
 	});
 	
 }
@@ -208,10 +198,7 @@ function readURL(input) {
     }
 }
 
-//리스트페이지부름
-function menuList() {
-	$("#test3").load("/bit902web/view/menu/menuwriteform.jsp");
-}
+
 
 </script>
 </body>

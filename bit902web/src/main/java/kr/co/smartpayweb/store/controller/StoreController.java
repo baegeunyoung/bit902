@@ -136,7 +136,7 @@ public class StoreController {
 		service.write(param);
 		
 		attr.addFlashAttribute("msg", "게시물이 등록되었습니다");
-		return "a";
+		return "/menu/list";
 	}
 
 
