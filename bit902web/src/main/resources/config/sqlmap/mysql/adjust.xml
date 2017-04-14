@@ -76,4 +76,17 @@
 		 		month(a.month_adjust_date) = #{cMonth}
 		 order by month_adjust_date
 	</select>
+	
+<!-- 상품별 월 매출 추이 그래프 -->
+	<select id="productGraph" parameterType="hashMap" resultMap="DayAdjustMap">
+		select *
+		  from tb_day_adjust a
+		 where a.store_no = (
+		 		select s.store_no
+				  from tb_store s
+				 where seller_no = #{sellerNo}
+				) and
+				month(a.day_adjust_date) = #{cMonth}
+		 order by day_adjust_date
+	</select>
 </mapper>

@@ -33,4 +33,8 @@ public class AdjustServiceImpl implements AdjustService {
 	public List<MonthAdjustVO> retrieveMonthAdjustRe(Map<String, Object> paramDate) {
 		return mapper.retrieveMonthAdjustRe(paramDate);
 	}
+	// ---- 상품별 월 매출 추이 그래프 ----
+	public List<DayAdjustVO> productGraph(Map<String, Object> paramDate) {
+		return mapper.productGraph(paramDate);
+	}
 }

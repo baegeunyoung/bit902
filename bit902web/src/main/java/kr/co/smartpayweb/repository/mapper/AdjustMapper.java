@@ -16,4 +16,6 @@ public interface AdjustMapper {
 	public List<MonthAdjustVO> retrieveMonthAdjust(int sellerNo);
 	// ---- 월별정산 월 선택으로 조회 ----
 	public List<MonthAdjustVO> retrieveMonthAdjustRe(Map<String, Object> paramDate);
+	// ---- 상품별 월 매출 추이 그래프 ----
+	public List<DayAdjustVO> productGraph(Map<String, Object> paramDate);
 }

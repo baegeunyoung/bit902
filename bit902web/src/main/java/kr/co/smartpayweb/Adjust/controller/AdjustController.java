@@ -54,9 +54,8 @@ public class AdjustController {
 		
 		data.put("sellerNo", sellerNo);
 		data.put("dDay", dDay);
-		
-		List<DayAdjustVO> retrieveDayAdjust = adjustService.retrieveDayAdjustRe(data);
-		return retrieveDayAdjust;
+
+		return adjustService.retrieveDayAdjustRe(data);
 	}
 	
 	// ---- 월별정산 첫화면 ----
@@ -90,8 +89,26 @@ public class AdjustController {
 		paramDate.put("cMonth", cMonth);
 		paramDate.put("sellerNo", sellerNo);
 		
-		List<MonthAdjustVO> retrieveMonthAdjust = adjustService.retrieveMonthAdjustRe(paramDate);
+		return adjustService.retrieveMonthAdjustRe(paramDate);
+	}
+	
+	// ---- 상품별 월 매출 추이 그래프 ----
+	@RequestMapping("/productGraph.do")
+	@ResponseBody
+	public List<DayAdjustVO> productGraph(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws ServletException, IOException {
 		
-		return retrieveMonthAdjust;
+		SellerVO seller = (SellerVO)session.getAttribute("seller");
+		int sellerNo =  seller.getSellerNo();
+		
+		String cMonth = request.getParameter("cMonth");
+		
+		Map<String, Object> paramDate = new HashMap<>();
+		
+		paramDate.put("cMonth", cMonth);
+		paramDate.put("sellerNo", sellerNo);
+		
+		List<DayAdjustVO> productGraph = adjustService.productGraph(paramDate);
+		
+		return productGraph;
 	}
 }
