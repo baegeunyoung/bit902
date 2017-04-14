@@ -70,7 +70,7 @@
 						
 						
 						<!-- 상품별 매출 그래프 -->
-						<div class="col-md-4">
+						<div class="col-md-12">
 							<div class="card">
 								<div class="card-header card-chart" data-background-color="orange">
 									<div class="ct-chart" id="emailsSubscriptionChart"></div>
@@ -137,7 +137,7 @@
             },
             low: 0,
             high: highSales + 100,
-            chartPadding: { top: 0, right: 10, bottom: 0, left: 0}
+            chartPadding: { top: 0, right: 10, bottom: 0, left: 25}
         };
         var responsiveOptions = [
           ['screen and (max-width: 1200px)', {

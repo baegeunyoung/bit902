@@ -61,6 +61,29 @@
 								</div>
 							</div>
 						</div>
+						
+						
+						
+						
+						<!-- 월 누적 매출 그래프 -->
+						<div class="col-md-12">
+							<div class="card">
+								<div class="card-header card-chart" data-background-color="orange">
+									<div class="ct-chart" id="emailsSubscriptionChart"></div>
+								</div>
+								<div class="card-content">
+									<h4 class="title">상품별 매출액</h4>
+								</div>
+								<div class="card-footer">
+									<div class="stats">
+										일일 정산 그래프
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						
+						
 					</div>
 				</div>
 			</div>
@@ -140,6 +163,8 @@
 			// 바디 내용 바꾸기
 			$(document).find("#tbody").replaceWith(html).trigger("create");
 			$(document).find("#sum").text(sumComma).trigger("create");
+			
+			drawGraph();
 		}).fail(function() {
 			alert("일일 정산 내역 호출 실패");
 		});
@@ -199,10 +224,64 @@
 			// 바디 내용 바꾸기
 			$(document).find("#tbody").replaceWith(html).trigger("create");
 			$(document).find("#sum").text(sumComma).trigger("create");
+			
+			drawGraph();
 		}).fail(function() {
 			alert("일일 정산 내역 호출 실패");
 		});
 	}
+	
+	
+	
+	// 그래프 관련
+	drawGraph();
+	
+	function drawGraph() {
+		
+		var rowsCount = $('#tbody tr').length;
+        var arr1 = new Array(rowsCount);
+        var arr2 = new Array(rowsCount);
+        var highSales = 0;
+        
+        for (var i = 0 ; i < rowsCount ; i++) {
+			
+	       	arr1[i] = document.getElementById("table").rows[i + 1].cells[0].innerHTML.split('-')[2];
+	       	console.log(arr1[i]);
+		    arr2[i] = parseInt(document.getElementById("table").rows[i + 1].cells[1].innerHTML.slice(0, -1).split(',').join(''));
+		    console.log(arr2[i]);
+        	if (highSales < arr2[i]) {
+        		highSales = arr2[i];
+        	}
+       }
+       var dataEmailsSubscriptionChart = {
+         labels: arr1,
+         series: [arr2]
+       };
+       var optionsEmailsSubscriptionChart = {
+           axisX: {
+               showGrid: false
+            },
+            low: 0,
+            high: highSales + 500,
+            chartPadding: { top: 0, right: 10, bottom: 0, left: 35}
+        };
+        var responsiveOptions = [
+          ['screen and (max-width: 1200px)', {
+            seriesBarDistance: 5,
+            axisX: {
+              labelInterpolationFnc: function (value) {
+                return value[0];
+              }
+            }
+          }]
+        ];
+        var emailsSubscriptionChart = Chartist.Bar('#emailsSubscriptionChart', dataEmailsSubscriptionChart, optionsEmailsSubscriptionChart, responsiveOptions);
+
+        //start animation for the Emails Subscription Chart
+        md.startAnimationForBarChart(emailsSubscriptionChart);
+
+	}
+	
 	</script>
 </body>
 </html>
