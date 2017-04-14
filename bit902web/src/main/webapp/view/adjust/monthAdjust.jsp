@@ -72,11 +72,11 @@
 									<div class="ct-chart" id="emailsSubscriptionChart"></div>
 								</div>
 								<div class="card-content">
-									<h4 class="title">상품별 매출액</h4>
+									<h4 class="title">일별 매출액</h4>
 								</div>
 								<div class="card-footer">
 									<div class="stats">
-										일일 정산 그래프
+										월별 정산 그래프
 									</div>
 								</div>
 							</div>
@@ -166,7 +166,7 @@
 			
 			drawGraph();
 		}).fail(function() {
-			alert("일일 정산 내역 호출 실패");
+			alert("월별 정산 내역 호출 실패");
 		});
 	}
 	
@@ -227,7 +227,7 @@
 			
 			drawGraph();
 		}).fail(function() {
-			alert("일일 정산 내역 호출 실패");
+			alert("월별 정산 내역 호출 실패");
 		});
 	}
 	
@@ -262,7 +262,7 @@
                showGrid: false
             },
             low: 0,
-            high: highSales + 500,
+            high: highSales + (highSales / 20),
             chartPadding: { top: 0, right: 10, bottom: 0, left: 35}
         };
         var responsiveOptions = [

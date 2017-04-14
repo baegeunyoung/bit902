@@ -9,7 +9,7 @@
 	<footer class="footer">
 	<div class="container-fluid">
 		<nav class="pull-left">
-			<a href="#">Home</a>
+			<a href="${pageContext.request.contextPath}/main/main.do">Home</a>
 		</nav>
 		<p class="copyright pull-right">
 			&copy;
@@ -17,7 +17,7 @@
 				var date = new Date();
 				document.write(date.getFullYear());
 			</script>
-			<a href="http://www.naver.com">2조</a>
+			<a href="${pageContext.request.contextPath}/main/main.do">2조</a>
 			, made with love for a better web
 		</p>
 	</div>

@@ -136,7 +136,7 @@
                showGrid: false
             },
             low: 0,
-            high: highSales + 100,
+            high: highSales + (highSales / 20),
             chartPadding: { top: 0, right: 10, bottom: 0, left: 25}
         };
         var responsiveOptions = [
