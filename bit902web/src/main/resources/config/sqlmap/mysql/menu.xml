@@ -56,7 +56,10 @@
 		   	price,
 		    content
 		) values (
-			8,
+			(select store_no
+			   from tb_store
+			  where seller_no = #{sellerNo}
+			),
 			#{sellerNo},
 		    #{name},
 		    #{size},

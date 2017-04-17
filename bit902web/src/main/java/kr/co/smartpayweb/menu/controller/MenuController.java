@@ -29,19 +29,7 @@ public class MenuController {
 	
 	@Autowired
 	MenuService service;
-//	@RequestMapping("/list.do")
-//	public Map<String, Object> list(String storeNo) throws Exception {
-//		return service.list(Integer.parseInt(storeNo));
-//	}
 	
-//	@RequestMapping("/list.do")
-//	public Map<String, Object> list(HttpSession session) throws Exception {
-//		System.out.println("리스트컨트롤러");
-//		SellerVO seller = (SellerVO)session.getAttribute("seller");
-//		int sellerNo =  seller.getSellerNo();
-//		return service.list(sellerNo);
-//	}
-//	
 	@ResponseBody
 	@RequestMapping("/list.do")
 	public Map<String, Object> list(HttpSession session) throws Exception {

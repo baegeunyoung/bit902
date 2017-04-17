@@ -212,5 +212,6 @@ drop table tb_store;
 drop table tb_buyer;
 drop table tb_seller;
 
-
-
+select * from tb_buyer;
+delete from tb_buyer
+where name="쟝아";

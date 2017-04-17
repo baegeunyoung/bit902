@@ -5,10 +5,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.co.smartpayweb.repository.vo.SellerVO;
 import kr.co.smartpayweb.repository.vo.StoreFileVO;
 import kr.co.smartpayweb.repository.vo.StoreVO;
 import kr.co.smartpayweb.store.service.StoreService;
@@ -30,8 +31,8 @@ public class StoreController {
 	StoreService service;
 
 	@RequestMapping("/write.do")
-	public String write(MultipartHttpServletRequest mRequest, RedirectAttributes attr) throws Exception{
-		System.out.println("들어옴");
+	public String write(MultipartHttpServletRequest mRequest, RedirectAttributes attr, HttpSession session) throws Exception{
+		
 		Map<String, Object> param = new HashMap<>();
 		ServletContext context = mRequest.getServletContext();
 		
@@ -44,6 +45,9 @@ public class StoreController {
 		File f = new File(savePath);
 		if (!f.exists()) f.mkdirs();
 		
+		SellerVO seller = (SellerVO)session.getAttribute("seller");
+		int sellerNo = seller.getSellerNo();
+		System.out.println("컨트롤러셀러넘버:" + sellerNo);
 		// 게시판과 파일 테이블에 저장할 글번호를 조회
 		StoreVO store = new StoreVO();
 		store.setName(mRequest.getParameter("storeName"));
@@ -52,6 +56,7 @@ public class StoreController {
 		store.setAdress(mRequest.getParameter("adress"));
 		store.setLatitude(Double.parseDouble(mRequest.getParameter("lat")));
 		store.setLongitude(Double.parseDouble(mRequest.getParameter("lng")));
+		store.setSellerNo(sellerNo);
 
 		System.out.println(mRequest.getParameter("storeName"));
 		System.out.println(Integer.parseInt(mRequest.getParameter("storeType")));
@@ -59,6 +64,7 @@ public class StoreController {
 		System.out.println(mRequest.getParameter("adress"));
 		System.out.println(Double.parseDouble(mRequest.getParameter("lat")));
 		System.out.println(Double.parseDouble(mRequest.getParameter("lng")));
+//		System.out.println(Integer.parseInt(mRequest.getParameter("sellerNo")));
 		param.put("store", store);
 				
 		// 게시물 저장 처리 부탁..
@@ -130,6 +136,7 @@ public class StoreController {
 			storeFile.setSystemName(systemName);
 			storeFile.setFilePath(datePath);
 			storeFile.setFileSize(fileSize);
+			storeFile.setSellerNo(sellerNo);
 			param.put("storeFile",storeFile);
 			
 		}

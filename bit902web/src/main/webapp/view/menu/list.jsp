@@ -102,7 +102,7 @@ makeMenu();
 function makeMenu(){
 	
 	var sellerNo = ${seller.sellerNo};
-	alert('판매자번호:' + sellerNo);
+	
 	$.ajax({
 		type:"POST",
 		url : "/bit902web/menu/list.do",
@@ -138,7 +138,7 @@ function makeMenu(){
 			
 		}
 		if (menus.length == 0) {
-			html += '게시글이 없습니다';
+			html += '등록된메뉴가없습니다';
 		}
 		$("#list").html(html);
 		

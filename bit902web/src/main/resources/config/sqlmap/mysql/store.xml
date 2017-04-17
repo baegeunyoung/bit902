@@ -29,7 +29,7 @@
 			latitude,
 			longitude
 		) values (
-			1,
+			#{sellerNo},
 		    #{storeType},
 		    #{name},
 		    #{adress},
