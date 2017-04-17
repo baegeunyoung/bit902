@@ -7,7 +7,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/material-dashboard-free-v1.1.0/assets/css/demo.css">
 <title>일일 정산 내역</title>
 </head>
 <body>

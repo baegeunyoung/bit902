@@ -66,13 +66,23 @@
 			<%
 				out.print(session.getAttribute("id") + " 님 환영합니다");
 			%>
-
+			<br>
+			
 			<button id="logout" type="button" class="btn btn-primary pull-right">로그아웃</button>
 			<button id="mod" type="button" class="btn btn-primary pull-right">회원정보수정</button>
 
 			<%
+				if (session.getAttribute("id").equals("admin")) {
+			%>
+			<a href="${pageContext.request.contextPath}/admin/admin.do" class="btn btn-primary btn-round">관리자 페이지</a>
+			<%
 				}
 			%>
+
+			<%
+				}
+			%>
+			
 		</div>
 	</div>
 

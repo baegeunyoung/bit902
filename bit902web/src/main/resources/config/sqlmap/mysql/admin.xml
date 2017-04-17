@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.smartpayweb.repository.mapper.AdminMapper">
+
+	<resultMap type="SellerVO" id="sellers">
+		<result column="seller_no" property="sellerNo" /> 
+		<result column="id" property="id" />
+		<result column="password" property="password" />
+		<result column="name" property="name" />
+		<result column="cellphone_number" property="cellphoneNumber" />
+		<result column="permit_yn" property="permitYn" />
+	</resultMap>
+
+<!-- 미승인자 명단 조회  -->
+	<select id="NoPermitList" resultMap="sellers">
+		select *
+		  from tb_seller
+		 where permit_yn = "n"
+	</select>
+
+<!-- 승인  -->	
+	<update id="permit" parameterType="int">
+		update tb_seller
+		   set permit_yn = "y"
+		 where seller_no = #{permitNo}
+	</update>
+</mapper>

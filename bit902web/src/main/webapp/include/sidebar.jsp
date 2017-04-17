@@ -54,17 +54,6 @@
 	                        <i class="material-icons text-gray">library_books</i><p>월 누적 판매량</p>
 	                    </a>
 	                </li>
-	                <%
-						if (session.getAttribute("id") == "admin") {
-					%>
-		                 <li>
-		                    <a href="${pageContext.request.contextPath}/admin/permit.do">
-		                        <i class="material-icons text-gray">check</i><p>관리자 페이지</p>
-		                    </a>
-		                </li>
-	                <%
-						}
-	                %>
 	            </ul>
 	    	</div>
 		</div>
