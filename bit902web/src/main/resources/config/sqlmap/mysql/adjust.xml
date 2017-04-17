@@ -86,6 +86,7 @@
 				  from tb_store s
 				 where seller_no = #{sellerNo}
 				) and
+				year(a.day_adjust_date) = #{cYear} and
 				month(a.day_adjust_date) = #{cMonth}
 		 order by day_adjust_date
 	</select>

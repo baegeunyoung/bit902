@@ -100,10 +100,12 @@ public class AdjustController {
 		SellerVO seller = (SellerVO)session.getAttribute("seller");
 		int sellerNo =  seller.getSellerNo();
 		
+		String cYear = request.getParameter("cYear");
 		String cMonth = request.getParameter("cMonth");
 		
 		Map<String, Object> paramDate = new HashMap<>();
 		
+		paramDate.put("cYear", cYear);
 		paramDate.put("cMonth", cMonth);
 		paramDate.put("sellerNo", sellerNo);
 		

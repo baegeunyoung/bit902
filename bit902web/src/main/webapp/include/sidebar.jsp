@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <jsp:include page="baseInclude.jsp" flush="true"></jsp:include>
-<title>Insert title here</title>
 </head>
 <body>
 	
@@ -54,6 +54,17 @@
 	                        <i class="material-icons text-gray">library_books</i><p>월 누적 판매량</p>
 	                    </a>
 	                </li>
+	                <%
+						if (session.getAttribute("id") == "admin") {
+					%>
+		                 <li>
+		                    <a href="${pageContext.request.contextPath}/admin/permit.do">
+		                        <i class="material-icons text-gray">check</i><p>관리자 페이지</p>
+		                    </a>
+		                </li>
+	                <%
+						}
+	                %>
 	            </ul>
 	    	</div>
 		</div>
