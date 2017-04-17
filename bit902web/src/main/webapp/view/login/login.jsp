@@ -49,9 +49,9 @@
 
 
 	<script>
-	$(document).ready(function () {
-		alert("입력하신 회원정보가 일치하지 않습니다");
-	})
+// 	$(document).ready(function () {
+// 		alert("입력하신 회원정보가 일치하지 않습니다");
+// 	})
 		// $("#login").click(function () {
 		// 	$.ajax({
 		// 		url: "/bit902web/login/login.do",
