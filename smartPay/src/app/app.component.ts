@@ -8,6 +8,7 @@ import { PlaygroundPage } from '../pages/Playground/Playground';
 import { RegisterPage } from '../pages/register/register';
 import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
+import { BuyerPage } from '../pages/buyer/buyer';
 
 @Component({
   templateUrl: 'app.html'
@@ -19,6 +20,7 @@ export class MyApp {
   playgroundPage = PlaygroundPage;
   registerPage = RegisterPage;
   loginPage =  LoginPage;
+  buyerPage = BuyerPage;
   
   constructor(public menu: MenuController, platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

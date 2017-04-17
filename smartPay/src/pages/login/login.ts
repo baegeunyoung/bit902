@@ -1,43 +1,104 @@
-import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, Card,} from 'ionic-angular';
-import { Http, Jsonp } from '@angular/http';
+import { Component } from '@angular/core';
+import { NavController, Platform } from 'ionic-angular';
+import { AuthProviders, AuthMethods, AngularFire } from 'angularfire2';
+import { Facebook } from 'ionic-native';
+import firebase from 'firebase';
 
-/*
-  Generated class for the Login page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html'
+    selector: 'page-login',
+    templateUrl: 'login.html'
 })
-export class LoginPage {
-  @ViewChild(Card) login: Card;
-  private html:string = "" ;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http : Http , private jsonp : Jsonp) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
-  
-  buyerList() {
-      let link = "http://192.168.0.200:9090/bit902app/book/timeCheck.do";
-      this.html = "";
-      this.http.get(link)
-        .map(res => res.json())
-        .subscribe(data=>{
-          
-          console.log("success");
-          console.log(data);
-          	for(let i = 0; i < data.length; i++) {
-              console.log(data[i].name);
-            	this.html += "<p> 이름 : " + data[i].name + " 아이디 : " + data[i].id + " 전화번호 :  " + data[i].cellphoneNumber + "</p>";
-					}
-          console.log(this.html);
-        },error => {
-          console.log("error");
-        }); 
+export class LoginPage {
+    email: any;
+    password: any;
+    constructor(public navCtrl: NavController, public angfire: AngularFire, public platform: Platform) {
+
     }
-  
+
+
+    login() {
+        this.angfire.auth.login({
+            email: this.email,
+            password: this.password
+        },
+          {
+                provider: AuthProviders.Password,
+                method: AuthMethods.Password
+        }).then((response) => {
+            console.log('Login Success' + JSON.stringify(response));
+            let currentuser = {
+                email: response.auth.email,
+                picture: response.auth.photoURL
+            };
+            window.localStorage.setItem('currentuser', JSON.stringify(currentuser));
+            this.navCtrl.pop();
+        }).catch((error) => {
+            console.log(error);
+        })
+    }
+
+    twitterlogin() {
+        if(this.platform.is('cordova')) {
+            let accessToken = '852570655098716160-lNNuJBFlXspEMCi3Iy2EJw9Q6MCUjcQ';
+            let secreKey = 'JbqA5mhRzjbEi3tbLDAJQzxfiWRA1c4qfStjdreCwl3OR';
+                const twitterCreds = firebase.auth.TwitterAuthProvider.credential(accessToken, secreKey);
+                firebase.auth().signInWithCredential(twitterCreds).then((res) => {
+                    let currentuser = firebase.auth().currentUser;
+                    window.localStorage.setItem('currentuser', JSON.stringify(currentuser.displayName));
+                    this.navCtrl.pop();
+                }, (err) => {
+                    alert('Login not successful' + err);
+                })
+            
+        }
+        else {
+            this.angfire.auth.login({
+                provider: AuthProviders.Twitter,
+                method: AuthMethods.Popup
+            }).then((response) => {
+                console.log('Login Success with Twitter' + JSON.stringify(response));
+                let currentuser = {
+                    email: response.auth.displayName,
+                    picture: response.auth.photoURL
+                };
+                window.localStorage.setItem('currentuser', JSON.stringify(currentuser));
+                this.navCtrl.pop();
+            }).catch((error) => {
+                console.log(error);
+            })
+        }
+    }
+
+    fblogin() {
+        if(this.platform.is('cordova')) {
+            Facebook.login(['email', 'public_profile']).then((res) => {
+                const facebookCreds = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
+                firebase.auth().signInWithCredential(facebookCreds).then((res) => {
+                    let currentuser = firebase.auth().currentUser;
+                    window.localStorage.setItem('currentuser', JSON.stringify(currentuser.displayName));
+                    this.navCtrl.pop();
+                }, (err) => {
+                    alert('Login not successful' + err);
+                })
+            })
+        }
+        else {
+            this.angfire.auth.login({
+                provider: AuthProviders.Facebook,
+                method: AuthMethods.Popup
+            }).then((response) => {
+                console.log('Login Success with Twitter' + JSON.stringify(response));
+                let currentuser = {
+                    email: response.auth.displayName,
+                    picture: response.auth.photoURL
+                };
+                window.localStorage.setItem('currentuser', JSON.stringify(currentuser));
+                this.navCtrl.pop();
+            }).catch((error) => {
+                console.log(error);
+            })
+        }
+    }
 }

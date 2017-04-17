@@ -14,7 +14,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-list no-lines>
+  <ion-list  *ngIf="major == 0" no-lines>
 
     <ion-item *ngFor="let beacon of beacons">
     <ion-grid>
@@ -42,4 +42,6 @@
     </ion-item>
 
   </ion-list>   
+  <div *ngIf="major != 0">{{ menu }}</div>
+  <div [innerHTML] = "html"></div>
 </ion-content>
