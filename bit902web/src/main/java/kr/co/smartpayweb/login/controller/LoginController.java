@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.smartpayweb.login.service.LoginService;
 import kr.co.smartpayweb.repository.vo.SellerVO;
@@ -50,6 +51,8 @@ public class LoginController extends HttpServlet{
 			System.out.println(seller.getId() + seller.getPassword());
 			map.put("msg", "로그인성공");
 			session.setAttribute("seller", seller);
+			session.setAttribute("id", id);
+//			request.setAttribute("id", id);
 			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 			rd.forward(request, response);
 			return map;
@@ -66,17 +69,25 @@ public class LoginController extends HttpServlet{
 }
 
 	// 로그아웃
-	@RequestMapping("/login/logout.do")
-	public Map<String, Object> logout(HttpSession session,
-				HttpServletRequest request, HttpServletResponse response) throws Exception {
-			Map<String, Object> map = new HashMap<>();
+		@RequestMapping("/login/logout.do")
+		public void logout(HttpSession session,
+					HttpServletRequest request, HttpServletResponse response) throws Exception {
+//		    Map<String, Object> map = new HashMap<>();
 			session.invalidate();	
-			map.put("msg", "로그아웃되었습니다.");
-			RequestDispatcher rd = request.getRequestDispatcher("../view/login/login.jsp");
+//			map.put("msg", "로그아웃되었습니다.");
+//			response.sendRedirect("../view/login/login.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 			rd.forward(request, response);
-			return map;	
+//			return map;	
 		}
 
+	// 회원가입승인
+	@RequestMapping("/login/permitSeller.do")
+	public void permitSeller(String permit) throws Exception {
+		service.permitSeller(permit);
+	}
+
+		
 	// 회원가입
 	@RequestMapping("/login/insertSeller.do")
 	public void insertSeller(SellerVO seller, 
@@ -86,8 +97,14 @@ public class LoginController extends HttpServlet{
 		rd.forward(request, response);
 	}
 	
-
-	// 회원정보수정
+	// 회원정보수정 관련 db 찾기
+//	@RequestMapping("/login/searchSeller.do")
+//	public String searchSeller(HttpSession session) throws Exception {
+//		return service.searchSeller(session); 
+				
+//	}
+	
+	// 회원정보수정 
 	@RequestMapping("/login/modifySeller.do")
 	public Map<String, Object> modifySeller(SellerVO seller) throws Exception {
 		Map<String, Object> map = new HashMap<>();

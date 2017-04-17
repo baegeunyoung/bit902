@@ -4,6 +4,7 @@ import kr.co.smartpayweb.repository.vo.SellerVO;
 
 public interface LoginMapper {
 
+	
 	// 로그인
 	public SellerVO getSellerInfo(String id) throws Exception;
 	
@@ -15,6 +16,9 @@ public interface LoginMapper {
 
 	// 회원탈퇴
 	public void deleteSeller(int sellerNo) throws Exception;
+	
+	// 회원가입승인
+	public void permitSeller(String permit) throws Exception;
 
 //	public List<BuyerVO> searchBuyer(String id, String password) throws Exception;
 	

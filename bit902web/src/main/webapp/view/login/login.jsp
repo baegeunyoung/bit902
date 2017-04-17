@@ -14,33 +14,32 @@
 <body>
 
 	<div class="wrapper">
-	<div class="main-panel">
+		<div class="main-panel">
 			<nav class="navbar navbar-transparent navbar-absolute">
 				<div class="container-fluid">
-				<div class="collapse navbar-collapse">
+					<div class="collapse navbar-collapse">
 
-	
+						<h4>로그인</h4>
+						
+						<div id="success"></div>
+						<form name="mForm" action="${pageContext.request.contextPath}/login/login.do" 
+							method="post" class="navbar-form navbar-center">
+							<div class="form-group  is-empty">
+								<input type="text" name="id" placeholder="아이디를 입력하세요" class="form-control">
+								<span class="material-input"></span><br>
+								<input type="password" name="password" placeholder="비밀번호를 입력하세요" class="form-control">
+								<span class="material-input"></span><br>
+								<button id="login" class="btn btn-primary pull-center">로그인</button><br>
+							</div>
+						</form>
 
-		<div id="success"></div>
-		<form name="mForm"
-			action="${pageContext.request.contextPath}/login/login.do"
-			method="post" class="navbar-form navbar-right">
-			<div class="form-group  is-empty">
-			<input type="text" name="id" placeholder="아이디를 입력하세요" class="form-control"><span class="material-input"></span>
-			<br>
-			<input type="password" name="password" placeholder="비밀번호를 입력하세요" class="form-control"><span class="material-input"></span>
-			<br>
-			</div>
-			<button id="login" class="btn btn-primary pull-right">로그인</button><br>
-		</form>
-
-		<form name="Form" action="/bit902web/view/login/insertSeller.jsp" method="post" class="navbar-form navbar-right">
-			<button id="reg" class="btn btn-primary pull-right">회원가입</button>
-		</form>
-    </div>
-    </div>
-	</nav>
-	</div>
+						<form name="Form" action="/bit902web/view/login/insertSeller.jsp" method="post" class="navbar-form navbar-center">
+							<button id="reg" class="btn btn-primary pull-center">회원가입</button>
+						</form>
+					</div>
+				</div>
+			</nav>
+		</div>
 	</div>
 
 	<%-- <form action="${pageContext.request.contextPath}/login/logout.do" method="post"> --%>
@@ -50,6 +49,9 @@
 
 
 	<script>
+	$(document).ready(function () {
+		alert("입력하신 회원정보가 일치하지 않습니다");
+	})
 		// $("#login").click(function () {
 		// 	$.ajax({
 		// 		url: "/bit902web/login/login.do",

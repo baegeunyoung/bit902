@@ -17,6 +17,9 @@ public interface LoginService {
 	
 	// 회원탈퇴
 	public void deleteSeller(int sellerNo) throws Exception;
+	
+	// 회원가입승인
+	public void permitSeller(String permit) throws Exception;
 
 //	public Map<String, Object> searchBuyer(String id, String password) throws Exception;
 	

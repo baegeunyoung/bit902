@@ -90,10 +90,11 @@
 				<div class="container-fluid">
 				<div class="collapse navbar-collapse">
 		
-   <h4>회원가입</h4>   
-   <form name="mForm" action="${pageContext.request.contextPath}/login/insertSeller.do" method="post" class="navbar-form navbar-center">
+		
+   <h4>회원정보수정</h4>   
+   <form name="mForm" action="${pageContext.request.contextPath}/login/modifySeller.do" method="post" class="navbar-form navbar-center">
    <div class="form-group  is-empty">
-		<input type="text" name="id" placeholder="아이디를 입력하세요" class="form-control">
+		<input type="text" name="id" value="<% out.print(session.getAttribute("id")); %>" readonly class="form-control">
 		<span class="material-input"></span><br>
 		<input type="password" name="password" placeholder="비밀번호를 입력하세요" class="form-control">
 		<span class="material-input"></span><br>
@@ -105,7 +106,7 @@
 		<span class="material-input"></span><br>
 <!-- 		<button type="button" onclick="doAction();">회원가입</button> -->
 <!--  		<button id="reg">회원가입</button>  -->
-		<input type="submit" value="회원가입" onClick="return doAction()" class="btn btn-primary pull-center"/>
+		<input type="submit" value="회원정보수정" onClick="return doAction()" class="btn btn-primary pull-center"/>
 	</form>
 	</div>
 	</div>
@@ -123,11 +124,23 @@
 // 		location.href="/bit902web/login/loginForm.do"
 // 	});
 	
+// 	$(document).click(function () {
+// 		$.ajax({
+// 			url: "/bit902web/login/searchSeller.do",
+// 			type: "POST",
+// 			dataType: "json",
+// 			data: {
+// 				id: $("#id").val()
+// 			}
+// 		}).done(function () {
+// 		alert("아이디 반환 성공");	
+// 		});
+// 	});
 		function doAction() {
 		
 		
 			var f = document.mForm;
-			var id = f.id;
+// 			var id = f.id;
 			var pw = f.password;
 			var pw2 = f.password2;
 			var name = f.name;
@@ -136,17 +149,17 @@
 // 			var pattern1 = /[0-9]/;
 // 			var pattern2 = /[a-zA-Z]/;
 			
-			if (id.value == "") {
-				alert("insert your id");
-				id.focus();
-				return false;
-			}
+// 			if (id.value == "") {
+// 				alert("insert your id");
+// 				id.focus();
+// 				return false;
+// 			}
 						
-			if (2 > id.value.length || id.value.length > 21){
-				alert("아이디는 최소 3자에서 최대 20자까지 입력이 가능합니다.");
-				id.focus();
-				return false;
-			}
+// 			if (2 > id.value.length || id.value.length > 21){
+// 				alert("아이디는 최소 3자에서 최대 20자까지 입력이 가능합니다.");
+// 				id.focus();
+// 				return false;
+// 			}
 			
 			if (pw.value == "") {
 				alert("비밀번호를 입력하세요");

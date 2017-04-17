@@ -23,6 +23,11 @@ where id = #{id}
 				values(#{id}, #{password}, #{name}, #{cellphoneNumber})
 </insert>
 
+<insert id="permitSeller" parameterType="String">
+				insert into tb_seller(permit_yn)
+				values(#{permitYn})
+</insert>
+
 <delete id="deleteSeller" parameterType="int">
 delete
 from tb_seller
@@ -31,8 +36,7 @@ where seller_no = #{sellerNo}
 
 <update id="modifySeller" parameterType="sellerVO">
 update tb_seller
-set id = #{id},
-	password = #{password},
+set password = #{password},
 	name = #{name},
 	cellphone_number = #{cellphoneNumber}
 	

@@ -8,14 +8,84 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class="wrapper">
+
+
+	
+	<%
+	if(session.getAttribute("id") == null) {
+	%>	
+	<!-- 메뉴 -->
+	<div class="wrapper">
 	<div>
 		<c:import url="/include/sidebar.jsp"/>
 	</div>
 	<div class="main-panel">
-		<button type="button" onclick="location.href='/bit902web/view/login/login.jsp'" class="btn btn-primary pull-right">로그인</button>
+	
+	<!-- 로그인 -->
+	<div class="wrapper">
+		<div class="main-panel">
+			<nav class="navbar navbar-transparent navbar-absolute">
+				<div class="container-fluid">
+					<div class="collapse navbar-collapse">
+
+						<h4>로그인</h4>
+
+						<div id="success"></div>
+						<form name="mForm" action="${pageContext.request.contextPath}/login/login.do" 
+							method="post" class="navbar-form navbar-center">
+							<div class="form-group  is-empty">
+								<input type="text" name="id" placeholder="아이디를 입력하세요" class="form-control">
+								<span class="material-input"></span><br>
+								<input type="password" name="password" placeholder="비밀번호를 입력하세요" class="form-control">
+								<span class="material-input"></span><br>
+								<button id="login" class="btn btn-primary pull-center">로그인</button><br>
+							</div>
+						</form>
+
+						<form name="Form" action="/bit902web/view/login/insertSeller.jsp" method="post" class="navbar-form navbar-center">
+							<button id="reg" class="btn btn-primary pull-center">회원가입</button>
+						</form>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</div>
+	
+	<%
+	}
+	else { %>
+	<!-- 메뉴 -->
+		<div class="wrapper">
+		<div>
+			<c:import url="/include/sidebar.jsp"/>
+		</div>
+		<div class="main-panel">
+		
+	<!-- 로그인 성공 -->	
+		<%
+		out.print(session.getAttribute("id") + " 님 환영합니다");
+	%>
+
+	<button id="logout" type="button" class="btn btn-primary pull-right">로그아웃</button>
+	<button id="mod" type="button" class="btn btn-primary pull-right">회원정보수정</button>
+	
+	<%
+	}
+	%>
 	<a href='buyer/list.do'>구매자확인</a>
 	</div>
 </div>
+
+
+<script>
+$("#logout").click(function () {
+	location.href = "${pageContext.request.contextPath}/login/logout.do";
+});
+
+$("#mod").click(function () {
+	location.href = "${pageContext.request.contextPath}/view/login/modifySeller.jsp";
+});
+
+</script>
 </body>
 </html>

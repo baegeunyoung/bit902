@@ -36,6 +36,11 @@ public class LoginServiceImpl implements LoginService {
 		public void deleteSeller(int sellerNo) throws Exception {
 			dao.deleteSeller(sellerNo);
 		}
+		
+	// 회원가입승인
+		public void permitSeller(String permit) throws Exception {
+			dao.permitSeller(permit);
+		}
 	
 //	public Map<String, Object> searchBuyer(String id, String password) throws Exception {
 //	Map<String, Object> map = new HashMap<>();
