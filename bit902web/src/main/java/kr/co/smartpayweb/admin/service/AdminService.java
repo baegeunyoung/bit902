@@ -10,4 +10,6 @@ public interface AdminService {
 	public List<SellerVO> NoPermitList() throws Exception;
 	// ---- 승인 ----
 	public void permit(int permitNo) throws Exception;
+	// ---- 거절 ----
+	public void refuse(int refuseNo) throws Exception;
 }

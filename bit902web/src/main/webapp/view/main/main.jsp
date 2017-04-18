@@ -63,10 +63,11 @@
 		<div class="main-panel">
 
 			<!-- 로그인 성공 -->
+			<h3>
 			<%
 				out.print(session.getAttribute("id") + " 님 환영합니다");
 			%>
-			<br>
+			</h3><br>
 			
 			<button id="logout" type="button" class="btn btn-primary pull-right">로그아웃</button>
 			<button id="mod" type="button" class="btn btn-primary pull-right">회원정보수정</button>
@@ -74,7 +75,7 @@
 			<%
 				if (session.getAttribute("id").equals("admin")) {
 			%>
-			<a href="${pageContext.request.contextPath}/admin/admin.do" class="btn btn-primary btn-round">관리자 페이지</a>
+			<a href="${pageContext.request.contextPath}/admin/admin.do" class="btn btn-primary">관리자 페이지</a>
 			<%
 				}
 			%>

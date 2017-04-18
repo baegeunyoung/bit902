@@ -23,4 +23,8 @@ public class AdminServiceImpl implements AdminService {
 	public void permit(int permitNo) throws Exception {
 		mapper.permit(permitNo);
 	}
+	// ---- 거절 ----
+	public void refuse(int refuseNo) throws Exception {
+		mapper.refuse(refuseNo);
+	}
 }

@@ -34,9 +34,18 @@ public class AdminController {
 	public void permit(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		int permitNo = Integer.parseInt(request.getParameter("permitNo"));
-		System.out.println(permitNo);
 		adminService.permit(permitNo);
 
 		request.getRequestDispatcher("admin.do").forward(request, response);
 	}
+	
+	// ---- 거절 ----
+		@RequestMapping("/refuse.do")
+		public void refuse(HttpServletRequest request, HttpServletResponse response) throws Exception {
+			
+			int refuseNo = Integer.parseInt(request.getParameter("refuseNo"));
+			adminService.refuse(refuseNo);
+
+			request.getRequestDispatcher("admin.do").forward(request, response);
+		}
 }

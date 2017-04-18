@@ -4,6 +4,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style>
+	form {
+		display: inline;
+	}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>관리자 페이지</title>
 </head>
@@ -50,7 +55,11 @@
 													<td>
 														<form name="permit" action="${pageContext.request.contextPath}/admin/permit.do" method="post">
 															<input type="hidden" name="permitNo" id="permitNo" value="${list.sellerNo}" />
-															<button type="submit" class="btn btn-primary btn-round">승인</button>
+															<button type="submit" class="btn btn-primary">승인</button>
+														</form>
+														<form name="refuse" action="${pageContext.request.contextPath}/admin/refuse.do" method="post">
+															<input type="hidden" name="refuseNo" id="refuseNo" value="${list.sellerNo}" />
+															<button type="submit" class="btn btn-primary">거절</button>
 														</form>
 													</td>
 												</tr>

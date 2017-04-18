@@ -25,4 +25,11 @@
 		   set permit_yn = "y"
 		 where seller_no = #{permitNo}
 	</update>
+	
+<!-- 거절  -->	
+	<update id="refuse" parameterType="int">
+		update tb_seller
+		   set permit_yn = "r"
+		 where seller_no = #{refuseNo}
+	</update>
 </mapper>

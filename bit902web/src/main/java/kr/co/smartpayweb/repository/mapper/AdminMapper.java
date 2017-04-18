@@ -10,4 +10,6 @@ public interface AdminMapper {
 	public List<SellerVO> NoPermitList();
 	// ---- 승인 ----
 	public void permit(int permitNo);
+	// ---- 거절 ----
+	public void refuse(int refuseNo);
 }
