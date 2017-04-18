@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.smartpayapp.repository.mapper.MenuMapper">
+
+	<resultMap id="buyerStampMap" type="BuyerStampVO">
+		<result property="buyerStampNo" column="buyer_stamp_no"/>
+		<result property="buyerNo" column="buyer_no"/>
+		<result property="stampCount" column="stamp_count"/>
+		<result property="sellerStampNo" column="seller_stamp_no"/>
+	</resultMap>
+	
+<!-- allStamp 조회 -->
+	<select id="allStamp" resultMap="buyerStampMap">
+		select *
+		  from tb_buyer_stamp
+	</select>
+
+</mapper>
