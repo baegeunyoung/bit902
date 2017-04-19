@@ -19,10 +19,12 @@
   -->
   <template ngFor let-item [ngForOf]="myStamp">
     <p>가게 이름 : {{ item.name }} 스탬프 갯수 : {{ item.stampCount }}</p>
-    <img src = "../../assets/coupon0{{item.stampCount}}.jpg" />
+      <div *ngIf = "item.stampCount >= 10">
+        다 모은 쿠폰 갯수 : {{ (item.stampCount - (item.stampCount % 10)) / 10 }}
+      </div>
+    <img src = "../../assets/coupon0{{item.stampCount % 10}}.jpg" />
   </template>
   <button ion-button (click)="onlyMyStamp()">
     내 스탬프만 조회
   </button>
-  
 </ion-content>
