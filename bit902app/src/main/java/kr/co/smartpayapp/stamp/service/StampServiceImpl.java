@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.smartpayapp.repository.mapper.StampMapper;
 import kr.co.smartpayapp.repository.vo.BuyerStampVO;
+import kr.co.smartpayapp.repository.vo.OnlyMyStampVO;
 
 @Service
 public class StampServiceImpl implements StampService {
@@ -15,7 +16,13 @@ public class StampServiceImpl implements StampService {
 	private StampMapper mapper;
 	
 	// allStamp 조회
-	public List<BuyerStampVO> allStamp() throws Exception {
+	public List<BuyerStampVO> allStamp() {
 		return mapper.allStamp();
+	}
+	
+	public List<OnlyMyStampVO> onlyMyStamp(int myNo) throws Exception {
+		List<OnlyMyStampVO> d = mapper.onlyMyStamp(myNo);
+		System.out.println("임플");
+		return d;
 	}
 }

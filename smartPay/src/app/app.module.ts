@@ -12,6 +12,7 @@ import { BuyerPage } from '../pages/buyer/buyer';
 import { PlaygroundPage} from '../pages/Playground/Playground';
 import { RegisterPage} from '../pages/register/register';
 import { HomePage } from '../pages/home/home';
+import { StampPage } from  '../pages/stamp/stamp';
 
 //providers
 import { HttpWithToken } from '../providers/http-with-token';
@@ -32,7 +33,8 @@ const config = {
     MyApp,
     LoginPage, PlaygroundPage, RegisterPage,
     HomePage,
-     BuyerPage 
+    BuyerPage,
+    StampPage 
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ const config = {
     MyApp,
     LoginPage, PlaygroundPage, RegisterPage,
     HomePage,
-     BuyerPage 
+    BuyerPage,
+    StampPage
   ],
   providers: [
     StatusBar,

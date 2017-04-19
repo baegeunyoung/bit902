@@ -9,6 +9,7 @@ import { RegisterPage } from '../pages/register/register';
 import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
 import { BuyerPage } from '../pages/buyer/buyer';
+import { StampPage } from '../pages/stamp/stamp';
 
 @Component({
   templateUrl: 'app.html'
@@ -21,7 +22,8 @@ export class MyApp {
   registerPage = RegisterPage;
   loginPage =  LoginPage;
   buyerPage = BuyerPage;
-  
+  stampPage = StampPage;
+
   constructor(public menu: MenuController, platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
       console.log("platform ready");
