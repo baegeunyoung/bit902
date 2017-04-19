@@ -10,7 +10,7 @@ import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
 import { BuyerPage } from '../pages/buyer/buyer';
 import { StampPage } from '../pages/stamp/stamp';
-
+import { FoodReadyPage } from '../pages/foodReady/foodReady';
 @Component({
   templateUrl: 'app.html'
 })
@@ -23,7 +23,8 @@ export class MyApp {
   loginPage =  LoginPage;
   buyerPage = BuyerPage;
   stampPage = StampPage;
-
+  foodReadyPage = FoodReadyPage;
+  
   constructor(public menu: MenuController, platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
       console.log("platform ready");

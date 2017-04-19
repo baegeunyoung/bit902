@@ -13,7 +13,7 @@ import { PlaygroundPage} from '../pages/Playground/Playground';
 import { RegisterPage} from '../pages/register/register';
 import { HomePage } from '../pages/home/home';
 import { StampPage } from  '../pages/stamp/stamp';
-
+import { FoodReadyPage } from  '../pages/foodReady/foodReady';
 //providers
 import { HttpWithToken } from '../providers/http-with-token';
 import { HttpModule, JsonpModule} from '@angular/http';
@@ -34,7 +34,8 @@ const config = {
     LoginPage, PlaygroundPage, RegisterPage,
     HomePage,
     BuyerPage,
-    StampPage 
+    StampPage,
+    FoodReadyPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +48,8 @@ const config = {
     LoginPage, PlaygroundPage, RegisterPage,
     HomePage,
     BuyerPage,
-    StampPage
+    StampPage,
+    FoodReadyPage
   ],
   providers: [
     StatusBar,
