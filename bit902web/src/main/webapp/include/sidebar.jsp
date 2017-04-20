@@ -40,7 +40,7 @@
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="#">
+	                    <a href="${pageContext.request.contextPath}/order/state.do">
 	                        <i class="material-icons text-gray">notifications</i><p>주문현황</p>
 	                    </a>
 	                </li>

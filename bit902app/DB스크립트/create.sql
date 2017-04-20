@@ -99,10 +99,11 @@ foreign key(store_no) references tb_store(store_no)
 -------------------------------------------------------	
 create table tb_order(
 order_no int(6) unsigned not null auto_increment,
-order_date timestamp default current_timestamp not null,
 store_no int(6) unsigned not null,
 menu_no int(6) unsigned not null,
+order_date timestamp default current_timestamp not null,
 beacon_no int(6) unsigned,
+content varchar2(100)
 primary key(order_no),
 foreign key(store_no) references tb_store(store_no),
 foreign key(menu_no) references tb_menu(menu_no),

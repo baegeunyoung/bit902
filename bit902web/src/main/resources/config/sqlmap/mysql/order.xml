@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.smartpayweb.repository.mapper.OrderMapper">
+	
+<!-- 주문상태 resultMap -->
+	<resultMap type="OrderVO" id="OrderStateMap">
+		<result column="order_no" property="orderNo" />
+		<result column="store_no" property="storeNo" />
+		<result column="menu_no" property="menuNo" />
+		<result column="order_date" property="orderDate" />
+		<result column="beacon_no" property="beaconNo" />
+		<result column="content" property="content" />
+	</resultMap>
+	
+<!-- 주문상태 확인 -->
+	<select id="retrieveOreder" parameterType="int" resultMap="OrderStateMap">
+		select *
+		  from tb_order o
+		 where o.store_no = (
+		 		select s.store_no
+				  from tb_store s
+				 where s.seller_no = #{sellerNo}
+				) and
+				year(o.order_date) = year(now()) and
+				month(o.order_date) = month(now()) and
+				dayofmonth(o.order_date) = dayofmonth(now())
+	</select>
+</mapper>
