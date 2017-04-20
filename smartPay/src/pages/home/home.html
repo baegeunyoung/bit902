@@ -43,5 +43,35 @@
 
   </ion-list>   
   <div *ngIf="major != 0">{{ menu }}</div>
-  <div [innerHTML] = "html"></div>
+  <template ngFor let-menu [ngForOf]="menu">  
+  <ion-list>
+  <ion-item>
+  
+     <ion-thumbnail item-left>     
+       <template ngFor let-menuFile [ngForOf]="menuFile">       
+         <p *ngIf = "menu.menuNo == menuFile.menuNo">
+             <img src = "http://192.168.0.201:9090/bit902web/upload/{{menuFile.filePath}}/{{menuFile.systemName}}"/>
+         </p>   
+       </template>
+    </ion-thumbnail>
+    <h2>{{menu.name}}</h2>
+    <p>{{menu.price}}원</p>   
+    <p>수량:<button ion-button color="light" icon-only (click)="orderPlus()">
+        <ion-icon name='arrow-up'></ion-icon>
+    </button>
+      
+     <input type="text" style="width:35px" [(ngModel)]="a"/>
+    <button  ion-button color="light" icon-only (click)="orderMinus()">
+      <ion-icon name='arrow-down'></ion-icon>
+      </button></p>
+  <p>{{menu.content}}</p>
+    금액: {{ a * menu.price }}원
+  
+     </ion-item>
+    </ion-list>
+</template>
+<br>
+최종 주문금액: 
+<button ion-button>결제하기</button>
+<ion-icon name="heart"></ion-icon>   
 </ion-content>

@@ -10,14 +10,16 @@ import { BeaconModel } from '../../models/beacon-model';
 })
 export class HomePage {
   private html:string = "" ;
+ private menuFile:string="";
   isScanning: boolean = false;
   beacons: BeaconModel[] = [];
   zone: any;
   delegate: any;
   region: any;
-  menu: string;
+  menu: string ="";
   major: number;
   minor: number;
+  private a: number = 0;
   constructor(public navCtrl: NavController, public platform : Platform, public events: Events, public http : Http ) {
       this.zone = new NgZone({ enableLongStackTrace: false });
   }
@@ -112,16 +114,22 @@ export class HomePage {
       let link = "http://192.168.0.200:9090/bit902app/menu/list.do";
       let headers = new Headers({'Content-Type': 'application/json'});
       let options = new RequestOptions({headers: headers});
+      this.menu = "";
+      this.menuFile = "";
     
       console.log(data);
       this.http.post(link, data, options)
         .map(res => res.json())
         .subscribe(data=>{
           console.log(data);
+           this.menu = data.menu;
+          this.menuFile = data.menuFile;
+        /*
           for(let i = 0; i < data.menu.length; i++) {
              console.log(data.menu[i].name);
            	this.html += "<p>" + data.menu[i].menuNo + " "+ data.menu[i].name+ "  : " + data.menu[i].price + "원 " + data.menu[i].content + "</p>";
 					}
+          */
         },error => {
           console.log("error");
         }); 
@@ -131,4 +139,17 @@ export class HomePage {
       this.menu = this.major + '가게 광고용 비콘입니다.';
    }
   }
+   orderPlus(){
+     
+     this.a++;
+
+   }
+
+   orderMinus(){
+    if(this.a>0){
+    this.a--;
+    }else{
+      alert("최소수량입니다");
+    }
+   }
 }
