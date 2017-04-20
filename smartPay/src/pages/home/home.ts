@@ -10,15 +10,16 @@ import { BeaconModel } from '../../models/beacon-model';
 })
 export class HomePage {
   private html:string = "" ;
- private menuFile:string="";
+  private menuFile:Array<string>;
   isScanning: boolean = false;
   beacons: BeaconModel[] = [];
   zone: any;
   delegate: any;
   region: any;
-  menu: string ="";
+  menu: Array<string>;
   major: number;
   minor: number;
+  store: string = "";
   private a: number = 0;
   constructor(public navCtrl: NavController, public platform : Platform, public events: Events, public http : Http ) {
       this.zone = new NgZone({ enableLongStackTrace: false });
@@ -114,8 +115,8 @@ export class HomePage {
       let link = "http://192.168.0.200:9090/bit902app/menu/list.do";
       let headers = new Headers({'Content-Type': 'application/json'});
       let options = new RequestOptions({headers: headers});
-      this.menu = "";
-      this.menuFile = "";
+     // this.menu = "";
+     // this.menuFile = "";
     
       console.log(data);
       this.http.post(link, data, options)
@@ -133,10 +134,7 @@ export class HomePage {
         },error => {
           console.log("error");
         }); 
-      this.menu = this.major + '가게 ' + tableNo +' 테이블 주문하기.';
-   }
-   else {
-      this.menu = this.major + '가게 광고용 비콘입니다.';
+      this.store = this.major + '가게 ' + tableNo +' 테이블 주문하기.';
    }
   }
    orderPlus(){
