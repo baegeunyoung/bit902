@@ -41,15 +41,12 @@ export class StampPage {
         let headers = new Headers({'Content-Type' : 'application/json'});
         let options = new RequestOptions({headers : headers});
 
-        console.log(data);
         this.http.post(link, data, options)
         .map(res => res.json())
         .subscribe(data => {
-            console.log(data);
             this.myStamp = data;
         },error => {
             console.log("error");
         });
-
     }
 }

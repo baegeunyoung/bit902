@@ -1,15 +1,18 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Food Ready</ion-title>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>상품 준비 완료</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    <table border="1px solid black">
+    <table>
         <thead>
             <tr>
                 <td>
-                    <h3>주문하신 상품이 준비되었습니다.</h3>
+                    <h3>상품이 준비되었습니다.</h3>
                     <h5>주문번호 : </h5>
                 </td>
             </tr>
@@ -22,7 +25,7 @@
             </tr>
             <tr>
                 <td>
-                    <button ion-button>
+                    <button ion-button color="secondary" round>
                         스탬프 적립하기
                     </button>
                 </td>
