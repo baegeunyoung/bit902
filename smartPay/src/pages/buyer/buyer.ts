@@ -25,7 +25,7 @@ export class BuyerPage {
   }
   
   buyerList() {
-      let link = "http://192.168.0.200:9090/bit902app/book/timeCheck.do";
+      let link = "http://14.32.66.123:9090/bit902app/book/timeCheck.do";
       this.html = "";
       this.http.get(link)
         .map(res => res.json())
@@ -47,7 +47,7 @@ export class BuyerPage {
       this.major = sellerNo;
       let tableNo = 1;
       let data = sellerNo;
-      let link = "http://192.168.0.200:9090/bit902app/menu/list.do";
+      let link = "http://14.32.66.123:9090/bit902app/menu/list.do";
       let headers = new Headers({'Content-Type': 'application/json'});
       let options = new RequestOptions({headers: headers});
     

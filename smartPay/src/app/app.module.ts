@@ -14,10 +14,13 @@ import { RegisterPage} from '../pages/register/register';
 import { HomePage } from '../pages/home/home';
 import { StampPage } from  '../pages/stamp/stamp';
 import { FoodReadyPage } from  '../pages/foodReady/foodReady';
+import { DetailsPage } from '../pages/details/details';
+
 //providers
 import { HttpWithToken } from '../providers/http-with-token';
 import { HttpModule, JsonpModule} from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
+import { Push } from "@ionic-native/push";
 
 const config = {
     apiKey: "AIzaSyB43Wfh2iDwFfXe54dxOhJSPDtUxwqMAdM",
@@ -35,7 +38,8 @@ const config = {
     HomePage,
     BuyerPage,
     StampPage,
-    FoodReadyPage
+    FoodReadyPage,
+    DetailsPage
   ],
   imports: [
     BrowserModule,
@@ -49,12 +53,15 @@ const config = {
     HomePage,
     BuyerPage,
     StampPage,
-    FoodReadyPage
+    FoodReadyPage,
+    DetailsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}, HttpWithToken
+    {provide: ErrorHandler, useClass: IonicErrorHandler}, 
+    HttpWithToken,
+    Push
   ]
 })
 export class AppModule {}

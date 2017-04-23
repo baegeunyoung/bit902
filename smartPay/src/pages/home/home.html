@@ -4,8 +4,8 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-buttons end>
-    <button *ngIf="isScanning==true" (click) = "startScanning()" >중지</button>
-    <ion-spinner end *ngIf="isScanning==true" name="circles"></ion-spinner>
+     <button *ngIf="isScanning==false" (click) = "startScanning()" >찾기</button>
+        <ion-spinner end *ngIf="isScanning==true" name="circles"></ion-spinner>
     </ion-buttons>
     <ion-title>
       편리한 주문

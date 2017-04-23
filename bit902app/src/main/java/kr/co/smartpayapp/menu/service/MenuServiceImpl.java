@@ -28,8 +28,6 @@ public class MenuServiceImpl implements MenuService {
 		Map<String, Object> result = new HashMap<>();
 		result.put("menu",dao.getStoreByStoreNo(sellerNo));
 		result.put("menuFile",dao.selectStoreFileByNo(sellerNo));
-		System.out.println(result.get("menu"));
-	
 		return result;
 	}
 
