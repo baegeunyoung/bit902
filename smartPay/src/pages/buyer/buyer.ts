@@ -47,7 +47,7 @@ export class BuyerPage {
       this.major = sellerNo;
       let tableNo = 1;
       let data = sellerNo;
-      let link = "http://14.32.66.123:9090/bit902app/menu/list.do";
+      let link = "http://14.32.66.123:10001/bit902app/menu/list.do";
       let headers = new Headers({'Content-Type': 'application/json'});
       let options = new RequestOptions({headers: headers});
     

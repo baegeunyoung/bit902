@@ -15,7 +15,7 @@ export class StampPage {
 
     myMarkets() {
     
-        let link = "http://14.32.66.123:9090/bit902app/stamp/allStamp.do";
+        let link = "http://14.32.66.123:10001/bit902app/stamp/allStamp.do";
         this.html = "";
         this.http.get(link)
         .map(res => res.json())
@@ -37,7 +37,7 @@ export class StampPage {
         this.major = myNo;
         let data = myNo;
         this.myStamp = "";
-        let link = "http://14.32.66.123:9090/bit902app/stamp/onlyMyStamp.do";
+        let link = "http://14.32.66.123:10001/bit902app/stamp/onlyMyStamp.do";
         let headers = new Headers({'Content-Type' : 'application/json'});
         let options = new RequestOptions({headers : headers});
 
