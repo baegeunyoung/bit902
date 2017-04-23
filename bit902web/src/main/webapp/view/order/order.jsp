@@ -36,28 +36,34 @@
 	                                    <thead class="text-primary">
 	                                    	<tr>
 		                                    	<th>주문번호</th>
-		                                    	<th>테이블번호</th>
-		                                    	<th>주문내역</th>
-												<th>주문시간</th>
-												<th>현재상태</th>
-												<th>특이사항</th>
-												<th>알림보내기</th>
+		                                    	<th>테이블 번호</th>
+		                                    	<th>주문 시각</th>
+		                                    	<th>주문 특이사항</th>
+		                                    	<th>접수확인/조리완료</th>
 											</tr>
 										</thead>
 											
 										<tbody id="tbody">
+											<c:set var="count" value="1" />
+											<c:forEach var="list" items="${orderList}">
 											<tr>
-		                                    	<td>주문번호</td>
-		                                    	<td>테이블번호</td>
-		                                    	<td>주문내역</td>
-												<td>주문시간</td>
-												<td>현재상태</td>
-												<td>특이사항</td>
+		                                    	<td>${count}</td>
+		                                    	<td>${list.tableNo}</td>
+												<td><fmt:formatDate value="${list.orderDate}" pattern="hh:mm:ss" /></td>
+		                                    	<td>${list.orderContent}</td>
 												<td>
-													<button type="button">접수확인</button>
-													<button type="button">조리완료</button>
+													<c:if test="${list.orderState == '0'}">
+														<button type="button">접수확인</button>
+														<button type="button">조리완료</button>
+													</c:if>
+													<c:if test="${list.orderState == '1'}">
+														접수확인됨
+														<button type="button">조리완료</button>
+													</c:if>
 												</td>
 											</tr>
+											<c:set var="count" value="${count + 1}" />
+											</c:forEach>
 										</tbody>
 									</table>
 								</div>

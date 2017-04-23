@@ -29,7 +29,8 @@ public class OrderController {
 		int sellerNo =  seller.getSellerNo();
 		
 		List<OrderVO> orderList = orderService.retrieveOreder(sellerNo);
-		System.out.println(orderList.get(0).getContent());
+		System.out.println(orderList.get(0).getOrderContent());
+		
 		ModelAndView mav = new ModelAndView("order/order");
 		mav.addObject("orderList", orderList);
 		return mav;

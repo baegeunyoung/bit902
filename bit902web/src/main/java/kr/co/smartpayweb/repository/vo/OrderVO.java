@@ -4,34 +4,24 @@ import java.util.Date;
 
 public class OrderVO {
 	private int orderNo;
-	private int storeNo;
-	private int menuNo;
-	private Date orderDate;
+	private int sellerNo;
 	private int beaconNo;
-	private String content;
+	private int tableNo;
+	private Date orderDate;
+	private String orderContent;
+	private String deviceToken;
+	private String orderState;
 	public int getOrderNo() {
 		return orderNo;
 	}
 	public void setOrderNo(int orderNo) {
 		this.orderNo = orderNo;
 	}
-	public int getStoreNo() {
-		return storeNo;
+	public int getSellerNo() {
+		return sellerNo;
 	}
-	public void setStoreNo(int storeNo) {
-		this.storeNo = storeNo;
-	}
-	public int getMenuNo() {
-		return menuNo;
-	}
-	public void setMenuNo(int menuNo) {
-		this.menuNo = menuNo;
-	}
-	public Date getDate() {
-		return orderDate;
-	}
-	public void setDate(Date orderDate) {
-		this.orderDate = orderDate;
+	public void setSellerNo(int sellerNo) {
+		this.sellerNo = sellerNo;
 	}
 	public int getBeaconNo() {
 		return beaconNo;
@@ -39,10 +29,34 @@ public class OrderVO {
 	public void setBeaconNo(int beaconNo) {
 		this.beaconNo = beaconNo;
 	}
-	public String getContent() {
-		return content;
+	public int getTableNo() {
+		return tableNo;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setTableNo(int tableNo) {
+		this.tableNo = tableNo;
+	}
+	public Date getOrderDate() {
+		return orderDate;
+	}
+	public void setOrderDate(Date orderDate) {
+		this.orderDate = orderDate;
+	}
+	public String getOrderContent() {
+		return orderContent;
+	}
+	public void setOrderContent(String orderContent) {
+		this.orderContent = orderContent;
+	}
+	public String getDeviceToken() {
+		return deviceToken;
+	}
+	public void setDeviceToken(String deviceToken) {
+		this.deviceToken = deviceToken;
+	}
+	public String getOrderState() {
+		return orderState;
+	}
+	public void setOrderState(String orderState) {
+		this.orderState = orderState;
 	}
 }
