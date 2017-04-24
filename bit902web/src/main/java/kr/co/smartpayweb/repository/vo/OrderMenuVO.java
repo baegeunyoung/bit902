@@ -5,7 +5,8 @@ public class OrderMenuVO {
 	private int quantity;
 	private int orderNo;
 	private int menuNo;
-	private String menuName;
+	private String name;
+	
 	public int getOrderMenuNo() {
 		return orderMenuNo;
 	}
@@ -30,10 +31,10 @@ public class OrderMenuVO {
 	public void setMenuNo(int menuNo) {
 		this.menuNo = menuNo;
 	}
-	public String getMenuName() {
-		return menuName;
+	public String getName() {
+		return name;
 	}
-	public void setMenuName(String menuName) {
-		this.menuName = menuName;
+	public void setName(String name) {
+		this.name = name;
 	}
 }

@@ -20,7 +20,7 @@ public class OrderController {
 	@Autowired
 	OrderService orderService;
 	
-	// ---- 주문상태 확인 ----
+	// ---- orderList 조회 ----
 	@RequestMapping("/state.do")
 	@ResponseBody
 	public ModelAndView retrieveOreder(HttpSession session) throws Exception {
@@ -29,7 +29,10 @@ public class OrderController {
 		int sellerNo =  seller.getSellerNo();
 		
 		List<OrderVO> orderList = orderService.retrieveOreder(sellerNo);
-		System.out.println(orderList.get(0).getOrderContent());
+		for (int i = 0 ; i < orderList.size() ; i++) {
+			OrderVO orderVO = orderList.get(i);
+			orderVO.setOrderMenuList(orderService.RetrieveOrderMenuList(orderVO.getOrderNo()));
+		}
 		
 		ModelAndView mav = new ModelAndView("order/order");
 		mav.addObject("orderList", orderList);

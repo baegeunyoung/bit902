@@ -3,7 +3,7 @@
  	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.smartpayweb.repository.mapper.OrderMapper">
 	
-<!-- 주문상태 resultMap -->
+<!-- orderList resultMap -->
 	<resultMap type="OrderVO" id="OrderStateMap">
 		<result column="order_no" property="orderNo" />
 		<result column="seller_no" property="sellerNo" />
@@ -15,16 +15,34 @@
 		<result column="order_state" property="orderState" />
 	</resultMap>
 	
-<!-- 주문상태 확인 -->
+<!-- orderList 조회 -->
 	<select id="retrieveOreder" parameterType="int" resultMap="OrderStateMap">
 		select *
 		  from tb_order o
 		 inner join tb_beacon b
 			on o.beacon_no = b.beacon_no
-		 where o.seller_no = 2 and
+		 where o.seller_no = #{sellerNo} and
 			   year(o.order_date) = year(now()) and
 			   month(o.order_date) = month(now()) and
 			   dayofmonth(o.order_date) = dayofmonth(now()) and
 			   (o.order_state = "0" or o.order_state = "1")
+	</select>
+	
+<!-- orderMenuList resultMap -->
+	<resultMap type="OrderMenuVO" id="OrderMenuMap">
+		<result column="orderMenu_no" property="orderMenuNo" />
+		<result column="quantity" property="quantity" />
+		<result column="order_no" property="orderNo" />
+		<result column="menu_no" property="menuNo" />
+		<result column="name" property="name" />
+	</resultMap>
+	
+<!-- orderMenuMap 생성 -->
+	<select id="RetrieveOrderMenuList" parameterType="int" resultMap="OrderMenuMap">
+		select *
+		  from tb_order_menu o
+		 inner join tb_menu m
+			on o.menu_no = m.menu_no
+		 where o.order_no = #{oNumber}
 	</select>
 </mapper>
