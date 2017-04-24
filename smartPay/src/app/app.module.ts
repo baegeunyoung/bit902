@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { IonicStorageModule } from '@ionic/storage';
 //pages
 import { LoginPage } from '../pages/login/login';
 import { BuyerPage } from '../pages/buyer/buyer';
@@ -19,17 +19,10 @@ import { DetailsPage } from '../pages/details/details';
 //providers
 import { HttpWithToken } from '../providers/http-with-token';
 import { HttpModule, JsonpModule} from '@angular/http';
-import { AngularFireModule } from 'angularfire2';
 import { Push } from "@ionic-native/push";
+import { Facebook } from '@ionic-native/facebook';
 
-const config = {
-    apiKey: "AIzaSyB43Wfh2iDwFfXe54dxOhJSPDtUxwqMAdM",
-    authDomain: "nerdiex-c6f41.firebaseapp.com",
-    databaseURL: "https://nerdiex-c6f41.firebaseio.com",
-    projectId: "nerdiex-c6f41",
-    storageBucket: "nerdiex-c6f41.appspot.com",
-    messagingSenderId: "1027012112085"
-  };
+
 
 @NgModule({
   declarations: [
@@ -44,7 +37,7 @@ const config = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp, {backButtonText : 'Back'}), HttpModule, JsonpModule,
-    AngularFireModule.initializeApp(config)
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -61,7 +54,8 @@ const config = {
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}, 
     HttpWithToken,
-    Push
+    Push,
+    Facebook
   ]
 })
 export class AppModule {}

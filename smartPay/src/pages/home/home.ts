@@ -5,6 +5,8 @@ import { NgZone } from "@angular/core";
 import { Http, RequestOptions, Headers } from '@angular/http';
 import { BeaconModel } from '../../models/beacon-model';
 import {Push, PushObject, PushOptions} from "@ionic-native/push";
+import { Storage } from '@ionic/storage'
+import { Facebook } from '@ionic-native/facebook';
 
 import { DetailsPage } from '../details/details';
 @Component({
@@ -25,18 +27,22 @@ export class HomePage {
   minor: number;
   store: string = "";
   first: boolean;
+  id: any;
   private a: number = 0;
   constructor(public navCtrl: NavController, 
               public platform : Platform, 
               public events: Events, 
               public http : Http,
               public push: Push,
-              public alertCtrl: AlertController ) {
+              public alertCtrl: AlertController,
+              private fb: Facebook, 
+              private storage: Storage ) {
       this.zone = new NgZone({ enableLongStackTrace: false });
   }
 
 
   ionViewDidLoad() {
+    //this.test();
     if(this.token == undefined) {
       this.initPushNotification();
     }
@@ -267,5 +273,12 @@ export class HomePage {
       },error => {
         console.log("error");
       }); 
+    }
+
+      test() {
+        this.storage.get('id').then((val) => {
+            alert(val);
+            this.id = val;
+        })
     }
 }
