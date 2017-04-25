@@ -20,7 +20,7 @@ id varchar(20) not null,
 password varchar(20) not null,
 name varchar(15) not null,
 cellphone_number varchar(11),
-permit_yn varchar(1),
+permit_yn varchar(1) default "n",
 primary key(seller_no)
 );
 

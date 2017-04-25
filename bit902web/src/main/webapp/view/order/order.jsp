@@ -97,7 +97,6 @@
 // 				type: "POST",
 // 				dataType : "JSON"
 // 			}).done( function (result){
-// 				console.log(result.length);
 // 				var html = "";
 // 				var count = 0;
 // 				for (var i = 0 ; i < result.length ; i++) {
