@@ -23,7 +23,7 @@ public class EventController {
 	@Autowired
 	private EventService eventService;
 		
-	// ÀÌº¥Æ® µî·ÏÇÏ±â
+	// ì´ë²¤íŠ¸ ë“±ë¡í•˜ê¸°
 	@RequestMapping("/regist.do")
 	public void eventInsert(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
 		
@@ -39,7 +39,7 @@ public class EventController {
 		
 	}
 	
-	// ÀÌº¥Æ® °¡Á®¿À±â
+	// ì´ë²¤íŠ¸ ì½ê¸°
 	@RequestMapping("/read.do")
 	public void eventRead(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
 		SellerVO seller = (SellerVO)session.getAttribute("seller");
@@ -51,7 +51,7 @@ public class EventController {
 		rd.forward(request, response);
 	}
 	
-	// ÀÌº¥Æ® »èÁ¦ÇÏ±â
+	// ì´ë²¤íŠ¸ ì‚­ì œí•˜ê¸°
 	@RequestMapping("/delete.do")
 	public void eventDelete(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
 		SellerVO seller = (SellerVO)session.getAttribute("seller");
@@ -62,7 +62,7 @@ public class EventController {
 		rd.forward(request, response);
 	}
 	
-	// ÀÌº¥Æ® ¼öÁ¤ÇÏ±â
+	// ì´ë²¤íŠ¸ ìˆ˜ì •í•˜ê¸°
 	@RequestMapping("/modify.do")
 	public void eventModify(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
 		EventVO event = new EventVO();
