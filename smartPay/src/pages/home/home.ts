@@ -28,7 +28,7 @@ export class HomePage {
   store: string = "";
   first: boolean;
   id: any;
-  private a: number = 0;
+  quantity:any;
   constructor(public navCtrl: NavController, 
               public platform : Platform, 
               public events: Events, 
@@ -175,33 +175,31 @@ export class HomePage {
         .map(res => res.json())
         .subscribe(data=>{
           console.log(data);
-           this.menu = data.menu;
+          
+          data.menu.forEach(m =>{
+            m.quantity = 0;
+          })
+          
+          this.menu = data.menu;
           this.menuFile = data.menuFile;
-        /*
-          for(let i = 0; i < data.menu.length; i++) {
-             console.log(data.menu[i].name);
-           	this.html += "<p>" + data.menu[i].menuNo + " "+ data.menu[i].name+ "  : " + data.menu[i].price + "원 " + data.menu[i].content + "</p>";
-					}
-          */
+     
         },error => {
           console.log("error");
         }); 
       this.store = this.major + '가게 ' + tableNo +' 테이블 주문하기.';
    }
   }
-   orderPlus(){
-     
-     this.a++;
+  orderPlus(menu){ 
+    menu.quantity++; 
+  }
 
-   }
-
-   orderMinus(){
-    if(this.a>0){
-    this.a--;
+  orderMinus(menu){
+    if(menu.quantity>0){
+        menu.quantity--;
     }else{
       alert("최소수량입니다");
     }
-   }
+  }
 
    //디바이스토큰 저장하기 
    initPushNotification() {
