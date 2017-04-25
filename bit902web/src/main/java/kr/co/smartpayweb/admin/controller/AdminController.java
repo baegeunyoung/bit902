@@ -40,12 +40,12 @@ public class AdminController {
 	}
 	
 	// ---- 거절 ----
-		@RequestMapping("/refuse.do")
-		public void refuse(HttpServletRequest request, HttpServletResponse response) throws Exception {
-			
-			int refuseNo = Integer.parseInt(request.getParameter("refuseNo"));
-			adminService.refuse(refuseNo);
-
-			request.getRequestDispatcher("admin.do").forward(request, response);
-		}
+	@RequestMapping("/refuse.do")
+	public void refuse(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		int refuseNo = Integer.parseInt(request.getParameter("refuseNo"));
+		adminService.refuse(refuseNo);
+		
+		request.getRequestDispatcher("admin.do").forward(request, response);
+	}
 }
