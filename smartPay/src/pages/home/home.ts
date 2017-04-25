@@ -137,7 +137,7 @@ export class HomePage {
              }
             );
           } 
-          if (this.first && beacon.minor < 5000 && beacon.rssi < -70) {
+          if (this.first && beacon.minor < 5000 && beacon.rssi > -75) {
             this.first = false;
             IBeacon.stopRangingBeaconsInRegion(this.region) 
             .then(

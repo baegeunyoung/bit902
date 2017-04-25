@@ -15,7 +15,7 @@
 
 <ion-content>
   <p *ngIf="id != undefined">{{ id }}님 안녕하세요!</p>
-  <ion-list  *ngIf="major == 0" no-lines>
+  <ion-list  *ngIf="major == 100" no-lines>
 
     <ion-item *ngFor="let beacon of beacons">
     <ion-grid>
@@ -51,7 +51,7 @@
      <ion-thumbnail item-left>     
        <template ngFor let-menuFile [ngForOf]="menuFile">       
          <p *ngIf = "menu.menuNo == menuFile.menuNo">
-             <img src = "http://192.168.0.201:9090/bit902web/upload/{{menuFile.filePath}}/{{menuFile.systemName}}"/>
+             <img src = "http://14.32.66.123:10002/bit902web/upload/{{menuFile.filePath}}/{{menuFile.systemName}}"/>
          </p>   
        </template>
     </ion-thumbnail>
