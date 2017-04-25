@@ -2,6 +2,8 @@ package kr.co.smartpayweb.order.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +39,23 @@ public class OrderController {
 		ModelAndView mav = new ModelAndView("order/order");
 		mav.addObject("orderList", orderList);
 		return mav;
+	}
+	
+	// ---- 접수 확인 ----
+	@RequestMapping("/receive.do")
+	public void receiveOrder(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
+		
+		int receiveNo = Integer.parseInt(request.getParameter("receiveNo"));
+		orderService.receiveOrder(receiveNo);
+		request.getRequestDispatcher("state.do").forward(request, response);
+	}
+	
+	// ---- 조리 완료 ----
+	@RequestMapping("/complete.do")
+	public void completeOrder(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
+		
+		int completeNo = Integer.parseInt(request.getParameter("completeNo"));
+		orderService.completeOrder(completeNo);
+		request.getRequestDispatcher("state.do").forward(request, response);
 	}
 }

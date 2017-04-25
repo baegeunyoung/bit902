@@ -45,19 +45,12 @@
 										</thead>
 
 										<tbody id="tbody">
-										<!-- 
 											<c:set var="count" value="1" />
 											<c:forEach var="list" items="${orderList}">
 												<tr>
 													<td>${count}</td>
 													<td>${list.tableNo}</td>
 													<td>
-													
-														<%-- 
-														<c:forEach var="result" items="${orderMenuMap[stat.index]}" varStatus="stat">
-															${result.name}, ${result.quantity}개<br>
-														</c:forEach>
-														--%>
 														<c:forEach var="result" items="${list.orderMenuList}" varStatus="stat">
 															${result.name} - ${result.quantity}개<br>
 														</c:forEach>
@@ -65,19 +58,25 @@
 													<td><fmt:formatDate value="${list.orderDate}" pattern="hh:mm:ss" /></td>
 													<td>${list.orderContent}</td>
 													<td>
-														<c:if test="${list.orderState == '0'}">
-															<button type="button">접수확인</button>
-															<button type="button">조리완료</button>
-														</c:if>
-														<c:if test="${list.orderState == '1'}">
-															접수확인됨
-															<button type="button">조리완료</button>
-														</c:if>
+														<c:choose>
+															<c:when test="${list.orderState == '0'}">
+																<form name="receive" action="${pageContext.request.contextPath}/order/receive.do" method="post">
+																	<input type="hidden" name="receiveNo" id="receiveNo" value="${list.orderNo}" />
+																	<button type="submit" class="btn btn-primary">접수확인</button>
+																</form>
+															</c:when>
+															<c:when test="${list.orderState == '1'}">
+																&nbsp&nbsp접수확인완료 &nbsp/ &nbsp
+															</c:when>
+														</c:choose>
+															<form name="complete" action="${pageContext.request.contextPath}/order/complete.do" method="post">
+																<input type="hidden" name="completeNo" id="completeNo" value="${list.orderNo}" />
+																<button type="submit" class="btn btn-primary">조리완료</button>
+															</form>
 													</td>
 												</tr>
 												<c:set var="count" value="${count + 1}" />
 											</c:forEach>
-											 -->
 										</tbody>
 									</table>
 								</div>
@@ -90,55 +89,54 @@
 		</div>
 	</div>
 	<script>
-		updateData();
+// 		updateData();
 		
-		function updateData() {
-			$.ajax({
-				url: "${pageContext.request.contextPath}/order/state.do",
-				type: "POST",
-				dataType: "json"
-			}).done( function (result){
-				console.log(result.length);
-				var html = "";
-// 				html += '<tbody id="tbody">';
-				var count = 0;
-				for (var i = 0; i < result.length ; i++) {
-					html += '<tr>';
-					html += '<td>' + count + '</td>';
-					html += '<td>' + result[i].tableNo + '</td>';
-					html += '<td>';
-					for (var j ; j < result[i].orderMenuList.length ; j++) {
-						html += result[i].orderMenuList[j].name + '-' + result[i].orderMenuList[j].quantity + '개<br>';
-					}							
-					html += '</td>';
+// 		function updateData() {
+// 			$.ajax({
+// 				url: "/bit902web/order/state.do",
+// 				type: "POST",
+// 				dataType : "JSON"
+// 			}).done( function (result){
+// 				console.log(result.length);
+// 				var html = "";
+// 				var count = 0;
+// 				for (var i = 0 ; i < result.length ; i++) {
+// 					html += '<tr>';
+// 					html += '<td>' + count + '</td>';
+// 					html += '<td>' + result[i].tableNo + '</td>';
+// 					html += '<td>';
+// 					for (var j ; j < result[i].orderMenuList.length ; j++) {
+// 						html += result[i].orderMenuList[j].name + '-' + result[i].orderMenuList[j].quantity + '개<br>';
+// 					}							
+// 					html += '</td>';
 					
-					var myDate = new Date(result[i].orderDate);
-					var myHours = myDate.getHours();
-					var myMinutes = myDate.getMinutes();
-					var mySeconds = myDate.getSeconds();
+// 					var myDate = new Date(result[i].orderDate);
+// 					var myHours = myDate.getHours();
+// 					var myMinutes = myDate.getMinutes();
+// 					var mySeconds = myDate.getSeconds();
 					
-					html += '<td>' + myHours + ':' + myMinutes + ':' + mySeconds + '</td>'; 
-					html += '<td>' + result[i].orderContent + '</td>';
-					html += '<td>';
+// 					html += '<td>' + myHours + ':' + myMinutes + ':' + mySeconds + '</td>'; 
+// 					html += '<td>' + result[i].orderContent + '</td>';
+// 					html += '<td>';
 					
-					if (result[i].orderState == 0) {
-						html += '<button type="button">접수확인</button>';
-						html += '<button type="button">조리완료</button>';
-					}
-					if (result[i].orderState == 1) {
-						html += '접수확인됨';
-						html += '<button type="button">조리완료</button>';
-					}
-					html += '</td>';
-					html += '</tr>';
-					count++;
-				}
-// 				html += '</tbody>';
-// 				$(document).find("#tbody").replaceWith(html).trigger("create");
-				$("#tbody").html(html).trigger("create");
-			});
-			setTimeout("updateData()", 10000);
-		}
+// 					if (result[i].orderState == 0) {
+// 						html += '<form name="receive" action="${pageContext.request.contextPath}/order/receive.do" method="post">';
+// 						html += '<input type="hidden" name="receiveNo" id="receiveNo" value="' + result[i].orderNo + '" />';
+// 						html += '<button type="submit" class="btn btn-primary">접수확인</button>';
+// 					} else if (result[i].orderState == 1) {
+// 						html += '&nbsp&nbsp접수확인완료 &nbsp/ &nbsp';
+// 					} 
+// 					html += '<form name="complete" action="${pageContext.request.contextPath}/order/complete.do" method="post">';
+// 					html += '<input type="hidden" name="completeNo" id="completeNo" value="' + result[i].orderNo + '" />';
+// 					html += '<button type="submit" class="btn btn-primary">조리완료</button>';
+// 					html += '</form>';
+// 					html += '</td>';
+// 					html += '</tr>';
+// 					count++;
+// 				}
+// 				$("#tbody").html(html).trigger("create");
+// 			});
+// 		}
 	</script>
 </body>
 </html>

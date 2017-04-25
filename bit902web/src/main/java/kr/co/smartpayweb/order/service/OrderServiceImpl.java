@@ -24,4 +24,14 @@ public class OrderServiceImpl implements OrderService {
 	public List<OrderMenuVO> RetrieveOrderMenuList(int oNumber) {
 		return mapper.RetrieveOrderMenuList(oNumber);
 	}
+	
+	// ---- 접수 확인 ----
+	public void receiveOrder(int receiveNo) {
+		mapper.receiveOrder(receiveNo);
+	}
+	
+	// ---- 조리 완료 ----
+	public void completeOrder(int completeNo) {
+		mapper.completeOrder(completeNo);
+	}
 }

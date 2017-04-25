@@ -45,4 +45,18 @@
 			on o.menu_no = m.menu_no
 		 where o.order_no = #{oNumber}
 	</select>
+	
+<!-- 접수 확인 -->
+	<update id="receiveOrder" parameterType="int">
+		update tb_order
+		   set order_state = 1
+		 where order_no = #{receiveNo}
+	</update>
+	
+<!-- 조리 완료 -->
+	<update id="completeOrder" parameterType="int">
+		update tb_order
+		   set order_state = 2
+		 where order_no = #{completeNo}
+	</update>
 </mapper>
