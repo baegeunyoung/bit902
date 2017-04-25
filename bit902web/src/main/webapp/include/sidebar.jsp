@@ -35,7 +35,7 @@
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="${pageContext.request.contextPath}/view/event/event.jsp">
+	                    <a href="${pageContext.request.contextPath}/event/read.do">
 	                        <i class="material-icons text-gray">wifi_tethering</i><p>이벤트관리</p>
 	                    </a>
 	                </li>

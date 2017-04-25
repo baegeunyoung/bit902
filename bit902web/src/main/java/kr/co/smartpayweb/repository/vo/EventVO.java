@@ -4,7 +4,7 @@ public class EventVO {
 
 	private int eventNo;
 	private String eventContent;
-	private int storeNo;
+	private int sellerNo;
 	
 	public int getEventNo() {
 		return eventNo;
@@ -18,10 +18,11 @@ public class EventVO {
 	public void setEventContent(String eventContent) {
 		this.eventContent = eventContent;
 	}
-	public int getStoreNo() {
-		return storeNo;
+	public int getSellerNo() {
+		return sellerNo;
 	}
-	public void setStoreNo(int storeNo) {
-		this.storeNo = storeNo;
+	public void setSellerNo(int sellerNo) {
+		this.sellerNo = sellerNo;
 	}
+	
 }
