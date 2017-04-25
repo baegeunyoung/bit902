@@ -23,7 +23,7 @@ permit_yn varchar(1),
 primary key(seller_no)
 );
 
-select * from tb_seller;
+select * from tb_buyer;
 -------------------------------------------------------
 --상점테이블
 -------------------------------------------------------
@@ -41,6 +41,7 @@ foreign key(seller_no) references tb_seller(seller_no)
 );
 
 select * from tb_store
+show create table tb_store;
 
 alter table tb_store drop column latitude;
 alter table tb_store drop column longitude;
@@ -125,6 +126,7 @@ primary key(beacon_no),
 foreign key(store_no) references tb_store(store_no)
 );
 
+
 -------------------------------------------------------
 --주문리스트테이블(판매자)
 -------------------------------------------------------	
@@ -188,14 +190,24 @@ foreign key(seller_stamp_no) references tb_seller_stamp(seller_stamp_no)
 -------------------------------------------------------
 create table tb_event(
 event_no int(6) unsigned not null auto_increment,
-event_content varchar(30) not null, 
-beacon_no int(6) unsigned not null,
-store_no int(6) unsigned not null,
+event_content varchar(150) not null, 
+seller_no int(6) unsigned not null,
 primary key(event_no),
-foreign key(store_no) references tb_store(store_no),
-foreign key(beacon_no) references tb_beacon(beacon_no)
+foreign key(seller_no) references tb_seller(seller_no)
 );
 
+drop table tb_event
+
+select * from tb_event;
+show create table tb_event;
+tb_event_ibfk_2
+alter table tb_event drop foreign key tb_event_ibfk_1;
+alter table tb_event drop column store_no;
+alter table tb_event add column seller_no int(6) after event_no; 
+
+SET foreign_key_checks = 0;
+alter table tb_event add foreign key(seller_no) references tb_seller(seller_no);
+SET foreign_key_checks = 1;
 ---------------------------------------------------------------------------------
 --drop
 ---------------------------------------------------------------------------------
