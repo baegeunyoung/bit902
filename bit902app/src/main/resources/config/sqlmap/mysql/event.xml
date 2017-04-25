@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.smartpayapp.repository.mapper.EventMapper">
+
+	<resultMap type="EventVO" id="eventMap">
+		<result column="event_no" property="eventNo"/>
+		<result column="event_content" property="eventContent"/>
+		<result column="seller_no" property="sellerNo"/>
+	</resultMap>
+
+	<insert id="insertEvent" parameterType="EventVO">
+		insert into tb_event(event_content, seller_no)
+		values(#{eventContent}, #{sellerNo})
+	</insert>
+	
+	<select id="readEvent" parameterType="int"  resultMap="eventMap">
+		select *
+			from tb_event
+			where seller_no = #{sellerNo}
+	</select>
+	
+	<delete id="eventDelete" parameterType="int">
+		delete
+			from tb_event
+			where seller_no = #{sellerNo}
+	</delete>
+	
+	<update id="eventModify" parameterType="EventVO">
+		update tb_event
+			set event_content = #{eventContent}
+			where seller_no = #{sellerNo}
+	</update>
+
+</mapper>
