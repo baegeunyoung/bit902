@@ -84,23 +84,32 @@ primary key(beacon_no),
 foreign key(store_no) references tb_store(store_no)
 );
 
+select * from tb_beacon;
+show create table tb_beacon;
+tb_beacon_ibfk_1
+alter table tb_beacon drop foreign key tb_beacon_ibfk_1;
+
 -------------------------------------------------------
 --주문리스트테이블(판매자)
 -------------------------------------------------------	
 create table tb_order(
 order_no int(6) unsigned not null auto_increment,
 seller_no int(6) unsigned not null,
-beacon_no int(6) unsigned,
+table_no int(6) unsigned,
 order_date timestamp default current_timestamp not null,
 order_content varchar(200),
 device_token varchar(200),
 order_state varchar(1) default '0',
 primary key(order_no),
 foreign key(seller_no) references tb_seller(seller_no),
-foreign key(beacon_no) references tb_beacon(beacon_no),
 foreign key(menu_no) references tb_menu(menu_no)
 );
 
+select * from tb_beacon;
+show create table tb_order;
+tb_beacon_ibfk_1
+alter table tb_order drop foreign key tb_order_ibfk_2;
+alter table tb_order drop column beacon_no;
 -------------------------------------------------------
 --주문메뉴리스트테이블(판매자)
 -------------------------------------------------------	
