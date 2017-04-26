@@ -34,7 +34,7 @@ public class EventController {
 		event.setEventContent(request.getParameter("content"));
 		
 		eventService.insertEvent(event);
-		RequestDispatcher rd = request.getRequestDispatcher("/event/read.do");
+		RequestDispatcher rd = request.getRequestDispatcher("/view/event/regist.jsp");
 		rd.forward(request, response);
 		
 	}
@@ -58,7 +58,7 @@ public class EventController {
 		int sellerNo = seller.getSellerNo();
 		eventService.eventDelete(sellerNo);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/event/read.do");
+		RequestDispatcher rd = request.getRequestDispatcher("/view/event/regist.jsp");
 		rd.forward(request, response);
 	}
 	
@@ -72,7 +72,7 @@ public class EventController {
 		event.setEventContent(request.getParameter("content"));
 		eventService.eventModify(event);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/event/read.do");
+		RequestDispatcher rd = request.getRequestDispatcher("/view/event/regist.jsp");
 		rd.forward(request, response);
 	}
 }
