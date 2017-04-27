@@ -60,13 +60,13 @@
 			#{dayTotalSales},
 			sysdate(),
 			(select store_no from tb_menu where menu_no = #{menuNo}),
-			(select name
-			   from tb_menu
+			(select s.name
+			   from tb_menu m
 			  inner join tb_order o
 				 on o.order_no = #{orderNo}
 			  inner join tb_store s
 				 on o.seller_no = s.seller_no
-			  where menu_no = #{menuNo}),
+			  where m.menu_no = #{menuNo}),
 			#{menuNo},
 			(select name from tb_menu where menu_no = #{menuNo})
 		) on duplicate key
