@@ -60,9 +60,15 @@
 			#{dayTotalSales},
 			sysdate(),
 			(select store_no from tb_menu where menu_no = #{menuNo}),
-			(select name from tb_menu where menu_no = #{menuNo}),
+			(select name
+			   from tb_menu
+			  inner join tb_order o
+				 on o.order_no = #{orderNo}
+			  inner join tb_store s
+				 on o.seller_no = s.seller_no
+			  where menu_no = #{menuNo}),
 			#{menuNo},
-			(select menu_name from tb_menu where menu_no = #{menuNo})
+			(select name from tb_menu where menu_no = #{menuNo})
 		) on duplicate key
 		update
 				day_total_number = day_total_number + #{quantity},
