@@ -23,16 +23,7 @@ public class OrderController {
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
-	public Map<String,Object> orderRegist(/*HttpServletRequest request*/@RequestBody ArrayList<HashMap<String,String>> order) throws Exception {
-		System.out.println(order.get(0).keySet());
-		HashMap<String,String> map = order.get(0);
-		System.out.println("value");
-		for(String key: map.keySet()) {
-			System.out.println(map.get(key));
-		}
-		System.out.println(order.get(5));
-		System.out.println(order.get(6));
-		System.out.println(order.get(7));
+	public Map<String,Object> orderRegist(@RequestBody ArrayList<HashMap<String,String>> order) throws Exception {
 		
 		orderService.registOrder(order);
 		

@@ -4,7 +4,5 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public interface OrderService {
-
-	
 	public void registOrder(ArrayList<HashMap<String,String>> order) throws Exception;
 }

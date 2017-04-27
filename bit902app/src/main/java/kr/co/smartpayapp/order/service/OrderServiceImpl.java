@@ -16,8 +16,6 @@ public class OrderServiceImpl implements OrderService {
 	
 	public void registOrder(ArrayList<HashMap<String,String>> order){
 		
-		System.out.println("주문 임플");
-		
 		Map<String, Object> myMap = new HashMap<>();
 		
 		myMap.put("deviceToken", order.get(order.size() - 3).get("token"));
@@ -27,14 +25,15 @@ public class OrderServiceImpl implements OrderService {
 		mapper.insertOrder(myMap);
 		
 		int maxOrderNo = mapper.selectMaxOrderNo();
-		System.out.println(maxOrderNo);
 		
 		for (int i = 0 ; i < order.size() - 3; i++) {
 			Map<String, Object> menu = new HashMap<>();
-			menu.put("orderNo", maxOrderNo);
-			menu.put("quantity", order.get(i).get("quantity"));
-			menu.put("menuNo", order.get(i).get("menuNo"));
-			mapper.insertOrderMenu(menu);
+			if (Integer.parseInt(order.get(i).get("quantity")) != 0) {
+				menu.put("orderNo", maxOrderNo);
+				menu.put("quantity", order.get(i).get("quantity"));
+				menu.put("menuNo", order.get(i).get("menuNo"));
+				mapper.insertOrderMenu(menu);				
+			}
 		}
 	}
 }
