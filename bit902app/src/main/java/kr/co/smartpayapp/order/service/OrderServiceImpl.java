@@ -21,7 +21,7 @@ public class OrderServiceImpl implements OrderService {
 		myMap.put("deviceToken", order.get(order.size() - 4).get("token"));
 		myMap.put("sellerNo", Integer.parseInt(order.get(order.size() - 3).get("sellerNo")));
 		myMap.put("tableNo", Integer.parseInt(order.get(order.size() - 2).get("tableNo")));
-		myMap.put("orderContent", Integer.parseInt(order.get(order.size() - 1).get("orderContent")));
+		myMap.put("orderContent", order.get(order.size() - 1).get("orderContent"));
 		
 		mapper.insertOrder(myMap);
 		
