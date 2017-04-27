@@ -19,11 +19,13 @@
 		insert into tb_order (
 			seller_no,
 			table_no,
-			device_token
+			device_token,
+			order_content
 		) values (
 			#{sellerNo},
 			#{tableNo},
-			#{deviceToken}
+			#{deviceToken},
+			#{orderContent}
 		)
 	</insert>
 

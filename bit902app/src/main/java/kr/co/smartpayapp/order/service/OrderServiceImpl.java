@@ -18,15 +18,16 @@ public class OrderServiceImpl implements OrderService {
 		
 		Map<String, Object> myMap = new HashMap<>();
 		
-		myMap.put("deviceToken", order.get(order.size() - 3).get("token"));
-		myMap.put("sellerNo", Integer.parseInt(order.get(order.size() - 2).get("sellerNo")));
-		myMap.put("tableNo", Integer.parseInt(order.get(order.size() - 1).get("tableNo")));
+		myMap.put("deviceToken", order.get(order.size() - 4).get("token"));
+		myMap.put("sellerNo", Integer.parseInt(order.get(order.size() - 3).get("sellerNo")));
+		myMap.put("tableNo", Integer.parseInt(order.get(order.size() - 2).get("tableNo")));
+		myMap.put("orderContent", Integer.parseInt(order.get(order.size() - 1).get("orderContent")));
 		
 		mapper.insertOrder(myMap);
 		
 		int maxOrderNo = mapper.selectMaxOrderNo();
 		
-		for (int i = 0 ; i < order.size() - 3; i++) {
+		for (int i = 0 ; i < order.size() - 4; i++) {
 			Map<String, Object> menu = new HashMap<>();
 			if (Integer.parseInt(order.get(i).get("quantity")) != 0) {
 				menu.put("orderNo", maxOrderNo);
