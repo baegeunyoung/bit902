@@ -31,6 +31,8 @@ export class HomePage {
   first: boolean;
   id: any;
   quantity:any;
+  orderContent="";
+  orderContentObj: Object;
   tokenObj: Object;
   majorObj: Object;
   minorObj: Object; 
@@ -327,12 +329,13 @@ export class HomePage {
    this.tokenObj = {"token": this.token};
    this.majorObj = {"sellerNo": this.major};
    this.minorObj = {"tableNo": this.minor};
-
+   this.orderContentObj={"orderContent": this.orderContent};
+   
    console.log(this.tokenObj);
    this.menu.push(this.tokenObj);
    this.menu.push(this.majorObj);
    this.menu.push(this.minorObj); 
-   
+   this.menu.push(this.orderContentObj); 
    console.log(JSON.stringify(this.menu));
 
     let data = JSON.stringify(this.menu);  
