@@ -4,7 +4,8 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-buttons end>
-     <button *ngIf="isScanning==false" (click) = "startScanning()" >찾기</button>
+      <button *ngIf="isScanning==false" (click) = "startScanning()" >메뉴보기</button>
+      <button *ngIf="isScanning==true" (click) = "stopScanning()" >검색중지</button>
         <ion-spinner end *ngIf="isScanning==true" name="circles"></ion-spinner>
     </ion-buttons>
     <ion-title>
@@ -15,8 +16,7 @@
 
 <ion-content>
   <p *ngIf="id != undefined">{{ id }}님 안녕하세요!</p>
-  <ion-list  *ngIf="major == 100" no-lines>
-
+  <ion-list  *ngIf="major == 10000" no-lines>
     <ion-item *ngFor="let beacon of beacons">
     <ion-grid>
       <ion-row>
@@ -41,7 +41,6 @@
       </ion-row>
     </ion-grid>
     </ion-item>
-
   </ion-list>   
   <div *ngIf="major != 0">{{ store }}</div>
   <template ngFor let-menu [ngForOf]="menu">  
@@ -72,6 +71,6 @@
 </template>
 <br>
 최종 주문금액: 
-<button ion-button>결제하기</button>
+<button ion-button (click) = payment(1000)>결제하기</button>
 <ion-icon name="heart"></ion-icon>   
 </ion-content>

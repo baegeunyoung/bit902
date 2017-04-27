@@ -1,17 +1,22 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, Card } from 'ionic-angular';
 import { Http, RequestOptions, Headers } from '@angular/http';
-
+  
 @Component({
     selector: 'page-stamp',
     templateUrl: 'stamp.html'
 })
 export class StampPage {
     @ViewChild(Card) stamp: Card;
+    amount: string = "";
     private html:string = "";
     private myStamp:string = "";
     private major:number = 0;
-    constructor(public NavCtrl: NavController, public navParams: NavParams, public http: Http) {}
+    constructor(public NavCtrl: NavController, public navParams: NavParams, public http: Http) {
+        if (navParams.data.amount) {
+            this.amount = navParams.data.amount;
+        }
+    }
 
     myMarkets() {
     
