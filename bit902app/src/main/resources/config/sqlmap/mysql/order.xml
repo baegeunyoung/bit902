@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.smartpayapp.repository.mapper.OrderMapper">
+
+	<resultMap type="OrderVO" id="OrderMap">
+		<result column="order_no" property="orderNo" />
+		<result column="seller_no" property="sellerNo" />
+		<result column="table_no" property="tableNo" />
+		<result column="beacon_no" property="beaconNo" />
+		<result column="order_date" property="orderDate" />
+		<result column="order_content" property="orderContent" />
+		<result column="device_token" property="deviceToken" />
+		<result column="order_state" property="orderState" />
+	</resultMap>
+
+	<insert id="insertOrder" parameterType="HashMap">
+		insert into tb_order (
+			seller_no,
+			table_no,
+			device_token
+		) values (
+			#{sellerNo},
+			#{tableNo},
+			#{deviceToken}
+		)
+	</insert>
+
+	<select id="selectMaxOrderNo" resultType="int">
+		select max(order_no)
+		  from tb_order
+	</select>
+
+	<insert id="insertOrderMenu" parameterType="hashmap">
+		insert into tb_order_menu (
+			quantity,
+			order_no,
+			menu_no
+		) values (
+			#{quantity},
+			#{orderNo},
+			#{menuNo}
+		)
+	</insert>
+</mapper>

@@ -1,8 +1,12 @@
 package kr.co.smartpayapp.repository.mapper;
 
-import kr.co.smartpayapp.repository.vo.OrderVO;
+import java.util.Map;
 
 public interface OrderMapper {
 
-	public int insertOrder(OrderVO orderVO);
+	public void insertOrder(Map<String, Object> myMap);
+	
+	public int selectMaxOrderNo();
+
+	public void insertOrderMenu(Map<String, Object> menu);
 }

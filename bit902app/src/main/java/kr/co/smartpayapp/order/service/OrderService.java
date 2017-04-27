@@ -1,9 +1,10 @@
 package kr.co.smartpayapp.order.service;
 
-import kr.co.smartpayapp.repository.vo.OrderVO;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface OrderService {
 
 	
-	public int registOrder(OrderVO orderVO);
+	public void registOrder(ArrayList<HashMap<String,String>> order) throws Exception;
 }

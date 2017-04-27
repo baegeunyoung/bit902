@@ -105,7 +105,7 @@ foreign key(seller_no) references tb_seller(seller_no),
 foreign key(menu_no) references tb_menu(menu_no)
 );
 
-select * from tb_beacon;
+select * from tb_order;
 show create table tb_order;
 tb_beacon_ibfk_1
 alter table tb_order drop foreign key tb_order_ibfk_2;

@@ -1,5 +1,6 @@
 package kr.co.smartpayapp.order.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.smartpayapp.order.service.OrderService;
-import kr.co.smartpayapp.repository.vo.OrderVO;
 
 @RestController
 @RequestMapping("/order")
+@CrossOrigin(origins = "*")
 public class OrderController {
 	
 	@Autowired
@@ -22,16 +23,22 @@ public class OrderController {
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
-	public Map<String,Object> buyerRegist(/*HttpServletRequest request*/@RequestBody OrderVO orderVO) {
-		System.out.println("이클립스");
+	public Map<String,Object> orderRegist(/*HttpServletRequest request*/@RequestBody ArrayList<HashMap<String,String>> order) throws Exception {
+		System.out.println(order.get(0).keySet());
+		HashMap<String,String> map = order.get(0);
+		System.out.println("value");
+		for(String key: map.keySet()) {
+			System.out.println(map.get(key));
+		}
+		System.out.println(order.get(5));
+		System.out.println(order.get(6));
+		System.out.println(order.get(7));
+		
+		orderService.registOrder(order);
+		
 		Map<String,Object> msg = new HashMap<>();
-		if(orderService.registOrder(orderVO) == 1 ) {
-			msg.put("msg", "주문완료");
-		}
-		else {
-			msg.put("msg", "주문실패");
-		}
+		msg.put("msg", "주문완료");
+		
 		return msg;
 	}
-
 }

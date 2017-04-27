@@ -23,7 +23,7 @@ permit_yn varchar(1),
 primary key(seller_no)
 );
 
-select * from tb_buyer;
+select * from tb_seller;
 -------------------------------------------------------
 --상점테이블
 -------------------------------------------------------
@@ -132,16 +132,20 @@ foreign key(store_no) references tb_store(store_no)
 -------------------------------------------------------	
 create table tb_order(
 order_no int(6) unsigned not null auto_increment,
-order_date timestamp default current_timestamp not null,
-store_no int(6) unsigned not null,
-menu_no int(6) unsigned not null,
+seller_no int(6) unsigned not null,
 beacon_no int(6) unsigned,
+order_date timestamp default current_timestamp not null,
+order_content varchar(200),
+device_token varchar(200),
+order_state varchar(1) default '0',
 primary key(order_no),
-foreign key(store_no) references tb_store(store_no),
-foreign key(menu_no) references tb_menu(menu_no),
-foreign key(beacon_no) references tb_beacon(beacon_no)
+foreign key(seller_no) references tb_seller(seller_no),
+foreign key(beacon_no) references tb_beacon(beacon_no),
+foreign key(menu_no) references tb_menu(menu_no)
 );
 
+select * from tb_order;
+alter table tb_order add column table_no int(6) after seller_no; 
 -------------------------------------------------------
 --통계(판매자)
 -------------------------------------------------------
