@@ -9,6 +9,9 @@ import { Storage } from '@ionic/storage'
 import { Facebook } from '@ionic-native/facebook';
 
 import { DetailsPage } from '../details/details';
+import { StampPage } from '../stamp/stamp';
+declare var IMP: any;
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -46,18 +49,32 @@ export class HomePage {
     if(this.token == undefined) {
       this.initPushNotification();
     }
-     if(this.initialise()) {
-       this.first = true;
-       this.listenToBeaconEvents();
-    }
+   // if(this.initialise()) {
+   //    this.first = true;
+   //    this.listenToBeaconEvents();
+   // }
   }
-
+  //메뉴보기(비콘검색시작)
    startScanning() {
     if(this.initialise()) {
        this.first = true;
        this.listenToBeaconEvents();
     }
   }
+//비콘검색중지
+  stopScanning() {
+     IBeacon.stopRangingBeaconsInRegion(this.region) 
+            .then(
+              () => {
+                      this.isScanning = false;       
+                     },
+              error => {
+                    console.error('Failed to stop Ranging: ', error);
+                    alert("다시 시도해주세요.");
+             }
+            );
+  }
+
   //비콘리전설정
   initialise(): any {
     let promise = new Promise((resolve, reject) => {
@@ -149,7 +166,7 @@ export class HomePage {
                     console.error('Failed to begin monitoring: ', error);
              }
             );
-           }
+          }
         });
       });
     });
@@ -201,7 +218,7 @@ export class HomePage {
     }
   }
 
-   //디바이스토큰 저장하기 
+   //디바이스토큰 저장하기 + 푸시알림시 이벤트
    initPushNotification() {
      const options: PushOptions = {
       android: {
@@ -279,4 +296,25 @@ export class HomePage {
             this.id = val;
         })
     }
+
+    //카카오페이 결제하기
+    payment(amount: number) {
+		IMP.init('imp91789758');
+
+		IMP.request_pay({
+			pg : 'kakao',
+			pay_method : 'card',
+			merchant_uid : 'merchant_' + new Date().getTime(),
+			amount : amount,
+		},function(response) {
+	//결제 후 호출되는 callback함수
+	if ( response.success ) { //결제 성공
+		console.log(response);
+		alert("결제완료 되었습니다.");
+    this.navCtrl.push(StampPage, {amount: amount});
+	} else {
+    alert('결제실패 : ' + response.error_msg);
+	}
+		})
+	}
 }
