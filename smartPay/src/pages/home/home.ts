@@ -142,7 +142,7 @@ export class HomePage {
         beaconList.forEach((beacon) => {
           let beaconObject = new BeaconModel(beacon);
           this.beacons.push(beaconObject);
-          if (this.first && beacon.minor > 5000 && beacon.rssi >= -65) {
+          if (this.first && beacon.minor > 5000 && beacon.rssi >= -70) {
             this.first = false;
             IBeacon.stopRangingBeaconsInRegion(this.region)
               .then(
@@ -308,12 +308,14 @@ export class HomePage {
 			pay_method : 'card',
 			merchant_uid : 'merchant_' + new Date().getTime(),
 			amount : amount,
-		},function(response) {
+		},response => {
 	//결제 후 호출되는 callback함수
 	if ( response.success ) { //결제 성공
 		console.log(response);
-		alert("결제완료 되었습니다.");
+		//alert("결제완료 되었습니다.");
     this.order();
+    this.menu = undefined;
+    this.store = "";
     this.navCtrl.push(StampPage, {amount: amount});
 	} else {
     alert('결제실패 : ' + response.error_msg);
@@ -344,7 +346,7 @@ export class HomePage {
       .map(res => res.json())
       .subscribe(data=>{
         console.log(data);
-      
+        
    
       },error => {
         console.log("error");
