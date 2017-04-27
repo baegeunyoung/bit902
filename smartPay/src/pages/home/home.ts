@@ -17,7 +17,6 @@ declare var IMP: any;
   templateUrl: 'home.html'
 })
 export class HomePage {
-  private html:string = "" ;
   private token: string;
   private menuFile:Array<string>;
   isScanning: boolean = false;
@@ -25,13 +24,16 @@ export class HomePage {
   zone: any;
   delegate: any;
   region: any;
-  menu: Array<string>;
+  menu: Array<Object>;
   major: number;
   minor: number;
   store: string = "";
   first: boolean;
   id: any;
   quantity:any;
+  tokenObj: Object;
+  majorObj: Object;
+  minorObj: Object; 
   constructor(public navCtrl: NavController, 
               public platform : Platform, 
               public events: Events, 
@@ -46,7 +48,7 @@ export class HomePage {
 
   ionViewDidLoad() {
     //this.test();
-    if(this.token == undefined) {
+    if(this.token == null) {
       this.initPushNotification();
     }
    // if(this.initialise()) {
@@ -147,7 +149,7 @@ export class HomePage {
               () => {
                       this.major = beacon.major;
                       this.minor = beacon.minor;
-                      this.order(beacon.major, beacon.minor);        
+                      this.getMenu(beacon.major, beacon.minor);        
                      },
               error => {
                     console.error('Failed to begin monitoring: ', error);
@@ -173,7 +175,7 @@ export class HomePage {
    }
   
   //테이블비콘 검색시 메뉴가져오기
-  order(sellerNo: number, minor: number) {
+  getMenu(sellerNo: number, minor: number) {
    this.beacons = [];
    this.isScanning = false;
    IBeacon.stopRangingBeaconsInRegion(this.region);
@@ -311,10 +313,41 @@ export class HomePage {
 	if ( response.success ) { //결제 성공
 		console.log(response);
 		alert("결제완료 되었습니다.");
+    this.order();
     this.navCtrl.push(StampPage, {amount: amount});
 	} else {
     alert('결제실패 : ' + response.error_msg);
 	}
 		})
 	}
+  //주문내역 보내기
+  order(){
+   this.tokenObj = {"token": this.token};
+   this.majorObj = {"sellerNo": this.major};
+   this.minorObj = {"tableNo": this.minor};
+
+   console.log(this.tokenObj);
+   this.menu.push(this.tokenObj);
+   this.menu.push(this.majorObj);
+   this.menu.push(this.minorObj); 
+   
+   console.log(JSON.stringify(this.menu));
+
+    let data = JSON.stringify(this.menu);  
+    let link = "http://14.32.66.123:10001/bit902app/order/regist.do";
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+  
+   
+    console.log(data);
+    this.http.post(link, data, options)
+      .map(res => res.json())
+      .subscribe(data=>{
+        console.log(data);
+      
+   
+      },error => {
+        console.log("error");
+      }); 
+ }
 }
