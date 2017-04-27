@@ -33,7 +33,11 @@ public class OrderServiceImpl implements OrderService {
 				menu.put("orderNo", maxOrderNo);
 				menu.put("quantity", order.get(i).get("quantity"));
 				menu.put("menuNo", order.get(i).get("menuNo"));
-				mapper.insertOrderMenu(menu);				
+				mapper.insertOrderMenu(menu);
+				
+				menu.put("dayTotalSales", Integer.parseInt(order.get(i).get("quantity")) * Integer.parseInt(order.get(i).get("price")));
+				menu.put("menuName", order.get(i).get("name"));
+				mapper.insertDayAdjust(menu);
 			}
 		}
 	}

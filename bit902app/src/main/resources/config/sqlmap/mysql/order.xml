@@ -45,4 +45,27 @@
 			#{menuNo}
 		)
 	</insert>
+	
+	<insert id="insertDayAdjust" parameterType="hashmap">
+		insert into tb_day_adjust (
+			day_total_number,
+			day_total_sales,
+			day_adjust_date,
+			store_no,
+			store_name,
+			menu_no,
+			menu_name
+		) values (
+			#{quantity},
+			#{dayTotalSales},
+			sysdate(),
+			(select store_no from tb_menu where menu_no = #{menuNo}),
+			(select name from tb_menu where menu_no = #{menuNo}),
+			#{menuNo},
+			(select menu_name from tb_menu where menu_no = #{menuNo})
+		) on duplicate key
+		update
+				day_total_number = day_total_number + #{quantity},
+				day_total_sales = day_total_sales + #{dayTotalSales}
+	</insert>
 </mapper>
