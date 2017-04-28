@@ -140,5 +140,6 @@ where year(day_adjust_date) = year(now()) and
 			   dayofmonth(day_adjust_date) = dayofmonth(now()) and
 			   menu_no = #{menuNo}
 			   )]
+			   end if
 	</insert>
 </mapper>
