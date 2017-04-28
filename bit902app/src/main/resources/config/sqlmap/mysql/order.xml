@@ -70,7 +70,7 @@
 			#{menuNo},
 			(select name from tb_menu where menu_no = #{menuNo})
 		) on duplicate key
-		update tb_day_adjust
+		update table
 		   set day_total_number = day_total_number + #{quantity} and
 			   day_total_sales = day_total_sales + #{dayTotalSales}
 	</insert>
