@@ -1,10 +1,13 @@
 package kr.co.smartpayapp.event.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.smartpayapp.repository.mapper.EventMapper;
 import kr.co.smartpayapp.repository.vo.EventVO;
+import kr.co.smartpayapp.repository.vo.HomeEventInfoVO;
 
 @Service
 public class EventServiceImpl implements EventService{
@@ -32,4 +35,8 @@ public class EventServiceImpl implements EventService{
 	public void eventModify(EventVO event) {
 		dao.eventModify(event);	
 	}	
+	
+	public List<HomeEventInfoVO> retrieveHomeInfo() {
+		return dao.selectHomeEventInfo();
+	}
 }

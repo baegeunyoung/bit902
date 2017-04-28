@@ -3,6 +3,8 @@ package kr.co.smartpayapp.pay.controller;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.smartpayapp.event.service.EventService;
 import kr.co.smartpayapp.repository.vo.EventVO;
+import kr.co.smartpayapp.repository.vo.HomeEventInfoVO;
 
 @RestController
 @RequestMapping("/notification")
@@ -39,6 +42,12 @@ public class NotificationController {
     	String message = eventService.readEvent(eventVO.getSellerNo()).getEventContent();
     	sendPushNotification(title, message);
 	}
+    @RequestMapping("/homeInfo.do")
+    public List<HomeEventInfoVO> HomeInfo() throws Exception {
+    	List<HomeEventInfoVO> infoList = new ArrayList<>();
+    	infoList = eventService.retrieveHomeInfo();
+    	return infoList;
+    }
 
     /**
      * Sends notification to mobile, YOU DON'T NEED TO UNDERSTAND THIS METHOD

@@ -17,27 +17,33 @@ declare var IMP: any;
   templateUrl: 'home.html'
 })
 export class HomePage {
+ //알림
   private token: string;
+
+  //메뉴
+  menu: Array<Object>;
   private menuFile:Array<string>;
+  tokenObj: Object;
+  majorObj: Object;
+  minorObj: Object; 
+  store: string = "";
+  id: any;
+  quantity:any;
+  orderContent="";
+  orderContentObj: Object;
+  storeName: string;
+  //비콘
   isScanning: boolean = false;
   beacons: BeaconModel[] = [];
   zone: any;
   delegate: any;
   region: any;
-  menu: Array<Object>;
   major: number;
   minor: number;
-  store: string = "";
   first: boolean;
-  id: any;
-  quantity:any;
-  orderContent="";
-  orderContentObj: Object;
-  tokenObj: Object;
-  majorObj: Object;
-  minorObj: Object; 
-  items;
-  storeName: string;
+  //홈화면
+  homeEvents: Array<string>;
+
   constructor(public navCtrl: NavController, 
               public platform : Platform, 
               public events: Events, 
@@ -55,10 +61,11 @@ export class HomePage {
     if(this.token == null) {
       this.initPushNotification();
     }
-   // if(this.initialise()) {
-   //    this.first = true;
-   //    this.listenToBeaconEvents();
-   // }
+    // if(this.initialise()) {
+    //    this.first = true;
+    //    this.listenToBeaconEvents();
+    // }
+    this. getHomeEventInfo();
   }
   //메뉴보기(비콘검색시작)
    startScanning() {
@@ -360,4 +367,16 @@ export class HomePage {
       }); 
  }
 
+//홈화면 이벤트정보 가져오기(10개)
+ getHomeEventInfo() {
+      let link = "http://14.32.66.123:10001/bit902app/notification/homeInfo.do";
+      this.http.get(link)
+        .map(res => res.json())
+        .subscribe(data=>{
+            console.log(data);
+            this.homeEvents = data;      
+        },error => {
+          console.log("error");
+        }); 
+    }
 }

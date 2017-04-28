@@ -8,6 +8,12 @@
 		<result column="event_content" property="eventContent"/>
 		<result column="seller_no" property="sellerNo"/>
 	</resultMap>
+	<resultMap type="HomeEventInfoVO" id="homeEventInfoMap">
+		<result column="name" property="storeName"/>
+		<result column="event_content" property="eventContent"/>
+		<result column="system_name" property="systemName"/>
+		<result column="file_path" property="filePath"/>
+	</resultMap>
 
 	<insert id="insertEvent" parameterType="EventVO">
 		insert into tb_event(event_content, seller_no)
@@ -31,5 +37,19 @@
 			set event_content = #{eventContent}
 			where seller_no = #{sellerNo}
 	</update>
+	
+	<!-- //앱 홈화면에 이벤트정보 가져오기 -->
+	<select id="selectHomeEventInfo" resultMap="homeEventInfoMap">
+		select 	e.event_content, 
+				s.name, 
+				sf.file_path, 
+				sf.system_name
+		from tb_event e
+		inner join tb_store s
+			on e.seller_no = s.seller_no
+		inner join tb_store_file sf
+			on e.seller_no = sf.seller_no
+		order by e.event_no desc limit 10
+	</select>
 
 </mapper>

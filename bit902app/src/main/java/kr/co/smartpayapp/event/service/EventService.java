@@ -1,6 +1,9 @@
 package kr.co.smartpayapp.event.service;
 
+import java.util.List;
+
 import kr.co.smartpayapp.repository.vo.EventVO;
+import kr.co.smartpayapp.repository.vo.HomeEventInfoVO;
 
 public interface EventService {
 	
@@ -11,4 +14,6 @@ public interface EventService {
 	public void eventDelete(int sellerNo);
 	
 	public void eventModify(EventVO event);
+	
+	public List<HomeEventInfoVO> retrieveHomeInfo();
 }

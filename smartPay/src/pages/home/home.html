@@ -42,6 +42,25 @@
     </ion-item>
   </ion-list>   
 
+  <ion-list>
+    <div *ngIf="menu==undefined">
+        <div *ngFor="let event of homeEvents">
+          <ion-card>
+            <img = "http://14.32.66.123:10002/bit902web/upload/{{event.filePath}}/{{event.systemName}}"/>
+            <ion-card-content>
+              <ion-card-title>
+                {{event.storeName}}
+              </ion-card-title>
+              <p>
+                {{event.eventContent}}
+              </p>
+            </ion-card-content>
+          </ion-card>
+        </div>
+    </div>
+  </ion-list>
+
+
   <div *ngIf="major != 0">{{ store }}</div>
 
   <template ngFor let-menu [ngForOf]="menu">  
