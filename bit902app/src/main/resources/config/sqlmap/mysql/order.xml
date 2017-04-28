@@ -76,7 +76,7 @@
 <!-- 			   day_total_sales = day_total_sales + #{dayTotalSales} and -->
 <!-- 			   day_adjust_date = sysdate() and -->
 <!-- 			   store_no = (select store_no from tb_menu where menu_no = #{menuNo}) and -->
-<!-- 			   store_name = (select s.name --> -->
+<!-- 			   store_name = (select s.name -->
 <!-- 							   from tb_menu m -->
 <!-- 							  inner join tb_order o -->
 <!-- 								 on o.order_no = #{orderNo} -->
@@ -95,7 +95,7 @@ if(
 where year(day_adjust_date) = year(now()) and
 			   month(day_adjust_date) = month(now()) and
 			   dayofmonth(day_adjust_date) = dayofmonth(now()) and
-			   menu_no = 89) = 0) then
+			   menu_no = #{menuNo}) = 0) then
 	(		   
 	insert into tb_day_adjust (
 			day_total_number,
@@ -106,8 +106,8 @@ where year(day_adjust_date) = year(now()) and
 			menu_no,
 			menu_name
 		) values (
-			day_total_number + #{quantity},
-			day_total_sales + #{dayTotalSales},
+			#{quantity},
+			#{dayTotalSales},
 			sysdate(),
 			(select store_no from tb_menu where menu_no = #{menuNo}),
 			(select s.name
@@ -126,7 +126,7 @@ where year(day_adjust_date) = year(now()) and
 			   day_total_sales = day_total_sales + #{dayTotalSales} and
 			   day_adjust_date = sysdate() and
 			   store_no = (select store_no from tb_menu where menu_no = #{menuNo}) and
-			   store_name = (select s.name -->
+			   store_name = (select s.name
 							   from tb_menu m
 							  inner join tb_order o
 								 on o.order_no = #{orderNo}
@@ -135,10 +135,10 @@ where year(day_adjust_date) = year(now()) and
 							  where m.menu_no = #{menuNo}) and
 			   menu_no = #{menuNo} and
 			   menu_name = (select name from tb_menu where menu_no = #{menuNo})
-		 where year(o.order_date) = year(now()) and
-			   month(o.order_date) = month(now()) and
-			   dayofmonth(o.order_date) = dayofmonth(now()) and
-			   menu_no = #{menuNo})
-			   ]
+		 where year(day_adjust_date) = year(now()) and
+			   month(day_adjust_date) = month(now()) and
+			   dayofmonth(day_adjust_date) = dayofmonth(now()) and
+			   menu_no = #{menuNo}
+			   )]
 	</insert>
 </mapper>
