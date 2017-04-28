@@ -9,4 +9,7 @@ public interface OrderMapper {
 	public int selectCount(Map<String, Object> menu);
 	public void insertDayAdjust(Map<String, Object> menu);
 	public void updateDayAdjust(Map<String, Object> menu);
+	public int selectDate(Map<String, Object> menu);
+	public void insertMonthAdjust(Map<String, Object> menu);
+	public void updateMonthAdjust(Map<String, Object> menu);	
 }

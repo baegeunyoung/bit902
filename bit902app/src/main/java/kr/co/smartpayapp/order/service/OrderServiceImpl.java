@@ -44,6 +44,13 @@ public class OrderServiceImpl implements OrderService {
 				} else if (count > 0) {
 					mapper.updateDayAdjust(menu);
 				}
+				
+				int dateCount = mapper.selectDate(menu);
+				if (dateCount == 0) {
+					mapper.insertMonthAdjust(menu);
+				} else if (dateCount == 1) {
+					mapper.updateMonthAdjust(menu);
+				}
 			}
 		}
 	}

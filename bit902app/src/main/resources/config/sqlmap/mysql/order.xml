@@ -90,4 +90,40 @@
 			   dayofmonth(day_adjust_date) = dayofmonth(now()) and
 			   menu_no = #{menuNo}
 	</update>
+	
+	<select id="selectCount" parameterType="hashMap" resultType="int">
+		select count(*)
+		  from tb_month_adjust
+		 where year(month_adjust_date) = year(now()) and
+			   month(month_adjust_date) = month(now()) and
+			   dayofmonth(month_adjust_date) = dayofmonth(now()) and
+			   store_no = (select store_no
+							from tb_store
+						   where seller_no = #{sellerNo}
+						)
+	</select>
+	
+	<insert id="insertMonthAdjust" parameterType="hashMap">
+		insert into tb_month_adjust (
+				month_total_sales,
+				month_adjust_date,
+				store_no
+			) values (
+				#{dayTotalSales},
+				current_timestamp,
+				(select store_no from tb_store where seller_no = #{sellerNo})
+			)
+	</insert>
+	
+	<update id="updateMonthAdjust" parameterType="hashMap">
+		update tb_month_adjust
+		   set month_total_sales = month_total_sales + #{dayTotalSales}
+		 where year(month_adjust_date) = year(now()) and
+			   month(month_adjust_date) = month(now()) and
+			   dayofmonth(month_adjust_date) = dayofmonth(now()) and
+			   store_no = (select store_no
+							from tb_store
+						   where seller_no = #{sellerNo}
+						)
+	</update>
 </mapper>
