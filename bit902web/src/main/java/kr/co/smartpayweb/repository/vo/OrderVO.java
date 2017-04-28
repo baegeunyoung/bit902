@@ -6,7 +6,6 @@ import java.util.List;
 public class OrderVO {
 	private int orderNo;
 	private int sellerNo;
-	private int beaconNo;
 	private int tableNo;
 	private Date orderDate;
 	private String orderContent;
@@ -25,12 +24,6 @@ public class OrderVO {
 	}
 	public void setSellerNo(int sellerNo) {
 		this.sellerNo = sellerNo;
-	}
-	public int getBeaconNo() {
-		return beaconNo;
-	}
-	public void setBeaconNo(int beaconNo) {
-		this.beaconNo = beaconNo;
 	}
 	public int getTableNo() {
 		return tableNo;

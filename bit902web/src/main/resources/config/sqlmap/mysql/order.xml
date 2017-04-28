@@ -7,7 +7,6 @@
 	<resultMap type="OrderVO" id="OrderStateMap">
 		<result column="order_no" property="orderNo" />
 		<result column="seller_no" property="sellerNo" />
-		<result column="beacon_no" property="beaconNo" />
 		<result column="table_no" property="tableNo" />
 		<result column="order_date" property="orderDate" />
 		<result column="order_content" property="orderContent" />
@@ -19,8 +18,6 @@
 	<select id="retrieveOreder" parameterType="int" resultMap="OrderStateMap">
 		select *
 		  from tb_order o
-		 inner join tb_beacon b
-			on o.beacon_no = b.beacon_no
 		 where o.seller_no = #{sellerNo} and
 			   year(o.order_date) = year(now()) and
 			   month(o.order_date) = month(now()) and
@@ -59,4 +56,18 @@
 		   set order_state = 2
 		 where order_no = #{completeNo}
 	</update>
+	
+<!-- 	<select id="trigger" resultType="int"> -->
+<!-- 		delimiter // -->
+<!-- 		create trigger order_trigger -->
+<!-- 		after insert -->
+<!-- 		on tb_order -->
+<!-- 		for each row -->
+<!-- 			begin -->
+<!-- 				set @msg = 'select seller_no -->
+<!-- 							  from tb_order -->
+<!-- 							 limit 0, 1'; -->
+<!-- 			end // -->
+<!-- 		delimiter; -->
+<!-- 	</select> -->
 </mapper>
