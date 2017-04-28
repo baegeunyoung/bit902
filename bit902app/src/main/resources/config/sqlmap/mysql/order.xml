@@ -91,7 +91,7 @@
 			   menu_no = #{menuNo}
 	</update>
 	
-	<select id="selectCount" parameterType="hashMap" resultType="int">
+	<select id="selectDate" parameterType="hashMap" resultType="int">
 		select count(*)
 		  from tb_month_adjust
 		 where year(month_adjust_date) = year(now()) and
