@@ -34,7 +34,6 @@ public class OrderServiceImpl implements OrderService {
 				menu.put("quantity", Integer.parseInt(order.get(i).get("quantity")));
 				menu.put("menuNo", order.get(i).get("menuNo"));
 				mapper.insertOrderMenu(menu);
-				System.out.println(menu.get("sellerNo"));
 				menu.put("dayTotalSales", Integer.parseInt(order.get(i).get("quantity")) * Integer.parseInt(order.get(i).get("price")));
 				menu.put("menuName", order.get(i).get("name"));
 				

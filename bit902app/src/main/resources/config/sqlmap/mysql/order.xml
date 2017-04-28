@@ -97,7 +97,7 @@
 		 where year(month_adjust_date) = year(now()) and
 			   month(month_adjust_date) = month(now()) and
 			   dayofmonth(month_adjust_date) = dayofmonth(now()) and
-			   store_no = (select store_no from tb_store where seller_no = #{sellerNo})
+			   store_no = (select store_no from tb_menu where menu_no = #{menuNo})
 	</select>
 	
 	<insert id="insertMonthAdjust" parameterType="hashMap">
@@ -108,7 +108,7 @@
 			) values (
 				#{dayTotalSales},
 				current_timestamp,
-				(select store_no from tb_store where seller_no = #{sellerNo})
+				(select store_no from tb_menu where menu_no = #{menuNo})
 			)
 	</insert>
 	
@@ -118,6 +118,6 @@
 		 where year(month_adjust_date) = year(now()) and
 			   month(month_adjust_date) = month(now()) and
 			   dayofmonth(month_adjust_date) = dayofmonth(now()) and
-			   store_no = (select store_no from tb_store where seller_no = #{sellerNo})
+			   store_no = (select store_no from tb_menu where menu_no = #{menuNo})
 	</update>
 </mapper>
