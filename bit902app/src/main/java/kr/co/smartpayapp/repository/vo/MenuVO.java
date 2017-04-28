@@ -8,9 +8,16 @@ public class MenuVO {
 	private String content;
 	private int price;
 	private String size;
+	private String stName;
 	
 	
 	
+	public String getStName() {
+		return stName;
+	}
+	public void setStName(String stName) {
+		this.stName = stName;
+	}
 	public int getSellerNo() {
 		return sellerNo;
 	}

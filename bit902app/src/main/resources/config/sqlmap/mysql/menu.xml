@@ -13,6 +13,7 @@
 		<result property="size" column="size"/>
 		<result property="price" column="price"/>
 		<result property="content" column="content"/>
+		<result property="stName" column="stName"/>
 	</resultMap>
 <!--	
 	 <select id="getStoreByStoreNo" resultMap="menuMap">
@@ -28,12 +29,51 @@
     </select>
   -->
   
-  	<select id="getStoreByStoreNo"  parameterType="int" resultMap="menuMap">
+<!--   	<select id="getStoreByStoreNo"  parameterType="int" resultMap="menuMap"> -->
+<!--     	select m.name,  -->
+<!--     		   m.content, -->
+<!--     		   m.price, -->
+<!--     		   m.size, -->
+<!--     		   m.menu_no, -->
+<!--     		   st.name -->
+<!--     	  from tb_menu m -->
+<!--     inner join tb_store st -->
+<!--     		on m.store_no = st.store_no -->
+<!--     inner join tb_seller se -->
+<!--     		on st.seller_no = se.seller_no -->
+<!--     where m.seller_no = #{sellerNo} -->
+<!--     </select> -->
+    	   
+<!--     	 order by name desc 	   -->
+	    
+<!-- 	<insert id="insertMenu" parameterType="MenuVO"> -->
+<!-- 	    <selectKey keyProperty="menuNo" order="AFTER" resultType="int"> -->
+<!-- 	        select last_insert_id() -->
+<!-- 	    </selectKey>         -->
+<!-- 		insert into tb_menu( -->
+<!-- 		   	store_no, -->
+<!-- 		   	seller_no, -->
+<!-- 		   	name, -->
+<!-- 		   	size, -->
+<!-- 		   	price, -->
+<!-- 		    content -->
+<!-- 		) values ( -->
+<!-- 			8, -->
+<!-- 			#{sellerNo}, -->
+<!-- 		    #{name}, -->
+<!-- 		    #{size}, -->
+<!-- 		    #{price}, -->
+<!-- 		    #{content} -->
+<!-- 		)     -->
+<!--     </insert> -->
+   <select id="getStoreByStoreNo"  parameterType="int" resultMap="menuMap">
     	select m.name, 
     		   m.content,
+    		   m.seller_no,
     		   m.price,
     		   m.size,
-    		   m.menu_no
+    		   m.menu_no,
+    		   st.name as stName
     	  from tb_menu m
     inner join tb_store st
     		on m.store_no = st.store_no
@@ -56,7 +96,10 @@
 		   	price,
 		    content
 		) values (
-			8,
+			(select store_no
+			   from tb_store
+			  where seller_no = #{sellerNo}
+			),
 			#{sellerNo},
 		    #{name},
 		    #{size},

@@ -26,6 +26,7 @@ public class MenuServiceImpl implements MenuService {
 	@Override
 	public Map<String, Object> list(int sellerNo) throws Exception {
 		Map<String, Object> result = new HashMap<>();
+		System.out.println("임플 셀러 번호:" + sellerNo);
 		result.put("menu",dao.getStoreByStoreNo(sellerNo));
 		result.put("menuFile",dao.selectStoreFileByNo(sellerNo));
 		return result;
