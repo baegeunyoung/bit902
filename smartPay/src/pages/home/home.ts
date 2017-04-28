@@ -302,13 +302,14 @@ export class HomePage {
     }
 
     //카카오페이 결제하기
-    payment(amount: number) {
+    payment(name:string, amount: number) {
 		IMP.init('imp91789758');
 
 		IMP.request_pay({
 			pg : 'kakao',
 			pay_method : 'card',
 			merchant_uid : 'merchant_' + new Date().getTime(),
+      name : name,
 			amount : amount,
 		},response => {
 	//결제 후 호출되는 callback함수
