@@ -96,7 +96,7 @@ where year(day_adjust_date) = year(now()) and
 			   month(day_adjust_date) = month(now()) and
 			   dayofmonth(day_adjust_date) = dayofmonth(now()) and
 			   menu_no = #{menuNo}) = 0) then
-	(		   
+	{		   
 	insert into tb_day_adjust (
 			day_total_number,
 			day_total_sales,
@@ -120,7 +120,7 @@ where year(day_adjust_date) = year(now()) and
 			#{menuNo},
 			(select name from tb_menu where menu_no = #{menuNo})
 		)
-	) [else (
+	} [else {
 	update tb_day_adjust
 		   set day_total_number = day_total_number + #{quantity} and
 			   day_total_sales = day_total_sales + #{dayTotalSales} and
@@ -139,7 +139,7 @@ where year(day_adjust_date) = year(now()) and
 			   month(day_adjust_date) = month(now()) and
 			   dayofmonth(day_adjust_date) = dayofmonth(now()) and
 			   menu_no = #{menuNo}
-			   )]
+			   }]
 			   end if
 	</insert>
 </mapper>
