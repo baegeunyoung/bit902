@@ -70,9 +70,8 @@
 			#{menuNo},
 			(select name from tb_menu where menu_no = #{menuNo})
 		) on duplicate key
-		update
-			year(o.order_date) = values(year(now())) and
-			month(o.order_date) = values(month(now())) and
-			dayofmonth(o.order_date) = values(dayofmonth(now()))
+		update tb_day_adjust
+		   set day_total_number = day_total_number + #{quantity} and
+			   day_total_sales = day_total_sales + #{dayTotalSales}
 	</insert>
 </mapper>
