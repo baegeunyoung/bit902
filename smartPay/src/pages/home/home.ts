@@ -36,6 +36,8 @@ export class HomePage {
   tokenObj: Object;
   majorObj: Object;
   minorObj: Object; 
+  items;
+  storeName: string;
   constructor(public navCtrl: NavController, 
               public platform : Platform, 
               public events: Events, 
@@ -203,11 +205,12 @@ export class HomePage {
           
           this.menu = data.menu;
           this.menuFile = data.menuFile;
+          this.storeName = data.menu[0].stName;
+          this.store ="[ " + data.menu[0].stName +" ]"+ tableNo +"번 테이블";
      
         },error => {
           console.log("error");
         }); 
-      this.store = this.major + '가게 ' + tableNo +' 테이블 주문하기.';
    }
   }
   orderPlus(menu){ 
@@ -302,14 +305,14 @@ export class HomePage {
     }
 
     //카카오페이 결제하기
-    payment(name:string, amount: number) {
+    payment(storeName: string, amount: number) {
 		IMP.init('imp91789758');
 
 		IMP.request_pay({
 			pg : 'kakao',
 			pay_method : 'card',
 			merchant_uid : 'merchant_' + new Date().getTime(),
-      name : name,
+      name : storeName,
 			amount : amount,
 		},response => {
 	//결제 후 호출되는 callback함수
@@ -356,4 +359,5 @@ export class HomePage {
         console.log("error");
       }); 
  }
+
 }
