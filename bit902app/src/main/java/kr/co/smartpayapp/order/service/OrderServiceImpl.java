@@ -37,7 +37,13 @@ public class OrderServiceImpl implements OrderService {
 				
 				menu.put("dayTotalSales", Integer.parseInt(order.get(i).get("quantity")) * Integer.parseInt(order.get(i).get("price")));
 				menu.put("menuName", order.get(i).get("name"));
-				mapper.insertDayAdjust(menu);
+				
+				int count = mapper.selectCount(menu);
+				if (count == 0) {
+					mapper.insertDayAdjust(menu);					
+				} else if (count > 0) {
+					mapper.updateDayAdjust(menu);
+				}
 			}
 		}
 	}

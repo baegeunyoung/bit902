@@ -34,7 +34,7 @@
 		  from tb_order
 	</select>
 
-	<insert id="insertOrderMenu" parameterType="hashmap">
+	<insert id="insertOrderMenu" parameterType="hashMap">
 		insert into tb_order_menu (
 			quantity,
 			order_no,
@@ -46,82 +46,43 @@
 		)
 	</insert>
 	
-	<insert id="insertDayAdjust" parameterType="hashmap">
-<!-- 		insert into tb_day_adjust ( -->
-<!-- 			day_total_number, -->
-<!-- 			day_total_sales, -->
-<!-- 			day_adjust_date, -->
-<!-- 			store_no, -->
-<!-- 			store_name, -->
-<!-- 			menu_no, -->
-<!-- 			menu_name -->
-<!-- 		) values ( -->
-<!-- 			day_total_number + #{quantity}, -->
-<!-- 			day_total_sales + #{dayTotalSales}, -->
-<!-- 			sysdate(), -->
-<!-- 			(select store_no from tb_menu where menu_no = #{menuNo}), -->
-<!-- 			(select s.name -->
-<!-- 			   from tb_menu m -->
-<!-- 			  inner join tb_order o -->
-<!-- 				 on o.order_no = #{orderNo} -->
-<!-- 			  inner join tb_store s -->
-<!-- 				 on o.seller_no = s.seller_no -->
-<!-- 			  where m.menu_no = #{menuNo}), -->
-<!-- 			#{menuNo}, -->
-<!-- 			(select name from tb_menu where menu_no = #{menuNo}) -->
-<!-- 		) -->
-
-<!-- 		update tb_day_adjust -->
-<!-- 		   set day_total_number = day_total_number + #{quantity} and -->
-<!-- 			   day_total_sales = day_total_sales + #{dayTotalSales} and -->
-<!-- 			   day_adjust_date = sysdate() and -->
-<!-- 			   store_no = (select store_no from tb_menu where menu_no = #{menuNo}) and -->
-<!-- 			   store_name = (select s.name -->
-<!-- 							   from tb_menu m -->
-<!-- 							  inner join tb_order o -->
-<!-- 								 on o.order_no = #{orderNo} -->
-<!-- 							  inner join tb_store s -->
-<!-- 								 on o.seller_no = s.seller_no -->
-<!-- 							  where m.menu_no = #{menuNo}) and -->
-<!-- 			   menu_no = #{menuNo} and -->
-<!-- 			   menu_name = (select name from tb_menu where menu_no = #{menuNo}) -->
-<!-- 		 where year(o.order_date) = year(now()) and -->
-<!-- 			   month(o.order_date) = month(now()) and -->
-<!-- 			   dayofmonth(o.order_date) = dayofmonth(now()) and -->
-<!-- 			   menu_no = #{menuNo} -->
-
-if(
-(select count(*) from tb_day_adjust
-where year(day_adjust_date) = year(now()) and
+	<select id="selectCount" parameterType="hashMap" resultType="int">
+		select count(*)
+		  from tb_day_adjust
+		 where year(day_adjust_date) = year(now()) and
 			   month(day_adjust_date) = month(now()) and
 			   dayofmonth(day_adjust_date) = dayofmonth(now()) and
-			   menu_no = #{menuNo}) = 0) then
-	{		   
-	insert into tb_day_adjust (
-			day_total_number,
-			day_total_sales,
-			day_adjust_date,
-			store_no,
-			store_name,
-			menu_no,
-			menu_name
-		) values (
-			#{quantity},
-			#{dayTotalSales},
-			sysdate(),
-			(select store_no from tb_menu where menu_no = #{menuNo}),
-			(select s.name
-			   from tb_menu m
-			  inner join tb_order o
-				 on o.order_no = #{orderNo}
-			  inner join tb_store s
-				 on o.seller_no = s.seller_no
-			  where m.menu_no = #{menuNo}),
-			#{menuNo},
-			(select name from tb_menu where menu_no = #{menuNo})
-		)
-	} [else {
-	update tb_day_adjust
+			   menu_no = #{menuNo}
+	</select>
+	
+	<insert id="insertDayAdjust" parameterType="hashMap">
+		insert into tb_day_adjust (
+				day_total_number,
+				day_total_sales,
+				day_adjust_date,
+				store_no,
+				store_name,
+				menu_no,
+				menu_name
+			) values (
+				#{quantity},
+				#{dayTotalSales},
+				sysdate(),
+				(select store_no from tb_menu where menu_no = #{menuNo}),
+				(select s.name
+				   from tb_menu m
+				  inner join tb_order o
+					 on o.order_no = #{orderNo}
+				  inner join tb_store s
+					 on o.seller_no = s.seller_no
+				  where m.menu_no = #{menuNo}),
+				#{menuNo},
+				(select name from tb_menu where menu_no = #{menuNo})
+			)
+	</insert>
+	
+	<update id="updateDayAdjust" parameterType="hashMap">
+		update tb_day_adjust
 		   set day_total_number = day_total_number + #{quantity} and
 			   day_total_sales = day_total_sales + #{dayTotalSales} and
 			   day_adjust_date = sysdate() and
@@ -139,7 +100,5 @@ where year(day_adjust_date) = year(now()) and
 			   month(day_adjust_date) = month(now()) and
 			   dayofmonth(day_adjust_date) = dayofmonth(now()) and
 			   menu_no = #{menuNo}
-			   }]
-			   end if
-	</insert>
+	</update>
 </mapper>
