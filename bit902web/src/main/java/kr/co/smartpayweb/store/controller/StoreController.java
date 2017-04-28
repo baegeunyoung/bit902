@@ -33,6 +33,7 @@ public class StoreController {
 	@RequestMapping("/write.do")
 	public String write(MultipartHttpServletRequest mRequest, RedirectAttributes attr, HttpSession session) throws Exception{
 		
+		
 		Map<String, Object> param = new HashMap<>();
 		ServletContext context = mRequest.getServletContext();
 		

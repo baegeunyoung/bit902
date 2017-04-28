@@ -30,6 +30,8 @@
   
   	<select id="getStoreByStoreNo"  parameterType="int" resultMap="menuMap">
     	select m.name, 
+    		   m.store_no,
+    		   m.seller_no,
     		   m.content,
     		   m.price,
     		   m.size,

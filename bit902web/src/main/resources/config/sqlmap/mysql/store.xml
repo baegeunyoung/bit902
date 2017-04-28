@@ -54,13 +54,15 @@
   <insert id="insertStoreFile" parameterType="StoreFileVO">
 		insert into tb_store_file (
 <!-- 			store_file_no, -->
-			store_no,         
+			store_no, 
+			seller_no,        
 			ori_name, 
 			system_name, 
 			file_path, 
 			file_size
 		) values (
 <!-- 			#{storeFileNo}, -->
+			#{sellerNo}
 			#{storeNo}, 
 			#{oriName}, 
 			#{systemName},
