@@ -48,7 +48,7 @@
 		inner join tb_store s
 			on e.seller_no = s.seller_no
 		inner join tb_store_file sf
-			on e.seller_no = sf.seller_no and sf.menu_no = null
+			on e.seller_no = sf.seller_no and sf.menu_no is null
 		order by e.event_no desc limit 10
 	</select>
 
