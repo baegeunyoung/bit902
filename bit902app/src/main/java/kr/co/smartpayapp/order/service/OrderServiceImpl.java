@@ -31,7 +31,7 @@ public class OrderServiceImpl implements OrderService {
 			Map<String, Object> menu = new HashMap<>();
 			if (Integer.parseInt(order.get(i).get("quantity")) != 0) {
 				menu.put("orderNo", maxOrderNo);
-				menu.put("quantity", order.get(i).get("quantity"));
+				menu.put("quantity", Integer.parseInt(order.get(i).get("quantity")));
 				menu.put("menuNo", order.get(i).get("menuNo"));
 				mapper.insertOrderMenu(menu);
 				
