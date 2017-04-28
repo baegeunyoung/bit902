@@ -83,19 +83,8 @@
 	
 	<update id="updateDayAdjust" parameterType="hashMap">
 		update tb_day_adjust
-		   set day_total_number = day_total_number + #{quantity} and
-			   day_total_sales = day_total_sales + #{dayTotalSales} and
-			   day_adjust_date = sysdate() and
-			   store_no = (select store_no from tb_menu where menu_no = #{menuNo}) and
-			   store_name = (select s.name
-							   from tb_menu m
-							  inner join tb_order o
-								 on o.order_no = #{orderNo}
-							  inner join tb_store s
-								 on o.seller_no = s.seller_no
-							  where m.menu_no = #{menuNo}) and
-			   menu_no = #{menuNo} and
-			   menu_name = (select name from tb_menu where menu_no = #{menuNo})
+		   set day_total_number += #{quantity},
+			   day_total_sales += #{dayTotalSales}
 		 where year(day_adjust_date) = year(now()) and
 			   month(day_adjust_date) = month(now()) and
 			   dayofmonth(day_adjust_date) = dayofmonth(now()) and
