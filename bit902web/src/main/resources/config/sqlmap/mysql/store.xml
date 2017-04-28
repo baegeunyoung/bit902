@@ -61,9 +61,9 @@
 			file_path, 
 			file_size
 		) values (
-<!-- 			#{storeFileNo}, -->
-			#{sellerNo}
+<!-- 			#{storeFileNo}, -->	
 			#{storeNo}, 
+			#{sellerNo},
 			#{oriName}, 
 			#{systemName},
 			#{filePath}, 
