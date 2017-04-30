@@ -19,7 +19,7 @@
 		select *
 		  from tb_order o
 		 where o.seller_no = #{sellerNo} and
-			   year(o.order_date) = year(now()) and
+			   year(o.order_date) = year(now()) and 
 			   month(o.order_date) = month(now()) and
 			   dayofmonth(o.order_date) = dayofmonth(now()) and
 			   (o.order_state = "0" or o.order_state = "1")
