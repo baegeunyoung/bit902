@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Alert</title>
+</head>
+<body>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://192.168.0.100:10001/socket.io/socket.io.js"></script>
+<script>
+	$(document).ready(function() {
+		// 소켓서버에 접속
+		var socket = io.connect();
+
+		socket.on("msg", function(data) {
+			alert("msg");
+		});
+	});
+</script>
+<body>
