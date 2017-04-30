@@ -27,7 +27,7 @@ public class OrderController {
 		
 		orderService.registOrder(order);
 		
-		ModelAndView mav = new ModelAndView("bit902node/alert/server.js");
+		ModelAndView mav = new ModelAndView("/bit902node/alert/server.js");
 		return mav;
 	}
 }
