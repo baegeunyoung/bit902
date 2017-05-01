@@ -2,19 +2,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Alert</title>
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://14.32.66.123:8888/socket.io/socket.io.js"></script>
 </head>
 <body>
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="http://localhost:10002/socket.io/socket.io.js"></script>
-<script>
-	$(document).ready(function() {
-		// 소켓서버에 접속
+	<script type="text/javascript">
 		var socket = io.connect();
 
-		socket.on("msg", function(data) {
-			alert("msg");
+		socket.on("serverEcho", function(data) {
+			alert("주문이 접수되었습니다.");
 		});
-	});
-</script>
-<body>
+		var msg = 1;
+		socket.emit("echo", msg);
+	</script>
+</body>
+</html>
