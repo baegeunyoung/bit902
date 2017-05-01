@@ -29,9 +29,11 @@ public class EventController {
 		
 		EventVO event = new EventVO();
 		SellerVO seller = (SellerVO)session.getAttribute("seller");
+		
 				
 		event.setSellerNo(seller.getSellerNo());
 		event.setEventContent(request.getParameter("content"));
+		event.setEventTitle(request.getParameter("title"));
 		
 		eventService.insertEvent(event);
 		RequestDispatcher rd = request.getRequestDispatcher("/view/event/regist.jsp");
