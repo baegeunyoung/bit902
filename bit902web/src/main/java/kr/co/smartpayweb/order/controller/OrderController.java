@@ -53,9 +53,11 @@ public class OrderController {
 	public void receiveOrder(OrderVO orderVO) throws Exception {
 		
 		int receiveNo = orderVO.getOrderNo();
+		System.out.println(receiveNo);
 		orderService.receiveOrder(receiveNo);
 		
 		DEVICE_TOKEN = orderVO.getDeviceToken();
+    	System.out.println(DEVICE_TOKEN);
     	
     	String title = orderVO.getSellerNo() + "Notification";
     	String message = orderVO.getOrderContent();
