@@ -41,12 +41,20 @@
     </ion-grid>
     </ion-item>
   </ion-list>   
+  
+  <ion-item>
+    <ion-input type="text" placeholder="Username" ></ion-input>
+    <button ion-button >검색</button>
+  </ion-item>
+
+    
+
 
   <ion-list>
     <div *ngIf="menu==undefined">
         <div *ngFor="let event of homeEvents">
           <ion-card>
-            <img src = "http://14.32.66.123:10002/bit902web/upload/{{event.filePath}}/{{event.systemName}}"/>
+            <img src = "http://14.32.66.123:10002/bit902web/upload/{{event.filePath}}/{{event.systemName}}" style= "height:200px;"/>
             <ion-card-content>
               <ion-card-title>
                 {{event.storeName}}
