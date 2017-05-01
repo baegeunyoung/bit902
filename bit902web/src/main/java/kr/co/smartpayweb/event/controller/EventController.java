@@ -24,7 +24,6 @@ import kr.co.smartpayweb.event.service.EventService;
 import kr.co.smartpayweb.repository.vo.EventVO;
 import kr.co.smartpayweb.repository.vo.SellerVO;
 import kr.co.smartpayweb.repository.vo.StoreFileVO;
-import kr.co.smartpayweb.repository.vo.StoreVO;
 
 @Controller
 @RequestMapping("/event")
