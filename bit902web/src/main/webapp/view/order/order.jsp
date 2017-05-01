@@ -72,7 +72,7 @@
 															</c:when>
 														</c:choose>
 															<form name="complete" action="${pageContext.request.contextPath}/order/complete.do" method="post">
-																<input type="hidden" name="completeNo" id="completeNo" value="${list.orderNo}" />
+																<input type="hidden" name="orderNo" id="orderNo" value="${list.orderNo}" />
 																<input type="hidden" name="deviceToken" id="deviceToken" value="${list.deviceToken}" />
 																<input type="hidden" name="orderContent" id="orderContent" value="요리가 완료되었습니다." />
 																<button type="submit" class="btn btn-primary">조리완료</button>
