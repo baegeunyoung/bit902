@@ -25,46 +25,13 @@
 			where seller_no = #{sellerNo}
 	</select>
 	
-<!-- 	sellerNo로 eventNo조회하기
-
+<!-- 	sellerNo로 eventNo조회하기 -->
 	<select id="selectEventNO" parameterType="int"  resultMap="int">
 		select event_no
 			from tb_event
 			where seller_no = #{sellerNo}
 	</select>
--->
  
-    <!--  이벤트파일정보 저장 -->
-     <resultMap id="storeFileMap" type="StoreFileVO" >
-		<result property="storeFileNo" column="store_file_no"/>
-		<result property="storeNo" column="store_no"/>
-		<result property="menuNo" column="menu_no"/>
-		<result property="oriName" column="ori_name"/>
-		<result property="systemName" column="system_name"/>
-		<result property="filePath" column="file_path"/>
-		<result property="fileSize" column="file_size"/>
-	</resultMap>
-  <insert id="insertStoreFile" parameterType="StoreFileVO">
-		insert into tb_store_file (
-<!-- 			store_file_no, -->
-			store_no, 
-			seller_no,        
-			ori_name, 
-			system_name, 
-			file_path, 
-			file_size
-		) values (
-<!-- 			#{storeFileNo}, -->	
-			#{storeNo}, 
-			#{sellerNo},
-			#{oriName}, 
-			#{systemName},
-			#{filePath}, 
-			#{fileSize}		
-		)
-	</insert>
-
-
 	<delete id="eventDelete" parameterType="int">
 		delete
 			from tb_event
@@ -77,5 +44,45 @@
 				event_content = #{eventContent},
 			where seller_no = #{sellerNo}
 	</update>
+ 
+<!--  파일 관련-->
+    <!--  이벤트파일정보 저장 -->
+     <resultMap id="storeFileMap" type="StoreFileVO" >
+		<result property="storeFileNo" column="store_file_no"/>
+		<result property="storeNo" column="store_no"/>
+		<result property="menuNo" column="menu_no"/>
+		<result property="eventNo" column="event_no"/>
+		<result property="oriName" column="ori_name"/>
+		<result property="systemName" column="system_name"/>
+		<result property="filePath" column="file_path"/>
+		<result property="fileSize" column="file_size"/>
+	</resultMap>
+  
+  <insert id="insertEventFileInfo" parameterType="StoreFileVO">
+		insert into tb_store_file (
+<!-- 			store_file_no, -->
+			event_no,
+			seller_no,        
+			ori_name, 
+			system_name, 
+			file_path, 
+			file_size
+		) values (
+<!-- 			#{storeFileNo}, -->	
+			#{eventNo},
+			#{sellerNo},
+			#{oriName}, 
+			#{systemName},
+			#{filePath}, 
+			#{fileSize}		
+		)
+	</insert>
+
+	<delete id="eventFileInfoDelete" parameterType="int">
+		delete
+			from tb_store_file
+			where event_no = #{eventNo}
+	</delete>
+
 
 </mapper>

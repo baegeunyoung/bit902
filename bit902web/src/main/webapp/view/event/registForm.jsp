@@ -36,7 +36,7 @@
 								<c:choose>
 									<c:when test="${empty event.eventContent}">
 			                            <div class="card-content table-responsive">
-			                              <form method="post" action="${pageContext.request.contextPath}/event/regist.do">
+			                              <form method="post" action="${pageContext.request.contextPath}/event/regist.do" enctype="multipart/form-data">
 										<div class="form-group">
 									      <label for="title" class="col-lg-2 control-label">제목</label>
 									      <div class="col-lg-10">
@@ -69,7 +69,7 @@
 <!-- 									        <span class="help-block">이벤트 내용을 적어주세요.</span> -->
 									      </div>
 									    </div>
-												<button type="submit" class="btn btn-primary pull-right" id="modify">수정</button>
+<!-- 												<button type="submit" class="btn btn-primary pull-right" id="modify">수정</button> -->
 												<button type="submit" class="btn btn-primary pull-right" id="delete">삭제</button>   
 											</form>
 										</div>

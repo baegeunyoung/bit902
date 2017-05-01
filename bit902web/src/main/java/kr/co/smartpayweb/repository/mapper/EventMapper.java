@@ -12,7 +12,9 @@ public interface EventMapper {
 	
 	public void eventModify(EventVO event);
 
-	//public int selectEventNO(int sellerNo);
+	public int selectEventNO(int sellerNo);
 	
 	public int insertEventFileInfo(StoreFileVO fileVO);
+	
+	public int eventFileInfoDelete(int eventNo);
 }

@@ -24,7 +24,6 @@ public class EventServiceImpl implements EventService{
 	public boolean insertEvent(Map<String, Object> event) {
 		EventVO eventVO = (EventVO)event.get("eventVO");
 		dao.insertEvent(eventVO);
-		//int eventNo = dao.selectEventNO(eventVO.getSellerNo());
 		StoreFileVO fileVO = (StoreFileVO)event.get("fileVO");
 		fileVO.setEventNo(eventVO.getEventNo());
 		int result = dao.insertEventFileInfo(fileVO);
@@ -36,6 +35,8 @@ public class EventServiceImpl implements EventService{
 
 	@Override
 	public void eventDelete(int sellerNo) {
+		int eventNo = dao.selectEventNO(sellerNo);
+		dao.eventFileInfoDelete(eventNo);
 		dao.eventDelete(sellerNo);
 		
 	}
