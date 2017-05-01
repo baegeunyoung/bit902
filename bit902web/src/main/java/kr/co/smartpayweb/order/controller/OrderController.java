@@ -61,7 +61,7 @@ public class OrderController {
 	
 	// ---- 조리 완료 ----
 	@RequestMapping("/complete.do")
-	public void completeOrder(OrderVO orderVO) throws Exception {
+	public String completeOrder(OrderVO orderVO) throws Exception {
 		
 		int completeNo = orderVO.getOrderNo();
 		orderService.completeOrder(completeNo);
@@ -71,9 +71,11 @@ public class OrderController {
 		String title = orderVO.getSellerNo() + "Notification";
     	String message = orderVO.getOrderContent();
     	sendPushNotification(title, message);
+    	
+    	return "redirect:state.do";
 	}
 	
-    private static String sendPushNotification(String title, String message) throws Exception {
+    private static void sendPushNotification(String title, String message) throws Exception {
         String pushMessage = "{\"data\":{\"title\":\"" +
                 title +
                 "\",\"message\":\"" +
@@ -92,7 +94,5 @@ public class OrderController {
         // Send FCM message content.
         OutputStream outputStream = conn.getOutputStream();
         outputStream.write(pushMessage.getBytes());
-
-        return "redirect:/order/state.do";
     }
 }
