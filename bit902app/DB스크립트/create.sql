@@ -94,7 +94,7 @@ primary key(beacon_no),
 foreign key(store_no) references tb_store(store_no)
 );
 
-select * from tb_beacon;
+select * from tb_event;
 show create table tb_beacon;
 tb_beacon_ibfk_1
 alter table tb_beacon drop foreign key tb_beacon_ibfk_1;
@@ -111,10 +111,11 @@ order_content varchar(200),
 device_token varchar(200),
 order_state varchar(1) default '0',
 primary key(order_no),
-foreign key(seller_no) references tb_seller(seller_no),
-foreign key(menu_no) references tb_menu(menu_no)
-);
+foreign key(seller_no) references tb_seller(seller_no)
+)
+select * from tb_event;
 
+drop table tb_order
 select * from tb_order;
 show create table tb_order;
 tb_beacon_ibfk_1
@@ -130,9 +131,10 @@ order_no int(6) unsigned not null,
 menu_no int(6) unsigned not null,
 primary key(order_menu_no),
 foreign key(order_no) references tb_order(order_no),
-foreign key(menu_no) references tb_menu(menu_no)
+foreign key(menu_no) references tb_menu(menu_no) on delete no action on update no action
 );
 
+drop table tb_order_menu
 -------------------------------------------------------
 --일일 통계(판매자)
 -------------------------------------------------------
@@ -147,8 +149,10 @@ menu_no int(6) unsigned not null,
 menu_name varchar(100) not null,
 primary key(day_adjust_no),
 foreign key(store_no) references tb_store(store_no),
-foreign key(menu_no) references tb_menu(menu_no)
+foreign key(menu_no) references tb_menu(menu_no) on delete no action on update no action
 );
+drop table tb_day_adjust
+select * from tb_day_adjust;
 
 -------------------------------------------------------
 --월별 통계(판매자) 

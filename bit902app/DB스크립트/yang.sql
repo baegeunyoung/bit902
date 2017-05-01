@@ -8,6 +8,9 @@ insert into tb_store (store_no, name, store_type, adress, latitude, longitude, s
 
 select * from tb_seller;
 
+select * from tb_menu;
+
+
 insert into tb_menu (store_no, name, price, seller_no) values
 (8, "과꽃씨", 2300, 2);
 insert into tb_menu (store_no, name, price, seller_no) values
@@ -26,7 +29,7 @@ insert into tb_menu (store_no, name, price, seller_no) values
 (8, "핫바", 1900, 2);
 
 insert into tb_day_adjust (day_total_number, day_total_sales, day_adjust_date, store_no, store_name, menu_no, menu_name) values
-(14, 60200, sysdate(), 8, "GS25", 1, "과꽃씨");
+(14, 60200, sysdate(), 8, "GS25", 64, "몽쉘");
 insert into tb_day_adjust (day_total_number, day_total_sales, day_adjust_date, store_no, store_name, menu_no, menu_name) values
 (35, 150500, sysdate(), 8, "GS25", 2, "초코파이");
 insert into tb_day_adjust (day_total_number, day_total_sales, day_adjust_date, store_no, store_name, menu_no, menu_name) values
