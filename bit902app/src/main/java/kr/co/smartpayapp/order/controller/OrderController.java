@@ -27,7 +27,7 @@ public class OrderController {
 		
 		orderService.registOrder(order);
 		
-		ModelAndView mav = new ModelAndView("http://14.32.66.123:8888/rr()");
+		ModelAndView mav = new ModelAndView("http://14.32.66.123:8888/alert/server.js");
 		return mav;
 	}
 }

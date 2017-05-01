@@ -15,8 +15,5 @@ function onRequest(request, response) {
 		send404Response(response);
 	}
 }
-
-function rr(request, response) {
 	http.createServer(onRequest).listen(8888);
 	console.log("서버가 돕니다");	
-}
