@@ -56,7 +56,6 @@ public class OrderController {
     	
     	String title = orderVO.getSellerNo() + "Notification";
     	String message = orderVO.getOrderContent();
-    	System.out.println("와로아라:" + message);
     	sendPushNotification(title, message);
     	
     	return "redirect:state.do";
@@ -73,7 +72,6 @@ public class OrderController {
 		
 		String title = orderVO.getSellerNo() + "Notification";
     	String message = orderVO.getOrderContent();
-    	System.out.println("찜질방:" + message);
     	sendPushNotification(title, message);
     	
     	return "redirect:state.do";
@@ -81,8 +79,7 @@ public class OrderController {
 	
 	// ---- 구글 푸시 유틸 ----
     private static void sendPushNotification(String title, String message) throws Exception {
-    	System.out.println("원주ㅋ:" + message);
-        String pushMessage = "{\"data\":{\"title\":\"" +
+    	String pushMessage = "{\"data\":{\"title\":\"" +
                 title +
                 "\",\"message\":\"" +
                 message +
@@ -100,5 +97,8 @@ public class OrderController {
         // Send FCM message content.
         OutputStream outputStream = conn.getOutputStream();
         outputStream.write(pushMessage.getBytes());
+
+        System.out.println(conn.getResponseCode());
+        System.out.println(conn.getResponseMessage());
     }
 }
