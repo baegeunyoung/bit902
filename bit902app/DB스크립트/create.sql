@@ -66,13 +66,23 @@ create table tb_store_file(
 	file_size varchar(50) not null,
 	store_no int(6) unsigned,
 	menu_no int(6) unsigned,
+	event_no int(6) unsigned,
     seller_no int(6) unsigned,
 	primary key (store_file_no),
 	foreign key (store_no) references tb_store(store_no),
 	foreign key (menu_no) references tb_menu(menu_no),
+	foreign key (event_no) references tb_event(event_no),
     foreign key (seller_no) references tb_seller(seller_no)
 );	
+select * from tb_store_file;  
+alter table tb_store_file add column event_no int(6) after seller_no; 
+alter table tb_store_file add foreign key (event_no) references tb_event(event_no);
 
+drop table tb_store_file;
+
+SET foreign_key_checks = 0;
+
+SET foreign_key_checks = 1;
 -------------------------------------------------------
 --비콘테이블
 -------------------------------------------------------			

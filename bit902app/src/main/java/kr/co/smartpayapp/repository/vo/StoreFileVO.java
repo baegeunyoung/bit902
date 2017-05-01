@@ -9,9 +9,16 @@ public class StoreFileVO {
 	private String filePath;
 	private long fileSize;
 	private int sellerNo;
+	private String stName;
 	
 
 	
+	public String getStName() {
+		return stName;
+	}
+	public void setStName(String stName) {
+		this.stName = stName;
+	}
 	public int getSellerNo() {
 		return sellerNo;
 	}

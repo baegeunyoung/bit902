@@ -4,13 +4,19 @@ public class StoreFileVO {
 	private int storeFileNo;
 	private int storeNo;
 	private int menuNo;
+	private int eventNo;
 	private String oriName;
 	private String systemName;
 	private String filePath;
 	private long fileSize;
 	private int sellerNo;
 	
-
+	public int getEventNo() {
+		return eventNo;
+	}
+	public void setEventNo(int eventNo) {
+		this.eventNo = eventNo;
+	}
 	
 	public int getSellerNo() {
 		return sellerNo;
