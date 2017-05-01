@@ -3,12 +3,12 @@ var fs   = require("fs");
 var io   = require("socket.io");
 
 var server = http.createServer(function(request, response) {
-  fs.readFile("server02.html", function(err, data) {
+  fs.readFile("alert.html", function(err, data) {
     response.writeHead(200, {"Content-Type": "text/html; charset=UTF-8"});
     response.end(data);
   });
 })
-.listen(10001, function () {
+.listen(8888, function () {
   console.log("서버 구동 시작...");
 });
 
