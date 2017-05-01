@@ -51,7 +51,9 @@ public class OrderController {
 	// ---- 접수 확인 ----
 	@RequestMapping("/receive.do")
 	public void receiveOrder(OrderVO orderVO) throws Exception {
-		
+		System.out.println(orderVO.getDeviceToken());
+		System.out.println(orderVO.getOrderContent());
+		System.out.println(orderVO.getOrderNo());
 		int receiveNo = orderVO.getOrderNo();
 		System.out.println(receiveNo);
 		orderService.receiveOrder(receiveNo);
