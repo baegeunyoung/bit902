@@ -27,7 +27,7 @@ public class OrderController {
 		
 		orderService.registOrder(order);
 		
-		ModelAndView mav = new ModelAndView("http://14.32.66.123/bit902node/alert/server.js");
+		ModelAndView mav = new ModelAndView("http://14.32.66.123:8888");
 		mav.addObject("msg", "주문이 들어왔습니다!");
 		return mav;
 	}

@@ -1,5 +1,6 @@
 var http = require('http');
 var fs = require('fs');
+var socketIo = io.listen(server);
 
 function send404Response(response) {
 	response.writeHead(404, {"Content-Type" : "text/plain"});
@@ -17,3 +18,7 @@ function onRequest(request, response) {
 }
 	http.createServer(onRequest).listen(8888);
 	console.log("서버가 돕니다");	
+
+	socketIo.sockets.on("connection", function (socket) {
+		  alert("d");
+		});
