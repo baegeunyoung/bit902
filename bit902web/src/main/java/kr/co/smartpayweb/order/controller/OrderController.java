@@ -54,7 +54,7 @@ public class OrderController {
 		
 		DEVICE_TOKEN = orderVO.getDeviceToken();
     	
-    	String title = orderVO.getSellerNo() + "Notification";
+    	String title = orderVO.getTableNo() + "번 테이블";
     	String message = orderVO.getOrderContent();
     	sendPushNotification(title, message);
     	
@@ -70,7 +70,7 @@ public class OrderController {
 		
 		DEVICE_TOKEN = orderVO.getDeviceToken();
 		
-		String title = orderVO.getSellerNo() + "Notification";
+		String title = orderVO.getTableNo() + "번 테이블";
     	String message = orderVO.getOrderContent();
     	sendPushNotification(title, message);
     	
@@ -79,13 +79,7 @@ public class OrderController {
 	
 	// ---- 구글 푸시 유틸 ----
     private static void sendPushNotification(String title, String message) throws Exception {
-    	String pushMessage = "{\"data\":{\"title\":\"" +
-                title +
-                "\",\"message\":\"" +
-                message +
-                "\"},\"to\":\"" +
-                DEVICE_TOKEN +
-                "\"}";
+    	String pushMessage = "{\"data\":{\"title\":\"" + title + "\",\"message\":\"" + message + "\"},\"to\":\"" + DEVICE_TOKEN + "\"}";
         // Create connection to send FCM Message request.
         URL url = new URL("https://fcm.googleapis.com/fcm/send");
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
