@@ -169,7 +169,7 @@ export class HomePage {
         beaconList.forEach((beacon) => {
           let beaconObject = new BeaconModel(beacon);
           this.beacons.push(beaconObject);
-          if (this.first && beacon.minor > 5000 && beacon.rssi >= -75) {
+          if (this.first && beacon.minor > 5000 && beacon.rssi >= -79) {
             this.first = false;
             IBeacon.stopRangingBeaconsInRegion(this.region)
               .then(
