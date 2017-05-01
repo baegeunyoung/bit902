@@ -18,7 +18,6 @@ var socketIo = io.listen(server);
 socketIo.on("connection", function (socket) {
   socket.on("echo", function (data) {
     console.log("클라이언트 전송 데이터 : " + data);
-    alert(data);
     socket.emit("serverEcho", data);
   });
 });
