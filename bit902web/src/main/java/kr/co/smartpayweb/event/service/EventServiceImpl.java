@@ -1,10 +1,13 @@
 package kr.co.smartpayweb.event.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.smartpayweb.repository.mapper.EventMapper;
 import kr.co.smartpayweb.repository.vo.EventVO;
+import kr.co.smartpayweb.repository.vo.StoreFileVO;
 
 @Service
 public class EventServiceImpl implements EventService{
@@ -18,8 +21,17 @@ public class EventServiceImpl implements EventService{
 	}
 
 	@Override
-	public void insertEvent(EventVO event) {
-		dao.insertEvent(event);
+	public boolean insertEvent(Map<String, Object> event) {
+		EventVO eventVO = (EventVO)event.get("eventVO");
+		dao.insertEvent(eventVO);
+		//int eventNo = dao.selectEventNO(eventVO.getSellerNo());
+		StoreFileVO fileVO = (StoreFileVO)event.get("fileVO");
+		fileVO.setEventNo(eventVO.getEventNo());
+		int result = dao.insertEventFileInfo(fileVO);
+		if (result != 0) {
+			return true;
+		}
+		return false;
 	}
 
 	@Override

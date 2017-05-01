@@ -38,16 +38,21 @@
 			                            <div class="card-content table-responsive">
 			                              <form method="post" action="${pageContext.request.contextPath}/event/regist.do">
 										<div class="form-group">
-									      <label for="textArea" class="col-lg-2 control-label">이벤트제목</label>
+									      <label for="title" class="col-lg-2 control-label">제목</label>
 									      <div class="col-lg-10">
-									        <textarea class="form-control" rows="5" name="title" id="textArea" placeholder="이벤트 제목을 적어주세요." ></textarea>
-									        <span class="help-block">이벤트 제목을 적어주세요.</span>
-									      <label for="textArea" class="col-lg-2 control-label">이벤트내용</label>
+									        <textarea class="form-control" rows="2" name="title" id="title" placeholder="이벤트 제목을 적어주세요." ></textarea>
+<!-- 									        <span class="help-block">이벤트 제목을 적어주세요.</span> -->
+									      </div>
+									      <label for="content" class="col-lg-2 control-label"> 내용</label>
 									      <div class="col-lg-10">
-									        <textarea class="form-control" rows="5" name="content" id="textArea" placeholder="이벤트 내용을 적어주세요." ></textarea>
-									        <span class="help-block">이벤트 내용을 적어주세요.</span>
+									        <textarea class="form-control" rows="5" name="content" id="content" placeholder="이벤트 내용을 적어주세요." ></textarea>
+<!-- 									        <span class="help-block">이벤트 내용을 적어주세요.</span> -->
 									      </div>
 									    </div>
+							      		  <label class="col-lg-2 control-label">이벤트이미지</label>
+									      <div>
+							         		<input type="file" name="attachFile" id="imgInp"/>
+							    		  </div>
 												<button class="btn btn-primary pull-right">저장</button>   
 											</form>
 										</div>
@@ -59,9 +64,9 @@
 									      <label for="textArea" class="col-lg-2 control-label">Textarea</label>
 									      <div class="col-lg-10">
 									        <textarea class="form-control" rows="5" name="title" id="textArea" placeholder="이벤트 제목을 적어주세요." >${event.eventTitle}</textarea>
-									        <span class="help-block">이벤트 제목을 적어주세요.</span>
+<!-- 									        <span class="help-block">이벤트 제목을 적어주세요.</span> -->
 									        <textarea class="form-control" rows="5" name="content" id="textArea" placeholder="이벤트 내용을 적어주세요." >${event.eventContent}</textarea>
-									        <span class="help-block">이벤트 내용을 적어주세요.</span>
+<!-- 									        <span class="help-block">이벤트 내용을 적어주세요.</span> -->
 									      </div>
 									    </div>
 												<button type="submit" class="btn btn-primary pull-right" id="modify">수정</button>
