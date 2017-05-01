@@ -5,13 +5,14 @@
 
 	<resultMap type="EventVO" id="eventMap">
 		<result column="event_no" property="eventNo"/>
+		<result column="event_title" property="eventTitle"/>
 		<result column="event_content" property="eventContent"/>
 		<result column="seller_no" property="sellerNo"/>
 	</resultMap>
 
 	<insert id="insertEvent" parameterType="EventVO">
-		insert into tb_event(event_content, seller_no)
-		values(#{eventContent}, #{sellerNo})
+		insert into tb_event(event_title, event_content, seller_no)
+		values(#{eventTitle}, #{eventContent}, #{sellerNo})
 	</insert>
 	
 	<select id="readEvent" parameterType="int"  resultMap="eventMap">
@@ -28,7 +29,8 @@
 	
 	<update id="eventModify" parameterType="EventVO">
 		update tb_event
-			set event_content = #{eventContent}
+			set event_title = #{eventTitle},
+				event_content = #{eventContent},
 			where seller_no = #{sellerNo}
 	</update>
 

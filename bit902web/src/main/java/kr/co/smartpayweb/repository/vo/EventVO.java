@@ -3,9 +3,17 @@ package kr.co.smartpayweb.repository.vo;
 public class EventVO {
 
 	private int eventNo;
+	private String eventTitle;
 	private String eventContent;
 	private int sellerNo;
 	
+	
+	public String getEventTitle() {
+		return eventTitle;
+	}
+	public void setEventTitle(String eventTitle) {
+		this.eventTitle = eventTitle;
+	}
 	public int getEventNo() {
 		return eventNo;
 	}
