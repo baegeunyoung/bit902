@@ -26,7 +26,7 @@
 	</select>
 	
 <!-- 	sellerNo로 eventNo조회하기 -->
-	<select id="selectEventNO" parameterType="int"  resultMap="int">
+	<select id="selectEventNO" parameterType="int"  resultType="int">
 		select event_no
 			from tb_event
 			where seller_no = #{sellerNo}

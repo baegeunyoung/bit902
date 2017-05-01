@@ -36,9 +36,9 @@ public class EventServiceImpl implements EventService{
 	@Override
 	public void eventDelete(int sellerNo) {
 		int eventNo = dao.selectEventNO(sellerNo);
-		dao.eventFileInfoDelete(eventNo);
-		dao.eventDelete(sellerNo);
-		
+		if(dao.eventFileInfoDelete(eventNo) != 0 ) {
+			dao.eventDelete(sellerNo);
+		}
 	}
 
 	@Override
