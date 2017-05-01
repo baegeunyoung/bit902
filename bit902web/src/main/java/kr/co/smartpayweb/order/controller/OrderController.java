@@ -5,13 +5,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -51,15 +48,11 @@ public class OrderController {
 	// ---- 접수 확인 ----
 	@RequestMapping("/receive.do")
 	public void receiveOrder(OrderVO orderVO) throws Exception {
-		System.out.println(orderVO.getDeviceToken());
-		System.out.println(orderVO.getOrderContent());
-		System.out.println(orderVO.getOrderNo());
+		
 		int receiveNo = orderVO.getOrderNo();
-		System.out.println(receiveNo);
 		orderService.receiveOrder(receiveNo);
 		
 		DEVICE_TOKEN = orderVO.getDeviceToken();
-    	System.out.println(DEVICE_TOKEN);
     	
     	String title = orderVO.getSellerNo() + "Notification";
     	String message = orderVO.getOrderContent();
@@ -68,11 +61,16 @@ public class OrderController {
 	
 	// ---- 조리 완료 ----
 	@RequestMapping("/complete.do")
-	public void completeOrder(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
+	public void completeOrder(OrderVO orderVO) throws Exception {
 		
-		int completeNo = Integer.parseInt(request.getParameter("completeNo"));
+		int completeNo = orderVO.getOrderNo();
 		orderService.completeOrder(completeNo);
-		request.getRequestDispatcher("state.do").forward(request, response);
+		
+		DEVICE_TOKEN = orderVO.getDeviceToken();
+		
+		String title = orderVO.getSellerNo() + "Notification";
+    	String message = orderVO.getOrderContent();
+    	sendPushNotification(title, message);
 	}
 	
     private static String sendPushNotification(String title, String message) throws Exception {
@@ -95,9 +93,6 @@ public class OrderController {
         OutputStream outputStream = conn.getOutputStream();
         outputStream.write(pushMessage.getBytes());
 
-        System.out.println(conn.getResponseCode());
-        System.out.println(conn.getResponseMessage());
-        
-        return "redirect:state.do";
+        return "redirect:/order/state.do";
     }
 }
