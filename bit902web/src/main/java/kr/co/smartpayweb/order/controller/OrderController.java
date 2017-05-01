@@ -47,7 +47,7 @@ public class OrderController {
 	
 	// ---- 접수 확인 ----
 	@RequestMapping("/receive.do")
-	public void receiveOrder(OrderVO orderVO) throws Exception {
+	public String receiveOrder(OrderVO orderVO) throws Exception {
 		
 		int receiveNo = orderVO.getOrderNo();
 		orderService.receiveOrder(receiveNo);
@@ -57,6 +57,8 @@ public class OrderController {
     	String title = orderVO.getSellerNo() + "Notification";
     	String message = orderVO.getOrderContent();
     	sendPushNotification(title, message);
+    	
+    	return "redirect:state.do";
 	}
 	
 	// ---- 조리 완료 ----
@@ -75,6 +77,7 @@ public class OrderController {
     	return "redirect:state.do";
 	}
 	
+	// ---- 구글 푸시 유틸 ----
     private static void sendPushNotification(String title, String message) throws Exception {
         String pushMessage = "{\"data\":{\"title\":\"" +
                 title +

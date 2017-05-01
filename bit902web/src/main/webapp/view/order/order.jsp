@@ -63,7 +63,7 @@
 																<form name="receive" action="${pageContext.request.contextPath}/order/receive.do" method="post">
 																	<input type="hidden" name="orderNo" id="orderNo" value="${list.orderNo}" />
 																	<input type="hidden" name="deviceToken" id="deviceToken" value="${list.deviceToken}" />
-																	<input type="hidden" name="content" id="content" value="주문이 접수되었습니다." />
+																	<input type="hidden" name="orderContent" id="orderContent" value="주문이 접수되었습니다." />
 																	<button type="submit" class="btn btn-primary">접수확인</button>
 																</form>
 															</c:when>
@@ -74,7 +74,7 @@
 															<form name="complete" action="${pageContext.request.contextPath}/order/complete.do" method="post">
 																<input type="hidden" name="completeNo" id="completeNo" value="${list.orderNo}" />
 																<input type="hidden" name="deviceToken" id="deviceToken" value="${list.deviceToken}" />
-																<input type="hidden" name="content" id="content" value="요리가 완료되었습니다." />
+																<input type="hidden" name="orderContent" id="orderContent" value="요리가 완료되었습니다." />
 																<button type="submit" class="btn btn-primary">조리완료</button>
 															</form>
 													</td>
