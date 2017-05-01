@@ -169,7 +169,7 @@ export class HomePage {
         beaconList.forEach((beacon) => {
           let beaconObject = new BeaconModel(beacon);
           this.beacons.push(beaconObject);
-          if (this.first && beacon.minor > 5000 && beacon.rssi >= -70) {
+          if (this.first && beacon.minor > 5000 && beacon.rssi >= -75) {
             this.first = false;
             IBeacon.stopRangingBeaconsInRegion(this.region)
               .then(
@@ -345,7 +345,7 @@ export class HomePage {
 			pay_method : 'card',
 			merchant_uid : 'merchant_' + new Date().getTime(),
       name : storeName,
-			amount : this.total,
+			amount : /*this.total*/1000,
 		},response => {
 	//결제 후 호출되는 callback함수
 	if ( response.success ) { //결제 성공
