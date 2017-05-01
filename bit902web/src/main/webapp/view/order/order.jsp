@@ -62,6 +62,7 @@
 															<c:when test="${list.orderState == '0'}">
 																<form name="receive" action="${pageContext.request.contextPath}/order/receive.do" method="post">
 																	<input type="hidden" name="receiveNo" id="receiveNo" value="${list.orderNo}" />
+																	<input type="text" name="디바토" id="dt" value="${list.deviceToken}" />
 																	<button type="submit" class="btn btn-primary">접수확인</button>
 																</form>
 															</c:when>
@@ -137,7 +138,6 @@
 // 			});
 // 		}
 	</script>
-	<iframe src="http://14.32.66.123:8888" ></iframe>
-<!-- 	style="display:none;" -->
+	<iframe src="http://14.32.66.123:8888" style="display:none;"></iframe>
 </body>
 </html>
