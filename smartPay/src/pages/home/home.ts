@@ -12,6 +12,22 @@ import { DetailsPage } from '../details/details';
 import { StampPage } from '../stamp/stamp';
 declare var IMP: any;
 
+interface MENU{
+  menuNo: number;
+  storeNo: number;
+  sellerNo: number;
+  name: string;
+  content: string;
+  price: number;
+  size: string;
+  stName: string;
+  quantity: number;
+  tokenObj: Object;
+  orderContentObj: Object;
+  minorObj: Object;
+  majorObj: Object;
+}
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -21,16 +37,16 @@ export class HomePage {
   private token: string;
 
   //메뉴
-  menu: Array<Object>;
+  menu: Array<MENU>;
   private menuFile:Array<string>;
-  tokenObj: Object;
-  majorObj: Object;
-  minorObj: Object; 
+  tokenObj: any;
+  majorObj: any;
+  minorObj: any; 
+  orderContentObj: any;
   store: string = "";
   id: any;
   quantity:any;
   orderContent="";
-  orderContentObj: Object;
   storeName: string;
   //비콘
   isScanning: boolean = false;
@@ -232,6 +248,15 @@ export class HomePage {
     }
   }
 
+ get total(){
+   return this.menu.reduce( (total, v) => total + this.subTotal(v), 0 );
+ }
+ 
+ subTotal( menu ){
+   return menu.price * ( menu.quantity ? menu.quantity : 0);
+ }
+
+
    //디바이스토큰 저장하기 + 푸시알림시 이벤트
    initPushNotification() {
      const options: PushOptions = {
@@ -312,7 +337,7 @@ export class HomePage {
     }
 
     //카카오페이 결제하기
-    payment(storeName: string, amount: number) {
+    payment(storeName: string) {
 		IMP.init('imp91789758');
 
 		IMP.request_pay({
@@ -320,7 +345,7 @@ export class HomePage {
 			pay_method : 'card',
 			merchant_uid : 'merchant_' + new Date().getTime(),
       name : storeName,
-			amount : amount,
+			amount : this.total,
 		},response => {
 	//결제 후 호출되는 callback함수
 	if ( response.success ) { //결제 성공
@@ -329,7 +354,7 @@ export class HomePage {
     this.order();
     this.menu = undefined;
     this.store = "";
-    this.navCtrl.push(StampPage, {amount: amount});
+    this.navCtrl.push(StampPage, {amount: this.total});
 	} else {
     alert('결제실패 : ' + response.error_msg);
 	}
