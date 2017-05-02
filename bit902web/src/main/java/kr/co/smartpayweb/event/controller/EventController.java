@@ -50,8 +50,6 @@ public class EventController {
 		
 		*/
 		
-		
-		
 		//---------------------------------
 		
 		Map<String, Object> event = new HashMap<>();
@@ -110,13 +108,13 @@ public class EventController {
 			
 		}
 		if(eventService.insertEvent(event)) {
-			attr.addFlashAttribute("msg", "게시물이 등록되었습니다");
+			attr.addFlashAttribute("msg", "등록되었습니다");
 		}
 		else {
 			attr.addFlashAttribute("msg", "등록실패! 다시 시도해 주세요.");
 		}
 		
-		return "/menu/list";
+		return "event/regist";
 	}
 
 	
@@ -126,7 +124,9 @@ public class EventController {
 		SellerVO seller = (SellerVO)session.getAttribute("seller");
 		int sellerNo = seller.getSellerNo();
 		EventVO event = eventService.readEvent(sellerNo);
-		
+		if(request.getParameter("msg") != null) {
+			request.setAttribute("msg", request.getParameter("msg"));
+		}
 		request.setAttribute("event", event);
 		RequestDispatcher rd = request.getRequestDispatcher("/view/event/registForm.jsp");
 		rd.forward(request, response);

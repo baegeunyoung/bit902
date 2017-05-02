@@ -83,6 +83,10 @@
 		</div>
 	</div>
 <script>
+	if('${msg}'){
+		alert('${msg}');
+	}
+	
 	$(document).ready(function() {
 		var formObj = $("form[role='form']");
 		

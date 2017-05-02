@@ -10,6 +10,7 @@
 	</resultMap>
 	<resultMap type="HomeEventInfoVO" id="homeEventInfoMap">
 		<result column="name" property="storeName"/>
+		<result column="event_title" property="eventTitle"/>
 		<result column="event_content" property="eventContent"/>
 		<result column="system_name" property="systemName"/>
 		<result column="file_path" property="filePath"/>
@@ -40,7 +41,8 @@
 	
 	<!-- //앱 홈화면에 이벤트정보 가져오기 -->
 	<select id="selectHomeEventInfo" resultMap="homeEventInfoMap">
-		select 	e.event_content, 
+		select 	e.event_title,
+				e.event_content, 
 				s.name, 
 				sf.file_path, 
 				sf.system_name
@@ -48,7 +50,7 @@
 		inner join tb_store s
 			on e.seller_no = s.seller_no
 		inner join tb_store_file sf
-			on e.seller_no = sf.seller_no and sf.menu_no is null
+			on e.seller_no = sf.seller_no and sf.event_no is not null
 		order by e.event_no desc limit 10
 	</select>
 

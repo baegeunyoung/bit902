@@ -2,9 +2,18 @@ package kr.co.smartpayapp.repository.vo;
 
 public class HomeEventInfoVO {
 	private String storeName;
+	private String eventTitle;
 	private String eventContent;
 	private String systemName;
 	private String filePath;
+	
+	
+	public String getEventTitle() {
+		return eventTitle;
+	}
+	public void setEventTitle(String eventTitle) {
+		this.eventTitle = eventTitle;
+	}
 	public String getStoreName() {
 		return storeName;
 	}
