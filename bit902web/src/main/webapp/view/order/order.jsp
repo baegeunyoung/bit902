@@ -141,6 +141,16 @@
 // 			});
 // 		}
 	</script>
-	<iframe src="http://14.32.66.123:8888" style="display:none;"></iframe>
+	<script src="http://14.32.66.123:8888/socket.io/socket.io.js"></script>
+	<script>
+	var socket = io.connect();
+//     socket.emit("login", {
+//         userid: "ungmo2@gmail.com"
+//       });
+	socket.on("signal", function(data) {
+	      alert(data);
+	    });
+	</script>
+<!-- 	<script src="http://14.32.66.123:8888" style="display:none;"></iframe> -->
 </body>
 </html>
