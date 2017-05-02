@@ -80,6 +80,7 @@
 	                              <p class="category">상점의 메뉴를 확인하세요</p>
 	                          </div>
 	                            <div class="card-content table-responsive">
+	                            <form action='/bit902web/menu/update.do' enctype='multipart/form-data' method='post'>
 	                                <table class="table table-hover">
 	                                    <thead class="text-primary">
 	                                        <th>메뉴사진</th>
@@ -88,8 +89,10 @@
 	                                    	<th>가격</th>
 	                                    	<th>설명</th>
 	                                    </thead>
-	                                    <tbody id="list"></tbody>
+	                                    <tbody id="list">
+	                                    </tbody>
 	                                </table>
+	                           </form>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -119,21 +122,21 @@ function makeMenu(){
 		
 		for(var i=0; i < menus.length; i++){
   		console.log("메뉴:" + menus[i].menuNo);
-		html+= "<tr id='tr" + menus[i].menuNo + "' style='height:100px;width:100%''>"
+		html+= "<tr id='tr" + menus[i].menuNo + "' style='height:100px;width:100%''>";
 			
 			for(var j=0; j < file.length; j++){
 				
 				if(menus[i].menuNo == file[j].menuNo){
  			console.log("파일:" + file[j].menuNo);
-		html+=                  	"<td><img src='/bit902web/upload"+file[j].filePath+"/"+file[j].systemName + "'style='height: 100px; width: 100px;'></td>"
+		html+=                  	"<td><img src='/bit902web/upload"+file[j].filePath+"/"+file[j].systemName + "'style='height: 100px; width: 100px;'></td>";
 				}
 			}
-		html+=                      "<td>"+menus[i].name+"</td>"
-		html+=                      "<td>"+menus[i].size+"</td>"
-		html+=                      "<td>"+menus[i].price+"</td>"
-		html+=                     	"<td>"+menus[i].content+"</td>"
-		html+=                     	"<td><a href='javascript:menuUpdateForm(" + menus[i].menuNo + ")' role='button'>수정 / </a><a href='javascript:menuDelete(" + menus[i].menuNo + ")' role='button'>삭제</a></td>"                    
-		html+=                    "</tr>"
+		html+=                      "<td>"+menus[i].name+"</td>";
+		html+=                      "<td>"+menus[i].size+"</td>";
+		html+=                      "<td>"+menus[i].price+"</td>";
+		html+=                     	"<td>"+menus[i].content+"</td>";
+		html+=                     	"<td><a href='javascript:menuUpdateForm(" + menus[i].menuNo + ")' role='button'>수정 / </a><a href='javascript:menuDelete(" + menus[i].menuNo + ")' role='button'>삭제</a></td>" ;                   
+		html+=                    "</tr>";
 			
 		}
 		if (menus.length == 0) {
@@ -143,7 +146,7 @@ function makeMenu(){
 		
 	});	
 }
-//메뉴 수정 
+//메뉴 수정폼 
   	function menuUpdateForm(menuNo){
   		$.ajax({
   			type:"POST",
@@ -151,25 +154,23 @@ function makeMenu(){
   			dataType: "JSON",
   			data: {menuNo : menuNo}
   		}).done(function (result){
-  		alert("성공");
 		var html="";
-  		alert(result.menu[0].name);
-  		alert(result.menuFile[0].filePath);
   	
 		
-		html+= "<Form action='/bit902web/menu/update.do' enctype='multipart/form-data' method='post'>";
+// 		html+= "<form action='/bit902web/menu/update.do' enctype='multipart/form-data' method='post'>";
 		html+=				 "<tr id='tr" + result.menu[0].menuNo + "' style='height:100px;width:100%'>";
-		html+=                  	"<td><img src='/bit902web/upload"+result.menuFile[0].filePath+"/"+result.menuFile[0].systemName + "'style='height: 100px; width: 100px;'></td>";
+// 		html+=                  	"<td><img src='/bit902web/upload"+result.menuFile[0].filePath+"/"+result.menuFile[0].systemName + "'style='height: 100px; width: 100px;'></td>";
+		html+=                      "<input type='hidden' name='menuNo' value='"+result.menu[0].menuNo+"'>";
 		html+=                      "<td>"+"<input type='text' name='name' value='"+result.menu[0].name+"'></td>";
 		html+=                      "<td>"+"<input name='size' value='"+result.menu[0].size+"'></td>";
 		html+=                      "<td>"+"<input name='price' value='"+result.menu[0].price+"'></td>";
 		html+=                     	"<td>"+"<input name='content' value='"+result.menu[0].content+"'></td>";
-		html+=                     	"<td><a href='javascript:menuUdate(" + result.menu[0].menuNo + ")' role='button'>수정</a></td>";              
+		html+=                     	"<td><button>수정</button></td>";              
 		html+=              "</tr>";
-  		html+= "</Form>";
+//   		html+= "</form>";
   	
 
-		$('#tr' + result.menu[0].menuNo).html(html).trigger("create");
+		$('#tr' + result.menu[0].menuNo).replaceWith(html).trigger("create");
   		
 
   		}).
@@ -177,6 +178,7 @@ function makeMenu(){
 			alert("에러발생1 :" + errorText);
   		});
 }
+
 
 //메뉴 삭제
 	function menuDelete(menuNo) {
@@ -188,6 +190,7 @@ function makeMenu(){
 			makeMenu();
 		});	
 	}
+
 //메뉴 작성폼
 function writeform(){
 	var fd = new FormData();

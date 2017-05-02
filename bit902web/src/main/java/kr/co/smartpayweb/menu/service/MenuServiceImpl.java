@@ -60,4 +60,11 @@ public class MenuServiceImpl implements MenuService {
 		
 		return result;
 	}
+
+	public void menuUpdate(MenuVO menu) throws Exception {
+		dao.menuUpdate(menu);
+		
+	}
+
 }
+

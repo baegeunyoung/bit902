@@ -130,6 +130,15 @@ public class MenuController {
 		
 		return service.updateForm(menuNo);
 	}
+	
+	@RequestMapping("/update.do")
+	public String menuUpdate(MenuVO menu) throws Exception{
+		System.out.println("zz");
+		System.out.println(menu.getName());
+		System.out.println(menu.getMenuNo());
+		service.menuUpdate(menu);
+		return "redirect:/view/menu/list.jsp";
+	}
 }
 
 
