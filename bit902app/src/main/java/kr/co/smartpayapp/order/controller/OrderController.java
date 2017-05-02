@@ -23,12 +23,12 @@ public class OrderController {
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
-	public ModelAndView orderRegist(@RequestBody ArrayList<HashMap<String,String>> order) throws Exception {
+	public String orderRegist(@RequestBody ArrayList<HashMap<String,String>> order) throws Exception {
 		
 		orderService.registOrder(order);
 		
-		ModelAndView mav = new ModelAndView("http://14.32.66.123:8888");
-		mav.addObject("msg", "주문이 들어왔습니다!");
-		return mav;
+//		ModelAndView mav = new ModelAndView("http://14.32.66.123:8888");
+//		mav.addObject("msg", "주문이 들어왔습니다!");
+		return "redirect:http://14.32.66.123:8888";
 	}
 }
