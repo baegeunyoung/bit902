@@ -80,6 +80,7 @@
     inner join tb_seller se
     		on st.seller_no = se.seller_no
     where m.seller_no = #{sellerNo}
+      and m.state = "0"
     </select>
     	   
 <!--     	 order by name desc 	  -->

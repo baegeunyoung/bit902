@@ -1,7 +1,6 @@
 package kr.co.smartpayweb.menu.service;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,8 +52,12 @@ public class MenuServiceImpl implements MenuService {
 		dao.delete(menuNo);
 	}
 	
-	public List<MenuVO> updateForm(int menuNo) throws Exception{
+	public Map<String, Object> updateForm(int menuNo) throws Exception{
 		System.out.println("컨트롤러2");
-		return dao.updateForm(menuNo);
+		Map<String, Object> result = new HashMap<>();
+		result.put("menu", dao.updateForm(menuNo));
+		result.put("menuFile", dao.updateFormStoreFileByNo(menuNo));
+		
+		return result;
 	}
 }

@@ -19,5 +19,6 @@ public interface MenuMapper {
 	public void insertMenuFile(StoreFileVO menuFile) throws Exception;
 	public List<MenuVO> selectStoreFileByNo(int sellerNo) throws Exception;
 	
+	public List<MenuVO> updateFormStoreFileByNo(int menuNo) throws Exception;
 	public List<MenuVO> updateForm(int menuNo) throws Exception;
 }

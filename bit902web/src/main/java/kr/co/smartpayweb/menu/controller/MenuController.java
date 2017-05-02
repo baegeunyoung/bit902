@@ -4,7 +4,6 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -121,11 +120,13 @@ public class MenuController {
 		service.delete(menuNo);
 		return "redirect:list.do";
 	}
-	
+
+	@ResponseBody
 	@RequestMapping("/updateForm.do")
-	public List<MenuVO> updateForm(HttpServletRequest request, HttpSession session) throws Exception {
+	public Map<String, Object> updateForm(HttpServletRequest request, HttpSession session) throws Exception {
 		System.out.println("컨트롤러1");
 		int menuNo = Integer.parseInt(request.getParameter("menuNo"));
+		System.out.println(menuNo);
 		
 		return service.updateForm(menuNo);
 	}

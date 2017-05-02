@@ -1,9 +1,6 @@
 package kr.co.smartpayweb.menu.service;
 
-import java.util.List;
 import java.util.Map;
-
-import kr.co.smartpayweb.repository.vo.MenuVO;
 
 public interface MenuService {
 	
@@ -13,5 +10,5 @@ public interface MenuService {
 
 	public void delete(int menuNo) throws Exception;
 	
-	public List<MenuVO> updateForm(int menuNo) throws Exception;
+	public Map<String, Object> updateForm(int menuNo) throws Exception;
 }	
