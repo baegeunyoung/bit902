@@ -14,20 +14,8 @@
 		<result property="price" column="price"/>
 		<result property="content" column="content"/>
 	</resultMap>
-<!--	
-	 <select id="getStoreByStoreNo" resultMap="menuMap">
-    	select m.name, 
-    		   m.content,
-    		   m.price,
-    		   m.size
-    	  from tb_menu m inner join 
-    	       tb_store s
-    		on m.store_no = s.store_no
-    	  where m.store_no = #{store_no}
-    	 order by m.name desc 	 
-    </select>
-  -->
-  
+
+ <!-- 메뉴 조회 -->
   	<select id="getStoreByStoreNo"  parameterType="int" resultMap="menuMap">
     	select m.name, 
     		   m.store_no,
@@ -45,8 +33,7 @@
     	  m.state = "0"
     </select>
     	   
-<!--     	 order by name desc 	  -->
-	    
+<!-- 메뉴 등록하기 -->    
 	<insert id="insertMenu" parameterType="MenuVO">
 	    <selectKey keyProperty="menuNo" order="AFTER" resultType="int">
 	        select last_insert_id()
@@ -70,14 +57,23 @@
 		    #{content}
 		)    
     </insert>
-   
+ <!--  메뉴 삭제하기 -->
 	<update id="delete" parameterType="int">
 	    update tb_menu
 	       set state= "1"
 	     where menu_no = #{menuNo}
 	</update>
+<!-- 메뉴수정하기 -->
+	<update id="menuUpdate" parameterType="MenuVO">
+	    update tb_menu
+	       set name = #{name},
+	       	   size = #{size},
+	       	   price = #{price},
+	       	   content = #{content}
+	     where menu_no = #{menuNo}	    
+	</update>
 	
-
+<!-- 메뉴수정하기FORM으로 수정 -->
 	<select id="updateForm" parameterType="int" resultMap="menuMap">
 	    select *
 	      from tb_menu
@@ -96,7 +92,7 @@
 		<result property="fileSize" column="file_size"/>
 	</resultMap>
    
- 
+ <!-- 메뉴이미지 조회하기 -->
 	 <select id="selectStoreFileByNo" parameterType="int" resultMap="menuFileMap">
 	    select store_file_no,
 	    	   menu_no,
@@ -109,18 +105,14 @@
 	</select>  
 
 
-
+<!-- 수정폼으로 이동시 메뉴이미지 보기 -->
 	 <select id="updateFormStoreFileByNo" parameterType="int" resultMap="menuFileMap">
-	    select store_file_no,
-	    	   seller_no,
-	    	   file_path,	
-	    	   ori_name,
-	    	   system_name
+	    select *
 	      from tb_store_file 
-	  	where menu_no = #{menuNo}      
+	  	where menu_no = #{ menuNo }    
 	</select>  
 
-	 
+<!-- 메뉴 이미지 등록 -->	 
   <insert id="insertMenuFile" parameterType="StoreFileVO">
 		insert into tb_store_file (
 			menu_no, 

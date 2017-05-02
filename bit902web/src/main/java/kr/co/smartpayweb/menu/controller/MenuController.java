@@ -31,7 +31,7 @@ public class MenuController {
 	@Autowired
 	MenuService service;
 	
-	
+	//메뉴 조회
 	@ResponseBody
 	@RequestMapping("/list.do")
 	public Map<String, Object> list(HttpSession session) throws Exception {
@@ -42,7 +42,7 @@ public class MenuController {
 		
 		return service.list(sellerNo);
 	}
-	
+	//메뉴 등록
 	@RequestMapping("/write.do")
 	public String write(MultipartHttpServletRequest mRequest, RedirectAttributes attr,HttpSession session) throws Exception{
 		
@@ -112,7 +112,7 @@ public class MenuController {
 		
 		return "redirect:list.do";
 	}
-	
+	//메뉴 삭제(활성화 비활성화 상태변경)
 	@RequestMapping("/delete.do")
 	public String delete(HttpServletRequest request, HttpSession session) throws Exception {
 				
@@ -120,7 +120,7 @@ public class MenuController {
 		service.delete(menuNo);
 		return "redirect:list.do";
 	}
-
+	//메뉴변경form으로 이동
 	@ResponseBody
 	@RequestMapping("/updateForm.do")
 	public Map<String, Object> updateForm(HttpServletRequest request, HttpSession session) throws Exception {
@@ -130,7 +130,7 @@ public class MenuController {
 		
 		return service.updateForm(menuNo);
 	}
-	
+	//메뉴변경
 	@RequestMapping("/update.do")
 	public String menuUpdate(MenuVO menu) throws Exception{
 		service.menuUpdate(menu);
