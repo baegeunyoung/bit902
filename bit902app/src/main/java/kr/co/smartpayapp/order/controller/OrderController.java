@@ -23,12 +23,12 @@ public class OrderController {
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
-	public ModelAndView orderRegist(@RequestBody ArrayList<HashMap<String,String>> order) throws Exception {
+	public String orderRegist(@RequestBody ArrayList<HashMap<String,String>> order) throws Exception {
 		
 		orderService.registOrder(order);
 		
-		ModelAndView mav = new ModelAndView("/bit902node/alert/alert.html");
-		mav.addObject("msg", "주문이 들어왔습니다!");
-		return mav;
+//		ModelAndView mav = new ModelAndView("/bit902node/alert/alert.html");
+//		mav.addObject("msg", "주문이 들어왔습니다!");
+		return "redirect:/bit902node/alert/alert.html";
 	}
 }
