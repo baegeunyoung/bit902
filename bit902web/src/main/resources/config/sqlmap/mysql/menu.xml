@@ -83,7 +83,8 @@
 	      from tb_menu
 	     where menu_no = #{menuNo}
 	</select>	
-   <!--  파일 -->
+  
+	<!--  파일 -->
      <resultMap id="menuFileMap" type="StoreFileVO" >
 		<result property="storeFileNo" column="store_file_no"/>
 		<result property="storeNo" column="store_no"/>
@@ -95,18 +96,6 @@
 		<result property="fileSize" column="file_size"/>
 	</resultMap>
    
-<!--     <select id="selectStoreFileByNo" parameterType="int" resultMap="menuFileMap"> -->
-<!-- 	    select sf.store_file_no, -->
-<!-- 	           sf.menu_no, -->
-<!-- 	           sf.file_path, -->
-<!-- 	           sf.store_no, -->
-<!-- 	           sf.seller_no -->
-<!-- 	      from tb_store_file sf inner join -->
-<!-- 	      	   tb_seller s -->
-<!-- 	     	on sf.seller_no = s.seller_no -->
-<!-- 	     where sf.seller_no = #{sellerNo}       -->
-<!-- 	</select>   -->
-    
  
 	 <select id="selectStoreFileByNo" parameterType="int" resultMap="menuFileMap">
 	    select store_file_no,
@@ -123,7 +112,6 @@
 
 	 <select id="updateFormStoreFileByNo" parameterType="int" resultMap="menuFileMap">
 	    select store_file_no,
-	    	   menu_no,
 	    	   seller_no,
 	    	   file_path,	
 	    	   ori_name,
@@ -131,15 +119,8 @@
 	      from tb_store_file 
 	  	where menu_no = #{menuNo}      
 	</select>  
-<!-- 	<select id="selectStoreFileByNo" parameterType="int" resultMap="menuFileMap"> -->
-<!-- 	 select	  * -->
-<!--     	  from tb_menu_file mf -->
-<!--     inner join tb_store st -->
-<!--     		on mf.store_no = st.store_no -->
-<!--     inner join tb_seller se -->
-<!--     		on st.seller_no = se.seller_no -->
-<!--     where mf.seller_no = #{sellerNo} -->
-<!--     </select>   -->
+
+	 
   <insert id="insertMenuFile" parameterType="StoreFileVO">
 		insert into tb_store_file (
 			menu_no, 

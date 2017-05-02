@@ -151,26 +151,27 @@ function makeMenu(){
   			dataType: "JSON",
   			data: {menuNo : menuNo}
   		}).done(function (result){
+  		alert("성공");
 		var html="";
+  		alert(result.menu[0].name);
+  		alert(result.menuFile[0].filePath);
+  	
 		
-		html+= "<Form action='/bit902web/menu/update.do'>";
-		html+= "<tr id='tr" + result.menuNo + "' style='height:100px;width:100%'>";
-			
-// 			for(var j=0; j < file.length; j++){
-				
-// 				if(menus[i].menuNo == file[j].menuNo){
- 			
-// 		html+=                  	"<td><img src='/bit902web/upload"+file[j].filePath+"/"+file[j].systemName + "'style='height: 100px; width: 100px;'></td>";
-// 				}
-// 			}
-		html+=                      "<td>"+"<input name='name' value='"+result.name+"'></td>";
-		html+=                      "<td>"+"<input name='size' value='"+result.size+"'></td>";
-		html+=                      "<td>"+"<input name='price' value='"+result.price+"'></td>";
-		html+=                     	"<td>"+"<input name='content' value='"+result.content+"'></td>";
-		html+=                     	"<td><a href='javascript:menuUdate(" + result.menuNo + ")' role='button'>수정</a></td>";              
-		html+=                    "</tr>";
+		html+= "<Form action='/bit902web/menu/update.do' enctype='multipart/form-data' method='post'>";
+		html+=				 "<tr id='tr" + result.menu[0].menuNo + "' style='height:100px;width:100%'>";
+		html+=                  	"<td><img src='/bit902web/upload"+result.menuFile[0].filePath+"/"+result.menuFile[0].systemName + "'style='height: 100px; width: 100px;'></td>";
+		html+=                      "<td>"+"<input type='text' name='name' value='"+result.menu[0].name+"'></td>";
+		html+=                      "<td>"+"<input name='size' value='"+result.menu[0].size+"'></td>";
+		html+=                      "<td>"+"<input name='price' value='"+result.menu[0].price+"'></td>";
+		html+=                     	"<td>"+"<input name='content' value='"+result.menu[0].content+"'></td>";
+		html+=                     	"<td><a href='javascript:menuUdate(" + result.menu[0].menuNo + ")' role='button'>수정</a></td>";              
+		html+=              "</tr>";
   		html+= "</Form>";
-		$("#tr" + result.menuNo).replaceWith(html).trigger("create");
+  	
+
+		$('#tr' + result.menu[0].menuNo).html(html).trigger("create");
+  		
+
   		}).
   		fail(function(jqXhr, testStatus, errorText){
 			alert("에러발생1 :" + errorText);
