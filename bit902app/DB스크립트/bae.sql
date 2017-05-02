@@ -24,6 +24,10 @@ primary key(seller_no)
 );
 
 select * from tb_seller;
+
+delete 
+from tb_seller
+where name='st1' or name='st2'
 -------------------------------------------------------
 --상점테이블
 -------------------------------------------------------
@@ -86,6 +90,23 @@ SET foreign_key_checks = 1;
 
 select * from tb_menu 
 
+select * from tb_store_file
+
+select m.name, 
+    		   m.store_no,
+    		   m.seller_no,
+    		   m.content,
+    		   m.price,
+    		   m.size,
+    		   m.menu_no,
+    		   st.name as stName
+    	  from tb_menu m
+    inner join tb_store st
+    		on m.store_no = st.store_no
+    inner join tb_seller se
+    		on st.seller_no = se.seller_no
+    where m.seller_no = 80;
+
 
 
 
@@ -108,6 +129,9 @@ create table tb_store_file(
 );	
 
 select * from tb_store_file;
+
+update tb_store_file set seller_no=80
+where store_no=23;
 
 show create table tb_store_file;
 drop table tb_store_file;
@@ -202,6 +226,9 @@ foreign key(seller_no) references tb_seller(seller_no)
 
 drop table tb_event
 
+delete
+from tb_event;
+
 select * from tb_event;
 show create table tb_event;
 tb_event_ibfk_2
@@ -231,3 +258,7 @@ drop table tb_seller;
 select * from tb_buyer;
 delete from tb_buyer
 where name="쟝아";
+
+select * from tb_order;
+
+update tb_order set order_state = 0 where order_no = 155;

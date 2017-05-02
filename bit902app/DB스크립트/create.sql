@@ -50,11 +50,15 @@ name varchar(100) not null,
 price int(10) unsigned not null,
 size varchar(30),
 seller_no int(6) unsigned,
+state varchar(1) default '0',
 primary key(menu_no),
 foreign key(store_no) references tb_store(store_no),
 foreign key(seller_no) references tb_seller(seller_no)
 );
+select * from tb_menu
 
+alter table tb_menu add column state varchar(1) default '0' after seller_no; 
+alter table tb_menu drop column state;
 -------------------------------------------------------
 --상점,메뉴 파일테이블
 -------------------------------------------------------							 

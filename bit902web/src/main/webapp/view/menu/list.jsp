@@ -119,7 +119,7 @@ function makeMenu(){
 		
 		for(var i=0; i < menus.length; i++){
   		console.log("메뉴:" + menus[i].menuNo);
-		html+= "<tr style='height:100px;width:100%''>"
+		html+= "<tr id='tr" + menus[i].menuNo + "' style='height:100px;width:100%''>"
 			
 			for(var j=0; j < file.length; j++){
 				
@@ -128,13 +128,12 @@ function makeMenu(){
 		html+=                  	"<td><img src='/bit902web/upload"+file[j].filePath+"/"+file[j].systemName + "'style='height: 100px; width: 100px;'></td>"
 				}
 			}
-		html+=                       	"<td>"+menus[i].name+"</td>"
-		html+=                       	"<td>"+menus[i].size+"</td>"
-		html+=                       	"<td>"+menus[i].price+"</td>"
-		html+=                       	"<td>"+menus[i].content+"</td>"
-		html+=                       	"<td style='widht:10px'><button>수정</button><button>삭제</button></td>"
-		html+=                       "</tr>"
-	
+		html+=                      "<td>"+menus[i].name+"</td>"
+		html+=                      "<td>"+menus[i].size+"</td>"
+		html+=                      "<td>"+menus[i].price+"</td>"
+		html+=                     	"<td>"+menus[i].content+"</td>"
+		html+=                     	"<td><a href='javascript:menuUpdateForm(" + menus[i].menuNo + ")' role='button'>수정 / </a><a href='javascript:menuDelete(" + menus[i].menuNo + ")' role='button'>삭제</a></td>"                    
+		html+=                    "</tr>"
 			
 		}
 		if (menus.length == 0) {
@@ -142,9 +141,52 @@ function makeMenu(){
 		}
 		$("#list").html(html);
 		
-	});
-	
+	});	
 }
+//메뉴 수정 
+  	function menuUpdateForm(menuNo){
+  		$.ajax({
+  			type:"POST",
+  			url : "/bit902web/menu/updateForm.do",
+  			dataType: "JSON",
+  			data: {menuNo : menuNo}
+  		}).done(function (result){
+		var html="";
+		
+		html+= "<Form action='/bit902web/menu/update.do'>";
+		html+= "<tr id='tr" + result.menuNo + "' style='height:100px;width:100%'>";
+			
+// 			for(var j=0; j < file.length; j++){
+				
+// 				if(menus[i].menuNo == file[j].menuNo){
+ 			
+// 		html+=                  	"<td><img src='/bit902web/upload"+file[j].filePath+"/"+file[j].systemName + "'style='height: 100px; width: 100px;'></td>";
+// 				}
+// 			}
+		html+=                      "<td>"+"<input name='name' value='"+result.name+"'></td>";
+		html+=                      "<td>"+"<input name='size' value='"+result.size+"'></td>";
+		html+=                      "<td>"+"<input name='price' value='"+result.price+"'></td>";
+		html+=                     	"<td>"+"<input name='content' value='"+result.content+"'></td>";
+		html+=                     	"<td><a href='javascript:menuUdate(" + result.menuNo + ")' role='button'>수정</a></td>";              
+		html+=                    "</tr>";
+  		html+= "</Form>";
+		$("#tr" + result.menuNo).replaceWith(html).trigger("create");
+  		}).
+  		fail(function(jqXhr, testStatus, errorText){
+			alert("에러발생1 :" + errorText);
+  		});
+}
+
+//메뉴 삭제
+	function menuDelete(menuNo) {
+		$.ajax({
+			url: "/bit902web/menu/delete.do",
+			data: {menuNo: menuNo}
+		}).done(function () {
+			alert("삭제되었습니다.");
+			makeMenu();
+		});	
+	}
 //메뉴 작성폼
 function writeform(){
 	var fd = new FormData();
@@ -154,14 +196,12 @@ function writeform(){
 	fd.append("content", $("[name=content]").val());
 	fd.append("price", $("[name=price]").val());
 	fd.append("size", $("[name=size]").val());
-// 	fd.append("userNo", localStorage.getItem("userNo"));
 	fd.append("attachFile",$("[name=attachFile]")[0].files[0]);
 
 // 	var files =  $("[name=attachFile]")[0].files;
 // 	for(var i = 0; i < files.length; i++){
 // 		fd.append("attachFile"+i, files[i]);
 // 		}
-	
 	
 	$.ajax({
 		url: "/bit902web/menu/write.do",

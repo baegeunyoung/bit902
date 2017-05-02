@@ -4,10 +4,12 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,7 @@ public class MenuController {
 	
 	@Autowired
 	MenuService service;
+	
 	
 	@ResponseBody
 	@RequestMapping("/list.do")
@@ -65,6 +68,7 @@ public class MenuController {
 		menu.setContent(mRequest.getParameter("content"));
 		menu.setPrice(Integer.parseInt(mRequest.getParameter("price")));
 		menu.setSize(mRequest.getParameter("size"));
+		menu.setState(mRequest.getParameter("state"));
 		menu.setSellerNo(sellerNo);
 		
 		System.out.println(mRequest.getParameter("menuName"));
@@ -109,8 +113,22 @@ public class MenuController {
 		
 		return "redirect:list.do";
 	}
-
-
+	
+	@RequestMapping("/delete.do")
+	public String delete(HttpServletRequest request, HttpSession session) throws Exception {
+				
+		int menuNo = Integer.parseInt(request.getParameter("menuNo"));
+		service.delete(menuNo);
+		return "redirect:list.do";
+	}
+	
+	@RequestMapping("/updateForm.do")
+	public List<MenuVO> updateForm(HttpServletRequest request, HttpSession session) throws Exception {
+		System.out.println("컨트롤러1");
+		int menuNo = Integer.parseInt(request.getParameter("menuNo"));
+		
+		return service.updateForm(menuNo);
+	}
 }
 
 

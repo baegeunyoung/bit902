@@ -65,6 +65,7 @@ public class StoreController {
 		System.out.println(mRequest.getParameter("adress"));
 		System.out.println(Double.parseDouble(mRequest.getParameter("lat")));
 		System.out.println(Double.parseDouble(mRequest.getParameter("lng")));
+		
 //		System.out.println(Integer.parseInt(mRequest.getParameter("sellerNo")));
 		param.put("store", store);
 				

@@ -12,11 +12,12 @@ public interface MenuMapper {
 	public void insertMenu(MenuVO menu) throws Exception;
 	//메뉴조회
 	public List<MenuVO> getStoreByStoreNo(int sellerNo) throws Exception;
-//	public List<MenuVO> getStoreByStoreNo() throws Exception;
-	
+	//메뉴 삭제
+	public void delete(int menuNo) throws Exception;
 	
 	//메뉴파일
 	public void insertMenuFile(StoreFileVO menuFile) throws Exception;
 	public List<MenuVO> selectStoreFileByNo(int sellerNo) throws Exception;
-
+	
+	public List<MenuVO> updateForm(int menuNo) throws Exception;
 }

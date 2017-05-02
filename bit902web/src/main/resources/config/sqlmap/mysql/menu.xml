@@ -41,7 +41,8 @@
     		on m.store_no = st.store_no
     inner join tb_seller se
     		on st.seller_no = se.seller_no
-    where m.seller_no = #{sellerNo}
+    where m.seller_no = #{sellerNo} and
+    	  m.state = "0"
     </select>
     	   
 <!--     	 order by name desc 	  -->
@@ -70,8 +71,18 @@
 		)    
     </insert>
    
+	<update id="delete" parameterType="int">
+	    update tb_menu
+	       set state= "1"
+	     where menu_no = #{menuNo}
+	</update>
 	
-	
+
+	<select id="updateForm" parameterType="int" resultMap="menuMap">
+	    select *
+	      from tb_menu
+	     where menu_no = #{menuNo}
+	</select>	
    <!--  파일 -->
      <resultMap id="menuFileMap" type="StoreFileVO" >
 		<result property="storeFileNo" column="store_file_no"/>
@@ -135,10 +146,9 @@
 			#{fileSize}		
 		)
 	</insert>
+
 	
-	
-	
-	    
+	 
 	    
 	    
 </mapper>

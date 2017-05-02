@@ -8,9 +8,24 @@ public class MenuVO {
 	private String content;
 	private int price;
 	private String size;
+	private String StoteName;
+	private String state;
 	
 	
 	
+	
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public String getStoteName() {
+		return StoteName;
+	}
+	public void setStoteName(String stoteName) {
+		StoteName = stoteName;
+	}
 	public int getSellerNo() {
 		return sellerNo;
 	}
