@@ -56,7 +56,7 @@ public class MenuServiceImpl implements MenuService {
 		System.out.println("컨트롤러2");
 		Map<String, Object> result = new HashMap<>();
 		result.put("menu", dao.updateForm(menuNo));
-		result.put("menuFile", dao.updateFormStoreFileByNo(menuNo));
+		result.put("menufile", dao.updateFormStoreFileByNo(menuNo));http://localhost:9090/bit902web/main/main.do
 		
 		return result;
 	}

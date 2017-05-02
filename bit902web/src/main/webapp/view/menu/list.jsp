@@ -88,6 +88,7 @@
 	                                    	<th>사이즈</th>
 	                                    	<th>가격</th>
 	                                    	<th>설명</th>
+	                                    	<th>수정/삭제</th>
 	                                    </thead>
 	                                    <tbody id="list">
 	                                    </tbody>
@@ -124,13 +125,14 @@ function makeMenu(){
   		console.log("메뉴:" + menus[i].menuNo);
 		html+= "<tr id='tr" + menus[i].menuNo + "' style='height:100px;width:100%''>";
 			
+				html += "<td>";
 			for(var j=0; j < file.length; j++){
-				
 				if(menus[i].menuNo == file[j].menuNo){
  			console.log("파일:" + file[j].menuNo);
-		html+=                  	"<td><img src='/bit902web/upload"+file[j].filePath+"/"+file[j].systemName + "'style='height: 100px; width: 100px;'></td>";
+		html+=                  	"<img src='/bit902web/upload"+file[j].filePath+"/"+file[j].systemName + "'style='height: 100px; width: 100px;'>";
 				}
 			}
+			html += "</td>";
 		html+=                      "<td>"+menus[i].name+"</td>";
 		html+=                      "<td>"+menus[i].size+"</td>";
 		html+=                      "<td>"+menus[i].price+"</td>";
@@ -154,8 +156,13 @@ function makeMenu(){
   			dataType: "JSON",
   			data: {menuNo : menuNo}
   		}).done(function (result){
+  			alert("asd");
+  			alert("asdasdasdasd:" + result.menufile.filePath);
+  			cosole.log(result.menufile.filePath);
+  			alert(result.menufile[0].filePath);
+  			cosole.log(result.menufile[0].filePath);
 		var html="";
-  	
+  		
 		
 // 		html+= "<form action='/bit902web/menu/update.do' enctype='multipart/form-data' method='post'>";
 		html+=				 "<tr id='tr" + result.menu[0].menuNo + "' style='height:100px;width:100%'>";
@@ -201,11 +208,6 @@ function writeform(){
 	fd.append("price", $("[name=price]").val());
 	fd.append("size", $("[name=size]").val());
 	fd.append("attachFile",$("[name=attachFile]")[0].files[0]);
-
-// 	var files =  $("[name=attachFile]")[0].files;
-// 	for(var i = 0; i < files.length; i++){
-// 		fd.append("attachFile"+i, files[i]);
-// 		}
 	
 	$.ajax({
 		url: "/bit902web/menu/write.do",
