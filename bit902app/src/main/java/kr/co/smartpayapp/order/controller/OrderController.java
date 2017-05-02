@@ -29,6 +29,6 @@ public class OrderController {
 		
 //		ModelAndView mav = new ModelAndView("http://14.32.66.123:8888");
 //		mav.addObject("msg", "주문이 들어왔습니다!");
-		return "redirect:http://14.32.66.123:8888";
+		return "redirect:/view/book/a.jsp";
 	}
 }
