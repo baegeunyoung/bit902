@@ -27,7 +27,7 @@ public class OrderController {
 		
 		orderService.registOrder(order);
 		
-		ModelAndView mav = new ModelAndView("/bit902app/view/book/alert.html");
+		ModelAndView mav = new ModelAndView("/bit902node/alert/alert.html");
 		mav.addObject("msg", "주문이 들어왔습니다!");
 		return mav;
 	}
