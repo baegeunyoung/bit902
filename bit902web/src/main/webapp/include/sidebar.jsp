@@ -21,17 +21,17 @@
 				<ul class="nav">
 	                <li>
 	                    <a href="${pageContext.request.contextPath}/view/store/writeform.jsp">
-	                        <i class="material-icons text-gray">store</i><p>상점정보등록</p>
+	                        <i class="material-icons text-gray">store</i><p>상점정보관리</p>
 	                    </a>
 	                </li>
 	                <li>
 	                    <a href="${pageContext.request.contextPath}/view/menu/list.jsp">
-	                        <i class="material-icons text-gray">menu</i><p>메뉴등록</p>
+	                        <i class="material-icons text-gray">menu</i><p>메뉴관리</p>
 	                    </a>
 	                </li>
 	                <li>
 	                    <a href="#">
-	                        <i class="material-icons text-gray">settings_input_svideo</i><p>비콘등록</p>
+	                        <i class="material-icons text-gray">settings_input_svideo</i><p>비콘관리</p>
 	                    </a>
 	                </li>
 	                <li>

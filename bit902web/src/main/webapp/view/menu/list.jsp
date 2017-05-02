@@ -113,6 +113,7 @@ function makeMenu(){
 		dataType: "JSON"
 	})
 	.done(function (result){
+		
 		var html = "";
 		
 		var menus = result.menu;
@@ -135,7 +136,7 @@ function makeMenu(){
 			html += "</td>";
 		html+=                      "<td>"+menus[i].name+"</td>";
 		html+=                      "<td>"+menus[i].size+"</td>";
-		html+=                      "<td>"+menus[i].price+"</td>";
+		html+=                      "<td>"+menus[i].price+"원</td>";
 		html+=                     	"<td>"+menus[i].content+"</td>";
 		html+=                     	"<td><a href='javascript:menuUpdateForm(" + menus[i].menuNo + ")' role='button'>수정 / </a><a href='javascript:menuDelete(" + menus[i].menuNo + ")' role='button'>삭제</a></td>" ;                   
 		html+=                    "</tr>";
@@ -156,17 +157,12 @@ function makeMenu(){
   			dataType: "JSON",
   			data: {menuNo : menuNo}
   		}).done(function (result){
-  			alert("asd");
-  			alert("asdasdasdasd:" + result.menufile.filePath);
-  			cosole.log(result.menufile.filePath);
-  			alert(result.menufile[0].filePath);
-  			cosole.log(result.menufile[0].filePath);
 		var html="";
-  		
+  	
 		
 // 		html+= "<form action='/bit902web/menu/update.do' enctype='multipart/form-data' method='post'>";
 		html+=				 "<tr id='tr" + result.menu[0].menuNo + "' style='height:100px;width:100%'>";
-// 		html+=                  	"<td><img src='/bit902web/upload"+result.menuFile[0].filePath+"/"+result.menuFile[0].systemName + "'style='height: 100px; width: 100px;'></td>";
+		html+=                  	"<td><img src='/bit902web/upload"+result.menufile[0].filePath+"/"+result.menufile[0].systemName + "'style='height: 100px; width: 100px;'></td>";
 		html+=                      "<input type='hidden' name='menuNo' value='"+result.menu[0].menuNo+"'>";
 		html+=                      "<td>"+"<input type='text' name='name' value='"+result.menu[0].name+"'></td>";
 		html+=                      "<td>"+"<input name='size' value='"+result.menu[0].size+"'></td>";
@@ -176,11 +172,10 @@ function makeMenu(){
 		html+=              "</tr>";
 //   		html+= "</form>";
   	
-
 		$('#tr' + result.menu[0].menuNo).replaceWith(html).trigger("create");
-  		
 
   		}).
+  		
   		fail(function(jqXhr, testStatus, errorText){
 			alert("에러발생1 :" + errorText);
   		});
