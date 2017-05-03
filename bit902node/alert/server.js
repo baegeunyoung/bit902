@@ -5,7 +5,7 @@ var io   = require("socket.io");
 var server = http.createServer(function(request, response) {
 
 })
-.listen(10001, function () {
+.listen(8888, function () {
 	console.log("서버 구동 시작...");
 });
 
