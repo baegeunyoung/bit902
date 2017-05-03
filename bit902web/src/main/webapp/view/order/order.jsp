@@ -146,9 +146,12 @@
 		var socket = io.connect();
 		var loginId = ${seller.sellerNo};
 		socket.emit("login", loginId);
+		var recvId = loginId;
+		socket.emit("msg", {recvId: recvId, sendId: loginId, msg: $("#msg").val()});
 		socket.on("msg", function(data) {
 			alert("주문이 접수되었습니다.");
 		});
+		
 	</script>
 <!-- 	<iframe src="http://14.32.66.123:8888" style="display:none;"></iframe> -->
 </body>
