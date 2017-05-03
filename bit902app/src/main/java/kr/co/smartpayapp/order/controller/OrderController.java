@@ -2,6 +2,7 @@ package kr.co.smartpayapp.order.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,12 +24,12 @@ public class OrderController {
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
-	public String orderRegist(@RequestBody ArrayList<HashMap<String,String>> order) throws Exception {
+	public ModelAndView orderRegist(@RequestBody ArrayList<HashMap<String,String>> order) throws Exception {
 		
-		orderService.registOrder(order);
+		int sNo = orderService.registOrder(order);
 		
-//		ModelAndView mav = new ModelAndView("http://14.32.66.123:8888");
-//		mav.addObject("msg", "주문이 들어왔습니다!");
-		return "redirect:/view/book/a.jsp";
+		ModelAndView mav = new ModelAndView("/bit902web/view/order/order.jsp");
+		mav.addObject("sNo", sNo);
+		return mav;
 	}
 }

@@ -14,12 +14,13 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	OrderMapper mapper;
 	
-	public void registOrder(ArrayList<HashMap<String,String>> order){
+	public int registOrder(ArrayList<HashMap<String,String>> order){
 		
 		Map<String, Object> myMap = new HashMap<>();
 		
 		myMap.put("deviceToken", order.get(order.size() - 4).get("token"));
-		myMap.put("sellerNo", Integer.parseInt(order.get(order.size() - 3).get("sellerNo")));
+		int sNo = Integer.parseInt(order.get(order.size() - 3).get("sellerNo"));
+		myMap.put("sellerNo", sNo);
 		myMap.put("tableNo", Integer.parseInt(order.get(order.size() - 2).get("tableNo")));
 		myMap.put("orderContent", order.get(order.size() - 1).get("orderContent"));
 		
@@ -52,5 +53,6 @@ public class OrderServiceImpl implements OrderService {
 				}
 			}
 		}
+		return sNo;
 	}
 }

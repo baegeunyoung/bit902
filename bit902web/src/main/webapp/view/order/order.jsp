@@ -141,16 +141,16 @@
 // 			});
 // 		}
 	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<script src="http://14.32.66.123:8888/socket.io/socket.io.js"></script>
 	<script>
 	var socket = io.connect();
-//     socket.emit("login", {
-//         userid: "ungmo2@gmail.com"
-//       });
-	socket.on("signal", function(data) {
-	      alert(data);
-	    });
+	var sNo = ${sNo};
+	socket.emit("sNo", {"sNo" : sNo});
+	socket.on("sNo", function(data) {
+		alert(sNo);
+	});
 	</script>
-<!-- 	<script src="http://14.32.66.123:8888" style="display:none;"></iframe> -->
+<!-- 	<iframe src="http://14.32.66.123:8888" style="display:none;"></iframe> -->
 </body>
 </html>
