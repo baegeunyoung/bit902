@@ -119,9 +119,7 @@
         for (var i = 0 ; i < rowsCount ; i++) {
 			
 	       	arr1[i] = document.getElementById("table").rows[i + 1].cells[1].innerHTML;
-	       	console.log(arr1[i]);
 		    arr2[i] = parseInt(document.getElementById("table").rows[i + 1].cells[3].innerHTML.slice(0, -1).split(',').join(''));
-		    console.log(arr2[i]);
         	if (highSales < arr2[i]) {
         		highSales = arr2[i];
         	}

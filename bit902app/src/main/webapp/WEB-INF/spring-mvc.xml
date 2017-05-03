@@ -43,9 +43,9 @@
 	<mvc:view-controller path="/book/bookForm.do" view-name="book/bookForm" />
 	
 	<mvc:default-servlet-handler />
-	<mvc:view-resolvers>
-		<mvc:jsp prefix="/WEB-INF/view/" suffix=".html" />
-	</mvc:view-resolvers>
+<!-- 	<mvc:view-resolvers> -->
+<!-- 		<mvc:jsp prefix="/WEB-INF/view/" suffix=".html" /> -->
+<!-- 	</mvc:view-resolvers> -->
 
 </beans>
 

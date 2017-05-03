@@ -221,7 +221,6 @@
 					html += "</tr>\n";
 
 					sum += result[i].monthTotalSales;
-					console.log(sum);
 				}
 				html += "</tbody>";
 
@@ -257,9 +256,7 @@
 			for (var i = 0; i < rowsCount; i++) {
 
 				arr1[i] = document.getElementById("table").rows[i + 1].cells[0].innerHTML.split('-')[2];
-				console.log(arr1[i]);
 				arr2[i] = parseInt(document.getElementById("table").rows[i + 1].cells[1].innerHTML.slice(0, -1).split(',').join(''));
-				console.log(arr2[i]);
 				if (highSales < arr2[i]) {
 					highSales = arr2[i];
 				}
