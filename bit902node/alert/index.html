@@ -19,33 +19,12 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<script src="http://14.32.66.123:8888/socket.io/socket.io.js"></script>
 	<script>
-	$(function(){
-		// socket.io 서버에 접속한다
-		var socket = io();
-	
-		// 서버로 자신의 정보를 전송한다.
-		socket.emit("sNo", {
-			userid: sNo
-		});
-	
-		// 서버로부터의 메시지가 수신되면
-		socket.on("login", function(data) {
-			alert(sNo);
-		});
-	
-		// 서버로부터의 메시지가 수신되면
-		socket.on("chat", function(data) {
-			alert(sNo);
-		});
-	
-		// Send 버튼이 클릭되면
-		$("form").ready(function(e) {
-			e.preventDefault();
-			var sNo = ${sNo};
-	
-		// 서버로 메시지를 전송한다.
-			socket.emit("chat", sNo);
-		});
+	<script>
+	var socket = io.connect();
+	var loginId = ${seller.sellerNo};
+	socket.emit("login", loginId);
+	socket.on("msg", function(data) {
+		alert("주문이 접수되었습니다.");
 	});
 	</script>
 </body>

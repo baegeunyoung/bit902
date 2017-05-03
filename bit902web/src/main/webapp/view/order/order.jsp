@@ -141,15 +141,14 @@
 // 			});
 // 		}
 	</script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<script src="http://14.32.66.123:8888/socket.io/socket.io.js"></script>
 	<script>
-	var socket = io.connect();
-	var sNo = ${sNo};
-	socket.emit("sNo", {"sNo" : sNo});
-	socket.on("sNo", function(data) {
-		alert(sNo);
-	});
+		var socket = io.connect();
+		var loginId = ${seller.sellerNo};
+		socket.emit("login", loginId);
+		socket.on("msg", function(data) {
+			alert("주문이 접수되었습니다.");
+		});
 	</script>
 <!-- 	<iframe src="http://14.32.66.123:8888" style="display:none;"></iframe> -->
 </body>
