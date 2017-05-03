@@ -7,6 +7,23 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<iframe src="http://14.32.66.123:8888" style="display:none;"></iframe>
+	<script src="http://14.32.66.123:8888/socket.io/socket.io.js"></script>
+	<script>
+		
+		var socket = io.connect();
+		var loginId = ${seller.sellerNo};
+	
+		socket.emit("login", loginId);
+		var recvId = loginId;
+		alert("리:"+recvId);
+		alert("로:" + loginId);
+		console.log(loginId);
+		console.log(recvId);
+		socket.emit("msg", {recvId: recvId, sendId: loginId, msg: $("#msg").val()});
+		socket.on("msg", function(data) {
+			alert(data);
+		});
+		
+	</script>
 </body>
 </html>
