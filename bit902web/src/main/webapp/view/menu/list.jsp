@@ -80,7 +80,7 @@
 	                              <p class="category">상점의 메뉴를 확인하세요</p>
 	                          </div>
 	                            <div class="card-content table-responsive">
-	                            <form action='/bit902web/menu/update.do' enctype='multipart/form-data' method='post'>
+	                            <form action='/bit902web/menu/update.do' class="form-horizontal" enctype='multipart/form-data' method='post'>
 	                                <table class="table table-hover">
 	                                    <thead class="text-primary">
 	                                        <th>메뉴사진</th>
@@ -164,10 +164,10 @@ function makeMenu(){
 		html+=				 "<tr id='tr" + result.menu[0].menuNo + "' style='height:100px;width:100%'>";
 		html+=                  	"<td><img src='/bit902web/upload"+result.menufile[0].filePath+"/"+result.menufile[0].systemName + "'style='height: 100px; width: 100px;'></td>";
 		html+=                      "<input type='hidden' name='menuNo' value='"+result.menu[0].menuNo+"'>";
-		html+=                      "<td>"+"<input type='text' name='name' value='"+result.menu[0].name+"'></td>";
-		html+=                      "<td>"+"<input name='size' value='"+result.menu[0].size+"'></td>";
-		html+=                      "<td>"+"<input name='price' value='"+result.menu[0].price+"'></td>";
-		html+=                     	"<td>"+"<input name='content' value='"+result.menu[0].content+"'></td>";
+		html+=                      "<td>"+"<input type='text' class='form-control' name='name' value='"+result.menu[0].name+"'></td>";
+		html+=                      "<td>"+"<input name='size'class='form-control' value='"+result.menu[0].size+"'></td>";
+		html+=                      "<td>"+"<input name='price'class='form-control' value='"+result.menu[0].price+"'></td>";
+		html+=                     	"<td>"+"<input name='content' class='form-control' value='"+result.menu[0].content+"'></td>";
 		html+=                     	"<td><button>수정</button></td>";              
 		html+=              "</tr>";
 //   		html+= "</form>";
