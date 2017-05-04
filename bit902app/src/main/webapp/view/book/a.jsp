@@ -15,8 +15,6 @@
 	
 		socket.emit("login", loginId);
 		var recvId = loginId;
-		alert("recvId : " + recvId);
-		alert("login : " + loginId);
 		console.log(loginId);
 		console.log(recvId);
 		socket.emit("msg", {recvId: recvId, sendId: loginId, msg: $("#msg").val()});
