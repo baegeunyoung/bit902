@@ -144,7 +144,7 @@
 	<script src="http://14.32.66.123:8888/socket.io/socket.io.js"></script>
 	<script>
 		
-		var socket = io.connect();
+		var socket = io.connect("http://14.32.66.123:8888");
 		var loginId = ${seller.sellerNo};
 	
 		socket.emit("login", loginId);
