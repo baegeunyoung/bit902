@@ -42,10 +42,10 @@
     </ion-item>
   </ion-list>   
   
-  <p>
-    <ion-input type="text" placeholder="Username" ></ion-input>
-    <button ion-button >검색</button>
-  </p>
+  <ion-item>
+    <ion-input type="text"  placeholder="매장이름을 입력하세요."></ion-input>
+    <button ion-button item-right><ion-icon name="search"></ion-icon></button>
+  </ion-item>
 
     
 
@@ -60,7 +60,7 @@
                 {{event.storeName}}
               </ion-card-title>
               <p>
-                {{event.eventContent}}
+                {{event.eventTitle}}
               </p>
             </ion-card-content>
           </ion-card>
@@ -85,7 +85,6 @@
     
     <h2>{{menu.name}}</h2>
     <p>{{menu.price}}원</p>   
-    <p>{{menu.storeNo}}</p>
     <p>수량:<button ion-button color="light" icon-only (click)="orderPlus(menu)">
         <ion-icon name='arrow-up'></ion-icon>
     </button>
@@ -103,7 +102,7 @@
   <textarea [(ngModel)]="orderContent" name="orderConten"> </textarea>
   <br>
    최종 주문금액: {{ total }} 
-  <button ion-button (click) = payment(storeName)>결제하기</button>
+  <button ion-button (click) = payment(total)>결제하기</button>
   <ion-icon name="heart"></ion-icon>   
 </div>
 </ion-content>

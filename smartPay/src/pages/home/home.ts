@@ -337,15 +337,15 @@ export class HomePage {
     }
 
     //카카오페이 결제하기
-    payment(storeName: string) {
+    payment(amount: number) {
 		IMP.init('imp91789758');
 
 		IMP.request_pay({
 			pg : 'kakao',
 			pay_method : 'card',
 			merchant_uid : 'merchant_' + new Date().getTime(),
-      name : storeName,
-			amount : /*this.total*/1000,
+      name : this.storeName,
+			amount : this.total,
 		},response => {
 	//결제 후 호출되는 callback함수
 	if ( response.success ) { //결제 성공
@@ -354,7 +354,7 @@ export class HomePage {
     this.order();
     this.menu = undefined;
     this.store = "";
-    this.navCtrl.push(StampPage, {amount: this.total});
+    this.navCtrl.push(StampPage, {amount:amount});
 	} else {
     alert('결제실패 : ' + response.error_msg);
 	}
