@@ -20,7 +20,7 @@
 	<script src="http://14.32.66.123:8888/socket.io/socket.io.js"></script>
 	<script>
 	var socket = io.connect();
-	var loginId = ${seller.sellerNo};
+	var loginId = "admin";
 
 	socket.emit("login", loginId);
 	var recvId = loginId;
