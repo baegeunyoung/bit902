@@ -150,8 +150,8 @@
 	
 		socket.emit("login", loginId);
 		var recvId = loginId;
-		alert("리:"+recvId);
-		alert("로:" + loginId);
+		alert("login : " + recvId);
+		alert("recvId : " + loginId);
 		console.log(loginId);
 		console.log(recvId);
 		socket.emit("msg", {recvId: recvId, sendId: loginId, msg: $("#msg").val()});
