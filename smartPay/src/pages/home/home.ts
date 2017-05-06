@@ -11,7 +11,7 @@ import { Facebook } from '@ionic-native/facebook';
 import { DetailsPage } from '../details/details';
 import { StampPage } from '../stamp/stamp';
 declare var IMP: any;
-
+declare var io: any;
 interface MENU{
   menuNo: number;
   storeNo: number;
@@ -351,6 +351,7 @@ export class HomePage {
 	if ( response.success ) { //결제 성공
 		console.log(response);
 		//alert("결제완료 되었습니다.");
+    this.nodeCall();
     this.order();
     this.menu = undefined;
     this.store = "";
@@ -360,6 +361,19 @@ export class HomePage {
 	}
 		})
 	}
+  //노드에 신호 전달
+  nodeCall(){
+
+    var socket = io.connect("http://14.32.66.123:8888");
+	  var loginId = this.major;
+
+	  socket.emit("login", loginId);
+	  socket.emit("msg", {sendId: loginId, msg: loginId});
+	  socket.on("msg", function(data) {
+		  alert(data);
+	});
+  }
+
   //주문내역 보내기
   order(){
    this.tokenObj = {"token": this.token};
