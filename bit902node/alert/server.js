@@ -25,7 +25,7 @@ socketIo.on("connection", function (socket) {
 	});
 
 	socket.on("msg", function (data) {
-		if(data.loginId.length > 10) {
+		if(data.sendId.length > 10) {
 			socketIo.to(idArr[data.recvId])
 			.emit("msg", "주문이 들어왔습니다.");
 		}
