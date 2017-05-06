@@ -25,7 +25,7 @@ socketIo.on("connection", function (socket) {
 	});
 
 	socket.on("msg", function (data) {
-		socketIo.to(idArr[data.sendId])
+		socketIo.to(idArr[data.recvId])
 		.emit("msg", "주문이 들어왔습니다.");
 	});
 });
