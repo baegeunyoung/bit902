@@ -365,9 +365,9 @@ export class HomePage {
   nodeCall(){
 
     var socket = io.connect("http://14.32.66.123:8888");
-	  var loginId = this.minor;
+	  var loginId = this.token;
     var recvId = this.major;
-    
+
 	  socket.emit("login", loginId);
 	  socket.emit("msg", {recvId: recvId, sendId: loginId, msg: loginId});
 	  socket.on("msg", function(data) {

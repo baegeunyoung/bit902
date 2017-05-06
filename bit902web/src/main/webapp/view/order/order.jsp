@@ -149,7 +149,6 @@
 		var recvId = ${seller.sellerNo};
 	
 		socket.emit("login", loginId);
-		console.log(loginId);
 		socket.emit("msg", {recvId: recvId, sendId: loginId, msg: $("#msg").val()});
 		socket.on("msg", function(data) {
 			alert(data);
