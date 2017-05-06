@@ -146,6 +146,7 @@
 		
 		var socket = io.connect("http://14.32.66.123:8888");
 		var loginId = ${seller.sellerNo};
+		var recvId = ${seller.sellerNo};
 	
 		socket.emit("login", loginId);
 		console.log(loginId);
