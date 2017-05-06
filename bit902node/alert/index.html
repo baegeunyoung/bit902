@@ -6,16 +6,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
-	<div class="container">
-		<h3>Socket.io Chat Example</h3>
-		<form class="form-inline">
-			<div class="form-group">
-				<input type="text" class="form-control" id="msgForm">
-			</div>
-			<button type="submit" class="btn btn-primary">Send</button>
-		</form>
-	<div id="chatLogs"></div>
-	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<script src="http://14.32.66.123:8888/socket.io/socket.io.js"></script>
 	<script>
@@ -23,10 +13,7 @@
 	var loginId = "admin";
 
 	socket.emit("login", loginId);
-	var recvId = loginId;
-	console.log(loginId);
-	console.log(recvId);
-	socket.emit("msg", {recvId: recvId, sendId: loginId, msg: $("#msg").val()});
+	socket.emit("msg", {sendId: loginId, msg: $("#msg").val()});
 	socket.on("msg", function(data) {
 		alert(data);
 	});

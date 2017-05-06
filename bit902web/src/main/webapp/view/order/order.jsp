@@ -148,10 +148,8 @@
 		var loginId = ${seller.sellerNo};
 	
 		socket.emit("login", loginId);
-		var recvId = loginId;
 		console.log(loginId);
-		console.log(recvId);
-		socket.emit("msg", {recvId: recvId, sendId: loginId, msg: $("#msg").val()});
+		socket.emit("msg", {sendId: loginId, msg: $("#msg").val()});
 		socket.on("msg", function(data) {
 			alert(data);
 		});
