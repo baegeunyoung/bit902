@@ -23,9 +23,8 @@ socketIo.on("connection", function (socket) {
 	// 입력한 아이디와 socket.id를 연결
 	idArr[loginId] = socket.id;
 	});
-
 	socket.on("msg", function (data) {
-		socketIo.to(idArr[data.recvId])
+		socketIo.to(idArr[msg.get(sendId)])
 		.emit("msg", "주문이 들어왔습니다.");
 	});
 });
