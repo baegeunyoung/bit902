@@ -109,7 +109,7 @@
 		
 		function updateData() {
 			$.ajax({
-				url: "/bit902web/order/state.do",
+				url: "${pageContext.request.contextPath}/order/state.do",
 				type: "POST",
 				dataType : "JSON"
 			}).done( function (result){
