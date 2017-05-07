@@ -1,13 +1,12 @@
 package kr.co.smartpayweb.store.service;
 
 import java.util.Map;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import kr.co.smartpayweb.repository.mapper.StoreMapper;
+import kr.co.smartpayweb.repository.vo.EventVO;
 import kr.co.smartpayweb.repository.vo.StoreFileVO;
 import kr.co.smartpayweb.repository.vo.StoreVO;
 
@@ -32,5 +31,15 @@ public class StoreServiceImpl implements StoreService{
 			dao.insertStoreFile(storeFile);
 		}
 	}
+
+	@Override
+	public StoreVO readStore(int sellerNo) {
+		return dao.readStore(sellerNo);
+	}
+	
+	@Override
+	public void storetModify(StoreVO store) {
+		dao.storetModify(store);	
+	}	
 
 }

@@ -38,7 +38,22 @@
 		    #{longitude}
 		)    
     </insert>
-    
+ <select id="readStore" parameterType="int"  resultMap="storeMap">
+		select *
+			from tb_store
+			where seller_no = #{sellerNo}
+</select>  
+
+ <update id="storetModify" parameterType="StoreVO">
+		update tb_store
+			set name = #{name},
+				content = #{content},
+				adress = #{adress},
+				store_type = #{storeType}
+<!-- 				latitude = #{latitude}, -->
+<!-- 				longitude = #{longitude}, -->
+			where seller_no = #{sellerNo}
+	</update>
     
     <!--  파일 -->
      <resultMap id="storeFileMap" type="StoreFileVO" >

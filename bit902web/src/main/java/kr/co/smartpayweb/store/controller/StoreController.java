@@ -7,7 +7,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.co.smartpayweb.repository.vo.EventVO;
 import kr.co.smartpayweb.repository.vo.SellerVO;
 import kr.co.smartpayweb.repository.vo.StoreFileVO;
 import kr.co.smartpayweb.repository.vo.StoreVO;
@@ -59,58 +63,9 @@ public class StoreController {
 		store.setLongitude(Double.parseDouble(mRequest.getParameter("lng")));
 		store.setSellerNo(sellerNo);
 
-		System.out.println(mRequest.getParameter("storeName"));
-		System.out.println(Integer.parseInt(mRequest.getParameter("storeType")));
-		System.out.println(mRequest.getParameter("content"));
-		System.out.println(mRequest.getParameter("adress"));
-		System.out.println(Double.parseDouble(mRequest.getParameter("lat")));
-		System.out.println(Double.parseDouble(mRequest.getParameter("lng")));
-		
-//		System.out.println(Integer.parseInt(mRequest.getParameter("sellerNo")));
 		param.put("store", store);
 				
-		// 게시물 저장 처리 부탁..
-//		Map<String, StoreFileVO> fileMap = new HashMap<>();
-//		Map<String, MultipartFile> files = mRequest.getFileMap();
-//		Set<String> fileNames = files.keySet();
-//		for (String fileName : fileNames) {
-//			
-//			MultipartFile file = files.get(fileName);
-//			String oriName = file.getOriginalFilename();
-//			
-//			if (oriName != null && !oriName.equals("")) {
-//				// 확장자 처리
-//				String ext = "";
-//				// 뒤쪽에 있는 . 의 위치 
-//				int index = oriName.lastIndexOf(".");
-//				if (index != -1) {
-//					// 파일명에서 확장자명(.포함)을 추출
-//					ext = oriName.substring(index);
-//				}
-//				
-//				// 파일 사이즈
-//				long fileSize = file.getSize();
-//				System.out.println("파일 사이즈 : " + fileSize);
-//				
-//				// 고유한 파일명 만들기	
-//				String systemName = "mlec-" + UUID.randomUUID().toString() + ext;
-//				System.out.println("저장할 파일명 : " + systemName);
-//			
-//				// 임시저장된 파일을 원하는 경로에 저장
-//				file.transferTo(new File(savePath + "/" + systemName));
-//							
-//				StoreFileVO storeFile = new StoreFileVO();
-////				boardFile.setNo(no);
-//				storeFile.setOriName(oriName);
-//				storeFile.setSystemName(systemName);
-//				storeFile.setFilePath(datePath);
-//				storeFile.setFileSize(fileSize);
-//				fileMap.put(fileName, storeFile);
-//		}
-//		
-//			param.put("storeFile", fileMap);
-//		
-//		}
+
 		MultipartFile  file = mRequest.getFile("attachFile");
 		String oriName = file.getOriginalFilename();
 		if (oriName != null && !oriName.equals("")) {
@@ -148,5 +103,37 @@ public class StoreController {
 		return "/menu/list";
 	}
 
+	// 이벤트 읽기
+	@RequestMapping("/storeread.do")
+	public void storeRead(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
+		SellerVO seller = (SellerVO)session.getAttribute("seller");
+		int sellerNo = seller.getSellerNo();
+		StoreVO store =service.readStore(sellerNo);
+		if(request.getParameter("msg") != null) {
+			request.setAttribute("msg", request.getParameter("msg"));
+		}
+		request.setAttribute("store", store);
+		RequestDispatcher rd = request.getRequestDispatcher("/view/store/writeform.jsp");
+		rd.forward(request, response);
+	}
 
+	// 이벤트 삭제하기
+	@RequestMapping("/modify.do")
+	public void eventModify(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
+		StoreVO store = new StoreVO();
+		SellerVO seller = (SellerVO)session.getAttribute("seller");
+		int sellerNo = seller.getSellerNo();
+		store.setName(request.getParameter("storeName"));
+		store.setContent(request.getParameter("content"));
+		store.setStoreType(Integer.parseInt(request.getParameter("storeType")));
+		store.setAdress(request.getParameter("adress"));
+//		store.setLatitude(Double.parseDouble(request.getParameter("lat")));
+//		store.setLongitude(Double.parseDouble(request.getParameter("lng")));
+		store.setSellerNo(sellerNo);
+		
+		service.storetModify(store);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/store/storeread.do");
+		rd.forward(request, response);
+	}	
 }

@@ -63,7 +63,7 @@
 													<input type="file" name="attachFile" id="imgInp">
 												</div>
 	                                        </div>
-	                               			<div><img id="blah"  style="width:300px;height:150px; border:dotted 1px purple"/></div>
+	                               			<div><img id="blah"  style="width:300px;height:150px;"/></div>
 	                               </div>
 	                               <button type="submit" class="btn btn-primary pull-right">등록하기</button>    
 								   </form>
@@ -212,7 +212,7 @@ function writeform(){
 		contentType: false
 	})
 		.done(function (result){
-			alert("글 등록이 완료되었습니다.");
+			alert("메뉴가 등록이 완료되었습니다.");
 			makeMenu();
 		})
 		.fail(function(jqXhr, testStatus, errorText){

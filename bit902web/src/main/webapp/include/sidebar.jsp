@@ -20,7 +20,7 @@
 	    	<div class="sidebar-wrapper">
 				<ul class="nav">
 	                <li>
-	                    <a href="${pageContext.request.contextPath}/view/store/writeform.jsp">
+	                    <a href="${pageContext.request.contextPath}/store/storeread.do">
 	                        <i class="material-icons text-gray">store</i><p>상점정보관리</p>
 	                    </a>
 	                </li>

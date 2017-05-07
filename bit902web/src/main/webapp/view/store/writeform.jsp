@@ -13,7 +13,6 @@
   <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <body>
 <div class="wrapper">
-
 	<div>
 		<c:import url="../../include/sidebar.jsp" />
 	</div>
@@ -33,6 +32,9 @@
 	                         	<h4 class="title">상점등록하기</h4>
 								<p class="category">본인의 상점 정보를 입력하세요</p>
 	                         </div>
+	                         
+	                   	<c:choose>
+							<c:when test="${empty store.content}">
 						<div class="card-content">	                            
 							<form class="form-horizontal" action="${pageContext.request.contextPath}/store/write.do" id="form1" runat="server" enctype="multipart/form-data" method="post">
 							  <fieldset>
@@ -77,20 +79,81 @@
 							        <input class="btn btn-default btn-lg btn-block" type="button"  onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
 							        <div id="map" style="width:300px;height:300px;margin-top:10px;border:dotted 3px purple; float:left;" ></div>
 <!-- 							        <div id="map" style="width:300px;height:300px;margin-top:10px;display:none; float:left" ></div> -->
-							         <div><img id="blah"  style="width:300px;height:300px;margin-top:10px; border:dotted 3px purple"/></div><br>
+<%-- 							         <div><img src="${pageContext.request.contextPath}/upload${store.filePath}/${store.systemName}" style="width:300px;height:300px;margin-top:10px; border:dotted 3px purple"/></div><br> --%>
 <!-- 							         <div><img id="blah" src="#" alt="대표이미지"  style="width:300px;height:300px;margin-top:10px; border- " /></div><br> -->
 							      </div>
 							    </div>
 							    <div>
 							    	  <input type="text" name="lat" id="lat" style="display:none"/> 
-	          	 					 <input type="text" name="lng" id="lng" style="display:none"/> 
-	          	
+	          	 					  <input type="text" name="lng" id="lng" style="display:none"/> 
 							    </div>
 							     <button type="submit" class="btn btn-primary pull-right">등록하기</button>
 								 <div class="clearfix"></div>
 							  </fieldset>
 							</form>
 							</div>
+							</c:when>
+						<c:otherwise>
+							<div class="card-content">	                            
+							<form class="form-horizontal" action="${pageContext.request.contextPath}/store/modify.do" id="form1" runat="server" enctype="multipart/form-data" method="post">
+							  <fieldset>
+							    <div class="form-group">
+							      <label for="storeName" class="col-lg-2 control-label">상점이름</label>
+							      <div class="col-lg-10">
+							        <input type="text" class="form-control" id="storeName" name="storeName" value="${store.name}">
+							      </div>
+							    </div>
+							    <div class="form-group">
+							      <label for="textArea" class="col-lg-2 control-label">Textarea</label>
+							      <div class="col-lg-10">
+							        <textarea class="form-control" rows="5" name="content" id="textArea" placeholder="상점의 간단한 소개를 해주세요">${store.content}</textarea>
+							        <span class="help-block">상점의 간단한 소개를 해주세요</span>
+							      </div>
+							    </div>
+							    <div class="form-group">
+							      <label class="col-lg-2 control-label">상점유형</label>
+							      <div class="col-lg-10">
+							        <div class="radio">
+							          <label>
+							            <input type="radio" name="storeType" id="pickup" value="1" checked="">
+							            픽업형
+							          </label>
+							        </div>
+							        <div class="radio">
+							          <label>
+							            <input type="radio" name="storeType" id="serving" value="2">
+							            서빙형
+							          </label>
+							        </div>
+							      </div>
+							    </div>
+							     <div>
+							       <label class="col-lg-2 control-label">상점대표이미지</label>
+							         <input type="file" name="attachFile" id="imgInp"/>
+							    </div>
+							    <div class="form-group">
+							      <label for="adress" class="col-lg-2 control-label">주소</label>
+							      <div class="col-lg-10">
+							        <input class="form-control" type="text" id="sample5_address" name="adress" value="${store.adress}">
+							        <input class="btn btn-default btn-lg btn-block" type="button"  onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
+							        <div id="map" style="width:300px;height:300px;margin-top:10px;border:dotted 3px purple; float:left;" ></div>
+<!-- 							        <div id="map" style="width:300px;height:300px;margin-top:10px;display:none; float:left" ></div> -->
+							         <div><img id="blah"  style="width:300px;height:300px;margin-top:10px; border:dotted 3px purple"/></div><br>
+<!-- 							         <div><img id="blah" src="#" alt="대표이미지"  style="width:300px;height:300px;margin-top:10px; border- " /></div><br> -->
+							      </div>
+							    </div>
+							    <div>
+							    	  <input type="text" name="lat" id="lat" style="display:none"/> 
+	          	 					  <input type="text" name="lng" id="lng" style="display:none"/> 
+							    </div>
+							     <button type="submit" class="btn btn-primary pull-right">수정하기</button>
+								 <div class="clearfix"></div>
+							  </fieldset>
+							</form>
+							</div>
+						</c:otherwise>
+					</c:choose>
+							
 						</div>
 					</div>
 				</div>
