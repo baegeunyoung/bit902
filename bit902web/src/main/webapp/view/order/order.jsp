@@ -152,6 +152,8 @@
 					count++;
 				}
 				$("#tbody").html(html);
+			}).fail(function(jqXhr, testStatus, errorText) {
+				alert("에러발생 : " + errorText);
 			});
 		}
 	</script>
