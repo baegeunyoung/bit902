@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title</title>
+<title>로그인</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <jsp:include page="../../include/baseInclude.jsp" flush="true"></jsp:include>
 <script src="../../js/jquery-3.1.1.js"></script>
