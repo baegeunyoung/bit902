@@ -6,7 +6,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>메인페이지</title>
-
+<style>
+	input:-ms-input-placeholder { opacity: 0.3; }
+	input::-webkit-input-placeholder { opacity: 0.3; }
+	input::-moz-placeholder { opacity: 0.3; }
+	input::-moz-placeholder { opacity: 0.3; }
+	table {
+		border-spacing: 10px;
+		border-collapse: separate;
+	}
+</style>
 </head>
 <body>
 	<!-- 로그인 -->
@@ -18,9 +27,8 @@
 				<div class="container-fluid">
 					<div class="collapse navbar-collapse">
 						
-						<h1>Smart Pay</h1><br><br>
+						<h1>거기서 주문해</h1><br><br>
 						<h2>판매자 페이지</h2>
-						<h2>로그인</h2>
 						<br>
 						
 						<div id="success"></div>
@@ -34,7 +42,6 @@
 								<button id="login" class="btn btn-primary pull-center">로그인</button><br>
 							</div>
 						</form>
-						<br>
 						<form name="Form" action="/bit902web/view/login/insertSeller.jsp" method="post" class="navbar-form navbar-center">
 							<button id="reg" class="btn btn-primary pull-center">회원가입</button>
 						</form>
@@ -75,6 +82,13 @@
 							<br>
 							<button id="logout" type="button" class="btn btn-primary pull-right">로그아웃</button>
 							<button id="mod" type="button" class="btn btn-primary pull-right">회원정보수정</button>
+							<%
+								if (session.getAttribute("permitYn").equals("n") || session.getAttribute("permitYn").equals("r")){
+							%>
+								<h3>관리자 승인 후 이용하실 수 있습니다.</h3>
+							<%
+								}
+							%>
 							<%
 								if (session.getAttribute("id").equals("admin")) {
 							%>

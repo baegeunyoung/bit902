@@ -8,6 +8,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <jsp:include page="../../include/baseInclude.jsp" flush="true"></jsp:include>
 <title>회원 정보 수정</title>
+<style>
+	input:-ms-input-placeholder { opacity: 0.3; }
+	input::-webkit-input-placeholder { opacity: 0.3; }
+	input::-moz-placeholder { opacity: 0.3; }
+	input::-moz-placeholder { opacity: 0.3; }
+	table {
+		border-spacing: 10px;
+		border-collapse: separate;
+	}
+</style>
 </head>
 <body>
 
@@ -83,55 +93,49 @@
 			<div class="container-fluid">
 				<div class="collapse navbar-collapse">
 
-					<h1>Smart Pay</h1><br><br>
+					<h1>Smart Pay</h1>
+					<br>
+					<br>
 					<h2>회원정보수정</h2>
 					<br>
-					<form name="mForm" action="${pageContext.request.contextPath}/login/modifySeller.do"
+					<form name="mForm"
+						action="${pageContext.request.contextPath}/login/modifySeller.do"
 						method="post" class="navbar-form navbar-center">
 						<div class="form-group  is-empty">
 							<table style="text-align: left;">
 								<tr>
-									<td>
-										아이디 : 
-									</td>
-									<td>
-										<input type="text" name="id" value="<%out.print(session.getAttribute("id"));%>" readonly class="form-control"> <span class="material-input"></span>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										비밀번호 : 
-									</td>
-									<td>
-										<input type="password" name="password" placeholder="비밀번호를 입력하세요" class="form-control"> <span class="material-input"></span>
+									<td>아이디</td>
+									<td><input type="text" name="id"
+										value="<%out.print(session.getAttribute("id"));%>" readonly
+										class="form-control"> <span class="material-input"></span>
 									</td>
 								</tr>
 								<tr>
-									<td>
-										비밀번호 확인 :
-									</td>
-									<td>
-										<input type="password" name="password2" placeholder="비밀번호를 입력하세요" class="form-control"> <span class="material-input"></span>
+									<td>비밀번호</td>
+									<td><input type="password" name="password"
+										placeholder="비밀번호를 입력하세요" class="form-control"> <span
+										class="material-input"></span></td>
+								</tr>
+								<tr>
+									<td>비밀번호 확인 &nbsp&nbsp&nbsp</td>
+									<td><input type="password" name="password2"
+										placeholder="비밀번호를 입력하세요" class="form-control"> <span
+										class="material-input"></span></td>
+								</tr>
+								<tr>
+									<td>이름</td>
+									<td><input type="text" name="name" placeholder="이름을 입력하세요"
+										class="form-control"> <span class="material-input"></span>
 									</td>
 								</tr>
 								<tr>
-									<td>
-										이름 : 
-									</td>
-									<td>
-										<input type="text" name="name" placeholder="이름을 입력하세요" class="form-control"> <span class="material-input"></span>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										핸드폰 번호 : 
-									</td>
-									<td>
-										<input type="text" name="cellphoneNumber" placeholder="핸드폰번호를 입력하세요" class="form-control"> <span class="material-input"></span>
-									</td>
+									<td>핸드폰 번호</td>
+									<td><input type="text" name="cellphoneNumber"
+										placeholder="핸드폰번호를 입력하세요" class="form-control"> <span
+										class="material-input"></span></td>
 							</table>
-							<br><br>
-							<input type="submit" value="회원정보수정" onClick="return doAction()" class="btn btn-primary pull-center" />
+							<br> <br> <input type="submit" value="회원정보수정"
+								onClick="return doAction()" class="btn btn-primary pull-center" />
 						</div>
 					</form>
 				</div>
