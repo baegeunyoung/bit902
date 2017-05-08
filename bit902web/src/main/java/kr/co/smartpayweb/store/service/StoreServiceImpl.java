@@ -16,11 +16,6 @@ public class StoreServiceImpl implements StoreService{
 	private StoreMapper dao;
 
 	@Override
-	public String permitYN(int sellerNo) throws Exception {
-		return dao.permitYN(sellerNo);
-	}
-	
-	@Override
 	public void write(Map<String, Object> param) throws Exception {
 		StoreVO store = (StoreVO)param.get("store");
 		dao.insertStore(store);

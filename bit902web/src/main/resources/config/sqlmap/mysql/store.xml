@@ -15,12 +15,6 @@
 		<result property="content" column="content"/>
 </resultMap>
 
-<select id="permitYN" parameterType="int" resultType="string">
-	select permit_yn
-	  from tb_seller
-	 where seller_no = #{sellerNo}
-</select>
-
 <insert id="insertStore" parameterType="StoreVO">
 	    <selectKey keyProperty="storeNo" order="AFTER" resultType="int">
 	        select last_insert_id()

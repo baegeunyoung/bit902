@@ -5,8 +5,6 @@ import java.util.Map;
 import kr.co.smartpayweb.repository.vo.StoreVO;
 
 public interface StoreService {
-
-	public String permitYN(int sellerNo) throws Exception;
 	
 	public void write(Map<String, Object> param) throws Exception;
 	

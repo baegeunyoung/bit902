@@ -102,6 +102,7 @@
 			</div>
 <script>
 makeMenu();
+
 //메뉴리스트 공통항목
 function makeMenu(){
 	

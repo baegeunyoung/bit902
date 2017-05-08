@@ -108,23 +108,13 @@ public class StoreController {
 		SellerVO seller = (SellerVO)session.getAttribute("seller");
 		int sellerNo = seller.getSellerNo();
 		
-		String permitYN = service.permitYN(sellerNo);
-		
-		if (permitYN.equals("r")) {
-			RequestDispatcher rd = request.getRequestDispatcher("/include/rejectPermit.jsp");
-			rd.forward(request, response);
-		} else if (permitYN.equals("n")) {
-			RequestDispatcher rd = request.getRequestDispatcher("/include/noPermit.jsp");
-			rd.forward(request, response);
-		} else if (permitYN.equals("y")) {
-			StoreVO store =service.readStore(sellerNo);
-			if(request.getParameter("msg") != null) {
-				request.setAttribute("msg", request.getParameter("msg"));
-			}
-			request.setAttribute("store", store);
-			RequestDispatcher rd = request.getRequestDispatcher("/view/store/writeform.jsp");
-			rd.forward(request, response);
+		StoreVO store =service.readStore(sellerNo);
+		if(request.getParameter("msg") != null) {
+			request.setAttribute("msg", request.getParameter("msg"));
 		}
+		request.setAttribute("store", store);
+		RequestDispatcher rd = request.getRequestDispatcher("/view/store/writeform.jsp");
+		rd.forward(request, response);
 	}
 
 	// 이벤트 삭제하기

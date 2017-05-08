@@ -25,7 +25,7 @@
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="${pageContext.request.contextPath}//menu/firstPage.do">
+	                    <a href="${pageContext.request.contextPath}/menu/firstPage.do">
 	                        <i class="material-icons text-gray">menu</i><p>메뉴관리</p>
 	                    </a>
 	                </li>
