@@ -39,12 +39,13 @@
 								<span class="material-input"></span><br>
 								<input type="password" name="password" placeholder="비밀번호를 입력하세요" class="form-control"><br>
 								<span class="material-input"></span><br>
-								<button id="login" class="btn btn-primary pull-center">로그인</button><br>
+								<button id="login" class="btn btn-primary pull-center">로그인</button>
+								<a href="/bit902web/view/login/insertSeller.jsp" role='button' class="btn btn-primary pull-center">회원가입</a>
 							</div>
 						</form>
-						<form name="Form" action="/bit902web/view/login/insertSeller.jsp" method="post" class="navbar-form navbar-center">
-							<button id="reg" class="btn btn-primary pull-center">회원가입</button>
-						</form>
+<!-- 						<form name="Form" action="/bit902web/view/login/insertSeller.jsp" method="post" class="navbar-form navbar-center"> -->
+<!-- 							<button id="reg" class="btn btn-primary pull-center">회원가입</button> -->
+<!-- 						</form> -->
 					</div>
 				</div>
 			</nav>
