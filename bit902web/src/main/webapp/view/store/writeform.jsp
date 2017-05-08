@@ -11,6 +11,19 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<style>
+	#image{
+		position: fixed;
+		right: 200px;
+	}
+	#sample5_address {
+		font-size: 20px;
+	}
+/*  	input#imgInp {    */
+/*  	 opacity: 0;        */
+/* 	 position: relative;  */
+/*  }  */
+</style>
 <body>
 <div class="wrapper">
 	<div>
@@ -36,19 +49,19 @@
 	                   	<c:choose>
 							<c:when test="${empty store.content}">
 						<div class="card-content">	                            
-							<form class="form-horizontal" action="${pageContext.request.contextPath}/store/write.do" id="form1" runat="server" enctype="multipart/form-data" method="post">
+							<form class="form-horizontal" action="${pageContext.request.contextPath}/store/write.do" name= form1" id="form1" runat="server" enctype="multipart/form-data" method="post">
 							  <fieldset>
 							    <div class="form-group">
 							      <label for="storeName" class="col-lg-2 control-label">상호명</label>
-							      <div class="col-lg-10">
+							      <div class="col-lg-5">
 							        <input type="text" class="form-control" id="storeName" name="storeName" placeholder="상호명을입력하세요">
 							      </div>
+								<div id="image"><img id="blah" style="width:300px;height:300px; border:1px solid; border-radius:150px;"/></div><br>
 							    </div>
 							    <div class="form-group">
 							      <label for="textArea" class="col-lg-2 control-label">Textarea</label>
-							      <div class="col-lg-10">
+							      <div class="col-lg-5">
 							        <textarea class="form-control" rows="5" name="content" id="textArea" placeholder="상점의 간단한 소개를 해주세요"></textarea>
-							        <span class="help-block">상점의 간단한 소개를 해주세요</span>
 							      </div>
 							    </div>
 							    <div class="form-group">
@@ -69,18 +82,22 @@
 							      </div>
 							    </div>
 							     <div>
-							       <label class="col-lg-2 control-label">상점대표이미지</label>
+							       <label class="col-lg-2 control-label">상점대표이미지1</label>
 							         <input type="file" name="attachFile" id="imgInp"/>
+							       
 							    </div>
 							    <div class="form-group">
 							      <label for="adress" class="col-lg-2 control-label">주소</label>
-							      <div class="col-lg-10">
-							        <input class="form-control" type="text" id="sample5_address" name="adress" placeholder="주소">
+							      <div class="col-lg-1">
 							        <input class="btn btn-default btn-lg btn-block" type="button"  onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
+							      </div><br>
+							       <span id="sample5_address"></span>
+							    </div>
+							      
+							    <div class="form-group">
+							      <label for="adress" class="col-lg-2 control-label">상점지도</label>
+							      <div class="col-lg-2">
 							        <div id="map" style="width:300px;height:300px;margin-top:10px;border:dotted 3px purple; float:left;" ></div>
-<!-- 							        <div id="map" style="width:300px;height:300px;margin-top:10px;display:none; float:left" ></div> -->
-<%-- 							         <div><img src="${pageContext.request.contextPath}/upload${store.filePath}/${store.systemName}" style="width:300px;height:300px;margin-top:10px; border:dotted 3px purple"/></div><br> --%>
-<!-- 							         <div><img id="blah" src="#" alt="대표이미지"  style="width:300px;height:300px;margin-top:10px; border- " /></div><br> -->
 							      </div>
 							    </div>
 							    <div>
@@ -95,7 +112,7 @@
 							</c:when>
 						<c:otherwise>
 							<div class="card-content">	                            
-							<form class="form-horizontal" action="${pageContext.request.contextPath}/store/modify.do" id="form1" runat="server" enctype="multipart/form-data" method="post">
+							<form class="form-horizontal" action="${pageContext.request.contextPath}/store/modify.do" name= form1" id="form1" runat="server" enctype="multipart/form-data" method="post">
 							  <fieldset>
 							    <div class="form-group">
 							      <label for="storeName" class="col-lg-2 control-label">상점이름</label>
@@ -106,7 +123,7 @@
 							    <div class="form-group">
 							      <label for="textArea" class="col-lg-2 control-label">Textarea</label>
 							      <div class="col-lg-10">
-							        <textarea class="form-control" rows="5" name="content" id="textArea" placeholder="상점의 간단한 소개를 해주세요">${store.content}</textarea>
+							        <textarea class="form-control" rows="5" name="content" id="content" placeholder="상점의 간단한 소개를 해주세요">${store.content}</textarea>
 							        <span class="help-block">상점의 간단한 소개를 해주세요</span>
 							      </div>
 							    </div>
@@ -135,6 +152,7 @@
 							      <label for="adress" class="col-lg-2 control-label">주소</label>
 							      <div class="col-lg-10">
 							        <input class="form-control" type="text" id="sample5_address" name="adress" value="${store.adress}">
+									
 							        <input class="btn btn-default btn-lg btn-block" type="button"  onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
 							        <div id="map" style="width:300px;height:300px;margin-top:10px;border:dotted 3px purple; float:left;" ></div>
 <!-- 							        <div id="map" style="width:300px;height:300px;margin-top:10px;display:none; float:left" ></div> -->
@@ -204,7 +222,7 @@
                 }
 
                 // 주소 정보를 해당 필드에 넣는다.
-                document.getElementById("sample5_address").value = fullAddr;
+                document.getElementById("sample5_address").innerHTML = fullAddr;
                 // 주소로 좌표를 검색
                 geocoder.addr2coord(data.address, function(status, result) {
                     // 정상적으로 검색이 완료됐으면
@@ -234,6 +252,17 @@
     }
 </script>
     <script>
+    $("#form1").submit(function() {
+
+		var frm = document.form1;
+		
+		if (frm.storeName.value == "") {
+			alert("이름을 입력하세요.");
+			frm.storeName.focus();
+			return false;
+		}
+		
+    });
         $(function() {
             $("#imgInp").on('change', function(){
                 readURL(this);
