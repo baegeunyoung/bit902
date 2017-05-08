@@ -9,14 +9,25 @@
 <jsp:include page="../../include/baseInclude.jsp" flush="true"></jsp:include>
 <title>회원 가입</title>
 <style>
-	input:-ms-input-placeholder { opacity: 0.3; }
-	input::-webkit-input-placeholder { opacity: 0.3; }
-	input::-moz-placeholder { opacity: 0.3; }
-	input::-moz-placeholder { opacity: 0.3; }
-	table {
-		border-spacing: 10px;
-		border-collapse: separate;
-	}
+input:-ms-input-placeholder {
+	opacity: 0.3;
+}
+
+input::-webkit-input-placeholder {
+	opacity: 0.3;
+}
+
+input::-moz-placeholder {
+	opacity: 0.3;
+}
+
+input::-moz-placeholder {
+	opacity: 0.3;
+}
+.form-group {
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
 </style>
 </head>
 <body>
@@ -90,56 +101,64 @@
 	<!-- 	                            </div> -->
 	<div class="wrapper" style="text-align: center;">
 		<nav class="navbar navbar-transparent navbar-absolute">
-			<div class="container-fluid">
-<!-- 				<div class="collapse navbar-collapse"> -->
-
-					<div class="logo"><h1>
-						<a href="${pageContext.request.contextPath}/main/main.do" class="simple-text">
-							거기서 주문해
-						</a></h1>
+			<div class="content">
+				<div class="container-fluid">
+					<h1>
+						<a href="${pageContext.request.contextPath}/main/main.do" class="simple-text"> 거기서 주문해 </a>
+					</h1>
+				</div>
+				<br>
+				<br>
+				<h2>회원가입</h2>
+				<br>
+				<form name="mForm" action="${pageContext.request.contextPath}/login/insertSeller.do" method="post" class="navbar-form navbar-center">
+					<div class="form-group  is-empty">
+						<table style="text-align: left;">
+							<tr>
+								<td><br>아이디</td>
+								<td>
+									<div class="form-group">
+										<input type="text" name="id" placeholder="아이디" class="form-control">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td><br>비밀번호</td>
+								<td>
+									<div class="form-group">
+										<input type="password" name="password" placeholder="비밀번호" class="form-control">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td><br>비밀번호 확인 &nbsp&nbsp&nbsp</td>
+								<td>
+									<div class="form-group">
+										<input type="password" name="password2" placeholder="비밀번호 확인" class="form-control">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td><br>이름</td>
+								<td>
+									<div class="form-group">
+										<input type="text" name="name" placeholder="이름" class="form-control">
+								</div>
+								</td>
+							</tr>
+							<tr>
+								<td><br>핸드폰 번호</td>
+								<td>
+									<div class="form-group">
+										<input type="text" name="cellphoneNumber" placeholder="핸드폰번호" class="form-control">
+									</div>
+								</td>
+						</table>
+						<br>
+						<br>
+						<input type="submit" value="회원가입" onClick="return doAction()" class="btn btn-primary pull-center" />
 					</div>
-					<br><br>
-					<h2>회원가입</h2>
-					<br>
-					<form name="mForm"
-						action="${pageContext.request.contextPath}/login/insertSeller.do"
-						method="post" class="navbar-form navbar-center">
-						<div class="form-group  is-empty">
-							<table style="text-align: left;">
-								<tr>
-									<td>아이디</td>
-									<td><input type="text" name="id" placeholder="아이디"
-										class="form-control"> <span class="material-input"></span>
-									</td>
-								</tr>
-								<tr>
-									<td>비밀번호</td>
-									<td><input type="password" name="password"
-										placeholder="비밀번호" class="form-control"> <span
-										class="material-input"></span></td>
-								</tr>
-								<tr>
-									<td>비밀번호 확인 &nbsp&nbsp&nbsp</td>
-									<td><input type="password" name="password2"
-										placeholder="비밀번호 확인" class="form-control"> <span
-										class="material-input"></span></td>
-								</tr>
-								<tr>
-									<td>이름</td>
-									<td><input type="text" name="name" placeholder="이름"
-										class="form-control"> <span class="material-input"></span></td>
-								</tr>
-								<tr>
-									<td>핸드폰 번호</td>
-									<td><input type="text" name="cellphoneNumber"
-										placeholder="핸드폰번호" class="form-control"> <span
-										class="material-input"></span></td>
-							</table>
-							<br> <br> <input type="submit" value="회원가입"
-								onClick="return doAction()" class="btn btn-primary pull-center" />
-						</div>
-					</form>
-<!-- 				</div> -->
+				</form>
 			</div>
 		</nav>
 	</div>
@@ -233,7 +252,7 @@
 			// 				return false;		
 			// 			}
 			// 			})
-			
+
 			alert("회원 가입이 완료되었습니다.");
 			return true;
 		}

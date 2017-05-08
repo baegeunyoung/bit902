@@ -7,10 +7,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>메인페이지</title>
 <style>
-	input:-ms-input-placeholder { opacity: 0.3; }
-	input::-webkit-input-placeholder { opacity: 0.3; }
-	input::-moz-placeholder { opacity: 0.3; }
-	input::-moz-placeholder { opacity: 0.3; }
+input:-ms-input-placeholder {
+	opacity: 0.3;
+}
+
+input::-webkit-input-placeholder {
+	opacity: 0.3;
+}
+
+input::-moz-placeholder {
+	opacity: 0.3;
+}
+
+input::-moz-placeholder {
+	opacity: 0.3;
+}
 </style>
 </head>
 <body>
@@ -19,41 +30,44 @@
 		if (session.getAttribute("id") == null) {
 	%>
 	<div class="wrapper" style="text-align: center;">
-		<nav class="navbar navbar-transparent navbar-absolute">
-			<div class="container-fluid">
-<!-- 			<div class="collapse navbar-collapse"> -->
-				<h1>거기서 주문해</h1><br><br>
-				<h2>판매자 페이지</h2>
-				<br>
-				
-				<div id="success"></div>
-				<form name="mForm" action="${pageContext.request.contextPath}/login/login.do" 
-					method="post" class="navbar-form navbar-center">
-					<div class="form-group is-empty">
+		<div class="container-fluid">
+			<h1>거기서 주문해</h1>
+			<br>
+			<br>
+			<h2>판매자 페이지</h2>
+			<br>
+
+			<div id="success"></div>
+			<form name="mForm" action="${pageContext.request.contextPath}/login/login.do" method="post" class="navbar-form navbar-center">
+				<div class="form-group is-empty">
+					<div class="form-group">
 						<input type="text" name="id" placeholder="아이디를 입력하세요" class="form-control" style="margin-bottom: 10px;">
 						<span class="material-input"></span><br>
+					</div>
+					<br>
+					<div class="form-group">
 						<input type="password" name="password" placeholder="비밀번호를 입력하세요" class="form-control"><br>
 						<span class="material-input"></span><br>
-						<button id="login" class="btn btn-primary pull-center">로그인</button>
-						<a href="/bit902web/view/login/insertSeller.jsp" role='button' class="btn btn-primary pull-center">회원가입</a>
 					</div>
-				</form>
-<!-- 			</div> -->
-			</div>
-		</nav>
+					<br>
+					<button id="login" class="btn btn-primary pull-center">로그인</button>
+					<a href="/bit902web/view/login/insertSeller.jsp" role='button' class="btn btn-primary pull-center">회원가입</a>
+				</div>
+			</form>
+		</div>
 	</div>
 	<c:import url="../../include/footer.jsp" />
 	<%
 		} else {
 	%>
 	<div class="wrapper">
-	<%
-		if (session.getAttribute("permitYn").equals("y")){
-	%>
+		<%
+			if (session.getAttribute("permitYn").equals("y")) {
+		%>
 		<c:import url="../../include/sidebar.jsp" />
-	<%
-		}
-	%>
+		<%
+			}
+		%>
 		<div class="main-panel">
 			<nav class="navbar navbar-transparent navbar-absolute">
 			<div class="container-fluid">
@@ -76,9 +90,9 @@
 							<button id="logout" type="button" class="btn btn-primary pull-right">로그아웃</button>
 							<button id="mod" type="button" class="btn btn-primary pull-right">회원정보수정</button>
 							<%
-								if (session.getAttribute("permitYn").equals("n") || session.getAttribute("permitYn").equals("r")){
+								if (session.getAttribute("permitYn").equals("n") || session.getAttribute("permitYn").equals("r")) {
 							%>
-								<h3>관리자 승인 후 이용하실 수 있습니다.</h3>
+							<h3>관리자 승인 후 이용하실 수 있습니다.</h3>
 							<%
 								}
 							%>
@@ -100,7 +114,7 @@
 		}
 	%>
 	<script>
-		$("#logout").click(	function() {
+		$("#logout").click( function() {
 			location.href = "${pageContext.request.contextPath}/login/logout.do";
 		});
 

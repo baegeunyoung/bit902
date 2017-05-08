@@ -9,14 +9,26 @@
 <jsp:include page="../../include/baseInclude.jsp" flush="true"></jsp:include>
 <title>회원 정보 수정</title>
 <style>
-	input:-ms-input-placeholder { opacity: 0.3; }
-	input::-webkit-input-placeholder { opacity: 0.3; }
-	input::-moz-placeholder { opacity: 0.3; }
-	input::-moz-placeholder { opacity: 0.3; }
-	table {
-		border-spacing: 10px;
-		border-collapse: separate;
-	}
+input:-ms-input-placeholder {
+	opacity: 0.3;
+}
+
+input::-webkit-input-placeholder {
+	opacity: 0.3;
+}
+
+input::-moz-placeholder {
+	opacity: 0.3;
+}
+
+input::-moz-placeholder {
+	opacity: 0.3;
+}
+
+table {
+	border-spacing: 10px;
+	border-collapse: separate;
+}
 </style>
 </head>
 <body>
@@ -92,53 +104,60 @@
 		<nav class="navbar navbar-transparent navbar-absolute">
 			<div class="container-fluid">
 				<div class="collapse navbar-collapse">
-
-					<div class="logo"><h1>
-						<a href="${pageContext.request.contextPath}/main/main.do" class="simple-text">
-							거기서 주문해
-						</a></h1>
+					<div class="logo">
+						<h1>
+							<a href="${pageContext.request.contextPath}/main/main.do" class="simple-text">거기서 주문해 </a>
+						</h1>
 					</div>
 					<br><br>
 					<h2>회원정보수정</h2>
 					<br>
-					<form name="mForm"
-						action="${pageContext.request.contextPath}/login/modifySeller.do"
-						method="post" class="navbar-form navbar-center">
+					<form name="mForm" action="${pageContext.request.contextPath}/login/modifySeller.do" method="post" class="navbar-form navbar-center">
 						<div class="form-group  is-empty">
 							<table style="text-align: left;">
 								<tr>
 									<td>아이디</td>
-									<td><input type="text" name="id"
-										value="<%out.print(session.getAttribute("id"));%>" readonly
-										class="form-control"> <span class="material-input"></span>
+									<td>
+										<div class="form-group">
+											<input type="text" name="id" value="<%out.print(session.getAttribute("id"));%>" readonly class="form-control">
+										</div>
 									</td>
 								</tr>
 								<tr>
 									<td>비밀번호</td>
-									<td><input type="password" name="password"
-										placeholder="비밀번호를 입력하세요" class="form-control"> <span
-										class="material-input"></span></td>
+									<td>
+										<div class="form-group">
+											<input type="password" name="password" placeholder="비밀번호를 입력하세요" class="form-control">
+										</div>
+									</td>
 								</tr>
 								<tr>
 									<td>비밀번호 확인 &nbsp&nbsp&nbsp</td>
-									<td><input type="password" name="password2"
-										placeholder="비밀번호를 입력하세요" class="form-control"> <span
-										class="material-input"></span></td>
+									<td>
+										<div class="form-group">
+											<input type="password" name="password2" placeholder="비밀번호를 입력하세요" class="form-control">
+										</div>
+									</td>
 								</tr>
 								<tr>
 									<td>이름</td>
-									<td><input type="text" name="name" placeholder="이름을 입력하세요"
-										class="form-control"> <span class="material-input"></span>
+									<td>
+										<div class="form-group">
+											<input type="text" name="name" placeholder="이름을 입력하세요" class="form-control">
+										</div>
 									</td>
 								</tr>
 								<tr>
 									<td>핸드폰 번호</td>
-									<td><input type="text" name="cellphoneNumber"
-										placeholder="핸드폰번호를 입력하세요" class="form-control"> <span
-										class="material-input"></span></td>
+									<td>
+										<div class="form-group">
+											<input type="text" name="cellphoneNumber" placeholder="핸드폰번호를 입력하세요" class="form-control">
+										</div>
+									</td>
+								</tr>
 							</table>
-							<br> <br> <input type="submit" value="회원정보수정"
-								onClick="return doAction()" class="btn btn-primary pull-center" />
+							<br><br>
+							<input type="submit" value="회원정보수정" onClick="return doAction()" class="btn btn-primary pull-center" />
 						</div>
 					</form>
 				</div>
@@ -164,7 +183,6 @@
 		// 		});
 		// 	});
 		function doAction() {
-
 			var f = document.mForm;
 			// 			var id = f.id;
 			var pw = f.password;
