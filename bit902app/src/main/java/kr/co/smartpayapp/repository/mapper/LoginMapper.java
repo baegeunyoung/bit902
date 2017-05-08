@@ -4,7 +4,7 @@ import java.util.List;
 
 import kr.co.smartpayapp.repository.vo.BuyerVO;
 
-public interface PayMapper {
+public interface LoginMapper {
 	public List<BuyerVO> selectBuyer();
 	public int insertBuyer(BuyerVO buyerVO);
 }

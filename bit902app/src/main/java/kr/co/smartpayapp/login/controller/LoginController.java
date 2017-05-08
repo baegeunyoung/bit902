@@ -1,4 +1,4 @@
-package kr.co.smartpayapp.pay.controller;
+package kr.co.smartpayapp.login.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,28 +11,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.co.smartpayapp.pay.service.PayService;
+import kr.co.smartpayapp.login.service.LoginService;
 import kr.co.smartpayapp.repository.vo.BuyerVO;
 
 @RestController
-@RequestMapping("/book")
-public class PayController {
+@RequestMapping("/payment")
+@CrossOrigin(origins = "*")
+public class LoginController {
 	@Autowired
-	PayService payService;
+	LoginService loginService;
 	
-	@CrossOrigin(origins = "*")
-	@RequestMapping("/timeCheck.do")
+	@RequestMapping("/buyerCheck.do")
 	public List<BuyerVO> bookTimeCheck() {
-		List<BuyerVO> list = payService.checkBuyer();
+		List<BuyerVO> list = loginService.checkBuyer();
 		for(BuyerVO l : list) {
 		}
 		return list;
 	}
-	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
 	public Map<String,Object> buyerRegist(/*HttpServletRequest request*/@RequestBody BuyerVO buyerVO) {
 		Map<String,Object> msg = new HashMap<>();
-		if(payService.registBuyer(buyerVO) == 1 ) {
+		if(loginService.registBuyer(buyerVO) == 1 ) {
 			msg.put("msg", "등록완료");
 		}
 		else {
@@ -40,5 +39,6 @@ public class PayController {
 		}
 		return msg;
 	}
+	
 	
 }
