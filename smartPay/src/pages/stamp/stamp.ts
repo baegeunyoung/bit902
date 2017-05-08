@@ -9,37 +9,15 @@ import { Http, RequestOptions, Headers } from '@angular/http';
 export class StampPage {
     @ViewChild(Card) stamp: Card;
     amount: string = "";
-    private html:string = "";
     private myStamp:string = "";
-    private major:number = 0;
     constructor(public NavCtrl: NavController, public navParams: NavParams, public http: Http) {
         if (navParams.data.amount) {
             this.amount = navParams.data.amount;
         }
     }
 
-    myMarkets() {
-    
-        let link = "http://14.32.66.123:10001/bit902app/stamp/allStamp.do";
-        this.html = "";
-        this.http.get(link)
-        .map(res => res.json())
-        .subscribe(data => {
-
-            console.log("success");
-            console.log(data);
-            for(let i = 0 ; i < data.length ; i++) {
-                this.html += "스탬프 종류 : " + data[i].buyerStampNo + "<br><p> 모은갯수 : " + data[i].stampCount + " 스탬프 번호 : " + data[i].sellerStampNo + "</p>";
-            }
-            console.log(this.html);
-        },error => {
-            console.log("error");
-        });
-    }
-
     onlyMyStamp() {
         let myNo = 1;
-        this.major = myNo;
         let data = myNo;
         this.myStamp = "";
         let link = "http://14.32.66.123:10001/bit902app/stamp/onlyMyStamp.do";

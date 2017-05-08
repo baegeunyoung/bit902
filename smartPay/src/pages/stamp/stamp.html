@@ -12,14 +12,7 @@
   <ion-card id="stamp" #innerHTML>
     <div [innerHTML] = "html"></div>
   </ion-card>
-  <button ion-button (click)="myMarkets()">
-    모든 스탬프 다 조회
-  </button>
-  <!--
-  <ion-card id="myStamp" #innerHTML>
-    <div [innerHTML] = "myStamp"></div>
-  </ion-card>
-  -->
+ 
   <template ngFor let-item [ngForOf]="myStamp">
     <ion-card>
       <ion-card-content>

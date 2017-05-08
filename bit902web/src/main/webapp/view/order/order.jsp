@@ -115,7 +115,6 @@
 // 			}).done( function (result){
 // 				var html = "";
 // 				var count = 1;
-// 				console.log(result.length);
 // 				for (var i = 0 ; i < result.length ; i++) {
 // 					html += '<tr>';
 // 					html += '<td>' + count + '</td>';
@@ -123,7 +122,6 @@
 // 					html += '<td>';
 // 					for (var j ; j < result[i].orderMenuList.length ; j++) {
 // 						html += result[i].orderMenuList[j].name + '-' + result[i].orderMenuList[j].quantity + '개<br>';
-// 						console.log(result[i].orderMenuList[j].name);
 // 					}							
 // 					html += '</td>';
 					
