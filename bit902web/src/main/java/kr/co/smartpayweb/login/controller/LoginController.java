@@ -36,7 +36,6 @@ public class LoginController extends HttpServlet{
 		// 아이디나 비밀번호가 db에 없을 때
 		if(seller == null) {
 			map.put("msg", "입력하신 정보가 올바르지 않습니다.");
-			System.out.println("2");
 			RequestDispatcher rd = request.getRequestDispatcher("../view/login/login.jsp");
 			rd.forward(request, response);
 			return map;
@@ -62,7 +61,6 @@ public class LoginController extends HttpServlet{
 		// 아이디와 비밀번호 중 하나만 일치할 때
 		else {
 			map.put("msg", "입력하신 정보가 올바르지 않습니다.");
-			System.out.println("4");
 			RequestDispatcher rd = request.getRequestDispatcher("../view/login/login.jsp");
 			rd.forward(request, response);
 			return map;
