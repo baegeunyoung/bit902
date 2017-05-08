@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>메인페이지</title>
+
 </head>
 <body>
 	<!-- 로그인 -->
@@ -16,7 +17,9 @@
 			<nav class="navbar navbar-transparent navbar-absolute">
 				<div class="container-fluid">
 					<div class="collapse navbar-collapse">
-
+						
+						<h1>Smart Pay</h1><br><br>
+						<h2>판매자 페이지</h2>
 						<h2>로그인</h2>
 						<br>
 						

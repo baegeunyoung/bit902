@@ -40,5 +40,6 @@
 
 	<!-- Material Dashboard DEMO methods, don't include it in your project! -->
 	<script src="${pageContext.request.contextPath}/material-dashboard-free-v1.1.0/assets/js/demo.js"></script>
+	
 </body>
 </html>

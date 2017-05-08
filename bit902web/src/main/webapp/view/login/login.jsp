@@ -18,6 +18,8 @@
 				<div class="container-fluid">
 					<div class="collapse navbar-collapse">
 
+						<h1>Smart Pay</h1><br><br>
+						<h2>판매자 페이지</h2>
 						<h2>로그인</h2>
 						<br>
 						
