@@ -12,8 +12,7 @@
 	<%
 		if (session.getAttribute("id") == null) {
 	%>
-	<div class="wrapper">
-		<div class="main-panel">
+	<div class="wrapper" style="text-align: center;">
 			<div class="content">
 				<div class="container-fluid">
 					<div class="row">
@@ -38,9 +37,9 @@
 					</div>
 				</div>
 			</div>
-			<c:import url="../../include/footer.jsp" />
-		</div>
+
 	</div>
+			<c:import url="../../include/footer.jsp" />
 	<%
 		} else {
 	%>
@@ -65,7 +64,7 @@
 			</div>
 			</nav>
 			<div class="content">
-				<div class="container-fluid">
+				<div class="container-fluid" style="text-align: center;">
 					<div class="row">
 						<div class="col-md-12">
 							<br>
