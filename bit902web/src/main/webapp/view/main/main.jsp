@@ -11,10 +11,6 @@
 	input::-webkit-input-placeholder { opacity: 0.3; }
 	input::-moz-placeholder { opacity: 0.3; }
 	input::-moz-placeholder { opacity: 0.3; }
-	table {
-		border-spacing: 10px;
-		border-collapse: separate;
-	}
 </style>
 </head>
 <body>
@@ -35,7 +31,7 @@
 						<form name="mForm" action="${pageContext.request.contextPath}/login/login.do" 
 							method="post" class="navbar-form navbar-center">
 							<div class="form-group  is-empty">
-								<input type="text" name="id" placeholder="아이디를 입력하세요" class="form-control">
+								<input type="text" name="id" placeholder="아이디를 입력하세요" class="form-control" style="margin-bottom: 10px;">
 								<span class="material-input"></span><br>
 								<input type="password" name="password" placeholder="비밀번호를 입력하세요" class="form-control"><br>
 								<span class="material-input"></span><br>
@@ -43,9 +39,6 @@
 								<a href="/bit902web/view/login/insertSeller.jsp" role='button' class="btn btn-primary pull-center">회원가입</a>
 							</div>
 						</form>
-<!-- 						<form name="Form" action="/bit902web/view/login/insertSeller.jsp" method="post" class="navbar-form navbar-center"> -->
-<!-- 							<button id="reg" class="btn btn-primary pull-center">회원가입</button> -->
-<!-- 						</form> -->
 					</div>
 				</div>
 			</nav>

@@ -7,6 +7,12 @@
 <html>
 <head>
 <title>로그인</title>
+<style>
+	input:-ms-input-placeholder { opacity: 0.3; }
+	input::-webkit-input-placeholder { opacity: 0.3; }
+	input::-moz-placeholder { opacity: 0.3; }
+	input::-moz-placeholder { opacity: 0.3; }
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <jsp:include page="../../include/baseInclude.jsp" flush="true"></jsp:include>
 <script src="../../js/jquery-3.1.1.js"></script>
@@ -18,26 +24,25 @@
 				<div class="container-fluid">
 					<div class="collapse navbar-collapse">
 
-						<h1>Smart Pay</h1><br><br>
+						<a href="${pageContext.request.contextPath}/main/main.do" class="simple-text">
+						<h1>거기서 주문해</h1></a>
+						<br><br>
 						<h2>판매자 페이지</h2>
-						<h2>로그인</h2>
 						<br>
 						
 						<div id="success"></div>
 						<form name="mForm" action="${pageContext.request.contextPath}/login/login.do" 
 							method="post" class="navbar-form navbar-center">
 							<div class="form-group  is-empty">
-								<input type="text" name="id" placeholder="아이디를 입력하세요" class="form-control">
+								<input type="text" name="id" placeholder="아이디를 입력하세요" class="form-control" style="margin-bottom: 10px;">
 								<span class="material-input"></span><br>
 								<input type="password" name="password" placeholder="비밀번호를 입력하세요" class="form-control"><br>
 								<span class="material-input"></span><br>
-								<button id="login" class="btn btn-primary pull-center">로그인</button><br>
+								<button id="login" class="btn btn-primary pull-center">로그인</button>
+								<a href="/bit902web/view/login/insertSeller.jsp" role='button' class="btn btn-primary pull-center">회원가입</a>
 							</div>
 						</form>
 						<br>
-						<form name="Form" action="/bit902web/view/login/insertSeller.jsp" method="post" class="navbar-form navbar-center">
-							<button id="reg" class="btn btn-primary pull-center">회원가입</button>
-						</form>
 					</div>
 				</div>
 			</nav>
