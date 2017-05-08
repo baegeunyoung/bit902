@@ -38,7 +38,6 @@ public class MenuController {
 		
 		SellerVO seller = (SellerVO)session.getAttribute("seller");
 		int sellerNo = seller.getSellerNo();
-		System.out.println("컨트롤러셀러넘버:" + sellerNo);
 		
 		return service.list(sellerNo);
 	}
@@ -69,12 +68,6 @@ public class MenuController {
 		menu.setSize(mRequest.getParameter("size"));
 		menu.setState(mRequest.getParameter("state"));
 		menu.setSellerNo(sellerNo);
-		
-		System.out.println(mRequest.getParameter("menuName"));
-		System.out.println(mRequest.getParameter("content"));
-		System.out.println(Integer.parseInt(mRequest.getParameter("price")));
-		System.out.println(mRequest.getParameter("size"));
-		System.out.println(sellerNo);
 		param.put("menu", menu);
 	
 		MultipartFile file = mRequest.getFile("attachFile");
@@ -124,10 +117,7 @@ public class MenuController {
 	@ResponseBody
 	@RequestMapping("/updateForm.do")
 	public Map<String, Object> updateForm(HttpServletRequest request, HttpSession session) throws Exception {
-		System.out.println("컨트롤러1");
 		int menuNo = Integer.parseInt(request.getParameter("menuNo"));
-		System.out.println(menuNo);
-		
 		return service.updateForm(menuNo);
 	}
 	//메뉴변경
