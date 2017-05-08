@@ -8,7 +8,7 @@
 </head>
 <body>
 	<script>
-		alert("관리자 승인이 필요합니다.");
+		alert("관리자가 가입을 거절했습니다.");
 		location.href = "/bit902web/main/main.do";
 	</script>
 </body>
