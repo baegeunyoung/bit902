@@ -13,7 +13,6 @@
 		if (session.getAttribute("id") == null) {
 	%>
 	<div class="wrapper">
-		<c:import url="../../include/sidebar.jsp" />
 		<div class="main-panel">
 			<div class="content">
 				<div class="container-fluid">
@@ -46,7 +45,13 @@
 		} else {
 	%>
 	<div class="wrapper">
+	<%
+		if (session.getAttribute("permitYn").equals("y")){
+	%>
 		<c:import url="../../include/sidebar.jsp" />
+	<%
+		}
+	%>
 		<div class="main-panel">
 			<nav class="navbar navbar-transparent navbar-absolute">
 			<div class="container-fluid">

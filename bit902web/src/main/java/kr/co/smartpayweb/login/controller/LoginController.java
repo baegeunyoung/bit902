@@ -52,6 +52,7 @@ public class LoginController extends HttpServlet{
 			map.put("msg", "로그인성공");
 			session.setAttribute("seller", seller);
 			session.setAttribute("id", id);
+			session.setAttribute("permitYn", seller.getPermitYn());
 //			request.setAttribute("id", id);
 			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 			rd.forward(request, response);
