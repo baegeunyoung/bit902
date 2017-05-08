@@ -19,13 +19,7 @@ public class StampController {
 	
 	@Autowired
 	StampService service;
-	
-	// allStamp 조회
-	@RequestMapping("/allStamp.do")
-	public List<BuyerStampVO> allStamp() {
-		return service.allStamp();
-	}
-	
+
 	@RequestMapping("/onlyMyStamp.do")
 	public List<OnlyMyStampVO> onlyMyStamp(@RequestBody int myNo) throws Exception {
 		return service.onlyMyStamp(myNo);

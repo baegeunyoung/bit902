@@ -15,14 +15,8 @@ public class StampServiceImpl implements StampService {
 	@Autowired
 	private StampMapper mapper;
 	
-	// allStamp 조회
-	public List<BuyerStampVO> allStamp() {
-		return mapper.allStamp();
-	}
-	
 	public List<OnlyMyStampVO> onlyMyStamp(int myNo) throws Exception {
 		List<OnlyMyStampVO> d = mapper.onlyMyStamp(myNo);
-		System.out.println("임플");
 		return d;
 	}
 }
