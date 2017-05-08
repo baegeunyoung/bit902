@@ -13,7 +13,7 @@
 	    <div class="sidebar" data-color="purple" data-image="${pageContext.request.contextPath}/material-dashboard-free-v1.1.0/assets/img/SmartPay1.gif">
 			<div class="logo">
 				<a href="${pageContext.request.contextPath}/main/main.do" class="simple-text">
-					Smart Pay
+					거기서 주문해
 				</a>
 			</div>
 

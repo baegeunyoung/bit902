@@ -91,10 +91,14 @@
 	<div class="wrapper" style="text-align: center;">
 		<nav class="navbar navbar-transparent navbar-absolute">
 			<div class="container-fluid">
-				<div class="collapse navbar-collapse">
+<!-- 				<div class="collapse navbar-collapse"> -->
 
-					<h1>거기서 주문해</h1>
-					<br> <br>
+					<div class="logo"><h1>
+						<a href="${pageContext.request.contextPath}/main/main.do" class="simple-text">
+							거기서 주문해
+						</a></h1>
+					</div>
+					<br><br>
 					<h2>회원가입</h2>
 					<br>
 					<form name="mForm"
@@ -135,7 +139,7 @@
 								onClick="return doAction()" class="btn btn-primary pull-center" />
 						</div>
 					</form>
-				</div>
+<!-- 				</div> -->
 			</div>
 		</nav>
 	</div>

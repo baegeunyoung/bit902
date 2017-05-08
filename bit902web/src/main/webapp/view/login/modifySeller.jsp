@@ -93,9 +93,12 @@
 			<div class="container-fluid">
 				<div class="collapse navbar-collapse">
 
-					<h1>Smart Pay</h1>
-					<br>
-					<br>
+					<div class="logo"><h1>
+						<a href="${pageContext.request.contextPath}/main/main.do" class="simple-text">
+							거기서 주문해
+						</a></h1>
+					</div>
+					<br><br>
 					<h2>회원정보수정</h2>
 					<br>
 					<form name="mForm"

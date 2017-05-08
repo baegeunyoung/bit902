@@ -19,29 +19,28 @@
 		if (session.getAttribute("id") == null) {
 	%>
 	<div class="wrapper" style="text-align: center;">
-			<nav class="navbar navbar-transparent navbar-absolute">
-				<div class="container-fluid">
-					<div class="collapse navbar-collapse">
-						
-						<h1>거기서 주문해</h1><br><br>
-						<h2>판매자 페이지</h2>
-						<br>
-						
-						<div id="success"></div>
-						<form name="mForm" action="${pageContext.request.contextPath}/login/login.do" 
-							method="post" class="navbar-form navbar-center">
-							<div class="form-group  is-empty">
-								<input type="text" name="id" placeholder="아이디를 입력하세요" class="form-control" style="margin-bottom: 10px;">
-								<span class="material-input"></span><br>
-								<input type="password" name="password" placeholder="비밀번호를 입력하세요" class="form-control"><br>
-								<span class="material-input"></span><br>
-								<button id="login" class="btn btn-primary pull-center">로그인</button>
-								<a href="/bit902web/view/login/insertSeller.jsp" role='button' class="btn btn-primary pull-center">회원가입</a>
-							</div>
-						</form>
+		<nav class="navbar navbar-transparent navbar-absolute">
+			<div class="container-fluid">
+<!-- 			<div class="collapse navbar-collapse"> -->
+				<h1>거기서 주문해</h1><br><br>
+				<h2>판매자 페이지</h2>
+				<br>
+				
+				<div id="success"></div>
+				<form name="mForm" action="${pageContext.request.contextPath}/login/login.do" 
+					method="post" class="navbar-form navbar-center">
+					<div class="form-group is-empty">
+						<input type="text" name="id" placeholder="아이디를 입력하세요" class="form-control" style="margin-bottom: 10px;">
+						<span class="material-input"></span><br>
+						<input type="password" name="password" placeholder="비밀번호를 입력하세요" class="form-control"><br>
+						<span class="material-input"></span><br>
+						<button id="login" class="btn btn-primary pull-center">로그인</button>
+						<a href="/bit902web/view/login/insertSeller.jsp" role='button' class="btn btn-primary pull-center">회원가입</a>
 					</div>
-				</div>
-			</nav>
+				</form>
+<!-- 			</div> -->
+			</div>
+		</nav>
 	</div>
 	<c:import url="../../include/footer.jsp" />
 	<%

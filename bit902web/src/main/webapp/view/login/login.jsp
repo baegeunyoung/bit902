@@ -22,10 +22,13 @@
 	<div class="wrapper" style="text-align: center;">
 			<nav class="navbar navbar-transparent navbar-absolute">
 				<div class="container-fluid">
-					<div class="collapse navbar-collapse">
+<!-- 					<div class="collapse navbar-collapse"> -->
 
-						<a href="${pageContext.request.contextPath}/main/main.do" class="simple-text">
-						<h1>거기서 주문해</h1></a>
+						<div class="logo"><h1>
+							<a href="${pageContext.request.contextPath}/main/main.do" class="simple-text">
+								거기서 주문해
+							</a></h1>
+						</div>
 						<br><br>
 						<h2>판매자 페이지</h2>
 						<br>
@@ -43,7 +46,7 @@
 							</div>
 						</form>
 						<br>
-					</div>
+<!-- 					</div> -->
 				</div>
 			</nav>
 	</div>
