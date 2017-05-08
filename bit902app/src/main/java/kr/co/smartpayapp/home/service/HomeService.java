@@ -1,11 +1,13 @@
-package kr.co.smartpayapp.repository.mapper;
+package kr.co.smartpayapp.home.service;
 
 import java.util.List;
 
 import kr.co.smartpayapp.repository.vo.EventVO;
 import kr.co.smartpayapp.repository.vo.HomeEventInfoVO;
+import kr.co.smartpayapp.repository.vo.StoreVO;
 
-public interface EventMapper {
+public interface HomeService {
+	
 	public EventVO readEvent(int sellerNo);
 	
 	public void insertEvent(EventVO event);
@@ -14,5 +16,7 @@ public interface EventMapper {
 	
 	public void eventModify(EventVO event);
 	
-	public List<HomeEventInfoVO> selectHomeEventInfo();
+	public List<HomeEventInfoVO> retrieveHomeInfo();
+	
+	public List<StoreVO> retrieveHomeSearch(String search);
 }

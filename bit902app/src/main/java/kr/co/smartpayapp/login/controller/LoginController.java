@@ -15,7 +15,7 @@ import kr.co.smartpayapp.login.service.LoginService;
 import kr.co.smartpayapp.repository.vo.BuyerVO;
 
 @RestController
-@RequestMapping("/payment")
+@RequestMapping("/login")
 @CrossOrigin(origins = "*")
 public class LoginController {
 	@Autowired

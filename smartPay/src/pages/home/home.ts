@@ -12,6 +12,7 @@ import { DetailsPage } from '../details/details';
 import { StampPage } from '../stamp/stamp';
 declare var IMP: any;
 declare var io: any;
+
 interface MENU{
   menuNo: number;
   storeNo: number;
@@ -59,15 +60,19 @@ export class HomePage {
   first: boolean;
   //홈화면
   homeEvents: Array<string>;
+  data: any;
 
-  constructor(public navCtrl: NavController, 
+  constructor(
+              public navCtrl: NavController, 
               public platform : Platform, 
               public events: Events, 
               public http : Http,
               public push: Push,
               public alertCtrl: AlertController,
               private fb: Facebook, 
-              private storage: Storage ) {
+              private storage: Storage) {
+      this.data = {}; 
+      this.data.search = "";
       this.zone = new NgZone({ enableLongStackTrace: false });
   }
 
@@ -411,7 +416,7 @@ export class HomePage {
   
 //홈화면 이벤트정보 가져오기(10개)
  getHomeEventInfo() {
-      let link = "http://14.32.66.123:10001/bit902app/notification/homeInfo.do";
+      let link = "http://14.32.66.123:10001/bit902app/home/homeInfo.do";
       this.http.get(link)
         .map(res => res.json())
         .subscribe(data=>{
@@ -421,4 +426,24 @@ export class HomePage {
           console.log("error");
         }); 
     }
+
+//홈화면 가게정보 가져오기
+  search() {
+    let search = this.data.search;
+    let data = JSON.stringify(search);
+    let link = "http://14.32.66.123:10001/bit902app/home/homeSearch.do";
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+  
+    console.log(data);
+    this.http.post(link, data, options)
+      .map(res => res.json())
+      .subscribe(data=>{
+        console.log(data);
+        console.log("success");
+        alert(data);
+      },error => {
+        console.log("error");
+      }); 
+   }
 }

@@ -25,7 +25,7 @@ export class BuyerPage {
   }
   
   buyerList() {
-      let link = "http://14.32.66.123:9090/bit902app/book/timeCheck.do";
+      let link = "http://14.32.66.123:9090/bit902app/login/buyerCheck.do";
       this.html = "";
       this.http.get(link)
         .map(res => res.json())

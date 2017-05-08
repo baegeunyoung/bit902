@@ -1,19 +1,20 @@
-package kr.co.smartpayapp.event.service;
+package kr.co.smartpayapp.home.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.co.smartpayapp.repository.mapper.EventMapper;
+import kr.co.smartpayapp.repository.mapper.HomeMapper;
 import kr.co.smartpayapp.repository.vo.EventVO;
 import kr.co.smartpayapp.repository.vo.HomeEventInfoVO;
+import kr.co.smartpayapp.repository.vo.StoreVO;
 
 @Service
-public class EventServiceImpl implements EventService{
+public class HomeServiceImpl implements HomeService{
 
 	@Autowired
-	private EventMapper dao;
+	private HomeMapper dao;
 
 	@Override
 	public EventVO readEvent(int sellerNo) {
@@ -38,5 +39,9 @@ public class EventServiceImpl implements EventService{
 	
 	public List<HomeEventInfoVO> retrieveHomeInfo() {
 		return dao.selectHomeEventInfo();
+	}
+	
+	public List<StoreVO> retrieveHomeSearch(String search) {
+		return dao.selectHomeSearch(search);
 	}
 }

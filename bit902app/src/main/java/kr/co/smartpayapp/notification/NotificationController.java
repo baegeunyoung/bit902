@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.co.smartpayapp.event.service.EventService;
+import kr.co.smartpayapp.home.service.HomeService;
 import kr.co.smartpayapp.repository.vo.EventVO;
 import kr.co.smartpayapp.repository.vo.HomeEventInfoVO;
 
@@ -21,7 +21,7 @@ import kr.co.smartpayapp.repository.vo.HomeEventInfoVO;
 @CrossOrigin(origins = "*")
 public class NotificationController {
 	@Autowired
-	private EventService eventService;
+	private HomeService homeService;
     /**
      * Replace SERVER_KEY with your SERVER_KEY generated from FCM
      * Replace DEVICE_TOKEN with your DEVICE_TOKEN
@@ -39,15 +39,9 @@ public class NotificationController {
     	DEVICE_TOKEN = eventVO.getToken();
     	
     	String title = eventVO.getSellerNo() + "Notification";
-    	String message = eventService.readEvent(eventVO.getSellerNo()).getEventContent();
+    	String message = homeService.readEvent(eventVO.getSellerNo()).getEventContent();
     	sendPushNotification(title, message);
 	}
-    @RequestMapping("/homeInfo.do")
-    public List<HomeEventInfoVO> HomeInfo() throws Exception {
-    	List<HomeEventInfoVO> infoList = new ArrayList<>();
-    	infoList = eventService.retrieveHomeInfo();
-    	return infoList;
-    }
 
     /**
      * Sends notification to mobile, YOU DON'T NEED TO UNDERSTAND THIS METHOD
