@@ -29,11 +29,11 @@
 	                        <i class="material-icons text-gray">menu</i><p>메뉴관리</p>
 	                    </a>
 	                </li>
-	                <li>
-	                    <a href="#">
-	                        <i class="material-icons text-gray">settings_input_svideo</i><p>비콘관리</p>
-	                    </a>
-	                </li>
+<!-- 	                <li> -->
+<!-- 	                    <a href="#"> -->
+<!-- 	                        <i class="material-icons text-gray">settings_input_svideo</i><p>비콘관리</p> -->
+<!-- 	                    </a> -->
+<!-- 	                </li> -->
 	                <li>
 	                    <a href="${pageContext.request.contextPath}/event/read.do">
 	                        <i class="material-icons text-gray">wifi_tethering</i><p>이벤트관리</p>
@@ -57,6 +57,5 @@
 	            </ul>
 	    	</div>
 		</div>
-	
 </body>
 </html>

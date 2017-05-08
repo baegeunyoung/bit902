@@ -1,12 +1,11 @@
 package kr.co.smartpayweb.repository.mapper;
 
-import kr.co.smartpayweb.repository.vo.EventVO;
 import kr.co.smartpayweb.repository.vo.StoreFileVO;
 import kr.co.smartpayweb.repository.vo.StoreVO;
 
 public interface StoreMapper {
 	
-	
+	public String permitYN(int sellerNo) throws Exception;
 	
 	/* =================================================== */
 	/* 기본 게시판                                            */

@@ -20,7 +20,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import kr.co.smartpayweb.repository.vo.EventVO;
 import kr.co.smartpayweb.repository.vo.SellerVO;
 import kr.co.smartpayweb.repository.vo.StoreFileVO;
 import kr.co.smartpayweb.repository.vo.StoreVO;
@@ -108,13 +107,24 @@ public class StoreController {
 	public void storeRead(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
 		SellerVO seller = (SellerVO)session.getAttribute("seller");
 		int sellerNo = seller.getSellerNo();
-		StoreVO store =service.readStore(sellerNo);
-		if(request.getParameter("msg") != null) {
-			request.setAttribute("msg", request.getParameter("msg"));
+		
+		String permitYN = service.permitYN(sellerNo);
+		
+		if (permitYN.equals("y")) {
+			StoreVO store =service.readStore(sellerNo);
+			if(request.getParameter("msg") != null) {
+				request.setAttribute("msg", request.getParameter("msg"));
+			}
+			request.setAttribute("store", store);
+			RequestDispatcher rd = request.getRequestDispatcher("/view/store/writeform.jsp");
+			rd.forward(request, response);
+		} else if (permitYN.equals("n")) {
+			RequestDispatcher rd = request.getRequestDispatcher("/include/noPermit.jsp");
+			rd.forward(request, response);
+		} else if (permitYN.equals("r")) {
+			RequestDispatcher rd = request.getRequestDispatcher("/include/rejectPermit.jsp");
+			rd.forward(request, response);
 		}
-		request.setAttribute("store", store);
-		RequestDispatcher rd = request.getRequestDispatcher("/view/store/writeform.jsp");
-		rd.forward(request, response);
 	}
 
 	// 이벤트 삭제하기
