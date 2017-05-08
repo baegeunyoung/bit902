@@ -92,7 +92,7 @@ public class LoginController extends HttpServlet{
 	public void insertSeller(SellerVO seller, 
 	HttpServletRequest request, HttpServletResponse response) throws Exception {
 		service.insertSeller(seller);
-		RequestDispatcher rd = request.getRequestDispatcher("../view/login/login.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("../view/main/main.jsp");
 		rd.forward(request, response);
 	}
 	
