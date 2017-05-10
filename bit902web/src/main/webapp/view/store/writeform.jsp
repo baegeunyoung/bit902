@@ -33,6 +33,11 @@
 		<nav class="navbar navbar-transparent navbar-absolute">
 				<div class="container-fluid">
 					<div class="navbar-header">
+	             	<%
+			           if (session.getAttribute("id") != null) {
+		            %>
+	                  <button id="logout" type="button" class="btn btn-primary pull-right">로그아웃</button>
+	                <%} %>
 					</div>
 				</div>
 		</nav>
@@ -40,10 +45,6 @@
 	    	<div class="container-fluid">
 	         	<div class="row">
 	             	<div class="col-md-15">
-	             	<%
-			           if (session.getAttribute("id") != null) {
-		            %>
-	                  <button id="logout" type="button" class="btn btn-primary pull-right">로그아웃</button>
 	
 	                 	<div class="card">
 	                   		<div class="card-header" data-background-color="purple">
