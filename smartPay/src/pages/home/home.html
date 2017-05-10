@@ -51,12 +51,13 @@
 
    <ion-list>
      <ion-item>
+     
     <div *ngIf="menu==undefined && searchList==undefined">
         <div *ngFor="let event of homeEvents">
           <ion-card>
-      <ion-thumbnail> 
-            <img src = "http://14.32.66.123:10002/bit902web/upload/{{event.filePath}}/{{event.systemName}}" style= "height:200px;"/>
-      </ion-thumbnail> 
+            <ion-thumbnail> 
+            <img src = "http://14.32.66.123:10002/bit902web/upload/{{event.filePath}}/{{event.systemName}}" style= "height:200px; width:100%"/>
+            </ion-thumbnail> 
             <ion-card-content>
               <ion-card-title>
                 {{event.storeName}}
