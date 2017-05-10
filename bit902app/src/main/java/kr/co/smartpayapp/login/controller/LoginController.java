@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import kr.co.smartpayapp.login.service.LoginService;
 import kr.co.smartpayapp.repository.vo.BuyerVO;
 
-
+@RequestMapping("/login")
+@CrossOrigin(origins = "*")
 public class LoginController {
 	@Autowired
 	private LoginService service;
