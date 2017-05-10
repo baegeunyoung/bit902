@@ -85,6 +85,7 @@
   <div *ngIf="major != 0">{{ store }}</div>
 
   <template ngFor let-menu [ngForOf]="menu">  
+   <ion-card id="card">
   <ion-list>
   <ion-item>
   
@@ -96,13 +97,13 @@
        </template>
     </ion-thumbnail>
     
-    <h2>{{menu.name}}</h2>
-    <p>{{menu.price}}원</p>   
-    <p>수량:<button ion-button color="light" icon-only (click)="orderPlus(menu)">
+    <h2 id="name">{{menu.name}}</h2>
+    <span id=pricetitle>가격:</span><span id="price">{{menu.price}}원</span>
+    <p>수량:<button ion-button color="danger" icon-only (click)="orderPlus(menu)">
         <ion-icon name='arrow-up'></ion-icon>
     </button>
-     <input type="text" style="width:35px" [(ngModel)]="menu.quantity"/>
-    <button  ion-button color="light" icon-only (click)="orderMinus(menu)">
+     <input type="text" style="width:35px" id="quantity" [(ngModel)]="menu.quantity"/>
+    <button  ion-button color="danger" icon-only (click)="orderMinus(menu)">
       <ion-icon name='arrow-down'></ion-icon>
       </button></p>
   <p>{{menu.content}}</p>
@@ -110,12 +111,19 @@
   
      </ion-item>
     </ion-list>
+   </ion-card>
 </template>
+
 <div *ngIf="menu != undefined">
-  <textarea [(ngModel)]="orderContent" name="orderConten"> </textarea>
+  <ion-card>
+      <ion-card-header>
+        <p id="ordertitle"> 주문사항</p>
+      </ion-card-header>
+    <textarea rows="5" cols="46"[(ngModel)]="orderContent" id="orderContent" name="orderConten"></textarea>
+  </ion-card>
   <br>
-   최종 주문금액: {{ total }} 
-  <button ion-button (click) = payment(total)>결제하기</button>
-  <ion-icon name="heart"></ion-icon>   
+ <span id="finalAmount">최종 주문금액:</span><span id="total">{{ total }}원</span><Br><br>
+<button ion-button color="danger" (click)="order()">결제하기</button>
 </div>
+<br>
 </ion-content>
