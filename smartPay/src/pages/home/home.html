@@ -43,7 +43,7 @@
   </ion-list>   
   
   <ion-item>
-    <ion-input type="text" [(ngModel)]="data.search" placeholder="매장이름을 입력하세요."></ion-input>
+    <ion-input color="danger" type="text" [(ngModel)]="data.search" placeholder="매장이름을 입력하세요" ></ion-input>
     <button ion-button color="danger" item-right (click) = search()><ion-icon name="search"></ion-icon></button>
   </ion-item>
 
@@ -122,8 +122,11 @@
     <textarea rows="5" cols="46"[(ngModel)]="orderContent" id="orderContent" name="orderConten"></textarea>
   </ion-card>
   <br>
- <span id="finalAmount">최종 주문금액:</span><span id="total">{{ total }}원</span><Br><br>
-<button ion-button color="danger" (click)="order()">결제하기</button>
+  최종주문금액: {{total}}
+  <button ion-button (click) =payment(total)>결제하기</button>
+
+ <!--<span id="finalAmount">최종 주문금액:</span><span id="total">{{ total }}원</span><Br><br>
+<button ion-button color="danger" (click)="order()">결제하기</button>-->
 </div>
 <br>
 </ion-content>
