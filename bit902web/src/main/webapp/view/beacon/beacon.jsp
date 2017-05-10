@@ -30,9 +30,9 @@
 						
 // 						String id = (String)(session.getAttribute("id"));
 						int selNo = (int)(session.getAttribute("selNo"));
-						int beaconNo = (int)(session.getAttribute("beaconNo"));
-						int serialNo = (int)(session.getAttribute("serialNo"));
-						int tableNo = (int)(session.getAttribute("tableNo"));
+					//	int beaconNo = (int)(session.getAttribute("beaconNo"));
+						//int serialNo = (int)(session.getAttribute("serialNo"));
+						//int tableNo = (int)(session.getAttribute("tableNo"));
 						
 						
 				%>

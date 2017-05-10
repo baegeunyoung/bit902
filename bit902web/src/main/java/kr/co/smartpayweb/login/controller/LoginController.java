@@ -1,7 +1,6 @@
 package kr.co.smartpayweb.login.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.smartpayweb.login.service.LoginService;
-import kr.co.smartpayweb.repository.vo.BeaconVO;
 import kr.co.smartpayweb.repository.vo.SellerVO;
 
 @Controller
@@ -51,6 +49,7 @@ public class LoginController extends HttpServlet{
 			
 			login.setId(seller.getId());
 			login.setPassword(seller.getPassword());
+			
 //			login.setSellerNo(seller.getSellerNo());
 			System.out.println(seller.getId() + seller.getPassword() + seller.getSellerNo());
 			int sellerNo = seller.getSellerNo();
@@ -80,6 +79,7 @@ public class LoginController extends HttpServlet{
 			session.setAttribute("seller", seller);
 			session.setAttribute("id", id);
 			session.setAttribute("sellerNo", sellerNo);
+			session.setAttribute("permitYn", seller.getPermitYn());
 			
 //			request.setAttribute("id", id);
 			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
