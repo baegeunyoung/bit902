@@ -6,34 +6,37 @@
 <resultMap id="beaconMap" type="beaconVO">
 	<result column="beacon_no" property="beaconNo"></result>
 	<result column="serial_no" property="serialNo"></result>
-	<result column="store_no" property="storeNo"></result>
+	<result column="seller_no" property="sellerNo"></result>
 	<result column="table_no" property="tableNo"></result>
 </resultMap>
 
 <select id="searchBeacon" resultMap="beaconMap" parameterType="int">
 select *
 from tb_beacon
-where beacon_no = #{beaconNo}
+where seller_no = #{sellerNo}
 </select>
 
 <insert id="insertBeacon" parameterType="beaconVO">
 insert into tb_beacon(serial_no, table_no)
 values(#{serialNo}, #{tableNo})
+where seller_no = #{sellerNo}
 </insert>
 
 <update id="modifyBeacon" parameterType="beaconVO">
 update tb_beacon
-set serial_no = #{serialNo},
-    store_no = #{storeNo},
-    table_no = #{tableNo}
+set table_no = #{tableNo},
+    serial_no = #{serialNo}
     
-where beacon_no = #{beaconNo}    
+where beacon_no = #{beaconNo} and
+      seller_no = #{sellerNo}    
 </update>
 
-<delete id="deleteBeacon" parameterType="int">
+<delete id="deleteBeacon" parameterType="beaconVO">
 delete
 from tb_beacon
-where beacon_no = #{beaconNo}
+
+where beacon_no = #{beaconNo} and
+      seller_no = #{sellerNo}
 </delete>
 
 </mapper>

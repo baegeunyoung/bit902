@@ -16,12 +16,12 @@ import kr.co.smartpayapp.repository.vo.BuyerVO;
 
 public class LoginController {
 	@Autowired
-	LoginService loginService;
+	private LoginService service;
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping("/timeCheck.do")
 	public List<BuyerVO> checkBuyer() {
-		List<BuyerVO> list = loginService.checkBuyer();
+		List<BuyerVO> list = service.checkBuyer();
 		for(BuyerVO l : list) {
 		}
 		return list;
@@ -31,7 +31,7 @@ public class LoginController {
 	@RequestMapping("/selectOneBuyer.do")
 	public BuyerVO selectOneBuyer(@RequestBody BuyerVO buyerVO) {
 		System.out.println(buyerVO.getId());
-		BuyerVO buyer = loginService.selectOneBuyer(buyerVO);
+		BuyerVO buyer = service.selectOneBuyer(buyerVO);
 		return buyer;
 	}
 	
@@ -39,7 +39,7 @@ public class LoginController {
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
 	public Map<String,Object> buyerRegist(/*HttpServletRequest request*/@RequestBody BuyerVO buyerVO) {
 		Map<String,Object> msg = new HashMap<>();
-		if(loginService.registBuyer(buyerVO) == 1 ) {
+		if(service.registBuyer(buyerVO) == 1 ) {
 			msg.put("msg", "등록완료");
 		}
 		else {
