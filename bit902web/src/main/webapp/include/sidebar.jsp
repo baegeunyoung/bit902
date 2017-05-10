@@ -63,6 +63,23 @@
 					if (session.getAttribute("id") != null) {
 				%>
 				<li class="active-pro">
+					<%
+						if (!session.getAttribute("id").equals("admin")) {
+					%>
+					<a href="${pageContext.request.contextPath}/view/login/modifySeller.jsp">
+						<i class="material-icons">info</i>
+						<p>회원 정보 수정</p>
+					</a>
+					<%
+						} else if (session.getAttribute("id").equals("admin")) {
+					%>
+					<a href="${pageContext.request.contextPath}/admin/admin.do">
+						<i class="material-icons">settings</i>
+						<p>관리자 페이지</p>
+					</a>
+					<%
+						}
+					%>
 					<a href="${pageContext.request.contextPath}/login/logout.do">
 						<i class="material-icons">power_settings_new</i>
 						<p>로그아웃</p>
@@ -71,7 +88,6 @@
 				<%
 					}
 				%>
-<!-- 	                  <button id="logout" type="button" class="btn btn-primary pull-right">로그아웃</button> -->
 			</ul>
 		</div>
 	</div>
