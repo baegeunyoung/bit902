@@ -8,10 +8,33 @@
     </ion-buttons>  
   </ion-navbar>
 </ion-header>
- 
+<!--
+ <ion-content>
+  <ion-card>
+  <ion-item>
+    <ion-avatar item-left>
+     
+    </ion-avatar>
+    <h2>{{ selectStore.name }}</h2>
+    <p>{{ selectStore.adress }}</p>
+  </ion-item>
+
+  <div #map id="map"></div> 
+
+  <ion-card-content>
+    <p>{{ selectStore.content }}</p>
+  </ion-card-content>
+  
+  <button ion-button >주문하기</button>
+  </ion-card>
+  <div #map id="map"></div> 
+</ion-content>
+-->
+
 <ion-content>
   <p>{{ selectStore.name }}</p>
   <p>{{ selectStore.content }}</p>
+   <p>{{ selectStore.adress }}</p>
   <div #map id="map"></div>  
-  <button ion-button >주문하기</button>
+  <button color="danger" 6ion-button >주문하기</button>
 </ion-content>
