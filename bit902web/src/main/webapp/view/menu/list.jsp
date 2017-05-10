@@ -17,7 +17,6 @@
 		<nav class="navbar navbar-transparent navbar-absolute">
 				<div class="container-fluid">
 					<div class="navbar-header">
-					<a class="navbar-brand" href="#">메뉴관리</a>
 					</div>
 				</div>
 		</nav>

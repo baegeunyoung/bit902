@@ -33,11 +33,6 @@
 		<nav class="navbar navbar-transparent navbar-absolute">
 				<div class="container-fluid">
 					<div class="navbar-header">
-	             	<%
-			           if (session.getAttribute("id") != null) {
-		            %>
-	                  <button id="logout" type="button" class="btn btn-primary pull-right">로그아웃</button>
-	                <%} %>
 					</div>
 				</div>
 		</nav>
@@ -288,12 +283,6 @@
 
 
  </script>
- <script>
-		$("#logout").click(	function() {
-			location.href = "${pageContext.request.contextPath}/login/logout.do";
-		});
-</script>
- 
 </body>
 </html>
 

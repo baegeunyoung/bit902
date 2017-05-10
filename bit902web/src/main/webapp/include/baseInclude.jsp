@@ -4,6 +4,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style>
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+*, .title, .navbar-header {
+	font-family: 'Nanum Gothic', serif;
+	font-weight: 500;
+}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
@@ -32,14 +39,10 @@
 	<!--  Notifications Plugin    -->
 	<script src="${pageContext.request.contextPath}/material-dashboard-free-v1.1.0/assets/js/bootstrap-notify.js"></script>
 
-	<!--  Google Maps Plugin    -->
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
-
 	<!-- Material Dashboard javascript methods -->
 	<script src="${pageContext.request.contextPath}/material-dashboard-free-v1.1.0/assets/js/material-dashboard.js"></script>
 
 	<!-- Material Dashboard DEMO methods, don't include it in your project! -->
 	<script src="${pageContext.request.contextPath}/material-dashboard-free-v1.1.0/assets/js/demo.js"></script>
-	
 </body>
 </html>
