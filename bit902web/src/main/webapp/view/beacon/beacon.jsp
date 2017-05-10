@@ -41,9 +41,6 @@
 console.log(<%=selNo%>);
 </script>
 
-
-				<button id="logout" type="button" class="btn btn-primary pull-right">로그아웃</button>
-
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-md-15">

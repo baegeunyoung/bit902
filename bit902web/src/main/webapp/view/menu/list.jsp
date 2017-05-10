@@ -21,11 +21,6 @@
 				</div>
 		</nav>
 		<div class="content">
-		                     <%
-			                 if (session.getAttribute("id") != null) {
-		                     %>
-		              
-	                  <button id="logout" type="button" class="btn btn-primary pull-right">로그아웃</button>
 	    	<div class="container-fluid">
 	         	<div class="row">
 	             	<div class="col-md-15">
@@ -104,17 +99,6 @@
 	  	 			 </div>
 				</div>
 			</div>
-			       <%
-			        }
-			           else {
-	                %>
-	                <script>
-	                location.href = "/bit902web/main/main.do";
-	                </script>
-			        
-			        <%   
-			           }
-			        %>
 <script>
 makeMenu();
 
@@ -257,11 +241,6 @@ function readURL(input) {
 
 
 
-</script>
-<script>
-		$("#logout").click(	function() {
-			location.href = "${pageContext.request.contextPath}/login/logout.do";
-		});
 </script>
 </body>
 </html>
