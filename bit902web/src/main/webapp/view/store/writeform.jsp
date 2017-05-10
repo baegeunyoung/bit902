@@ -40,6 +40,11 @@
 	    	<div class="container-fluid">
 	         	<div class="row">
 	             	<div class="col-md-15">
+	             	<%
+			           if (session.getAttribute("id") != null) {
+		            %>
+	                  <button id="logout" type="button" class="btn btn-primary pull-right">로그아웃</button>
+	
 	                 	<div class="card">
 	                   		<div class="card-header" data-background-color="purple">
 	                         	<h4 class="title">상점등록하기</h4>
@@ -282,6 +287,12 @@
 
 
  </script>
+ <script>
+		$("#logout").click(	function() {
+			location.href = "${pageContext.request.contextPath}/login/logout.do";
+		});
+</script>
+ 
 </body>
 </html>
 

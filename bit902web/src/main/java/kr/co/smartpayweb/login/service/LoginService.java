@@ -1,7 +1,9 @@
 package kr.co.smartpayweb.login.service;
 
+import java.util.List;
 import java.util.Map;
 
+import kr.co.smartpayweb.repository.vo.BeaconVO;
 import kr.co.smartpayweb.repository.vo.SellerVO;
 
 public interface LoginService {
@@ -12,6 +14,9 @@ public interface LoginService {
 	// 회원가입
 	public void insertSeller(SellerVO seller) throws Exception;
 	
+	// id로 회원정보 찾기
+//	public String searchSeller(String id) throws Exception;
+	
 	// 회원정보수정
 	public Map<String, Object> modifySeller(SellerVO seller) throws Exception;
 	
@@ -21,6 +26,8 @@ public interface LoginService {
 	// 회원가입승인
 	public void permitSeller(String permit) throws Exception;
 
+	public List<BeaconVO> searchBeacon(int sellerNo) throws Exception;
+	
 //	public Map<String, Object> searchBuyer(String id, String password) throws Exception;
 	
 //	public Map<String, Object> insertBuyer(BuyerVO buyer) throws Exception;

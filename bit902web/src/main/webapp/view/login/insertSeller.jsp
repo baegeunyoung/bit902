@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <jsp:include page="../../include/baseInclude.jsp" flush="true"></jsp:include>
+<script src="../../js/jquery-3.1.1.js"></script>
 <title>회원 가입</title>
 <style>
 input:-ms-input-placeholder {

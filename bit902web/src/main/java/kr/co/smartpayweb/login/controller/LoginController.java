@@ -1,6 +1,7 @@
 package kr.co.smartpayweb.login.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -12,9 +13,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.smartpayweb.login.service.LoginService;
+import kr.co.smartpayweb.repository.vo.BeaconVO;
 import kr.co.smartpayweb.repository.vo.SellerVO;
 
 @Controller
@@ -29,13 +30,15 @@ public class LoginController extends HttpServlet{
 			String id, String password, HttpSession session,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		
+	
 		Map<String, Object> map = new HashMap<>();
 		SellerVO seller = service.login(id);
+		
 		
 		// 아이디나 비밀번호가 db에 없을 때
 		if(seller == null) {
 			map.put("msg", "입력하신 정보가 올바르지 않습니다.");
+			System.out.println("2");
 			RequestDispatcher rd = request.getRequestDispatcher("../view/login/login.jsp");
 			rd.forward(request, response);
 			return map;
@@ -45,13 +48,39 @@ public class LoginController extends HttpServlet{
 		// 아이디와 비밀번호가 일치할 때
 		if(id.equals(seller.getId()) && password.equals(seller.getPassword())) {
 			SellerVO login = new SellerVO();
+			
 			login.setId(seller.getId());
 			login.setPassword(seller.getPassword());
-			System.out.println(seller.getId() + seller.getPassword());
+//			login.setSellerNo(seller.getSellerNo());
+			System.out.println(seller.getId() + seller.getPassword() + seller.getSellerNo());
+			int sellerNo = seller.getSellerNo();
+//			List<BeaconVO> beacon = service.searchBeacon(sellerNo);
+//			Map<String, List<BeaconVO>> beaconList = new HashMap<String, List<BeaconVO>>();
+			//for(int i=0; i<=beaconList.size(); i++) {
+//				map.put(beaconList);
+				//Map<String, Object> map2 = new HashMap<String, Object>();
+//				map2.put("beacon" + i, beaconList.get(i).getBeaconNo());
+//				map2.put("serial" + i, beaconList.get(i).getSerialNo());
+//				map2.put("table" + i, beaconList.get(i).getTableNo());
+				//map.putAll(map2);
+				//}
+			
+//			System.out.println(beaconList.get(0));
+//			
+//			for(int i=0; i<=beaconList.size(); i++){
+//				
+//			map.put("sellerNo", beaconList.get(i).getSellerNo());
+//			map.put("beaconNo", beaconList.get(i).getBeaconNo());
+//			map.put("serialNo", beaconList.get(i).getSerialNo());
+//			map.put("tableNo", beaconList.get(i).getTableNo());
+//			}
+			
+			System.out.println(sellerNo);
 			map.put("msg", "로그인성공");
 			session.setAttribute("seller", seller);
 			session.setAttribute("id", id);
-			session.setAttribute("permitYn", seller.getPermitYn());
+			session.setAttribute("sellerNo", sellerNo);
+			
 //			request.setAttribute("id", id);
 			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 			rd.forward(request, response);
@@ -61,6 +90,7 @@ public class LoginController extends HttpServlet{
 		// 아이디와 비밀번호 중 하나만 일치할 때
 		else {
 			map.put("msg", "입력하신 정보가 올바르지 않습니다.");
+			System.out.println("4");
 			RequestDispatcher rd = request.getRequestDispatcher("../view/login/login.jsp");
 			rd.forward(request, response);
 			return map;
@@ -92,15 +122,15 @@ public class LoginController extends HttpServlet{
 	public void insertSeller(SellerVO seller, 
 	HttpServletRequest request, HttpServletResponse response) throws Exception {
 		service.insertSeller(seller);
-		RequestDispatcher rd = request.getRequestDispatcher("../view/main/main.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("../view/login/login.jsp");
 		rd.forward(request, response);
 	}
 	
-	// 회원정보수정 관련 db 찾기
+    //id로 회원정보 찾기 
 //	@RequestMapping("/login/searchSeller.do")
-//	public String searchSeller(HttpSession session) throws Exception {
-//		return service.searchSeller(session); 
-				
+//	public String searchSeller(String id) throws Exception {
+//		return service.searchSeller(id); 
+//				
 //	}
 	
 	// 회원정보수정 
@@ -156,3 +186,4 @@ public class LoginController extends HttpServlet{
 
 	
 }
+

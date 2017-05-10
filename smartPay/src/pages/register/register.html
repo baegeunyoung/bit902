@@ -16,12 +16,13 @@
 </ion-header>
 
 
-<ion-content id="login" padding>
+<ion-content id="register" padding>
   아이디 <ion-input type="text" [(ngModel)]="data.id" name="id"></ion-input>
   비밀번호<ion-input type="text" [(ngModel)]="data.password" name="password"></ion-input>
+  비밀번호확인<ion-input type="text" [(ngModel)]="data.password" name="password"></ion-input>
   이름<ion-input type="text" [(ngModel)]="data.name" name="name"></ion-input>
   전화번호<ion-input type="text" [(ngModel)]="data.cellphoneNumber" name="cellphoneNumber"></ion-input>
-  <button ion-button (click)="regist()">
+  <button ion-button (click)="register()">
     가입하기
   </button>
  </ion-content>

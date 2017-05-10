@@ -92,10 +92,11 @@ SET foreign_key_checks = 1;
 -------------------------------------------------------			
 create table tb_beacon(
 beacon_no int(6) unsigned not null auto_increment,
+serial_no int(30) unsigned,
 table_no int(6) unsigned,
-store_no int(6) unsigned,
+seller_no int(6) unsigned,
 primary key(beacon_no),
-foreign key(store_no) references tb_store(store_no)
+foreign key(seller_no) references tb_seller(seller_no)
 );
 
 select * from tb_event;
