@@ -6,6 +6,14 @@ public class BuyerVO {
 	private String password;
 	private String name;
 	private String cellphoneNumber;
+	private String buyerId;
+	
+	public String getBuyerId() {
+		return buyerId;
+	}
+	public void setBuyerId(String buyerId) {
+		this.buyerId = buyerId;
+	}
 	public int getBuyerNo() {
 		return buyerNo;
 	}

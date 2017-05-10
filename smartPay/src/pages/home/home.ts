@@ -42,6 +42,7 @@ export class HomePage {
   //메뉴
   menu: Array<MENU>;
   private menuFile:Array<string>;
+  userNameObj: any;
   tokenObj: any;
   majorObj: any;
   minorObj: any; 
@@ -56,6 +57,7 @@ export class HomePage {
   beacons: BeaconModel[] = [];
   zone: any;
   delegate: any;
+  userName: any;
   region: any;
   major: number;
   minor: number;
@@ -374,12 +376,17 @@ export class HomePage {
 
   //주문내역 보내기
   order(){
+   this.storage.get('userName').then((val) => { 
+    this.userNameObj = {"userName": this.userName};
+   })
+
    this.tokenObj = {"token": this.token};
    this.majorObj = {"sellerNo": this.major};
    this.minorObj = {"tableNo": this.minor};
    this.orderContentObj={"orderContent": this.orderContent};
-   
+   console.log(this.userNameObj)
    console.log(this.tokenObj);
+   this.menu.push(this.userNameObj);
    this.menu.push(this.tokenObj);
    this.menu.push(this.majorObj);
    this.menu.push(this.minorObj); 

@@ -5,6 +5,7 @@
 create table tb_buyer(
 buyer_no int(6) unsigned not null auto_increment,
 id varchar(20) not null,
+buyer_id varchar(20),
 password varchar(20),
 name varchar (15),
 cellphone_number varchar(11),
