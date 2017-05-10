@@ -10,6 +10,7 @@ import { Facebook } from '@ionic-native/facebook';
 
 import { DetailsPage } from '../details/details';
 import { StampPage } from '../stamp/stamp';
+import { PlaygroundPage } from '../Playground/Playground';
 declare var IMP: any;
 declare var io: any;
 
@@ -34,6 +35,7 @@ interface MENU{
   templateUrl: 'home.html'
 })
 export class HomePage {
+
  //알림
   private token: string;
 
@@ -60,6 +62,7 @@ export class HomePage {
   first: boolean;
   //홈화면
   homeEvents: Array<string>;
+  searchList: Array<String>;
   data: any;
 
   constructor(
@@ -87,6 +90,7 @@ export class HomePage {
     //    this.listenToBeaconEvents();
     // }
     this. getHomeEventInfo();
+   
   }
   //메뉴보기(비콘검색시작)
    startScanning() {
@@ -427,7 +431,7 @@ export class HomePage {
         }); 
     }
 
-//홈화면 가게정보 가져오기
+//홈화면 가게검색정보 가져오기
   search() {
     let search = this.data.search;
     let data = JSON.stringify(search);
@@ -441,9 +445,15 @@ export class HomePage {
       .subscribe(data=>{
         console.log(data);
         console.log("success");
-        alert(data);
-      },error => {
+        this.searchList = data;
+       },error => {
         console.log("error");
       }); 
    }
+ //클릭된 가게검색정보 자세히보기
+ detailStore(index: number) {
+   console.log(JSON.stringify(this.searchList[index]));
+   let selectStore: Object = this.searchList[index];
+   this.navCtrl.push(PlaygroundPage, {selectStore:selectStore});
+ }
 }
