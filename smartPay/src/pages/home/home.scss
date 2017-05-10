@@ -6,46 +6,65 @@ page-home {
         fill: #ff0;
   
     }
-}
-#card{
-    color: black;  
-}
-#name{
-        color: black;
-        font-weight: bold;
+    #card{
+        color: black;  
     }
-#pricetitle{
-    font-size:13px;
-    opacity:0.7;
-}
-#price{
-      color: #f53d3d;
-  }
+    #name{
+            color: black;
+            font-weight: bold;
+        }
+    #pricetitle{
+        font-size:13px;
+        opacity:0.7;
+    }
+    #price{
+        color: #f53d3d;
+    }
 
-#quantity{
-      color: #f53d3d;
-  }
-#orderz{
-     opacity:0.7;
-}
+    #quantity{
+        color: #f53d3d;
+    }
+    #orderz{
+        opacity:0.7;
+    }
 
 
-#top{
-      color: #f53d3d;
-  }
+    #top{
+        color: #f53d3d;
+    }
 
-#finalAmount{
-      font-size: 20px;
-  }
-#total{
-      font-size: 20px;
-        color: #f53d3d;     
-  }
-#orderContent{
-      color: black;
-      border: 1px solid white;
-      opacity:0.5;
-  }
-#ordertitle{
-     opacity:0.7;
+    #finalAmount{
+        font-size: 20px;
+    }
+    #total{
+        font-size: 20px;
+            color: #f53d3d;     
+    }
+    #orderContent{
+        color: black;
+        border: 1px solid white;
+        opacity:0.5;
+    }
+    #ordertitle{
+        opacity:0.7;
+    }
+    ion-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 90px 1px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    }
+   #title{
+       color: #f53d3d;   
+   }
+    #menuicon {   
+    color: #f53d3d;  
+    }
+    ion-navbar{
+        color: #f53d3d;  
+    }
 }
