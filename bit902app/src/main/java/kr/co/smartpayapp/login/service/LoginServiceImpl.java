@@ -13,7 +13,10 @@ public class LoginServiceImpl implements LoginService{
 	@Autowired
 	LoginMapper mapper;
 	public List<BuyerVO> checkBuyer() {
-		return mapper.selectBuyer();
+		return mapper.checkBuyer();
+	}
+	public BuyerVO selectOneBuyer(BuyerVO buyerVO) {
+		return mapper.selectOneBuyer(buyerVO);
 	}
 	public int registBuyer(BuyerVO buyerVO) {
 		return mapper.insertBuyer(buyerVO);

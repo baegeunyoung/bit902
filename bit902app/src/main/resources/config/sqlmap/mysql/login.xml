@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.smartpayapp.repository.mapper.PayMapper">
+<mapper namespace="kr.co.smartpayapp.repository.mapper.LoginMapper">
 
 <!-- ===================== 예약정보 ===================== -->
 <resultMap type="buyerVO" id="buyerMap">
@@ -12,12 +12,18 @@
  	<result column="cellphone_number" property="cellphoneNumber"/>
 </resultMap>
 <!-- 예약시간 체크하기 -->
-<select id="selectBuyer" resultMap="buyerMap">
+<select id="checkBuyer" resultMap="buyerMap" parameterType="buyerVO">
 	select * 
 	from tb_buyer
 </select> 
 
-<insert id="insertBuyer" >
+<select id="selectOneBuyer" resultMap="buyerMap" parameterType="buyerVO">
+	select * 
+	from tb_buyer
+	where id=#{id} and password=#{password}
+</select> 
+
+<insert id="insertBuyer" parameterType="buyerVO">
 	insert into tb_buyer (
 		id,
 		password,
@@ -33,14 +39,3 @@
 	
 </insert>
 </mapper>
-
-
-
-
-
-
-
-
-
-
-

@@ -9,25 +9,33 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.smartpayapp.login.service.LoginService;
 import kr.co.smartpayapp.repository.vo.BuyerVO;
 
-@RestController
-@RequestMapping("/login")
-@CrossOrigin(origins = "*")
+
 public class LoginController {
 	@Autowired
 	LoginService loginService;
 	
-	@RequestMapping("/buyerCheck.do")
-	public List<BuyerVO> bookTimeCheck() {
+	@CrossOrigin(origins = "*")
+	@RequestMapping("/timeCheck.do")
+	public List<BuyerVO> checkBuyer() {
 		List<BuyerVO> list = loginService.checkBuyer();
 		for(BuyerVO l : list) {
 		}
 		return list;
 	}
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping("/selectOneBuyer.do")
+	public BuyerVO selectOneBuyer(@RequestBody BuyerVO buyerVO) {
+		System.out.println(buyerVO.getId());
+		BuyerVO buyer = loginService.selectOneBuyer(buyerVO);
+		return buyer;
+	}
+	
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
 	public Map<String,Object> buyerRegist(/*HttpServletRequest request*/@RequestBody BuyerVO buyerVO) {
 		Map<String,Object> msg = new HashMap<>();
@@ -39,4 +47,5 @@ public class LoginController {
 		}
 		return msg;
 	}
+	
 }
