@@ -1,13 +1,13 @@
 <ion-header>
   <ion-navbar>
      <button ion-button icon-only menuToggle>
-      <ion-icon name="menu"></ion-icon>
+      <ion-icon name="menu" id="menuicon"></ion-icon>
     </button>
     <ion-buttons end>
       <button ion-button outline color="dark" *ngIf="isScanning==false" (click) = "startScanning()" >메뉴보기</button>
       <ion-spinner end *ngIf="isScanning==true" name="crescent"></ion-spinner>
     </ion-buttons>
-    <ion-title>
+    <ion-title id="title">
       거기서 주문해
     </ion-title>
   </ion-navbar>
@@ -117,7 +117,7 @@
 <div *ngIf="menu != undefined">
   <ion-card>
       <ion-card-header>
-        <p id="ordertitle"> 주문사항</p>
+        <p id="ordertitle"> 주문요구사항</p>
       </ion-card-header>
     <textarea rows="5" cols="46"[(ngModel)]="orderContent" id="orderContent" name="orderConten"></textarea>
   </ion-card>
