@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.smartpayapp.login.service.LoginService;
 import kr.co.smartpayapp.repository.vo.BuyerVO;
 
+@RestController
 @RequestMapping("/login")
 @CrossOrigin(origins = "*")
 public class LoginController {
