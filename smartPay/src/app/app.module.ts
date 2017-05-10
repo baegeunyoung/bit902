@@ -8,6 +8,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
 //pages
 import { LoginPage } from '../pages/login/login';
+import { LogoutPage } from '../pages/logout/logout';
 import { BuyerPage } from '../pages/buyer/buyer';
 import { PlaygroundPage} from '../pages/Playground/Playground';
 import { RegisterPage} from '../pages/register/register';
@@ -32,7 +33,8 @@ import { Facebook } from '@ionic-native/facebook';
     BuyerPage,
     StampPage,
     FoodReadyPage,
-    DetailsPage
+    DetailsPage,
+    LogoutPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,8 @@ import { Facebook } from '@ionic-native/facebook';
     BuyerPage,
     StampPage,
     FoodReadyPage,
-    DetailsPage
+    DetailsPage,
+    LogoutPage
   ],
   providers: [
     StatusBar,

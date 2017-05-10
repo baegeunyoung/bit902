@@ -7,9 +7,9 @@
         <button ion-item (click)="openPage(playgroundPage)">매장검색</button>
         <button ion-item (click)="openPage(registerPage)">회원등록</button>
         <button ion-item (click)="openPage(buyerPage)">구매자조회</button>
-        <button ion-item (click)="openPage(loginPage)">소셜로그인</button>
+        <button *ngIf="userName==null" ion-item (click)="openPage(loginPage)">소셜로그인</button>
         <button ion-item (click)="openPage(stampPage)">스탬프모음</button>
-        <button ion-item (click)="logout()">로그아웃</button>
+        <button *ngIf="userName!=null" ion-item (click)="openPage(logoutPage)">로그아웃</button>
         <button ion-item (click)="openPage(foodReadyPage)">임시로 ready화면</button>
       </ion-list>
     </ion-list>
