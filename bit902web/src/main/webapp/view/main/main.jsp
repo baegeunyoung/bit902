@@ -94,19 +94,10 @@ input::-moz-placeholder {
 							<br>
 							<!-- 로그인 성공 -->
 							<br>
-							<button id="logout" type="button" class="btn btn-primary pull-right">로그아웃</button>
-							<button id="mod" type="button" class="btn btn-primary pull-right">회원정보수정</button>
 							<%
 								if (session.getAttribute("permitYn").equals("n") || session.getAttribute("permitYn").equals("r")) {
 							%>
 							<h3>관리자 승인 후 이용하실 수 있습니다.</h3>
-							<%
-								}
-							%>
-							<%
-								if (session.getAttribute("id").equals("admin")) {
-							%>
-							<a href="${pageContext.request.contextPath}/admin/admin.do" class="btn btn-primary">관리자 페이지</a>
 							<%
 								}
 							%>
@@ -120,14 +111,5 @@ input::-moz-placeholder {
 	<%
 		}
 	%>
-	<script>
-		$("#logout").click( function() {
-			location.href = "${pageContext.request.contextPath}/login/logout.do";
-		});
-
-		$("#mod").click( function() {
-			location.href = "${pageContext.request.contextPath}/view/login/modifySeller.jsp";
-		});
-	</script>
 </body>
 </html>
