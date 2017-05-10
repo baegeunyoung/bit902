@@ -28,7 +28,9 @@ import { Facebook } from '@ionic-native/facebook';
 @NgModule({
   declarations: [
     MyApp,
-    LoginPage, PlaygroundPage, RegisterPage,
+    LoginPage, 
+    PlaygroundPage, 
+    RegisterPage,
     HomePage,
     BuyerPage,
     StampPage,
@@ -44,7 +46,9 @@ import { Facebook } from '@ionic-native/facebook';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage, PlaygroundPage, RegisterPage,
+    LoginPage, 
+    PlaygroundPage, 
+    RegisterPage,
     HomePage,
     BuyerPage,
     StampPage,
