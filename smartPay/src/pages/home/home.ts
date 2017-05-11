@@ -257,6 +257,7 @@ export class HomePage {
     this.userName = val;
    })
       this.major = sellerNo;
+      this.minor = 14999;
       let data = sellerNo;
       let link = "http://14.32.66.123:10001/bit902app/menu/list.do";
       let headers = new Headers({'Content-Type': 'application/json'});

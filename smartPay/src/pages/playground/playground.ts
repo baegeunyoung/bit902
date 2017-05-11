@@ -58,6 +58,7 @@ export class PlaygroundPage {
   }
 
   onBack() {
+    let params 
     this.callback(this.selectStore.sellerNo).then(()=>{
       this.navCtrl.pop();
     });
