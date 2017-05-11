@@ -52,14 +52,12 @@ export class HomePage {
   quantity:any;
   orderContent="";
   storeName: string;
-  val: string;
-  a: string;
+  userName: string;
   //비콘
   isScanning: boolean = false;
   beacons: BeaconModel[] = [];
   zone: any;
   delegate: any;
-  userName: any;
   region: any;
   major: number;
   minor: number;
@@ -217,8 +215,7 @@ export class HomePage {
   //테이블비콘 검색시 메뉴가져오기
   getMenu(sellerNo: number, minor: number) {
     this.storage.get('userName').then((val) => { 
-    alert("배근영" + val);
-    this.a = val;
+    this.userName = val;
    })
    this.beacons = [];
    this.isScanning = false;
@@ -257,7 +254,7 @@ export class HomePage {
   //홈화면 매장검색으로 메뉴가져오기
   getMenuForSearch(sellerNo: number) {
     this.storage.get('userName').then((val) => { 
-    this.a = val;
+    this.userName = val;
    })
       this.major = sellerNo;
       let data = sellerNo;
@@ -295,7 +292,7 @@ export class HomePage {
     if(menu.quantity>0){
         menu.quantity--;
     }else{
-      alert("최소수량입니다");
+      menu.quantity = 0;
     }
   }
 
@@ -422,7 +419,7 @@ export class HomePage {
    this.majorObj = {"sellerNo": this.major};
    this.minorObj = {"tableNo": this.minor};
    this.orderContentObj={"orderContent": this.orderContent};
-   this.userNameObj = {"userName": this.a};
+   this.userNameObj = {"userName": this.userName};
      
    this.menu.push(this.tokenObj);
    this.menu.push(this.majorObj);
