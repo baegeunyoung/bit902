@@ -55,7 +55,10 @@
 															${result.name} - ${result.quantity}개<br>
 														</c:forEach>
 													</td>
-													<td><fmt:formatDate value="${list.orderDate}" pattern="hh:mm:ss" /></td>
+													<td>
+														<fmt:formatDate value="${list.orderDate}" pattern="yyyy-MM-dd" />
+														<fmt:formatDate value="${list.orderDate}" pattern="hh:mm:ss" />
+													</td>
 													<td>${list.orderContent}</td>
 													<td>
 														<c:choose>
