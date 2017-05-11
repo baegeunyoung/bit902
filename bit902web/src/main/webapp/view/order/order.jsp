@@ -25,7 +25,7 @@
 						<div class="col-md-12">
 							<br>
 							<div class="card">
-								<div class="card-header" data-background-color="purple">
+								<div class="card-header" style='background-color: red;'>
 									<h4 class="title">주문 현황</h4>
 									<p class="category">
 										<span id="cDate">하하하</span>
@@ -49,16 +49,25 @@
 											<c:forEach var="list" items="${orderList}">
 												<tr>
 													<td>${count}</td>
-													<td>${list.tableNo}</td>
+													<td>
+														<c:choose>
+															<c:when test="${list.tableNo == 9999}">
+																PICK UP
+															</c:when>
+															<c:otherwise>
+																${list.tableNo}
+															</c:otherwise>
+														</c:choose>
+													</td>
 													<td>
 														<c:forEach var="result" items="${list.orderMenuList}" varStatus="stat">
 															${result.name} - ${result.quantity}개<br>
 														</c:forEach>
 													</td>
 													<td>
-														<fmt:formatDate value="${list.orderDate}" pattern="yyyy-MM-dd" />
+														<fmt:formatDate value="${list.orderDate}" pattern="MM월 dd일" />
 														<br>
-														<fmt:formatDate value="${list.orderDate}" pattern="hh:mm:ss" />
+														<fmt:formatDate value="${list.orderDate}" pattern="hh시 mm분 ss초" />
 													</td>
 													<td>${list.orderContent}</td>
 													<td>
@@ -68,11 +77,11 @@
 																	<input type="hidden" name="orderNo" id="orderNo" value="${list.orderNo}" />
 																	<input type="hidden" name="deviceToken" id="deviceToken" value="${list.deviceToken}" />
 																	<input type="hidden" name="orderContent" id="orderContent" value="주문이 접수되었습니다." />
-																	<button type="submit" class="btn btn-primary">접수확인</button>
+																	<button type="submit" class="btn btn-primary #00897b">접수확인</button>
 																</form>
 															</c:when>
 															<c:when test="${list.orderState == '1'}">
-																&nbsp&nbsp접수확인완료 &nbsp/ &nbsp
+																&nbsp&nbsp&nbsp접수확인완료&nbsp
 															</c:when>
 														</c:choose>
 															<form name="complete" action="${pageContext.request.contextPath}/order/complete.do" method="post">
