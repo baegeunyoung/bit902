@@ -10,7 +10,6 @@ import { Http, RequestOptions, Headers } from '@angular/http';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  user
   userName: string;
   data: any;
   private html: string = "";
