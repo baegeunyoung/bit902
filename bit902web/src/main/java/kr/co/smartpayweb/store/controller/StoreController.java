@@ -127,8 +127,9 @@ public class StoreController {
 		store.setContent(request.getParameter("content"));
 		store.setStoreType(Integer.parseInt(request.getParameter("storeType")));
 		store.setAdress(request.getParameter("adress"));
-//		store.setLatitude(Double.parseDouble(request.getParameter("lat")));
-//		store.setLongitude(Double.parseDouble(request.getParameter("lng")));
+		store.setLatitude(Double.parseDouble(request.getParameter("latitude")));
+		System.out.println(Double.parseDouble(request.getParameter("latitude")));
+		store.setLongitude(Double.parseDouble(request.getParameter("longitude")));
 		store.setSellerNo(sellerNo);
 		
 		service.storetModify(store);

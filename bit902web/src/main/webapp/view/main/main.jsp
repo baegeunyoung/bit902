@@ -99,6 +99,10 @@ input::-moz-placeholder {
 								if (session.getAttribute("permitYn").equals("n") || session.getAttribute("permitYn").equals("r")) {
 							%>
 							<h3>관리자 승인 후 이용하실 수 있습니다.</h3>
+							<a href="${pageContext.request.contextPath}/login/logout.do">
+							<i class="material-icons">power_settings_new</i>
+							로그아웃
+							</a>
 							<%
 								}
 							%>

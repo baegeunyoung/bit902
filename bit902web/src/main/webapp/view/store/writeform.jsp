@@ -12,10 +12,16 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <style>
-	#image{
-		position: fixed;
-		right: 200px;
+	#image {
+		width: 500px;
+		height: 500px;
+		margin: 10px;
+ 		background-size: contain;
+ 		background-repeat: no-repeat;
+ 		background-position: center center;
+		height: 50%;
 	}
+	
 </style>
 <body>
 <div class="wrapper">
@@ -43,150 +49,190 @@
 	                   	<c:choose>
 							<c:when test="${empty store.content}">
 								<div class="card-content">
-									<form action="${pageContext.request.contextPath}/store/write.do" name=form1 " id="form1" runat="server" enctype="multipart/form-data" method="post">
-										<table width="500px">
+									<form action="${pageContext.request.contextPath}/store/write.do" name="form1" id="form1" runat="server" enctype="multipart/form-data" method="post">
+										<table width="90%">
 											<tr>
-												<td>상호명</td>
-												<td>
-													<input type="text" class="form-control" id="storeName" name="storeName" placeholder="상호명을 입력하세요.">
+												<td width="5%">　</td>
+												<td width="5%"></td> 
+												<td width="10%">상호명</td>
+												<td width="40%"><input type="text" class="form-control" id="storeName" name="storeName" placeholder="상호명을 입력하세요."></td>
+												<td>　</td>
+												<td style="width: 500px; text-align: center;" rowspan="8">
+													<div id="image">
+														<img id="blah" style="width: 400px; height: 400px; border-radius: 200px;"/>
+													</div>
 												</td>
+											</tr>
+											<tr>
+												<td>　</td>
+												<td></td>
+												<td>상점 소개</td>
+												<td><textarea class="form-control" rows="5" name="content" id="textArea" placeholder="상점에 대해 간단히 소개해 주세요." ></textarea></td>
+												<td></td>
+											</tr>
+											<tr><td>　</td></tr>
+											<tr>
+												<td>　</td>
+												<td></td>
+												<td>상점 유형</td>
+												<td width="10px">
+													<label>
+													<input type="radio" name="storeType"id="pickup" value="1" checked>
+													픽업형
+													</label>
+													<label>
+													<input type="radio" name="storeType"id="serving" value="2">
+													서빙형
+													</label></td>
+												<td>　</td>
+											</tr>
+											<tr><td>　</td></tr>
+											<tr>
+												<td>　</td>
+												<td></td>
+												<td>상점 대표 이미지</td>
+												<td><input type="file" name="attachFile" id="imgInp" /></td>
+												<td>　</td>
+											</tr>
+											<tr><td>　</td></tr>
+											<tr>
+												<td>　</td>
+												<td></td>
 												<td>
-													<img id="blah" style="width: 300px; height: 300px; border: 1px solid; border-radius: 150px;" />
+													상점 주소
 												</td>
+												<td colspan="3">
+													<div style="float: left; height:100%; display:table-cell;">
+														<input type="text" id="sample5_address" name="adress" style="display: none"/>
+														<input class="btn btn-default btn-lg" type="button" onclick="sample5_execDaumPostcode()" value="주소 검색" style="float: left;">
+													</div>
+													<div id="sample5_address2" style="float: left; height:100%; display:table-cell;"></div>
+												</td>
+											</tr>
+											<tr><td></td></tr>
+											<tr>
+												<td>　</td>
+												<td>　</td>
+												<td colspan="5">
+													<div id="map" style="width:100%; height:500px; margin-top: 10px;"></div>
+													<input type="text" name="lat" id="lat" style="display: none" />
+													<input type="text" name="lng" id="lng" style="display: none" />
+												</td>
+											</tr>
+											<tr>
+												<td>　</td>
+												<td>　</td>
+												<td>　</td>
+												<td>　</td>
+												<td>　</td>
+												<td><button type="submit" class="btn btn-primary pull-right">등록하기</button></td>
 											</tr>
 										</table>
 									</form>
-									
-									
-<%-- 									<form class="form-horizontal" action="${pageContext.request.contextPath}/store/write.do" --%>
-<!-- 										name=form1 " id="form1" runat="server" enctype="multipart/form-data" method="post"> -->
-<!-- 											<fieldset> -->
-<!-- 												<div class="form-group"> -->
-<!-- 													<label for="storeName" class="col-lg-2 control-label">상호명</label> -->
-<!-- 													<div class="col-lg-5"> -->
-<!-- 														<input type="text" class="form-control" id="storeName" name="storeName" placeholder="상호명을입력하세요"> -->
-<!-- 													</div> -->
-<!-- 													<div id="image"> -->
-<!-- 														<img id="blah" style="width: 300px; height: 300px; border: 1px solid; border-radius: 150px;" /> -->
-<!-- 													</div> -->
-<!-- 													<br> -->
-<!-- 												</div> -->
-<!-- 												<div class="form-group"> -->
-<!-- 													<label for="textArea" class="col-lg-2 control-label">Textarea</label> -->
-<!-- 													<div class="col-lg-5"> -->
-<!-- 														<textarea class="form-control" rows="5" name="content" id="textArea" placeholder="상점의 간단한 소개를 해주세요"> -->
-<!-- 														</textarea> -->
-<!-- 													</div> -->
-<!-- 												</div> -->
-<!-- 												<div class="form-group"> -->
-<!-- 													<label class="col-lg-2 control-label">상점유형</label> -->
-<!-- 													<div class="col-lg-10"> -->
-<!-- 														<div class="radio"> -->
-<!-- 															<label> -->
-<!-- 															<input type="radio" name="storeType"id="pickup" value="1" checked=""> -->
-<!-- 																픽업형 -->
-<!-- 															</label> -->
-<!-- 														</div> -->
-<!-- 														<div class="radio"> -->
-<!-- 															<label> -->
-<!-- 															<input type="radio" name="storeType"id="serving" value="2"> -->
-<!-- 																서빙형 -->
-<!-- 															</label> -->
-<!-- 														</div> -->
-<!-- 													</div> -->
-<!-- 												</div> -->
-<!-- 												<div> -->
-<!-- 													<label class="col-lg-2 control-label">상점대표이미지</label> -->
-<!-- 													<input type="file" name="attachFile" id="imgInp" /> -->
-<!-- 												</div> -->
-<!-- 												<div class="form-group"> -->
-<!-- 													<label for="adress" class="col-lg-2 control-label">주소1</label> -->
-<!-- 													<div class="col-lg-1"> -->
-<!-- 														<input class="btn btn-default btn-lg btn-block" type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br> -->
-<!-- 													</div> -->
-<!-- 													<br> -->
-<!-- 													<span id="sample5_address"></span> -->
-<!-- 													<input type="text" id="sample5_address"> -->
-<!-- 												</div> -->
-
-<!-- 												<div class="form-group"> -->
-<!-- 													<label for="adress" class="col-lg-2 control-label">상점지도1234</label> -->
-<!-- 													<div class="col-lg-2"> -->
-<!-- 														<div id="map" style="width: 300px; height: 300px; margin-top: 10px; border: dotted 3px purple; float: left;"> -->
-<!-- 														</div> -->
-<!-- 													</div> -->
-<!-- 												</div> -->
-<!-- 												<div> -->
-<!-- 													<input type="text" name="lat" id="lat" style="display: none" /> <input type="text" name="lng" id="lng" style="display: none" /> -->
-<!-- 												</div> -->
-<!-- 											<button type="submit" class="btn btn-primary pull-right">등록하기</button> -->
-<!-- 											<div class="clearfix"></div> -->
-<!-- 										</fieldset> -->
-<!-- 									</form> -->
 								</div>
 							</c:when>
+							
 							<c:otherwise>
-							<div class="card-content">	                            
-								<form class="form-horizontal" action="${pageContext.request.contextPath}/store/modify.do" name= form1" id="form1" runat="server" enctype="multipart/form-data" method="post">
-									<fieldset>
-										<div class="form-group">
-											<label for="storeName" class="col-lg-2 control-label">상점이름</label>
-											<div class="col-lg-10">
-												<input type="text" class="form-control" id="storeName" name="storeName" value="${store.name}">
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="textArea" class="col-lg-2 control-label">Textarea</label>
-											<div class="col-lg-10">
-												<textarea class="form-control" rows="5" name="content" id="content" placeholder="상점의 간단한 소개를 해주세요">${store.content}</textarea>
-												<span class="help-block">상점의 간단한 소개를 해주세요</span>
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-lg-2 control-label">상점유형</label>
-											<div class="col-lg-10">
-												<div class="radio">
-													<label>
-													<input type="radio" name="storeType" id="pickup" value="1" checked="">
-													픽업형
-												</label>
-											</div>
-											<div class="radio">
-												<label>
-													<input type="radio" name="storeType" id="serving" value="2">
-													서빙형
-												</label>
-											</div>
-										</div>
-									</div>
-									<div>
-										<label class="col-lg-2 control-label">상점대표이미지</label>
-										<input type="file" name="attachFile" id="imgInp"/>
-									</div>
-									<div class="form-group">
-										<label for="adress" class="col-lg-2 control-label">주소</label>
-										<div class="col-lg-10">
-											<input class="form-control" type="text" id="sample5_address" name="adress" value="${store.adress}">
-
-											<input class="btn btn-default btn-lg btn-block" type="button"  onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
-												<div id="map" style="width:300px;height:300px;margin-top:10px;border:dotted 3px purple; float:left;" ></div>
-<!--										<div id="map" style="width:300px;height:300px;margin-top:10px;display:none; float:left" ></div> -->
-<!--										<div><img id="blah"  style="width:300px;height:300px;margin-top:10px; border:dotted 3px purple"/></div><br> -->
-<!--										<div><img id="blah" src="#" alt="대표이미지"  style="width:300px;height:300px;margin-top:10px; border- " /></div><br> -->
-												</div>
-											</div>
-											<div>
-												<input type="text" name="lat" id="lat" style="display:none"/> 
-												<input type="text" name="lng" id="lng" style="display:none"/> 
-											</div>
-											<button type="submit" class="btn btn-primary pull-right">수정하기</button>
-											<div class="clearfix"></div>
-										</fieldset>
+								<div class="card-content">	    
+									<form action="${pageContext.request.contextPath}/store/modify.do" name="form1" id="form1" runat="server" enctype="multipart/form-data" method="post">
+										<table width="90%">
+											<tr>
+												<td width="5%">　</td>
+												<td width="5%"></td> 
+												<td width="10%">상호명</td>
+												<td width="40%"><input type="text" class="form-control" id="storeName" name="storeName" value="${store.name}" placeholder="상호명을 입력하세요."></td>
+												<td>　</td>
+												<td style="width: 500px; text-align: center;" rowspan="8">
+													<div id="image">
+														<img id="blah" style="width: 400px; height: 400px; border-radius: 200px;"/>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>　</td>
+												<td></td>
+												<td>상점 소개</td>
+												<td><textarea class="form-control" rows="5" name="content" id="textArea" placeholder="상점에 대해 간단히 소개해 주세요." >${store.content}</textarea></td>
+												<td></td>
+											</tr>
+											<tr><td>　</td></tr>
+											<tr>
+												<td>　</td>
+												<td></td>
+												<td>상점 유형</td>
+												<td width="10px">
+													<c:choose>
+														<c:when test="${store.storeType == '1'}">
+															<label>
+																<input type="radio" name="storeType"id="pickup" value="1" checked>
+																픽업형
+															</label>
+															<label>
+																<input type="radio" name="storeType"id="serving" value="2">
+																서빙형
+															</label>
+														</c:when>
+														<c:otherwise>
+															<label>
+																<input type="radio" name="storeType"id="pickup" value="1">
+																픽업형
+															</label>
+															<label>
+																<input type="radio" name="storeType"id="serving" value="2" checked>
+																서빙형
+															</label>
+														</c:otherwise>
+													</c:choose>
+												</td>
+												<td>　</td>
+											</tr>
+											<tr><td>　</td></tr>
+											<tr>
+												<td>　</td>
+												<td></td>
+												<td>상점 대표 이미지</td>
+												<td><input type="file" name="attachFile" id="imgInp" /></td>
+												<td>　</td>
+											</tr>
+											<tr><td>　</td></tr>
+											<tr>
+												<td>　</td>
+												<td></td>
+												<td>
+													상점 주소
+												</td>
+												<td colspan="3">
+													<div style="float: left; height:100%; display:table-cell;">
+														<input type="text" id="sample5_address" name="adress" style="display: none" value="${store.adress}"/>
+														<input class="btn btn-default btn-lg" type="button" onclick="sample5_execDaumPostcode()" value="주소 검색" style="float: left;">
+													</div>
+													<div id="sample5_address2" style="float: left; height:100%; display:table-cell;"><h3>${store.adress}</h3></div>
+												</td>
+											</tr>
+											<tr><td></td></tr>
+											<tr>
+												<td>　</td>
+												<td>　</td>
+												<td colspan="5">
+													<div id="map" style="width:100%; height:500px; margin-top: 10px;"></div>
+													<input type="text" name="lat" id="lat" style="display: none" value="${store.latitude}"/>
+													<input type="text" name="lng" id="lng" style="display: none" value="${store.longitude}"/>
+												</td>
+											</tr>
+											<tr>
+												<td>　</td>
+												<td>　</td>
+												<td>　</td>
+												<td>　</td>
+												<td>　</td>
+												<td><button type="submit" class="btn btn-primary pull-right">수정하기</button></td>
+											</tr>
+										</table>
 									</form>
 								</div>
 							</c:otherwise>
-						</c:choose>
 							
+						</c:choose>
 					</div>
 				</div>
 			</div>
@@ -198,21 +244,44 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="//apis.daum.net/maps/maps3.js?apikey=13c9f7d27d52b0ad22774ec599c9b527&libraries=services"></script>
 <script>
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-		mapOption = {
-			center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
-			level: 5 // 지도의 확대 레벨
-		};
-
-	//지도를 미리 생성
-	var map = new daum.maps.Map(mapContainer, mapOption);
-	//주소-좌표 변환 객체를 생성
-	var geocoder = new daum.maps.services.Geocoder();
-	//마커를 미리 생성
-	var marker = new daum.maps.Marker({
-		position: new daum.maps.LatLng(37.537187, 127.005476),
-		map: map
-	});
+	var lat = '${store.latitude}';
+	if(lat !== '') {
+		
+		var lng = '${store.longitude}';
+		
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+			mapOption = {
+				center: new daum.maps.LatLng(lng, lat), // 지도의 중심좌표
+				level: 5 // 지도의 확대 레벨
+			};
+	
+		//지도를 미리 생성
+		var map = new daum.maps.Map(mapContainer, mapOption);
+		//주소-좌표 변환 객체를 생성
+		var geocoder = new daum.maps.services.Geocoder();
+		//마커를 미리 생성
+		var marker = new daum.maps.Marker({
+			position: new daum.maps.LatLng(lng, lat),
+			map: map
+		});
+	}
+	else {
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+			mapOption = {
+				center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+				level: 5 // 지도의 확대 레벨
+			};
+	
+		//지도를 미리 생성
+		var map = new daum.maps.Map(mapContainer, mapOption);
+		//주소-좌표 변환 객체를 생성
+		var geocoder = new daum.maps.services.Geocoder();
+		//마커를 미리 생성
+		var marker = new daum.maps.Marker({
+			position: new daum.maps.LatLng(37.537187, 127.005476),
+			map: map
+		});
+	}
 
 	function sample5_execDaumPostcode() {
 		new daum.Postcode({
@@ -238,6 +307,7 @@
 
 				// 주소 정보를 해당 필드에 넣는다.
 				document.getElementById("sample5_address").value = fullAddr;
+				document.getElementById("sample5_address2").innerHTML = '<h3>' + fullAddr + '</h3>';
 				// 주소로 좌표를 검색
 				geocoder.addr2coord(data.address, function(status, result) {
 					// 정상적으로 검색이 완료됐으면
