@@ -49,9 +49,9 @@
 			set name = #{name},
 				content = #{content},
 				adress = #{adress},
-				store_type = #{storeType}
-<!-- 				latitude = #{latitude}, -->
-<!-- 				longitude = #{longitude}, -->
+				store_type = #{storeType},
+				latitude = #{latitude},
+				longitude = #{longitude}
 			where seller_no = #{sellerNo}
 	</update>
     

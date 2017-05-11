@@ -53,11 +53,11 @@
 										<table width="90%">
 											<tr>
 												<td width="5%">　</td>
-												<td width="5%"></td> 
+												<td width="8%"></td> 
 												<td width="10%">상호명</td>
 												<td width="40%"><input type="text" class="form-control" id="storeName" name="storeName" placeholder="상호명을 입력하세요."></td>
 												<td>　</td>
-												<td style="width: 500px; text-align: center;" rowspan="8">
+												<td style="width: 500px; text-align: right;" rowspan="8">
 													<div id="image">
 														<img id="blah" style="width: 400px; height: 400px; border-radius: 200px;"/>
 													</div>
@@ -138,13 +138,13 @@
 										<table width="90%">
 											<tr>
 												<td width="5%">　</td>
-												<td width="5%"></td> 
+												<td width="8%"></td> 
 												<td width="10%">상호명</td>
 												<td width="40%"><input type="text" class="form-control" id="storeName" name="storeName" value="${store.name}" placeholder="상호명을 입력하세요."></td>
 												<td>　</td>
-												<td style="width: 500px; text-align: center;" rowspan="8">
+												<td style="width: 500px; text-align: right;" rowspan="8">
 													<div id="image">
-														<img id="blah" style="width: 400px; height: 400px; border-radius: 200px;"/>
+														<img id="blah" style="width: auto; height: auto; max-width: 400px; max-height: 400px; border-radius: 30px;"/>
 													</div>
 												</td>
 											</tr>
