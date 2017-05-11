@@ -71,8 +71,23 @@
     </div>
   </ion-item>
   </ion-list>
-
+ 
   <ion-list>
+     <div *ngIf="menu==undefined && searchList!=undefined">
+      <div *ngFor="let search of searchList; let i = index">
+  <ion-item>
+    <ion-thumbnail item-left>
+        <img src = "http://14.32.66.123:10002/bit902web/upload/{{search.filePath}}/{{search.systemName}}"/>
+    </ion-thumbnail>
+    <h2>{{search.name}}</h2>
+    <p>{{search.adress}}</p>
+    <button ion-button clear item-right (click)="detailStore(i)" color="danger">View</button>
+  </ion-item>
+      </div>
+   </div>
+</ion-list>
+<!--
+<ion-list>
   <div *ngIf="menu==undefined && searchList!=undefined">
       <div *ngFor="let search of searchList; let i = index">
           <ion-card>
@@ -85,7 +100,7 @@
        </div>
   </div>
   </ion-list>
-
+-->
 
   <div *ngIf="menu != undefined">{{ store }}</div>
 

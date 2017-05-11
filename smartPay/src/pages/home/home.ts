@@ -416,9 +416,11 @@ export class HomePage {
 
   //주문내역 보내기
   order(){
+
+
    this.tokenObj = {"token": this.token};
    this.majorObj = {"sellerNo": this.major};
-   this.minorObj = {"tableNo": this.minor};
+   this.minorObj = {"tableNo": this.minor-5000};
    this.orderContentObj={"orderContent": this.orderContent};
    this.userNameObj = {"userName": this.userName};
      
