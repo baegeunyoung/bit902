@@ -18,11 +18,12 @@ public class OrderServiceImpl implements OrderService {
 		
 		Map<String, Object> myMap = new HashMap<>();
 		
-		myMap.put("deviceToken", order.get(order.size() - 4).get("token"));
-		int sNo = Integer.parseInt(order.get(order.size() - 3).get("sellerNo"));
+		myMap.put("deviceToken", order.get(order.size() - 5).get("token"));
+		int sNo = Integer.parseInt(order.get(order.size() - 4).get("sellerNo"));
 		myMap.put("sellerNo", sNo);
-		myMap.put("tableNo", Integer.parseInt(order.get(order.size() - 2).get("tableNo")));
-		myMap.put("orderContent", order.get(order.size() - 1).get("orderContent"));
+		myMap.put("tableNo", Integer.parseInt(order.get(order.size() - 3).get("tableNo")));
+		myMap.put("orderContent", order.get(order.size() - 2).get("orderContent"));
+		myMap.put("userName", order.get(order.size() - 1).get("userName"));
 		
 		mapper.insertOrder(myMap);
 		

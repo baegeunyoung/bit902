@@ -52,6 +52,8 @@ export class HomePage {
   quantity:any;
   orderContent="";
   storeName: string;
+  val: string;
+  a: string;
   //비콘
   isScanning: boolean = false;
   beacons: BeaconModel[] = [];
@@ -214,6 +216,10 @@ export class HomePage {
   
   //테이블비콘 검색시 메뉴가져오기
   getMenu(sellerNo: number, minor: number) {
+    this.storage.get('userName').then((val) => { 
+    alert("배근영" + val);
+    this.a = val;
+   })
    this.beacons = [];
    this.isScanning = false;
    IBeacon.stopRangingBeaconsInRegion(this.region);
@@ -360,6 +366,7 @@ export class HomePage {
 		},response => {
 	//결제 후 호출되는 callback함수
 	if ( response.success ) { //결제 성공
+
 		console.log(response);
 		//alert("결제완료 되었습니다.");
     this.order();
@@ -376,21 +383,24 @@ export class HomePage {
 
   //주문내역 보내기
   order(){
-   this.storage.get('userName').then((val) => { 
-    this.userNameObj = {"userName": this.userName};
-   })
-
+  
+    alert("a확인" + this.a);
+   
    this.tokenObj = {"token": this.token};
    this.majorObj = {"sellerNo": this.major};
    this.minorObj = {"tableNo": this.minor};
    this.orderContentObj={"orderContent": this.orderContent};
-   alert(this.userNameObj);
-   console.log(this.tokenObj);
-   this.menu.push(this.userNameObj);
+   this.userNameObj = {"userName": this.a};
+  
+  
+   alert("userNameObj:" + this.userNameObj);
+   
    this.menu.push(this.tokenObj);
    this.menu.push(this.majorObj);
    this.menu.push(this.minorObj); 
    this.menu.push(this.orderContentObj); 
+   this.menu.push(this.userNameObj);
+
    alert(JSON.stringify(this.menu));
 
     let data = JSON.stringify(this.menu);  
@@ -409,6 +419,7 @@ export class HomePage {
       },error => {
         console.log("error");
       }); 
+   
  }
 
 //노드에 신호 전달

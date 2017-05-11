@@ -168,6 +168,7 @@ foreign key(beacon_no) references tb_beacon(beacon_no),
 foreign key(menu_no) references tb_menu(menu_no)
 );
 
+alter table tb_order add column user_name varchar(20) after order_content; 
 select * from tb_order;
 alter table tb_order add column table_no int(6) after seller_no; 
 -------------------------------------------------------
