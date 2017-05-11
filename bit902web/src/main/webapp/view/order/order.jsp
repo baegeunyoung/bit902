@@ -57,6 +57,7 @@
 													</td>
 													<td>
 														<fmt:formatDate value="${list.orderDate}" pattern="yyyy-MM-dd" />
+														<br>
 														<fmt:formatDate value="${list.orderDate}" pattern="hh:mm:ss" />
 													</td>
 													<td>${list.orderContent}</td>
