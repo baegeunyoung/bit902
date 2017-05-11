@@ -4,7 +4,7 @@ public class BeaconVO {
 
 	private int beaconNo;
 	private int serialNo;
-	private int storeNo;
+	private int sellerNo;
 	private int tableNo;
 	
 	public int getBeaconNo() {
@@ -19,11 +19,11 @@ public class BeaconVO {
 	public void setSerialNo(int serialNo) {
 		this.serialNo = serialNo;
 	}
-	public int getStoreNo() {
-		return storeNo;
+	public int getSellerNo() {
+		return sellerNo;
 	}
-	public void setStoreNo(int storeNo) {
-		this.storeNo = storeNo;
+	public void setSellerNo(int sellerNo) {
+		this.sellerNo = sellerNo;
 	}
 	public int getTableNo() {
 		return tableNo;

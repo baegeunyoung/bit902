@@ -28,6 +28,7 @@ public interface LoginMapper {
 
 	// 비콘정보조회
 	public List<BeaconVO> searchBeacon(int sellerNo) throws Exception;
+	
 //	public List<BuyerVO> searchBuyer(String id, String password) throws Exception;
 	
 //	public BuyerVO insertBuyer(BuyerVO Buyer) throws Exception;

@@ -1,6 +1,7 @@
 package kr.co.smartpayweb.login.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.smartpayweb.login.service.LoginService;
+import kr.co.smartpayweb.repository.vo.BeaconVO;
 import kr.co.smartpayweb.repository.vo.SellerVO;
 
 @Controller
@@ -53,8 +55,16 @@ public class LoginController extends HttpServlet{
 //			login.setSellerNo(seller.getSellerNo());
 			System.out.println(seller.getId() + seller.getPassword() + seller.getSellerNo());
 			int sellerNo = seller.getSellerNo();
-//			List<BeaconVO> beacon = service.searchBeacon(sellerNo);
-//			Map<String, List<BeaconVO>> beaconList = new HashMap<String, List<BeaconVO>>();
+			
+			List<BeaconVO> beacon = service.searchBeacon(sellerNo);
+			Map<String, List<BeaconVO>> beaconList = new HashMap<String, List<BeaconVO>>();
+			beaconList.put("beacon2", beacon);
+			
+			for(int i=0; i<=beaconList.size();i++) {
+			session.setAttribute("beacon3", beaconList.get(i));
+			System.out.println(beaconList.get(i) + "비콘정보조회");
+			
+			}
 			//for(int i=0; i<=beaconList.size(); i++) {
 //				map.put(beaconList);
 				//Map<String, Object> map2 = new HashMap<String, Object>();
