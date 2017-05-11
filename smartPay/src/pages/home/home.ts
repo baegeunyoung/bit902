@@ -384,14 +384,14 @@ export class HomePage {
    this.majorObj = {"sellerNo": this.major};
    this.minorObj = {"tableNo": this.minor};
    this.orderContentObj={"orderContent": this.orderContent};
-   console.log(this.userNameObj)
+   alert(this.userNameObj);
    console.log(this.tokenObj);
    this.menu.push(this.userNameObj);
    this.menu.push(this.tokenObj);
    this.menu.push(this.majorObj);
    this.menu.push(this.minorObj); 
    this.menu.push(this.orderContentObj); 
-   console.log(JSON.stringify(this.menu));
+   alert(JSON.stringify(this.menu));
 
     let data = JSON.stringify(this.menu);  
     let link = "http://14.32.66.123:10001/bit902app/order/regist.do";
