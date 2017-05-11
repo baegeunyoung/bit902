@@ -28,9 +28,11 @@ export class PlaygroundPage {
   @ViewChild('map') mapElement;
   map: any;
   selectStore: Store;
+  callback: any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
      if (navParams.data.selectStore) {
             this.selectStore = navParams.data.selectStore;
+            this.callback = this.navParams.get("callback");
         }
   }
 
@@ -44,7 +46,6 @@ export class PlaygroundPage {
  initMap(){
     let longitude = this.selectStore.longitude;
     let latitude = this.selectStore.latitude;
-    console.log(longitude);
     let latLng = new google.maps.LatLng(longitude,latitude);
  
     let mapOptions = {
@@ -54,5 +55,11 @@ export class PlaygroundPage {
     };
  
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+  }
+
+  onBack() {
+    this.callback(this.selectStore.sellerNo).then(()=>{
+      this.navCtrl.pop();
+    });
   }
 }

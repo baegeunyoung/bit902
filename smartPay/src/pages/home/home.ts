@@ -253,6 +253,40 @@ export class HomePage {
         }); 
    }
   }
+
+  //홈화면 매장검색으로 메뉴가져오기
+  getMenuForSearch(sellerNo: number) {
+    this.storage.get('userName').then((val) => { 
+    this.a = val;
+   })
+      this.major = sellerNo;
+      let data = sellerNo;
+      let link = "http://14.32.66.123:10001/bit902app/menu/list.do";
+      let headers = new Headers({'Content-Type': 'application/json'});
+      let options = new RequestOptions({headers: headers});
+     // this.menu = "";
+     // this.menuFile = "";
+    
+      console.log(data);
+      this.http.post(link, data, options)
+        .map(res => res.json())
+        .subscribe(data=>{
+          console.log(data);
+          
+          data.menu.forEach(m =>{
+            m.quantity = 0;
+          })
+          
+          this.menu = data.menu;
+          this.menuFile = data.menuFile;
+          this.storeName = data.menu[0].stName;
+          this.store ="[ " + data.menu[0].stName +" ]";
+     
+        },error => {
+          console.log("error");
+        }); 
+   }
+  
   orderPlus(menu){ 
     menu.quantity++; 
   }
@@ -373,6 +407,7 @@ export class HomePage {
     this.nodeCall();
 
     this.menu = undefined;
+    this.searchList = undefined;
     this.store = "";
     this.navCtrl.push(StampPage, {amount:amount});
 	} else {
@@ -383,25 +418,17 @@ export class HomePage {
 
   //주문내역 보내기
   order(){
-  
-    alert("a확인" + this.a);
-   
    this.tokenObj = {"token": this.token};
    this.majorObj = {"sellerNo": this.major};
    this.minorObj = {"tableNo": this.minor};
    this.orderContentObj={"orderContent": this.orderContent};
    this.userNameObj = {"userName": this.a};
-  
-  
-   alert("userNameObj:" + this.userNameObj);
-   
+     
    this.menu.push(this.tokenObj);
    this.menu.push(this.majorObj);
    this.menu.push(this.minorObj); 
    this.menu.push(this.orderContentObj); 
    this.menu.push(this.userNameObj);
-
-   alert(JSON.stringify(this.menu));
 
     let data = JSON.stringify(this.menu);  
     let link = "http://14.32.66.123:10001/bit902app/order/regist.do";
@@ -442,8 +469,7 @@ export class HomePage {
       this.http.get(link)
         .map(res => res.json())
         .subscribe(data=>{
-            console.log(data);
-            this.homeEvents = data;      
+           this.homeEvents = data;      
         },error => {
           console.log("error");
         }); 
@@ -461,17 +487,23 @@ export class HomePage {
     this.http.post(link, data, options)
       .map(res => res.json())
       .subscribe(data=>{
-        console.log(data);
         console.log("success");
         this.searchList = data;
        },error => {
         console.log("error");
       }); 
    }
+  
+  // callback...
+  myCallbackFunction = (_params) => {
+      return new Promise((resolve, reject) => {
+              resolve();
+              this.getMenuForSearch(_params);
+          });
+  }
  //클릭된 가게검색정보 자세히보기
  detailStore(index: number) {
-   console.log(JSON.stringify(this.searchList[index]));
    let selectStore: Object = this.searchList[index];
-   this.navCtrl.push(PlaygroundPage, {selectStore:selectStore});
+   this.navCtrl.push(PlaygroundPage, {selectStore:selectStore, callback:this.myCallbackFunction});
  }
 }

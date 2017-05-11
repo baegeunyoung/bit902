@@ -33,7 +33,7 @@
   <p>{{ selectStore.name }}</p>
   <p>{{ selectStore.content }}</p>
    <p>{{ selectStore.adress }}</p>
-  <button color="danger" ion-button >메뉴보기</button>
+  <button color="danger" ion-button (click)="onBack()">메뉴보기</button>
   <p>매장위치</p>
   <div #map id="map"></div>  
 </ion-content>
