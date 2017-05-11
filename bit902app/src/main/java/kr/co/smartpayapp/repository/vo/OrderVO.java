@@ -12,8 +12,17 @@ public class OrderVO {
 	private String orderContent;
 	private String deviceToken;
 	private String orderState;
+	private String userName;
 	private List<OrderMenuVO> orderMenuList;
 	
+	
+	
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 	public int getOrderNo() {
 		return orderNo;
 	}

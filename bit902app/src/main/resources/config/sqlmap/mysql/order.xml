@@ -11,6 +11,7 @@
 		<result column="beacon_no" property="beaconNo" />
 		<result column="order_date" property="orderDate" />
 		<result column="order_content" property="orderContent" />
+		<result column="user_name" property="userName" />
 		<result column="device_token" property="deviceToken" />
 		<result column="order_state" property="orderState" />
 	</resultMap>
@@ -20,12 +21,14 @@
 			seller_no,
 			table_no,
 			device_token,
-			order_content
+			order_content,
+			user_name
 		) values (
 			#{sellerNo},
 			#{tableNo},
 			#{deviceToken},
-			#{orderContent}
+			#{orderContent},
+			#{userName}
 		)
 	</insert>
 
