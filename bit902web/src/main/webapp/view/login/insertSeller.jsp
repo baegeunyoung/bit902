@@ -151,7 +151,7 @@ input::-moz-placeholder {
 								<td><br>핸드폰 번호</td>
 								<td>
 									<div class="form-group">
-										<input type="text" name="cellphoneNumber" placeholder="핸드폰번호" class="form-control">
+										<input type="text" id="cellphoneNumber" name="cellphoneNumber" placeholder="핸드폰번호" class="form-control">
 									</div>
 								</td>
 						</table>
@@ -236,6 +236,16 @@ input::-moz-placeholder {
 				return false;
 			}
 
+			$(document).ready(function() {
+				$('#cellphoneNumber').on('keyup', function() {
+					if ($(this).val().length > 140) {
+						alert('글자수는 140자 까지입니다.');
+						$(this).val($(this).val().substring(0, 140));
+					}
+					$('#count').html($(this).val().length + '/140');
+				});
+			});
+			
 			if (cellNo.value == "") {
 				alert("핸드폰번호를 입력하세요");
 				cellNo.focus();
