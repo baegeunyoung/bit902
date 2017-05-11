@@ -42,13 +42,14 @@ public class LoginController {
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
 	public Map<String,Object> buyerRegist(/*HttpServletRequest request*/@RequestBody BuyerVO buyerVO) {
 		Map<String,Object> msg = new HashMap<>();
-		if(service.registBuyer(buyerVO) == 1 ) {
-			msg.put("msg", "등록완료");
+				
+		if(service.retrieveBuyer(buyerVO.getId()) == null) {
+			service.registBuyer(buyerVO);
+			msg.put("msg", "등록이 완료되었습니다");
+			return msg;
+		} else {
+			msg.put("msg", "이미등록되있다 하지마라!!");
+			return msg;
 		}
-		else {
-			msg.put("msg", "등록실패");
-		}
-		return msg;
-	}
-	
+	}	
 }

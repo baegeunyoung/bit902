@@ -8,4 +8,6 @@ public interface LoginService {
 	public List<BuyerVO> checkBuyer();
 	public BuyerVO selectOneBuyer(BuyerVO buyerVO);
 	public int registBuyer(BuyerVO buyerVO);
+	
+	public BuyerVO retrieveBuyer(String userID);
 }

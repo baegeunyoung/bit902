@@ -21,21 +21,41 @@
 	select * 
 	from tb_buyer
 	where id=#{id} and password=#{password}
-</select> 
+</select>
+
+<select id="retrieveBuyer" parameterType="string" resultMap="buyerMap">
+	select *
+		from tb_buyer
+		where id = #{id}
+</select>
 
 <insert id="insertBuyer" parameterType="buyerVO">
-	insert into tb_buyer (
-		id,
-		password,
-		name,
-		cellphone_number
-	)
-	values (
-		#{id},
-		#{password},
-		#{name},
-		#{cellphoneNumber}
-	)
-	
+	<choose>
+		<when test = "password != null and cellphoneNumber != null">
+			insert into tb_buyer (
+				id,
+				password,
+				name,
+				cellphone_number
+			)
+			values (
+				#{id},
+				#{password},
+				#{name},
+				#{cellphoneNumber}
+			)
+		</when>
+		<otherwise>
+			insert into tb_buyer (
+				id,
+				name
+			)
+			values (
+				#{id},
+				#{name}
+			)
+		</otherwise>
+	</choose>
 </insert>
+
 </mapper>

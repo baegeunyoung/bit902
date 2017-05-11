@@ -21,4 +21,10 @@ public class LoginServiceImpl implements LoginService{
 	public int registBuyer(BuyerVO buyerVO) {
 		return mapper.insertBuyer(buyerVO);
 	}
+	
+	@Override
+	public BuyerVO retrieveBuyer(String userID) {
+		
+		return mapper.retrieveBuyer(userID);
+	}
 }
