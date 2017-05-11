@@ -1,11 +1,8 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Map
+      상점정보
     </ion-title>
-    <ion-buttons end>
-      <button ion-button (click)="addMarker()"><ion-icon name="add"></ion-icon>Add Marker</button>
-    </ion-buttons>  
   </ion-navbar>
 </ion-header>
 <!--
@@ -32,9 +29,11 @@
 -->
 
 <ion-content>
+  <img src = "http://14.32.66.123:10002/bit902web/upload/{{selectStore.filePath}}/{{selectStore.systemName}}"/>
   <p>{{ selectStore.name }}</p>
   <p>{{ selectStore.content }}</p>
    <p>{{ selectStore.adress }}</p>
+  <button color="danger" ion-button >메뉴보기</button>
+  <p>매장위치</p>
   <div #map id="map"></div>  
-  <button color="danger" ion-button >주문하기</button>
 </ion-content>

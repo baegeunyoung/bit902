@@ -25,6 +25,8 @@
 		<result column="longitude" property="longitude"/>
 		<result column="seller_no" property="sellerNo"/>
 		<result column="conent" property="content"/>
+		<result column="file_path" property="filePath"/>
+		<result column="system_name" property="systemName"/>
 	</resultMap>
 
 	<insert id="insertEvent" parameterType="EventVO">
@@ -72,8 +74,12 @@
 				s.latitude, 
 				s.longitude, 
 				s.seller_no,
-				s.content
+				s.content,
+				sf.file_path,
+				sf.system_name
 		from tb_store s
+		inner join tb_store_file sf
+				on s.seller_no = sf.seller_no and sf.store_no is not null
 		where name like concat('%', #{name},  '%')
 	</select>
 </mapper>

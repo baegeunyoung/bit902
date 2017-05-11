@@ -9,9 +9,22 @@ public class StoreVO {
 	private double longitude;
 	private int sellerNo;
 	private String content;
-	
+	private String filePath;
+	private String systemName;
 
 	
+	public String getFilePath() {
+		return filePath;
+	}
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+	public String getSystemName() {
+		return systemName;
+	}
+	public void setSystemName(String systemName) {
+		this.systemName = systemName;
+	}
 	public String getContent() {
 		return content;
 	}
