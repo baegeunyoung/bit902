@@ -51,11 +51,11 @@ export class LoginPage {
           let link = "http://14.32.66.123:10001/bit902app/login/regist.do";
           let headers = new Headers({'Content-Type' : 'application/json'});
           let options = new RequestOptions({headers: headers});
-          alert('데이터 : ' + data);
+
           this.http.post(link, data, options)
             .map(res => res.json())
             .subscribe(data => {
-              alert('성공 : ' + JSON.stringify(data));
+   
             }, (e) => {
               alert('에러 : ' + JSON.stringify(e));
             })

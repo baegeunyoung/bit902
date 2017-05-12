@@ -34,12 +34,12 @@ export class MyApp {
   
   constructor(public menu: MenuController, platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public storage: Storage, private events: Events) {
     events.subscribe('login', (userEventData) => {
-      alert(userEventData);
+      
       this.userName = userEventData;
     })
 
     events.subscribe('logout',(Data) => {
-      alert(Data);
+      
       this.userName = Data;
     })
 

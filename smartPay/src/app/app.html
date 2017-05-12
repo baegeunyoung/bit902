@@ -2,7 +2,7 @@
   <ion-content>
     <ion-list>
       <ion-list>
-        <ion-list-header>{{userName}}</ion-list-header>
+        <ion-list-header>{{userName}}님 환영합니다.</ion-list-header>
         <button class="homebutton" ion-item (click)="openPage(rootPage)"><img src="../assets/home.PNG" class="home">&nbsp;&nbsp;홈으로</button>
         <button class="registbutton" ion-item (click)="openPage(registerPage)"><img src="../assets/regist.PNG" class="regist">&nbsp;&nbsp;회원등록</button>
         <button class="loginbutton" *ngIf="userName==null" ion-item (click)="openPage(loginPage)"><img class="login" src="../assets/login.PNG">&nbsp;&nbsp;로그인</button>
