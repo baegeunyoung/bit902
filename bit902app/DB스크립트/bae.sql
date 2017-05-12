@@ -199,7 +199,8 @@ store_no int(6) unsigned not null,
 primary key(seller_stamp_no),
 foreign key(store_no) references tb_store(store_no)
 );
-
+delete from tb_event
+where event_no = 69;
 
 -------------------------------------------------------
 --사용자 스탬프 테이블

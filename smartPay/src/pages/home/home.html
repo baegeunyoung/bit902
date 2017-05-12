@@ -4,15 +4,16 @@
       <ion-icon name="menu" id="menuicon"></ion-icon>
     </button>
     <ion-buttons end>
-      <button ion-button outline color="danger" *ngIf="isScanning==false" (click)="startScanning()" >메뉴보기</button>
+      <button ion-button outline color="danger" *ngIf="isScanning==false" (click)="startScanning()" >
+        <img src="../../assets/menuButtonR.jpg"/> </button>
       <ion-spinner end *ngIf="isScanning==true" name="crescent"></ion-spinner>
     </ion-buttons>
     <ion-title id="title">
-      거기서 주문해
+      <img src="../../assets/orderitthere.jpg"/>
     </ion-title>
   </ion-navbar>
 </ion-header>
-
+ 
 <ion-content>
  
   <ion-list  *ngIf="major == 10000" no-lines>
