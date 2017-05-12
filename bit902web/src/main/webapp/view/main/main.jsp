@@ -32,10 +32,9 @@ input::-moz-placeholder {
 	%>
 	<div class="wrapper" style="text-align: center;">
 		<div class="container-fluid">
-			<h1>거기서 주문해</h1>
 			<br>
 			<br>
-			<h2>판매자 페이지</h2>
+			<img src="/bit902web/img/orderthere.png" width="400px"/>
 			<br>
 
 			<div id="success"></div>

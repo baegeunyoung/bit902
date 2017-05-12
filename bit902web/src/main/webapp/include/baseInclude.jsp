@@ -4,21 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<style>
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-*, .title, .navbar-header {
-	font-family: 'Nanum Gothic', serif;
-	font-weight: 500;
-}
-body {
-	background: url('../img/samgye.gif') no-repeat right bottom fixed; 
-/* 	background: url('../img/hey2.gif') no-repeat right bottom fixed;  */
-/*  	-webkit-background-size: cover; */
-/*  	-moz-background-size: cover; */
-/*  	-o-background-size: cover; */
-/*  	background-size: cover; */
-}
-</style>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>

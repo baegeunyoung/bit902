@@ -10,9 +10,9 @@
 <body>
 
 	<!-- 		사이드바 선택시 색과 배경 그림 설정 -->
-	<div class="sidebar" data-color="purple" data-image="${pageContext.request.contextPath}/img/bg.jsp">
+	<div class="sidebar" data-color="purple" data-image="${pageContext.request.contextPath}/img/SmartPay1.gif">
 		<div class="logo">
-			<a href="${pageContext.request.contextPath}/main/main.do" class="simple-text"> 거기서 주문해 </a>
+			<a href="${pageContext.request.contextPath}/main/main.do" class="simple-text"><img src="/bit902web/img/orderthere.png" width="190px"/></a>
 		</div>
 
 		<div class="sidebar-wrapper">
@@ -30,7 +30,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="${pageContext.request.contextPath}//beacon/beacon.do">
+					<a href="${pageContext.request.contextPath}/beacon/beacon.do">
 						<i class="material-icons text-gray">settings_input_svideo</i>
 						<p>비콘관리</p>
 					</a>
