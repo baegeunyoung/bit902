@@ -137,61 +137,60 @@
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+	</div>
+	<%
+		} else {
+	%>
+	<script>
+		location.href = "/bit902web/main/main.do";
+	</script>
 
-				<%
-					} else {
-				%>
-				<script>
-					location.href = "/bit902web/main/main.do";
-				</script>
-
-				<%
-					}
-				%>
+	<%
+		}
+	%>
 
 
-				<script>
-// 					$(function() {});
-					$(document).ready(function() {
-						$.ajax({
-							url : "/bit902web/beacon/searchBeacon.do",
-							type : "POST",
-							dataType : "json",
-							data : { selNo : $("#sellerNo").val() }
-						}).done(function(result) {
-							alert("성공");
-						})
-					});
-
-					$("#logout").click( function() {
-						location.href = "${pageContext.request.contextPath}/login/logout.do";
-					});
-
-					$("#mod").click(function() {
-						$.ajax({
-							url : "/bit902web/beacon/modifyBeacon.do",
-							type : "POST",
-							dataType : "json",
-							data : {
-								sellerNo : $("#modSellerNo").val(),
-								beaconNo : $("#modBeaconNo").val(),
-								serialNo : $("#modSerialNo").val(),
-								tableNo : $("#modTableNo").val()
-							}
-						})
-					});
-
-					$("#del").click(function() {
-						$.ajax({
-							url : "/bit902web/beacon/deleteBeacon.do",
-							type : "POST",
-							dataType : "json",
-							data : {
-								beaconNo : $("#modBeaconNo").val(),
-								sellerNo : $("#modSellerNo").val()
-							}
-						})
-					});
-				</script>
+	<script>
+// 		$(function() {});
+		$(document).ready(function() {
+			$.ajax({
+				url : "/bit902web/beacon/searchBeacon.do",
+				type : "POST",
+				dataType : "json",
+				data : { selNo : $("#sellerNo").val() }
+			}).done(function(result) {
+				alert("성공");
+			})
+		});
+			$("#logout").click( function() {
+			location.href = "${pageContext.request.contextPath}/login/logout.do";
+		});
+			$("#mod").click(function() {
+			$.ajax({
+				url : "/bit902web/beacon/modifyBeacon.do",
+				type : "POST",
+				dataType : "json",
+				data : {
+					sellerNo : $("#modSellerNo").val(),
+					beaconNo : $("#modBeaconNo").val(),
+					serialNo : $("#modSerialNo").val(),
+					tableNo : $("#modTableNo").val()
+				}
+			})
+		});
+			$("#del").click(function() {
+			$.ajax({
+				url : "/bit902web/beacon/deleteBeacon.do",
+				type : "POST",
+				dataType : "json",
+				data : {
+					beaconNo : $("#modBeaconNo").val(),
+					sellerNo : $("#modSellerNo").val()
+				}
+			})
+		});
+	</script>
 </body>
 </html>
