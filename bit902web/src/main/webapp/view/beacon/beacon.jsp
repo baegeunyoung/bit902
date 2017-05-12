@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<% request.setCharacterEncoding("UTF-8");%>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,36 +12,31 @@
 </head>
 <body>
 	<div class="wrapper">
-
-		<div>
-			<c:import url="../../include/sidebar.jsp" />
-		</div>
+		<c:import url="../../include/sidebar.jsp" />
 		<div class="main-panel">
 			<nav class="navbar navbar-transparent navbar-absolute">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="#">비콘관리</a>
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#">비콘관리</a>
+					</div>
 				</div>
-			</div>
 			</nav>
 
 			<div class="content">
 
 				<%
 					if (session.getAttribute("id") != null) {
-						
+
 // 						String id = (String)(session.getAttribute("id"));
-						int selNo = (int)(session.getAttribute("selNo"));
-					//	int beaconNo = (int)(session.getAttribute("beaconNo"));
-						//int serialNo = (int)(session.getAttribute("serialNo"));
-						//int tableNo = (int)(session.getAttribute("tableNo"));
-						
-						
+						int selNo = (int) (session.getAttribute("selNo"));
+// 						int beaconNo = (int)(session.getAttribute("beaconNo"));
+// 						int serialNo = (int)(session.getAttribute("serialNo"));
+// 						int tableNo = (int)(session.getAttribute("tableNo"));
 				%>
 
-<script>
-console.log(<%=selNo%>);
-</script>
+				<script>
+					console.log(<%=selNo%>);
+				</script>
 
 				<div class="container-fluid">
 					<div class="row">
@@ -51,33 +48,28 @@ console.log(<%=selNo%>);
 									<p class="category">상점의 비콘을 등록해주세요</p>
 								</div>
 								<div class="card-content">
-									<form class="form-horizontal"
-										action="${pageContext.request.contextPath}/beacon/insertBeacon.do"
-										id="form" method="post">
+									<form class="form-horizontal" action="${pageContext.request.contextPath}/beacon/insertBeacon.do" id="form" method="post">
 										<div class="row" id="menu">
 											<div class="col-md-3">
 												<div class="form-group label-floating">
-													<label class="control-label">판매자번호</label> <input
-														name="sellerNo" type="text" class="form-control"
- 														readonly value="<%=selNo%>">
+													<label class="control-label">판매자번호</label>
+													<input name="sellerNo" type="text" class="form-control" readonly value="<%=selNo%>">
 												</div>
 											</div>
 											<div class="col-md-3">
 												<div class="form-group label-floating">
-													<label class="control-label">시리얼번호</label> <input
-														id="serialNo" type="text" class="form-control"
-														value="<%%>">
+													<label class="control-label">시리얼번호</label>
+													<input id="serialNo" type="text" class="form-control" value="<%%>">
 												</div>
 											</div>
 											<div class="col-md-3">
 												<div class="form-group label-floating">
-													<label class="control-label">테이블번호</label> <input
-														id="tableNo" type="text" class="form-control">
+													<label class="control-label">테이블번호</label>
+													<input id="tableNo" type="text" class="form-control">
 												</div>
 											</div>
 										</div>
-										<button id="reg" type="submit"
-											class="btn btn-primary pull-right">비콘등록</button>
+										<button id="reg" type="submit" class="btn btn-primary pull-right">비콘등록</button>
 									</form>
 								</div>
 							</div>
@@ -85,11 +77,8 @@ console.log(<%=selNo%>);
 					</div>
 				</div>
 
-				<!-- 								<button id="sel" type="submit" onClick="return sel()" class="btn btn-primary pull-right">비콘정보보기</button>   	  	                             -->
+<!-- 				<button id="sel" type="submit" onClick="return sel()" class="btn btn-primary pull-right">비콘정보보기</button>   	  	                             -->
 				<div class="content">
-
-
-
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-md-15">
@@ -101,46 +90,43 @@ console.log(<%=selNo%>);
 									</div>
 									<div class="card-content">
 										<form class="form-horizontal"
-											<%-- 					action="${pageContext.request.contextPath}/beacon/modifyBeacon.do" --%>
-					                        id="wForm"
-											method="post">
+<%-- 											action="${pageContext.request.contextPath}/beacon/modifyBeacon.do" --%>
+					                        id="wForm" method="post">
 											<div class="row" id="menu">
 												<div class="col-md-3">
 													<div class="form-group label-floating">
-														<label class="control-label">판매자번호</label> <input
-															id="modSellerNo" type="text" class="form-control"
-<%-- 															readonly value="<%out.print((int)request.getAttribute("sellerNo"));%>"> --%>
+														<label class="control-label">판매자번호</label>
+														<input id="modSellerNo" type="text" class="form-control"
+<%-- 															value="<%out.print((int)request.getAttribute("sellerNo"));%>"> --%>
 																readonly value="<%=selNo%>">
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="form-group label-floating">
-														<label class="control-label">비콘번호</label> <input
-															id="modBeaconNo" type="text" class="form-control">
-<%-- 															value="<%out.print((int)request.getAttribute("beaconNo"));%>"> --%>
-<%-- 																value="<%int beaconNo = (int)session.getAttribute("beaconNo");%>">	 --%>
+														<label class="control-label">비콘번호</label>
+														<input id="modBeaconNo" type="text" class="form-control">
+<%-- 														value="<%out.print((int)request.getAttribute("beaconNo"));%>"> --%>
+<%-- 														value="<%int beaconNo = (int)session.getAttribute("beaconNo");%>">	 --%>
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="form-group label-floating">
-														<label class="control-label">시리얼번호</label> <input
-															id="modSerialNo" type="text" class="form-control">
-<%-- 															value="<%int serialNo = (int)session.getAttribute("serialNo");%>"> --%>
+														<label class="control-label">시리얼번호</label>
+														<input id="modSerialNo" type="text" class="form-control">
+<%-- 														value="<%int serialNo = (int)session.getAttribute("serialNo");%>"> --%>
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="form-group label-floating">
 														<label class="control-label">테이블번호</label> <input
 															id="modTableNo" type="text" class="form-control">
-<%-- 															value="<%int tableNo = (int)session.getAttribute("tableNo");%>"> --%>
+														<%-- 															value="<%int tableNo = (int)session.getAttribute("tableNo");%>"> --%>
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="form-group label-floating">
-														<button id="mod" type="submit" onClick="return mod()"
-															class="btn btn-primary pull-right">비콘정보수정</button>
-														<button id="del" type="submit" onClick="return del()"
-															class="btn btn-primary pull-right">비콘삭제</button>
+														<button id="mod" type="submit" onClick="return mod()" class="btn btn-primary pull-right">비콘정보수정</button>
+														<button id="del" type="submit" onClick="return del()" class="btn btn-primary pull-right">비콘삭제</button>
 													</div>
 												</div>
 											</div>
@@ -153,9 +139,7 @@ console.log(<%=selNo%>);
 				</div>
 
 				<%
-					}
-
-					else {
+					} else {
 				%>
 				<script>
 					location.href = "/bit902web/main/main.do";
@@ -167,27 +151,21 @@ console.log(<%=selNo%>);
 
 
 				<script>
-// 				$(function() {});
-							$(document).ready(function() {
-								$.ajax({
-									url : "/bit902web/beacon/searchBeacon.do",
-									type: "POST",
-									dataType : "json",
-									data: {
-										selNo: $("#sellerNo").val()
-										
-									}
-								
-								}).done(function(result) {
-								   alert("성공");
-								})
-							});
+// 					$(function() {});
+					$(document).ready(function() {
+						$.ajax({
+							url : "/bit902web/beacon/searchBeacon.do",
+							type : "POST",
+							dataType : "json",
+							data : { selNo : $("#sellerNo").val() }
+						}).done(function(result) {
+							alert("성공");
+						})
+					});
 
-					$("#logout")
-							.click(
-									function() {
-										location.href = "${pageContext.request.contextPath}/login/logout.do";
-									});
+					$("#logout").click( function() {
+						location.href = "${pageContext.request.contextPath}/login/logout.do";
+					});
 
 					$("#mod").click(function() {
 						$.ajax({
@@ -195,13 +173,13 @@ console.log(<%=selNo%>);
 							type : "POST",
 							dataType : "json",
 							data : {
-								sellerNo: $("#modSellerNo").val(),
-								beaconNo: $("#modBeaconNo").val(),
-								serialNo: $("#modSerialNo").val(),
-								tableNo: $("#modTableNo").val()
+								sellerNo : $("#modSellerNo").val(),
+								beaconNo : $("#modBeaconNo").val(),
+								serialNo : $("#modSerialNo").val(),
+								tableNo : $("#modTableNo").val()
 							}
 						})
-					})
+					});
 
 					$("#del").click(function() {
 						$.ajax({
@@ -209,11 +187,11 @@ console.log(<%=selNo%>);
 							type : "POST",
 							dataType : "json",
 							data : {
-								beaconNo: $("#modBeaconNo").val(),
-								sellerNo: $("#modSellerNo").val()
+								beaconNo : $("#modBeaconNo").val(),
+								sellerNo : $("#modSellerNo").val()
 							}
 						})
-					})
+					});
 				</script>
 </body>
 </html>

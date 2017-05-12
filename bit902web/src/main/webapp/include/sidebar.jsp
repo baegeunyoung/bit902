@@ -30,7 +30,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="${pageContext.request.contextPath}/view/beacon/beacon.jsp">
+					<a href="${pageContext.request.contextPath}//beacon/beacon.do">
 						<i class="material-icons text-gray">settings_input_svideo</i>
 						<p>비콘관리</p>
 					</a>

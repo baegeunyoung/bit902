@@ -45,6 +45,7 @@
 <!-- 	<mvc:view-controller path="/login/loginForm.do" view-name="login/login" />	 -->
 <!-- 메뉴 관리 이동 -->
 	<mvc:view-controller path="/menu/firstPage.do" view-name="menu/list" />
+	<mvc:view-controller path="/beacon/beacon.do" view-name="beacon/beacon" />
 	
 	<mvc:default-servlet-handler />
 	<mvc:view-resolvers>
