@@ -10,6 +10,13 @@
 	font-family: 'Nanum Gothic', serif;
 	font-weight: 500;
 }
+body {
+	background: url('../img/bg.jpg') no-repeat 100% 100% fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>

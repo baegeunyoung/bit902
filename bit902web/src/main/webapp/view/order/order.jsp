@@ -25,7 +25,7 @@
 						<div class="col-md-12">
 							<br>
 							<div class="card">
-								<div class="card-header" style='background-color: red;'>
+								<div class="card-header" data-background-color="purple">
 									<h4 class="title">주문 현황</h4>
 									<p class="category">
 										<span id="cDate">하하하</span>
@@ -65,7 +65,7 @@
 														</c:forEach>
 													</td>
 													<td>
-														<fmt:formatDate value="${list.orderDate}" pattern="MM월 dd일" />
+														&nbsp&nbsp&nbsp&nbsp<fmt:formatDate value="${list.orderDate}" pattern="MM월 dd일" />
 														<br>
 														<fmt:formatDate value="${list.orderDate}" pattern="hh시 mm분 ss초" />
 													</td>
@@ -77,7 +77,7 @@
 																	<input type="hidden" name="orderNo" id="orderNo" value="${list.orderNo}" />
 																	<input type="hidden" name="deviceToken" id="deviceToken" value="${list.deviceToken}" />
 																	<input type="hidden" name="orderContent" id="orderContent" value="주문이 접수되었습니다." />
-																	<button type="submit" class="btn btn-primary #00897b">접수확인</button>
+																	<button type="submit" class="btn btn-primary">접수확인</button>
 																</form>
 															</c:when>
 															<c:when test="${list.orderState == '1'}">

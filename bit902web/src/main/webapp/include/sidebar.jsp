@@ -10,7 +10,7 @@
 <body>
 
 	<!-- 		사이드바 선택시 색과 배경 그림 설정 -->
-	<div class="sidebar" data-color="purple" data-image="${pageContext.request.contextPath}/material-dashboard-free-v1.1.0/assets/img/SmartPay1.gif">
+	<div class="sidebar" data-color="purple" data-image="${pageContext.request.contextPath}/img/bg.jsp">
 		<div class="logo">
 			<a href="${pageContext.request.contextPath}/main/main.do" class="simple-text"> 거기서 주문해 </a>
 		</div>
