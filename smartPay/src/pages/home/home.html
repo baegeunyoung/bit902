@@ -4,7 +4,7 @@
       <ion-icon name="menu" id="menuicon"></ion-icon>
     </button>
     <ion-buttons end>
-      <button ion-button outline color="dark" *ngIf="isScanning==false" (click)="startScanning()" >메뉴보기</button>
+      <button ion-button outline color="danger" *ngIf="isScanning==false" (click)="startScanning()" >메뉴보기</button>
       <ion-spinner end *ngIf="isScanning==true" name="crescent"></ion-spinner>
     </ion-buttons>
     <ion-title id="title">
