@@ -1,16 +1,12 @@
 <ion-menu [content]="content">
   <ion-content>
     <ion-list>
-      <ion-list no-lines>
-        <ion-list-header *ngIf="userName!=null">{{userName}}님 환영합니다</ion-list-header>
-        <button ion-item (click)="openPage(rootPage)">홈으로</button>
-        <button ion-item (click)="openPage(playgroundPage)">매장검색</button>
-        <button ion-item (click)="openPage(registerPage)">회원등록</button>
-        <button ion-item (click)="openPage(buyerPage)">구매자조회</button>
-        <button *ngIf="userName==null" ion-item (click)="openPage(loginPage)">소셜로그인</button>
-        <button ion-item (click)="openPage(stampPage)">스탬프모음</button>
-        <button *ngIf="userName!=null" ion-item (click)="openPage(logoutPage)">로그아웃</button>
-        <button ion-item (click)="openPage(foodReadyPage)">임시로 ready화면</button>
+      <ion-list>
+        <ion-list-header>{{userName}}</ion-list-header>
+        <button class="homebutton" ion-item (click)="openPage(rootPage)"><img src="../assets/home.PNG" class="home">&nbsp;&nbsp;홈으로</button>
+        <button class="registbutton" ion-item (click)="openPage(registerPage)"><img src="../assets/regist.PNG" class="regist">&nbsp;&nbsp;회원등록</button>
+        <button class="loginbutton" *ngIf="userName==null" ion-item (click)="openPage(loginPage)"><img class="login" src="../assets/login.PNG">&nbsp;&nbsp;로그인</button>
+        <button class="logoutbutton" *ngIf="userName!=null" ion-item (click)="openPage(logoutPage)"><img class="logout" src="../assets/logout.PNG">&nbsp;&nbsp;로그아웃</button>
       </ion-list>
     </ion-list>
   </ion-content>

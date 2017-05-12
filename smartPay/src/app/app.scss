@@ -14,3 +14,39 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.home {
+    position: relative;
+    top: 3px;
+}
+
+.homebutton {
+    font-size: 23px;
+}
+
+.login {
+    position: relative;
+    top: 3px;
+}
+
+.loginbutton {
+    font-size: 23px;
+}
+
+.logout {
+    position: relative;
+    top: 3px;
+}
+
+.logoutbutton {
+    font-size: 23px;
+}
+
+.regist {
+    position: relative;
+    top: 3px;
+}
+
+.registbutton {
+    font-size: 23px;
+}
