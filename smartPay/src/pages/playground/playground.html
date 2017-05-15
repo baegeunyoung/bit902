@@ -5,29 +5,30 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<!--
+
  <ion-content>
-  <ion-card>
-  <ion-item>
-    <ion-avatar item-left>
-     
-    </ion-avatar>
+ 
+<ion-card>
+ <ion-item>
+    <ion-thumbnail item-left>
+      <img src = "http://14.32.66.123:10002/bit902web/upload/{{selectStore.filePath}}/{{selectStore.systemName}}"/>
+    </ion-thumbnail>
     <h2>{{ selectStore.name }}</h2>
     <p>{{ selectStore.adress }}</p>
   </ion-item>
-
-  <div #map id="map"></div> 
-
   <ion-card-content>
     <p>{{ selectStore.content }}</p>
   </ion-card-content>
-  
-  <button ion-button >주문하기</button>
-  </ion-card>
-  <div #map id="map"></div> 
-</ion-content>
--->
+    <ion-card-content #map id="map" style="height:300px">
+  </ion-card-content>
+   <button color="danger" ion-button (click)="onBack()">메뉴보기</button>
+</ion-card>
 
+</ion-content>
+
+
+
+<<!--
 <ion-content>
   <img src = "http://14.32.66.123:10002/bit902web/upload/{{selectStore.filePath}}/{{selectStore.systemName}}"/>
   <p>{{ selectStore.name }}</p>
@@ -37,3 +38,4 @@
   <p>매장위치</p>
   <div #map id="map"></div>  
 </ion-content>
+-->

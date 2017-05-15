@@ -55,6 +55,18 @@ export class PlaygroundPage {
     };
  
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+
+    //마커추가 함수 호출 
+    this.addMarker(this.map, latLng);
+  }
+  //마커 함수
+  addMarker(map, latLng){
+	var markerOption = {
+		position: latLng,   // 마커 생성 위치	
+		map: map,			// 지도객체
+		clickable: true     // 클릭시 정보창을 보여주기 위해 true 설정
+	};
+    var marker = new google.maps.Marker(markerOption);
   }
 
   onBack() {
