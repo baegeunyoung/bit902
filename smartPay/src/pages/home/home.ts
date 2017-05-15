@@ -407,6 +407,7 @@ export class HomePage {
     this.menu = undefined;
     this.searchList = undefined;
     this.store = "";
+    this.orderContent = "";
     this.navCtrl.push(StampPage, {amount:amount});
 	} else {
     alert('결제실패 : ' + response.error_msg);
