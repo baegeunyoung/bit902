@@ -30,7 +30,7 @@ input::-moz-placeholder {
 	<%
 		if (session.getAttribute("id") == null) {
 	%>
-	<div class="wrapper" style="text-align: center;">
+	<div class="wrapper" style="text-align: center; background: url('/bit902web/img/spoon.jpg') no-repeat center;">
 		<div class="container-fluid">
 			<br>
 			<br>
@@ -51,7 +51,7 @@ input::-moz-placeholder {
 					</div>
 					<br>
 					<button id="login" class="btn btn-primary pull-center">로그인</button>
-					<a href="/bit902web/view/login/insertSeller.jsp" role='button' class="btn btn-primary pull-center">회원가입</a>
+					<a href="${pageContext.request.contextPath}/login/joinForm.do" role='button' class="btn btn-primary pull-center">회원가입</a>
 				</div>
 			</form>
 		</div>
@@ -87,7 +87,7 @@ input::-moz-placeholder {
 				</div>
 			</div>
 			</nav>
-			<div class="content">
+			<div class="content" style="background: url('/bit902web/img/spoon.jpg') no-repeat center;">
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-md-12">
@@ -109,8 +109,8 @@ input::-moz-placeholder {
 					</div>
 				</div>
 			</div>
-		</div>
 			<c:import url="../../include/footer.jsp" />
+		</div>
 	</div>
 	<%
 		}

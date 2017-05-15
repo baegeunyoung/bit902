@@ -46,6 +46,7 @@
 <!-- 메뉴 관리 이동 -->
 	<mvc:view-controller path="/menu/firstPage.do" view-name="menu/list" />
 	<mvc:view-controller path="/beacon/beacon.do" view-name="beacon/beacon" />
+	<mvc:view-controller path="/login/joinForm.do" view-name="login/insertSeller" />
 	
 	<mvc:default-servlet-handler />
 	<mvc:view-resolvers>
