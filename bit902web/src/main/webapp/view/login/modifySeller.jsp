@@ -106,6 +106,23 @@ table {
 			<div class="container-fluid">
 				<div class="collapse navbar-collapse">
 					<div class="logo">
+					
+				<%
+					if (session.getAttribute("id") != null) {
+
+// 						String id = (String)(session.getAttribute("id"));
+						int selNo = (int) (session.getAttribute("selNo"));
+						request.setAttribute("selNo", selNo);
+// 						int beaconNo = (int)(session.getAttribute("beaconNo"));
+// 						int serialNo = (int)(session.getAttribute("serialNo"));
+// 						int tableNo = (int)(session.getAttribute("tableNo"));
+					
+				%>
+
+				<script>
+					console.log(<%=selNo%>);
+				</script>
+					
 						<h1>
 							<a href="${pageContext.request.contextPath}/main/main.do" class="simple-text">거기서 주문해 </a>
 						</h1>
@@ -165,25 +182,25 @@ table {
 			</div>
 		</nav>
 	</div>
+	<%
+	}
+	%>
 	<script>
-
-// 	$(document).ready(function() {
-// 		$.ajax({
-// 			url: "/bit902web/login/searchOneSeller.do",
-// 			type: "POST",
-// 			dataType: "json",
-// 			data: {
-// 				id: $("#id").val()
-// 			}
-// 		}).done(function (result) {
-// 	 		$("#name").val(result.staffName);
-// 	 		 var strArray = result.juminNo.split('-');
-// 	 		 var jumin1 = strArray[0];
-// 	 		 var jumin2 = strArray[1];
-// 	 		$("#jumin1").val(jumin1);
-// 	 		$("#jumin2").val(jumin2);
-// 		});
-// 	});
+	var selNo = '${selNo}'
+	$(document).ready(function() {
+		$.ajax({
+			url: "/bit902web/login/searchOneSeller.do",
+			type: "POST",
+			dataType: "json",
+			data: {
+				sellerNo: selNo
+			}
+		}).done(function (result) {
+		    $("#name").val(result.name);
+			$("#cellphoneNumber").val(result.cellphoneNumber);
+		});
+	});
+	
 	$("#mod").click(function doAction() {
 			
 			var f = document.mForm;

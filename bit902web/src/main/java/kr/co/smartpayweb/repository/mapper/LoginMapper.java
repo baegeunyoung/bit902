@@ -12,7 +12,7 @@ public interface LoginMapper {
 	public void insertSeller(SellerVO seller) throws Exception;
 
 	// 회원 정보 조회
-//	public SellerVO searchOneSeller(String id) throws Exception;
+	public SellerVO searchOneSeller(int sellerNo) throws Exception;
 	
 	// id로 회원정보 찾기
 	public String searchSeller(String id) throws Exception;

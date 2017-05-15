@@ -23,11 +23,11 @@ where id = #{id}
 				values(#{id}, #{password}, #{name}, #{cellphoneNumber})
 </insert>
 
-<!-- <select id="searchOneSeller" resultType="sellerVO" parameterType="String"> -->
-<!-- select name, cellphone_number -->
-<!-- from tb_seller -->
-<!-- where id = #{id} -->
-<!-- </select> -->
+<select id="searchOneSeller" resultType="sellerVO" parameterType="int">
+select id, name, cellphone_number
+from tb_seller
+where seller_no = #{sellerNo}
+</select>
 
 <select id="searchSeller" resultType="string" parameterType="String">
 select id
@@ -46,7 +46,7 @@ from tb_seller
 where seller_no = #{sellerNo}
 </delete>
 
-<update id="modifySeller" parameterType="sellerVO">
+<update id="modifySeller" parameterType="String">
 update tb_seller
 set password = #{password},
 	name = #{name},

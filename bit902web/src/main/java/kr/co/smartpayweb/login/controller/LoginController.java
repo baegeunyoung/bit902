@@ -141,14 +141,17 @@ public class LoginController extends HttpServlet{
 	}
 	
 	// 회원 정보 조회
-//	@ResponseBody
-//	@RequestMapping("/login/searchOneSeller.do")
-//	public SellerVO searchOneSeller(String id, HttpServletRequest request, HttpServletResponse response) throws Exception {
-//		SellerVO seller = service.searchOneSeller(id);
-//		System.out.println(seller);
-//		return seller;
-//	}
-//	
+	@ResponseBody
+	@RequestMapping("/login/searchOneSeller.do")
+	public SellerVO searchOneSeller(int sellerNo, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		SellerVO seller = service.searchOneSeller(sellerNo);
+		System.out.println(seller);
+		session.setAttribute("id", seller.getId());
+		session.setAttribute("name", seller.getName());
+		session.setAttribute("cellphoneNumber", seller.getCellphoneNumber());
+		return seller;
+	}
+	
 	
 	
     //id로 회원정보 찾기 
