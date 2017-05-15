@@ -23,6 +23,12 @@ where id = #{id}
 				values(#{id}, #{password}, #{name}, #{cellphoneNumber})
 </insert>
 
+<select id="searchSeller" resultMap="sellerMap" parameterType="String">
+select id
+from tb_seller
+where id = #{id} 
+</select>
+
 <!-- <insert id="permitSeller" parameterType="String"> -->
 <!-- 				insert into tb_seller(permit_yn) -->
 <!-- 				values(#{permitYn}) -->

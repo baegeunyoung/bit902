@@ -28,9 +28,9 @@ public class LoginServiceImpl implements LoginService {
 	}
 	
 	// id로 회원정보 찾기 
-//	public String searchSeller(String id) throws Exception {
-//	 	dao.searchSeller(id);
-//	}
+	public String searchSeller(String id) throws Exception {
+	 	return dao.searchSeller(id);
+	}
 		
 	// 회원정보수정
 	public Map<String, Object> modifySeller(SellerVO seller) throws Exception {

@@ -112,14 +112,15 @@ input::-moz-placeholder {
 				<br>
 				<h2>회원가입</h2>
 				<br>
-				<form name="mForm" action="${pageContext.request.contextPath}/login/insertSeller.do" method="post" class="navbar-form navbar-center">
+				<form name="mForm" method="post" class="navbar-form navbar-center">
 					<div class="form-group  is-empty">
 						<table style="text-align: left;">
 							<tr>
 								<td><br>아이디</td>
 								<td>
 									<div class="form-group">
-										<input type="text" name="id" placeholder="아이디" class="form-control">
+										<input type="text" id="id" placeholder="아이디" class="form-control">
+										<input id="search" type="submit" value="중복확인" class="btn btn-primary pull-center">
 									</div>
 								</td>
 							</tr>
@@ -127,7 +128,7 @@ input::-moz-placeholder {
 								<td><br>비밀번호</td>
 								<td>
 									<div class="form-group">
-										<input type="password" name="password" placeholder="비밀번호" class="form-control">
+										<input type="password" id="password" name="password" placeholder="비밀번호" class="form-control">
 									</div>
 								</td>
 							</tr>
@@ -143,7 +144,7 @@ input::-moz-placeholder {
 								<td><br>이름</td>
 								<td>
 									<div class="form-group">
-										<input type="text" name="name" placeholder="이름" class="form-control">
+										<input type="text" id="name" name="name" placeholder="이름" class="form-control">
 								</div>
 								</td>
 							</tr>
@@ -151,13 +152,13 @@ input::-moz-placeholder {
 								<td><br>핸드폰 번호</td>
 								<td>
 									<div class="form-group">
-										<input type="text" name="cellphoneNumber" placeholder="핸드폰번호" class="form-control" />
+										<input type="text" id="cellphoneNumber" name="cellphoneNumber" placeholder="핸드폰번호" class="form-control">
 									</div>
 								</td>
 						</table>
 						<br>
 						<br>
-						<input type="submit" value="회원가입" onClick="return doAction()" class="btn btn-primary pull-center" />
+						<input id="reg" type="submit" value="회원가입" onClick="return doAction()" class="btn btn-primary pull-center" />
 					</div>
 				</form>
 			</div>
@@ -169,7 +170,24 @@ input::-moz-placeholder {
 		// 		location.href="/bit902web/login/loginForm.do"
 		// 	});
 
-		function doAction() {
+		$("#search").click(function () {
+			$.ajax({
+				url : "/bit902web/login/searchSeller.do",
+				type: "POST",
+				dataType : "json",
+				data: {
+					id : $("#id").val() 	
+				}
+			
+		        })
+		        return false;
+		}).done(function (d) {
+			alert("중복된 아이디입니다.");
+		}).error(function (e) {
+			alert("사용가능한 아이디입니다.");
+		})
+		
+		$("#reg").click(function doAction() {
 
 			var f = document.mForm;
 			var id = f.id;
@@ -192,6 +210,7 @@ input::-moz-placeholder {
 				id.focus();
 				return false;
 			}
+			
 
 			if (pw.value == "") {
 				alert("비밀번호를 입력하세요");
@@ -235,7 +254,17 @@ input::-moz-placeholder {
 				name.focus();
 				return false;
 			}
-	
+
+// 			$(document).ready(function() {
+// 				$('#cellphoneNumber').on('keyup', function() {
+// 					if ($(this).val().length > 140) {
+// 						alert('글자수는 140자 까지입니다.');
+// 						$(this).val($(this).val().substring(0, 140));
+// 					}
+// 					$('#count').html($(this).val().length + '/140');
+// 				});
+// 			});
+			
 			if (cellNo.value == "") {
 				alert("핸드폰번호를 입력하세요");
 				cellNo.focus();
@@ -254,9 +283,23 @@ input::-moz-placeholder {
 			// 			}
 			// 			})
 
-			alert("회원 가입이 완료되었습니다.");
+			
 			return true;
-		}
-	</script>
+		}).done(function() {
+			$.ajax({
+				url : "/bit902web/login/insertSeller.do",
+				type: "POST",
+				dataType : "json",
+				data: {
+					id: $("#id").val(),
+					password: $("#password").val(),
+					name: $("#name").val(),
+					cellphoneNumber: $("#cellphoneNumber").val()
+				}
+		}).done(function() {
+			alert("회원 가입이 완료되었습니다.");
+		});
+		});
+</script>
 </body>
 </html>

@@ -15,7 +15,7 @@ public interface LoginMapper {
 	public void insertSeller(SellerVO seller) throws Exception;
 
 	// id로 회원정보 찾기
-//	public String searchSeller(String id) throws Exception;
+	public String searchSeller(String id) throws Exception;
 	
 	// 회원정보수정
 	public SellerVO modifySeller(SellerVO seller) throws Exception;

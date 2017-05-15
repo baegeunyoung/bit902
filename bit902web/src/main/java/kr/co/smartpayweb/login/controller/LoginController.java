@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.smartpayweb.login.service.LoginService;
 import kr.co.smartpayweb.repository.vo.BeaconVO;
@@ -136,12 +137,24 @@ public class LoginController extends HttpServlet{
 		rd.forward(request, response);
 	}
 	
+	
     //id로 회원정보 찾기 
-//	@RequestMapping("/login/searchSeller.do")
-//	public String searchSeller(String id) throws Exception {
-//		return service.searchSeller(id); 
-//				
-//	}
+	@ResponseBody
+	@RequestMapping("/login/searchSeller.do")
+	public String searchSeller(String id, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println(id);
+		String id2 = service.searchSeller(id);
+		if(id == id2) {
+			return service.searchSeller(id2);			
+		}
+		else {
+			RequestDispatcher rd = request.getRequestDispatcher("../view/login/inserSeller.jsp");
+			rd.forward(request, response);
+			return id2;
+		}
+	
+				
+	}
 	
 	// 회원정보수정 
 	@RequestMapping("/login/modifySeller.do")
