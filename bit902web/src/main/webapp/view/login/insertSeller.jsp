@@ -119,7 +119,7 @@ input::-moz-placeholder {
 								<td><br>아이디</td>
 								<td>
 									<div class="form-group">
-										<input type="text" id="id" placeholder="아이디" class="form-control">
+										<input type="text" id="id" name="id" placeholder="아이디" class="form-control">
 										<input id="search" type="button" value="중복확인" onclick="return selctId()" class="btn btn-primary pull-center">
 									</div>
 								</td>
