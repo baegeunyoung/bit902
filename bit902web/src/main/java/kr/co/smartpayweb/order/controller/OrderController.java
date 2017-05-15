@@ -34,6 +34,9 @@ public class OrderController {
 		SellerVO seller = (SellerVO)session.getAttribute("seller");
 		int sellerNo =  seller.getSellerNo();
 		
+		// ---- storeName 조회 ----
+		String storeName = orderService.selectName(sellerNo);
+		
 		List<OrderVO> orderList = orderService.retrieveOreder(sellerNo);
 		for (int i = 0 ; i < orderList.size() ; i++) {
 			OrderVO orderVO = orderList.get(i);
@@ -41,6 +44,7 @@ public class OrderController {
 		}
 		
 		ModelAndView mav = new ModelAndView("order/order");
+		mav.addObject("storeName", storeName);
 		mav.addObject("orderList", orderList);
 		return mav;
 	}

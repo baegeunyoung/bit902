@@ -6,6 +6,8 @@ import kr.co.smartpayweb.repository.vo.OrderMenuVO;
 import kr.co.smartpayweb.repository.vo.OrderVO;
 
 public interface OrderMapper {
+	// ---- storeName 조회 ----
+	public String selectName(int sellerNo);
 	// ---- orderList 조회 ----
 	public List<OrderVO> retrieveOreder(int sellerNo);
 	// ---- orderMenuMap 생성 ----

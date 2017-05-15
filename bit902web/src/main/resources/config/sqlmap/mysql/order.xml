@@ -14,6 +14,13 @@
 		<result column="order_state" property="orderState" />
 	</resultMap>
 	
+<!-- storeName 조회 -->
+	<select id="selectName" parameterType="int" resultType="string">
+		select name
+		  from tb_store
+		 where seller_no = #{sellerNo}
+	</select>
+	
 <!-- orderList 조회 -->
 	<select id="retrieveOreder" parameterType="int" resultMap="OrderStateMap">
 		select *

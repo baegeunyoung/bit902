@@ -7,6 +7,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>주문 현황</title>
+<style>
+	.navbar-header {
+		font-size: 30px;
+	}
+</style>
 </head>
 <body>
 	<div class="wrapper">
@@ -15,6 +20,8 @@
 			<nav class="navbar navbar-transparent navbar-absolute">
 			<div class="container-fluid">
 				<div class="navbar-header">
+					<br>
+					${storeName}
 				</div>
 			</div>
 			</nav>
@@ -28,7 +35,7 @@
 								<div class="card-header" data-background-color="purple">
 									<h4 class="title">주문 현황</h4>
 									<p class="category">
-										<span id="cDate">하하하</span>
+										<span id="cDate">현재 주문 현황입니다.</span>
 									</p>
 								</div>
 								<div class="card-content table-responsive">

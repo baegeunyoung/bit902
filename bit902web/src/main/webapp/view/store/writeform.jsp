@@ -21,7 +21,9 @@
  		background-position: center center;
 		height: 50%;
 	}
-	
+	#sample5_address2 {
+		font-size: 25px;
+	}
 </style>
 <body>
 <div class="wrapper">
@@ -90,7 +92,7 @@
 											<tr>
 												<td>　</td>
 												<td></td>
-												<td>상점 대표 이미지</td>
+												<td>상점 이미지</td>
 												<td><input type="file" name="attachFile" id="imgInp" /></td>
 												<td>　</td>
 											</tr>
@@ -190,7 +192,7 @@
 											<tr>
 												<td>　</td>
 												<td></td>
-												<td>상점 대표 이미지</td>
+												<td>상점 이미지</td>
 												<td><input type="file" name="attachFile" id="imgInp" /></td>
 												<td>　</td>
 											</tr>
@@ -206,7 +208,7 @@
 														<input type="text" id="sample5_address" name="adress" style="display: none" value="${store.adress}"/>
 														<input class="btn btn-default btn-lg" type="button" onclick="sample5_execDaumPostcode()" value="주소 검색" style="float: left;">
 													</div>
-													<div id="sample5_address2" style="float: left; height:100%; display:table-cell;"><h3>${store.adress}</h3></div>
+													<div id="sample5_address2" style="float: left; height:100%; display:table-cell;"><br>${store.adress}</div>
 												</td>
 											</tr>
 											<tr><td></td></tr>
@@ -307,7 +309,8 @@
 
 				// 주소 정보를 해당 필드에 넣는다.
 				document.getElementById("sample5_address").value = fullAddr;
-				document.getElementById("sample5_address2").innerHTML = '<h3>' + fullAddr + '</h3>';
+				document.getElementById("sample5_address2").innerHTML = "<br>" + fullAddr;
+				$("sample5_address2").trigger("create");
 				// 주소로 좌표를 검색
 				geocoder.addr2coord(data.address, function(status, result) {
 					// 정상적으로 검색이 완료됐으면

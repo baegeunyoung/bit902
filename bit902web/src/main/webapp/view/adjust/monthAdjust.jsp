@@ -14,12 +14,11 @@
 		<c:import url="../../include/sidebar.jsp" />
 		<div class="main-panel">
 			<nav class="navbar navbar-transparent navbar-absolute">
-			<div class="container-fluid">
-				<div class="navbar-header"></div>
-			</div>
+				<div class="container-fluid">
+					<div class="navbar-header">
+					</div>
+				</div>
 			</nav>
-
-
 			<div class="content">
 				<div class="container-fluid">
 					<div class="row">

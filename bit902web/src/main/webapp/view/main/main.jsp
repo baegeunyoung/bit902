@@ -23,6 +23,9 @@ input::-moz-placeholder {
 input::-moz-placeholder {
 	opacity: 0.3;
 }
+.navbar-header {
+	font-size: 50px;
+}
 </style>
 </head>
 <body>
@@ -30,7 +33,7 @@ input::-moz-placeholder {
 	<%
 		if (session.getAttribute("id") == null) {
 	%>
-	<div class="wrapper" style="text-align: center; background: url('/bit902web/img/spoon.jpg') no-repeat center;">
+	<div class="wrapper" style="text-align: center;">
 		<div class="container-fluid">
 			<br>
 			<br>
@@ -72,7 +75,7 @@ input::-moz-placeholder {
 			<nav class="navbar navbar-transparent navbar-absolute">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<h3>
+				<br>
 						<%
 							out.print(session.getAttribute("id") + " 님 환영합니다");
 						int selNo = (int)session.getAttribute("sellerNo");	
@@ -83,11 +86,10 @@ input::-moz-placeholder {
 						session.setAttribute("selNo", selNo);
 				//		session.setAttribute("beacon", beacon);
 						%>
-					</h3>
 				</div>
 			</div>
 			</nav>
-			<div class="content" style="background: url('/bit902web/img/spoon.jpg') no-repeat center;">
+			<div class="content" style="background: url('/bit902web/img/business.gif') no-repeat center center;">
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-md-12">

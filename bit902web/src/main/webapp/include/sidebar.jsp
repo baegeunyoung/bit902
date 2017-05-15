@@ -6,6 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <jsp:include page="baseInclude.jsp" flush="true"></jsp:include>
+<style>
+	body {
+		overflow: hidden;
+	}
+</style>
 </head>
 <body>
 

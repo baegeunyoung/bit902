@@ -15,6 +15,11 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	OrderMapper mapper;
 	
+	// ---- storeName 조회 ----
+	public String selectName(int sellerNo) {
+		return mapper.selectName(sellerNo);
+	}
+	
 	// ---- orderList 조회 ----
 	public List<OrderVO> retrieveOreder(int sellerNo) {
 		return mapper.retrieveOreder(sellerNo);

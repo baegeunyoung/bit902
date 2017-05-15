@@ -4,7 +4,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
+<style>
+	@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+	html, body, table, div, p, h3, tr, td {
+		font-family: 'Jeju Hallasan', serif;
+	}
+	
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
