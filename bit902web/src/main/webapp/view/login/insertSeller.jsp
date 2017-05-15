@@ -120,7 +120,7 @@ input::-moz-placeholder {
 								<td>
 									<div class="form-group">
 										<input type="text" id="id" placeholder="아이디" class="form-control">
-										<input id="search" type="submit" value="중복확인" class="btn btn-primary pull-center">
+										<input id="search" type="button" value="중복확인" onclick="return selctId()" class="btn btn-primary pull-center">
 									</div>
 								</td>
 							</tr>
@@ -170,22 +170,23 @@ input::-moz-placeholder {
 		// 		location.href="/bit902web/login/loginForm.do"
 		// 	});
 
-		$("#search").click(function () {
+		function selctId() {
 			$.ajax({
 				url : "/bit902web/login/searchSeller.do",
 				type: "POST",
-				dataType : "json",
+				dataType : "text",
 				data: {
-					id : $("#id").val() 	
+					id : $("#id").val()
 				}
-			
-		        })
-		        return false;
-		}).done(function (d) {
-			alert("중복된 아이디입니다.");
-		}).error(function (e) {
-			alert("사용가능한 아이디입니다.");
-		})
+			}).done(function (d) {
+				if(d === "exist") {
+					alert("같은 아이디가 존재합니다.");
+					$("#id").val("");
+				} else {
+					alert("사용 가능한 아이디 입니다.");
+				}
+			});
+		}
 		
 		$("#reg").click(function doAction() {
 
@@ -296,9 +297,9 @@ input::-moz-placeholder {
 					name: $("#name").val(),
 					cellphoneNumber: $("#cellphoneNumber").val()
 				}
-		}).done(function() {
-			alert("회원 가입이 완료되었습니다.");
-		});
+			}).done(function() {
+				alert("회원 가입이 완료되었습니다.");
+			});
 		});
 </script>
 </body>

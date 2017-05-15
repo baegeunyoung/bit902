@@ -143,17 +143,13 @@ public class LoginController extends HttpServlet{
 	@RequestMapping("/login/searchSeller.do")
 	public String searchSeller(String id, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println(id);
-		String id2 = service.searchSeller(id);
-		if(id == id2) {
-			return service.searchSeller(id2);			
+		String returnId = service.searchSeller(id);
+		if(id.equals(returnId)) {
+			return "exist";			
 		}
 		else {
-			RequestDispatcher rd = request.getRequestDispatcher("../view/login/inserSeller.jsp");
-			rd.forward(request, response);
-			return id2;
-		}
-	
-				
+			return "ok";
+		}		
 	}
 	
 	// 회원정보수정 
