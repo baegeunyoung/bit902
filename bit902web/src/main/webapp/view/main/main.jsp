@@ -109,8 +109,8 @@ input::-moz-placeholder {
 					</div>
 				</div>
 			</div>
-			<c:import url="../../include/footer.jsp" />
 		</div>
+			<c:import url="../../include/footer.jsp" />
 	</div>
 	<%
 		}
