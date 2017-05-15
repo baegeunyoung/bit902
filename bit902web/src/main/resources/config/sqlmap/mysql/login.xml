@@ -23,6 +23,12 @@ where id = #{id}
 				values(#{id}, #{password}, #{name}, #{cellphoneNumber})
 </insert>
 
+<!-- <select id="searchOneSeller" resultType="sellerVO" parameterType="String"> -->
+<!-- select name, cellphone_number -->
+<!-- from tb_seller -->
+<!-- where id = #{id} -->
+<!-- </select> -->
+
 <select id="searchSeller" resultType="string" parameterType="String">
 select id
 from tb_seller
@@ -46,22 +52,22 @@ set password = #{password},
 	name = #{name},
 	cellphone_number = #{cellphoneNumber}
 	
-where seller_no = #{sellerNo}	
+where id = #{id}	
 </update>
 
-<resultMap id="beaconMap" type="beaconVO">
-	<result column="beacon_no" property="beaconNo"></result>
-	<result column="serial_no" property="serialNo"></result>
-	<result column="seller_no" property="sellerNo"></result>
-	<result column="table_no" property="tableNo"></result>
-</resultMap>
+<!-- <resultMap id="beaconMap" type="beaconVO"> -->
+<!-- 	<result column="beacon_no" property="beaconNo"></result> -->
+<!-- 	<result column="serial_no" property="serialNo"></result> -->
+<!-- 	<result column="seller_no" property="sellerNo"></result> -->
+<!-- 	<result column="table_no" property="tableNo"></result> -->
+<!-- </resultMap> -->
 
-<select id="searchBeacon" resultMap="beaconMap" parameterType="int">
-select b.beacon_no, b.serial_no, b.table_no,
-	   s.seller_no, s.id, s.password, s.name, s.cellphone_number, s.permit_yn
-from tb_seller s, tb_beacon b
-where s.seller_no = b.seller_no;
-</select>
+<!-- <select id="searchBeacon" resultMap="beaconMap" parameterType="int"> -->
+<!-- select b.beacon_no, b.serial_no, b.table_no, -->
+<!-- 	   s.seller_no, s.id, s.password, s.name, s.cellphone_number, s.permit_yn -->
+<!-- from tb_seller s, tb_beacon b -->
+<!-- where s.seller_no = b.seller_no; -->
+<!-- </select> -->
 
 
 <!-- <resultMap id="buyerMap" type="buyerVO"> -->

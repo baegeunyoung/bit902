@@ -128,7 +128,7 @@ table {
 									<td>비밀번호</td>
 									<td>
 										<div class="form-group">
-											<input type="password" name="password" placeholder="비밀번호를 입력하세요" class="form-control">
+											<input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" class="form-control">
 										</div>
 									</td>
 								</tr>
@@ -144,7 +144,7 @@ table {
 									<td>이름</td>
 									<td>
 										<div class="form-group">
-											<input type="text" name="name" placeholder="이름을 입력하세요" class="form-control">
+											<input type="text" id="name" name="name" placeholder="이름을 입력하세요" value="<%out.print(session.getAttribute("name"));%>" class="form-control">
 										</div>
 									</td>
 								</tr>
@@ -152,13 +152,13 @@ table {
 									<td>핸드폰 번호</td>
 									<td>
 										<div class="form-group">
-											<input type="text" name="cellphoneNumber" placeholder="핸드폰번호를 입력하세요" class="form-control">
+											<input type="text" id="cellphoneNumber" name="cellphoneNumber" placeholder="핸드폰번호를 입력하세요" value="<%out.print(session.getAttribute("cellphoneNumber"));%>" class="form-control">
 										</div>
 									</td>
 								</tr>
 							</table>
 							<br><br>
-							<input type="submit" value="회원정보수정" onClick="return doAction()" class="btn btn-primary pull-center" />
+							<input id="mod" type="submit" value="회원정보수정" onClick="return doAction()" class="btn btn-primary pull-center" />
 						</div>
 					</form>
 				</div>
@@ -167,36 +167,25 @@ table {
 	</div>
 	<script>
 
-	$("#mod").click(function () {
-		alert("회원정보가 수정되었습니다.");
+// 	$(document).ready(function() {
 // 		$.ajax({
-// 			url: "/bit902web/login/searchSeller.do",
-// 			type: "POST",
-// 			dataType: "json",
-// 			data: {
-// 				id: $("#id").val(),
-// 				password: $("#pw").val()
-// 			}
-// 		}).done(function(result) {
-// 			alert("성공")
-// 		})
-	});
-	
-// 	$(document).click(function () {
-// 		$.ajax({
-// 			url: "/bit902web/login/searchSeller.do",
+// 			url: "/bit902web/login/searchOneSeller.do",
 // 			type: "POST",
 // 			dataType: "json",
 // 			data: {
 // 				id: $("#id").val()
 // 			}
-// 		}).done(function () {
-// 		alert("아이디 반환 성공");	
+// 		}).done(function (result) {
+// 	 		$("#name").val(result.staffName);
+// 	 		 var strArray = result.juminNo.split('-');
+// 	 		 var jumin1 = strArray[0];
+// 	 		 var jumin2 = strArray[1];
+// 	 		$("#jumin1").val(jumin1);
+// 	 		$("#jumin2").val(jumin2);
 // 		});
 // 	});
-		function doAction() {
-		
-		
+	$("#mod").click(function doAction() {
+			
 			var f = document.mForm;
 // 			var id = f.id;
 			var pw = f.password;
@@ -279,9 +268,35 @@ table {
 // 				return false;		
 // 			}
 // 			})
-				
+			alert("회원 정보 수정이 완료되었습니다.");	
 			return true;
-		}
+		});
+		
+// 		$.ajax({
+// 			url: "/bit902web/login/searchSeller.do",
+// 			type: "POST",
+// 			dataType: "json",
+// 			data: {
+// 				id: $("#id").val(),
+// 				password: $("#pw").val()
+// 			}
+// 		}).done(function(result) {
+// 			alert("성공")
+// 		})
+	
+// 	$(document).click(function () {
+// 		$.ajax({
+// 			url: "/bit902web/login/searchSeller.do",
+// 			type: "POST",
+// 			dataType: "json",
+// 			data: {
+// 				id: $("#id").val()
+// 			}
+// 		}).done(function () {
+// 		alert("아이디 반환 성공");	
+// 		});
+// 	});
+		
 	</script>
 </body>
 </html>

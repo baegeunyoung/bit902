@@ -112,7 +112,7 @@ input::-moz-placeholder {
 				<br>
 				<h2>회원가입</h2>
 				<br>
-				<form name="mForm" method="post" class="navbar-form navbar-center">
+				<form name="mForm" action="${pageContext.request.contextPath}/login/insertSeller.do" method="post" class="navbar-form navbar-center">
 					<div class="form-group  is-empty">
 						<table style="text-align: left;">
 							<tr>
@@ -160,7 +160,7 @@ input::-moz-placeholder {
 						<br>
 						<input id="reg" type="submit" value="회원가입" onClick="return doAction()" class="btn btn-primary pull-center" />
 					</div>
-				</form>
+				</form> 
 			</div>
 		</nav>
 	</div>
@@ -196,16 +196,19 @@ input::-moz-placeholder {
 			var pw2 = f.password2;
 			var name = f.name;
 			var cellNo = f.cellphoneNumber;
+			
 
 			// 			var pattern1 = /[0-9]/;
 			// 			var pattern2 = /[a-zA-Z]/;
 
+			
 			if (id.value == "") {
 				alert("insert your id");
 				id.focus();
 				return false;
 			}
 
+			
 			if (2 > id.value.length || id.value.length > 21) {
 				alert("아이디는 최소 3자에서 최대 20자까지 입력이 가능합니다.");
 				id.focus();
@@ -284,23 +287,37 @@ input::-moz-placeholder {
 			// 			}
 			// 			})
 
-			
+// 			function insertSeller() {
+// 			$.ajax({
+// 				url : "/bit902web/login/insertSeller.do",
+// 				type: "POST",
+// 				dataType : "json",
+// 				data: {
+// 					id: $("#id").val(),
+// 					password: $("#password").val(),
+// 					name: $("#name").val(),
+// 					cellphoneNumber: $("#cellphoneNumber").val()
+// 				}
+// 				})
+// 			}
+			alert("회원 가입이 완료되었습니다.");
 			return true;
-		}).done(function() {
-			$.ajax({
-				url : "/bit902web/login/insertSeller.do",
-				type: "POST",
-				dataType : "json",
-				data: {
-					id: $("#id").val(),
-					password: $("#password").val(),
-					name: $("#name").val(),
-					cellphoneNumber: $("#cellphoneNumber").val()
-				}
-			}).done(function() {
-				alert("회원 가입이 완료되었습니다.");
-			});
-		});
+		})
+// 		.done(function() {
+// 			$.ajax({
+// 				url : "/bit902web/login/insertSeller.do",
+// 				type: "POST",
+// 				dataType : "json",
+// 				data: {
+// 					id: $("#id").val(),
+// 					password: $("#password").val(),
+// 					name: $("#name").val(),
+// 					cellphoneNumber: $("#cellphoneNumber").val()
+// 				}
+// 			}).done(function() {
+// 				alert("회원 가입이 완료되었습니다.");
+// 			});
+// 		});
 </script>
 </body>
 </html>

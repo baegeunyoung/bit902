@@ -83,21 +83,21 @@ input::-moz-placeholder {
 		// 	})
 		// })
 
-		// $("#login").on("click", function () {
-		// 	$.ajax({
-		// 		url: "/bit902web/login/login.do",
-		// 		type: "POST",
-		// 		dataType: "json",
-		// 		data: {
-		// 			id: $("#id").val(),
-		// 			password: $("#pw").val()                                                                               
-		// 		}
+		$("#login").on("click", function () {
+			$.ajax({
+				url: "/bit902web/login/login.do",
+				type: "POST",
+				dataType: "json",
+				data: {
+					id: $("#id").val(),
+					password: $("#pw").val()                                                                               
+				}
 
-		// 	}).done(function (result) {
-		// 		alert(result.msg);
-		// 		location.href="/bit902web/index.jsp";
-		// 	})
-		// });
+			}).done(function (result) {
+				alert(result.msg);
+				location.href="/bit902web/index.jsp";
+			})
+		});
 	</script>
 </body>
 </html>
