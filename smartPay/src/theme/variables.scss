@@ -12,8 +12,12 @@ $font-path: "../assets/fonts";
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
 
-
-
+$searchbar-md-input-text-color: #f53d3d;;
+$searchbar-md-input-background-color: #fff;
+$searchbar-md-input-clear-icon-color: #f53d3d;
+$searchbar-md-input-placeholder-color: #f53d3d;
+$searchbar-md-input-search-icon-color: #f53d3d;
+$searchbar-md-input-box-shadow: 0 2px 2px 0 rgba(245, 61, 61, .14), 0 3px 1px -2px rgba(245, 61, 61, .14), 0 1px 5px 0 rgba(245, 61, 61, .12);
 
 // Named Color Variables
 // --------------------------------------------------
