@@ -47,9 +47,9 @@
  <!--   <ion-input type="text" [(ngModel)]="data.search" placeholder="매장이름을 입력하세요" ></ion-input> -->
  <ion-searchbar
       [(ngModel)]="data.search"
-      [showCancelButton]="true"
-      (ionInput)="search()"
-      (keyup.enter)="search()">
+     [showCancelButton]="shouldShowCancel"
+  (ionInput)="search()"
+  (ionCancel)="search()">
 </ion-searchbar>
    <!-- <button ion-button color="danger" item-right (click)=search()><ion-icon name="search"></ion-icon></button>-->
   </ion-item>
