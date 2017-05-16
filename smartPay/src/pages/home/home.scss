@@ -1,4 +1,10 @@
 page-home {
+    @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+    
+    #eventTitle{
+        font-family: 'Hanna', serif;
+    }
+    
     .spinner {
         width: 28px;
         height: 28px;
@@ -88,4 +94,10 @@ page-home {
      border: 1px solid white;
      
   }
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);  
+
+ion-content{
+    font-family: 'Hanna', serif;
+    
+}
 }

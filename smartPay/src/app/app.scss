@@ -14,17 +14,18 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);  
+
 
 ion-list-header{
 background-color:#f53d3d;
-
-height: 70%;
 }
 
 #background{
  background-color:#f53d3d;
  color: #fff;
-font-style: oblique;
+ font-size: 20px;
+ font-family: 'Hanna', serif;
 }
 #username{
     color: #f53d3d;;
