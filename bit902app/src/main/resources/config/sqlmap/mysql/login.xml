@@ -23,8 +23,8 @@
 	where id=#{id} and password=#{password}
 </select>
 
-<select id="retrieveBuyer" parameterType="string" resultMap="buyerMap">
-	select *
+<select id="retrieveBuyer" parameterType="string" resultType="string">
+	select id
 		from tb_buyer
 		where id = #{id}
 </select>

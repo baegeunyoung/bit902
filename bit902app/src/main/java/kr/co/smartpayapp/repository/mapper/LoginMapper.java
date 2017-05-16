@@ -9,6 +9,6 @@ public interface LoginMapper {
 	public BuyerVO selectOneBuyer(BuyerVO buyerVO);
 	public int insertBuyer(BuyerVO buyerVO);
 	
-	public BuyerVO retrieveBuyer(String userID);
+	public String retrieveBuyer(String userID);
 	
 }

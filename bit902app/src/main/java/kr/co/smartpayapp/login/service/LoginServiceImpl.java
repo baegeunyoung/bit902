@@ -23,8 +23,8 @@ public class LoginServiceImpl implements LoginService{
 	}
 	
 	@Override
-	public BuyerVO retrieveBuyer(String userID) {
-		
+	public String retrieveBuyer(String userID) {
+		System.out.println("Move Service " + userID);
 		return mapper.retrieveBuyer(userID);
 	}
 }

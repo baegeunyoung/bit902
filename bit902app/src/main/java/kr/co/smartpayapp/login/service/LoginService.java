@@ -9,5 +9,5 @@ public interface LoginService {
 	public BuyerVO selectOneBuyer(BuyerVO buyerVO);
 	public int registBuyer(BuyerVO buyerVO);
 	
-	public BuyerVO retrieveBuyer(String userID);
+	public String retrieveBuyer(String userID);
 }
