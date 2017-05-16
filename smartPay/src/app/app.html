@@ -1,12 +1,17 @@
-<ion-menu [content]="content">
-  <ion-content>
+<ion-menu [content]="content" >
+  <ion-content id="background">
     <ion-list>
       <ion-list>
-        <ion-list-header>{{userName}}님 환영합니다.</ion-list-header>
-        <button class="homebutton" ion-item (click)="openPage(rootPage)"><img src="assets/home.PNG" class="home">&nbsp;&nbsp;홈으로</button>
-        <button class="registbutton" ion-item (click)="openPage(registerPage)"><img src="assets/regist.PNG" class="regist">&nbsp;&nbsp;회원등록</button>
-        <button class="loginbutton" *ngIf="userName==null" ion-item (click)="openPage(loginPage)"><img class="login" src="assets/login.PNG">&nbsp;&nbsp;로그인</button>
-        <button class="logoutbutton" *ngIf="userName!=null" ion-item (click)="openPage(logoutPage)"><img class="logout" src="assets/logout.PNG">&nbsp;&nbsp;로그아웃</button>
+        <ion-list-header>
+         <img src="assets/orderthere.png"/>
+        <div *ngIf="userName != null">
+         <span id="username"> {{userName}}</span><span>님 환영합니다.</span>
+        </div>
+          </ion-list-header>
+        <button id="background" class="homebutton" ion-item (click)="openPage(rootPage)"> <ion-icon ios="ios-home" md="md-home"></ion-icon>&nbsp;&nbsp;홈으로</button>
+        <button *ngIf="userName == null" id="background" class="registbutton" ion-item (click)="openPage(registerPage)"> <ion-icon ios="ios-person-add" md="md-person-add"></ion-icon>&nbsp;&nbsp;회원등록</button>
+        <button id="background" class="loginbutton" *ngIf="userName==null" ion-item (click)="openPage(loginPage)">  <ion-icon name="power"></ion-icon>&nbsp;&nbsp;로그인</button>
+        <button id="background" class="logoutbutton" *ngIf="userName!=null" ion-item (click)="openPage(logoutPage)"><ion-icon name="power"></ion-icon>&nbsp;&nbsp;로그아웃</button>
       </ion-list>
     </ion-list>
   </ion-content>

@@ -15,6 +15,20 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+ion-list-header{
+background-color:#f53d3d;
+
+height: 70%;
+}
+
+#background{
+ background-color:#f53d3d;
+ color: #fff;
+font-style: oblique;
+}
+#username{
+    color: #f53d3d;;
+}
 .home {
     position: relative;
     top: 3px;
