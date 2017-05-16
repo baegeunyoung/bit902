@@ -112,9 +112,9 @@
   <div *ngIf="menu != undefined">{{ store }}</div>
 
   <template ngFor let-menu [ngForOf]="menu">  
-   <ion-card id="card">
+   <ion-card >
   <ion-list>
-  <ion-item>
+  <ion-item id="card">
   
      <ion-thumbnail item-left>     
        <template ngFor let-menuFile [ngForOf]="menuFile">       
