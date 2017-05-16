@@ -168,7 +168,7 @@
     <textarea rows="2" cols="46"[(ngModel)]="orderContent" id="orderContent" name="orderConten"></textarea>
   </ion-card>
      <span id="finalAmount">최종주문금액:</span> <span id="total">{{total}}원</span>
-		<button  color="danger" ion-button (click)="onBack()" ion-button full>결제하기</button>
+		<button  color="danger" ion-button (click)="payment()" ion-button full>결제하기</button>
 	</ion-toolbar>
 </ion-footer>
 </div>
