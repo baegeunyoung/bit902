@@ -119,7 +119,7 @@ export class RegisterPage {
         let name = this.data.name;
         let cellphoneNumber = this.data.cellphoneNumber;
         let data = JSON.stringify({id, password, name, cellphoneNumber});
-        let link = "http://192.168.0.13:9090/bit902app/login/regist.do";
+        let link = "http://14.32.66.123:10001/bit902app/login/regist.do";
         let headers = new Headers({'Content-Type' : 'application/json'});
         let options = new RequestOptions({headers: headers});
 

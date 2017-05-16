@@ -14,7 +14,7 @@ export class validityCheck {
     idCheck(id: string) : void {
 
         let data = JSON.stringify({id});
-        let link = "http://192.168.0.13:9090/bit902app/login/validity.do";
+        let link = "http://14.32.66.123:10001/bit902app/login/validity.do";
         let headers = new Headers({'Content-Type' : 'application/json'});
         let options = new RequestOptions({headers: headers});
 
