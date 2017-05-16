@@ -16,6 +16,11 @@ export class LogoutPage {
           });
     }
 
+
+    ionViewDidLoad() {
+        this.logout();
+    }
+
     logout() {
         if(this.division == "facebook") {
             this.fb.logout().then((data) => {
