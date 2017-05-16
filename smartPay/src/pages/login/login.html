@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="danger">
      <button ion-button icon-only menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -21,11 +21,12 @@
           <ion-input type="password" name="password" [(ngModel)]="data.password"  placeholder="Password"></ion-input>
         </ion-item>
         <a>Forgot your login detail?<b>Get help signing in</b></a>
-        <button ion-button block outline color="light" (click)="login()">Login</button>
+        <button ion-button block outline color="danger" (click)="login()">Login</button>
         <p>OR</p>
         <button ion-button block color="facebook" (click)="facebookLogin()" >
           <ion-icon name="logo-facebook"></ion-icon>Login with facebook
         </button>
+        <br><br><br><br><br><br><br><br><br><br><br><br>
       </ion-list>
     </ion-card-content>
   </ion-card>
