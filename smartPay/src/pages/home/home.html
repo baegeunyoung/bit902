@@ -8,9 +8,15 @@
          <img src="assets/seeMenu.png"/></button>
       <ion-spinner end *ngIf="isScanning==true" name="crescent"></ion-spinner>
     </ion-buttons>
-    <ion-title id="title">
+    
+    <ion-title *ngIf="menu != undefined" id="title">{{ store }} </ion-title>
+
+    
+    <ion-title *ngIf="menu == undefined">
       <img src="assets/orderthere.png"/>
     </ion-title>
+  
+  
   </ion-navbar>
 </ion-header>
  
@@ -108,8 +114,6 @@
   </div> 
   </ion-list>
 -->
-
-  <div *ngIf="menu != undefined">{{ store }}</div>
 
   <template ngFor let-menu [ngForOf]="menu">  
    <ion-card >

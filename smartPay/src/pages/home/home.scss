@@ -70,7 +70,7 @@ page-home {
        color: #f53d3d;   
    }
     #menuicon {   
-    color: #f53d3d;  
+    color: #f53d3d; 
     }
     ion-navbar{
         color: #f53d3d;  
@@ -94,7 +94,10 @@ page-home {
      height:20px;
      padding-top: center;
      border: 1px solid white;
-     
+ion-title{
+     font-family: 'Hanna', serif;
+     color:#f53d3d;
+}
   }
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);  
 
@@ -105,4 +108,8 @@ ion-content{
 ion-footer{
     font-family: 'Hanna', serif;
 }
+ion-title{
+     font-family: 'Hanna', serif;
+}
+
 }

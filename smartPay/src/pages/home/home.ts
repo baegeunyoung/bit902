@@ -53,6 +53,7 @@ export class HomePage {
   orderContent="";
   storeName: string;
   userName: string;
+  storeTable: string;
   //비콘
   isScanning: boolean = false;
   beacons: BeaconModel[] = [];
@@ -243,7 +244,8 @@ export class HomePage {
           this.menu = data.menu;
           this.menuFile = data.menuFile;
           this.storeName = data.menu[0].stName;
-          this.store ="[ " + data.menu[0].stName +" ]"+ tableNo +"번 테이블";
+          this.store = data.menu[0].stName;
+           this.storeTable ="[ " + data.menu[0].stName +" ]"+ tableNo +"번 테이블";
      
         },error => {
           console.log("error");
@@ -278,7 +280,7 @@ export class HomePage {
           this.menu = data.menu;
           this.menuFile = data.menuFile;
           this.storeName = data.menu[0].stName;
-          this.store ="[ " + data.menu[0].stName +" ]";
+          this.store = data.menu[0].stName;
      
         },error => {
           console.log("error");
@@ -418,6 +420,7 @@ export class HomePage {
 //alert 변경
 openFilters() {
     let alert = this.alertCtrl.create({
+       
         title: 'Example',
         subTitle: 'Example subtitle',
         buttons: ['OK']
