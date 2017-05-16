@@ -73,7 +73,7 @@ export class HomePage {
               public events: Events, 
               public http : Http,
               public push: Push,
-              public alertCtrl: AlertController,
+              private alertCtrl: AlertController,
               private fb: Facebook, 
               private storage: Storage) {
       this.data = {}; 
@@ -403,6 +403,7 @@ export class HomePage {
 		//alert("결제완료 되었습니다.");
     this.order();
     this.nodeCall();
+    this.openFilters();
 
     this.menu = undefined;
     this.searchList = undefined;
@@ -414,6 +415,15 @@ export class HomePage {
 	}
 		})
 	}
+//alert 변경
+openFilters() {
+    let alert = this.alertCtrl.create({
+        title: 'Example',
+        subTitle: 'Example subtitle',
+        buttons: ['OK']
+    });
+    alert.present();
+}
 
   //주문내역 보내기
   order(){

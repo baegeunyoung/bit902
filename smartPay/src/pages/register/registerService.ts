@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http';
+import {AlertController} from 'ionic-angular';
 
 @Injectable()
 export class validityCheck {
 
     idCheckFlag: boolean;
 
-    constructor(private http: Http) {
+    constructor(private http: Http, private alertController: AlertController) {
 
     }
 
@@ -25,13 +26,22 @@ export class validityCheck {
                 console.log('성공 : ' + JSON.stringify(data));
                 this.idCheckFlag = data.flag;
                 console.log('왜안됨? : ' + this.idCheckFlag)
-                alert(data.msg);
+                this.openFilters();
                 
             }, (error) => {
                 console.log('에러 : ' + JSON.stringify(error));
             })
 
     }
+openFilters() {
+    let alert = this.alertController.create({
+        title: 'Example',
+        subTitle: 'Example subtitle',
+        buttons: ['OK']
+    });
+
+    alert.present();
+}
 
     isFlag(): boolean {
 
