@@ -123,7 +123,7 @@ td {
 			});
 		}
 
-		$("#reg").click(function doAction() {
+		$(".swa-confirm").click(function doAction() {
 
 			var f = document.mForm;
 			var id = f.id;
@@ -199,9 +199,10 @@ td {
 				return false;
 			}
 
-			swal("회원 가입이 완료되었습니다.");
+			alert("회원 가입이 완료되었습니다.");
 			return true;
 		})
+		
 	</script>
 </body>
 </html>

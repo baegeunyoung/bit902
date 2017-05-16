@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.smartpayapp.order.service.OrderService;
 
@@ -23,13 +22,7 @@ public class OrderController {
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
-	public ModelAndView orderRegist(@RequestBody ArrayList<HashMap<String,String>> order) throws Exception {
-		System.out.println("옴");
-		int sNo = orderService.registOrder(order);
-		
-		ModelAndView mav = new ModelAndView("/bit902app/view/book/a.jsp");
-		mav.addObject("sNo", sNo);
-		
-		return mav;
+	public void orderRegist(@RequestBody ArrayList<HashMap<String,String>> order) throws Exception {
+		orderService.registOrder(order);
 	}
 }

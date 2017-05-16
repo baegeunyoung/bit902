@@ -4,12 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<jsp:include page="../../include/baseInclude.jsp" flush="true"></jsp:include>
 <title>이벤트 관리</title>
 </head>
 <body>
 <script>
-	swal("처리되었습니다");
-	location.href = "/bit902web/event/read.do";
+	swal({title: "처리되었습니다.", type: "success"}, function() {
+		location.href = "/bit902web/event/read.do";
+	});
+			
+
 </script>
 </body>
 </html>

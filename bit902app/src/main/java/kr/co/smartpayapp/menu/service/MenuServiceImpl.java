@@ -16,17 +16,9 @@ public class MenuServiceImpl implements MenuService {
 	@Autowired
 	private MenuMapper dao;
 	
-//	@Override
-//	public Map<String, Object> list(int sellerNo) throws Exception {
-//		Map<String, Object> result = new HashMap<>();
-//		result.put("menufile", dao.selectStoreFileByNo(sellerNo));
-//		result.put("menu", dao.getStoreByStoreNo(sellerNo));
-//		return result;
-//	}
 	@Override
 	public Map<String, Object> list(int sellerNo) throws Exception {
 		Map<String, Object> result = new HashMap<>();
-		System.out.println("임플 셀러 번호:" + sellerNo);
 		result.put("menu",dao.getStoreByStoreNo(sellerNo));
 		result.put("menuFile",dao.selectStoreFileByNo(sellerNo));
 		return result;
@@ -37,12 +29,9 @@ public class MenuServiceImpl implements MenuService {
 		MenuVO menu = (MenuVO)param.get("menu");
 		dao.insertMenu(menu);
 		StoreFileVO menuFile = (StoreFileVO)param.get("menuFile");
-		System.out.println("메뉴이동결로 저장:" + menuFile.getFilePath());
 		if (menuFile != null) {
-			System.out.println("파일옴");
 			menuFile.setMenuNo(menu.getMenuNo());
 			dao.insertMenuFile(menuFile);
-			System.out.println("저장됨");
 		}
 	}
 }

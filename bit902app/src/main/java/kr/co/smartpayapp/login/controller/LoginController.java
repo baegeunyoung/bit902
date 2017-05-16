@@ -36,7 +36,6 @@ public class LoginController {
 	@CrossOrigin(origins = "*")
 	@RequestMapping("/selectOneBuyer.do")
 	public BuyerVO selectOneBuyer(@RequestBody BuyerVO buyerVO) {
-		System.out.println(buyerVO.getId());
 		BuyerVO buyer = service.selectOneBuyer(buyerVO);
 		return buyer;
 	}
@@ -45,8 +44,6 @@ public class LoginController {
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
 	public Map<String,Object> buyerRegist(/*HttpServletRequest request*/@RequestBody BuyerVO buyerVO) {
-		
-		System.out.println("Move regist.do " + buyerVO.getId());
 		
 		Map<String,Object> msg = new HashMap<>();
 				
@@ -64,8 +61,6 @@ public class LoginController {
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/validity.do", method = RequestMethod.POST)
 	public Map<String, Object> validityCheck(@RequestBody BuyerVO buyerVO) {
-		System.out.println("Move validityCheck " + buyerVO.getId());
-		
 		Map<String, Object> msg = new HashMap<>();
 		
 		String userID = service.retrieveBuyer(buyerVO.getId());

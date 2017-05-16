@@ -123,8 +123,9 @@
 		socket.emit("login", loginId);
 		socket.emit("msg", {recvId: recvId, sendId: loginId, msg: $("#msg").val()});
 		socket.on("msg", function(data) {
-			swal(data);
-			location.href = "/bit902web/order/state.do";
+			swal({title: data, type: "success"}, function() {
+				location.href = "/bit902web/order/state.do";				
+			});
 		});
 	
 	</script>

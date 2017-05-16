@@ -5,5 +5,5 @@ import java.util.HashMap;
 import java.util.Map;
 
 public interface OrderService {
-	public int registOrder(ArrayList<HashMap<String,String>> order) throws Exception;
+	public void registOrder(ArrayList<HashMap<String,String>> order) throws Exception;
 }
