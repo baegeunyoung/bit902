@@ -16,7 +16,7 @@ import { HomePage } from '../pages/home/home';
 import { StampPage } from  '../pages/stamp/stamp';
 import { FoodReadyPage } from  '../pages/foodReady/foodReady';
 import { DetailsPage } from '../pages/details/details';
-
+import { validityCheck } from '../pages/register/registerService';
 //providers
 import { HttpWithToken } from '../providers/http-with-token';
 import { HttpModule, JsonpModule} from '@angular/http';
@@ -62,7 +62,8 @@ import { Facebook } from '@ionic-native/facebook';
     {provide: ErrorHandler, useClass: IonicErrorHandler}, 
     HttpWithToken,
     Push,
-    Facebook
+    Facebook,
+    validityCheck
   ]
 })
 export class AppModule {}
