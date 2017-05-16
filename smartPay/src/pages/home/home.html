@@ -105,7 +105,7 @@
            </ion-card-content>
          </ion-card>
        </div>
-  </div>
+  </div> 
   </ion-list>
 -->
 
@@ -125,14 +125,13 @@
     </ion-thumbnail>
     
     <h2 id="name">{{menu.name}}</h2>
-    <span id="price">{{menu.price}}원</span>
-    <span><button ion-button color="danger" icon-only (click)="orderPlus(menu)">
-        <ion-icon name='arrow-up'></ion-icon>
-    </button>
+    <span id="price">{{menu.price}}원</span>&nbsp;&nbsp;
+    <span>
+       <ion-icon ios="ios-add-circle" md="md-add-circle"  color="danger" icon-only (click)="orderPlus(menu)"></ion-icon>        
      <input type="text" style="width:35px" id="quantity" [(ngModel)]="menu.quantity"/>
-    <button  ion-button color="danger" icon-only (click)="orderMinus(menu)">
-      <ion-icon name='arrow-down'></ion-icon>
-      </button></span>
+    
+       <ion-icon ios="ios-remove-circle" md="md-remove-circle" color="danger" icon-only (click)="orderMinus(menu)"></ion-icon>
+    </span>
   <p>{{menu.content}}</p>
     <!--금액: {{ subTotal(menu)}}원--> 
   
