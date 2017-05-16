@@ -115,6 +115,7 @@
   </ion-list>
 -->
 
+
   <template ngFor let-menu [ngForOf]="menu">  
    <ion-card >
   <ion-list>
@@ -143,7 +144,7 @@
     </ion-list>
    </ion-card>
 </template>
-<!--
+
 <div *ngIf="menu != undefined">
   <ion-card>
       <ion-card-header>
@@ -154,8 +155,7 @@
 
   <span id="finalAmount">최종주문금액:</span> <span id="total">{{total}}원</span><br><br>
   <br>
-
-<button ion-button color="danger" (click)=payment(total)>결제하기</button>
+  <!--<button ion-button color="danger" (click)=payment(total)>결제하기</button>
 <span id="finalAmount">최종 주문금액:</span><span id="total">{{ total }}원</span><Br><br>
 <button ion-button color="danger" (click)="order()">결제하기</button>-->
 </div>
