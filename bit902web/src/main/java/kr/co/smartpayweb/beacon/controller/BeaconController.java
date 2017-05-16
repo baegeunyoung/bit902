@@ -29,7 +29,6 @@ public class BeaconController extends HttpServlet {
 		int sellerNo = (int)session.getAttribute(selNo);
 		List<BeaconVO> list = service.searchBeacon(sellerNo);
 		// 데이터 공유하기
-		System.out.println(list);
 		session.setAttribute("list", list);
 		return list;
 	}

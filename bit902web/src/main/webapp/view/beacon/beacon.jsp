@@ -128,7 +128,7 @@
 				dataType : "json",
 				data : { selNo : $("#sellerNo").val() }
 			}).done(function(result) {
-				alert("성공");
+				swal("성공");
 			})
 		});
 			$("#logout").click( function() {

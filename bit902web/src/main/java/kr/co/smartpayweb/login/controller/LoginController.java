@@ -37,7 +37,6 @@ public class LoginController extends HttpServlet{
 		// 아이디나 비밀번호가 db에 없을 때
 		if(seller == null) {
 			map.put("msg", "입력하신 정보가 올바르지 않습니다.");
-			System.out.println("2");
 			RequestDispatcher rd = request.getRequestDispatcher("../view/login/login.jsp");
 			rd.forward(request, response);
 			return map;
@@ -52,40 +51,10 @@ public class LoginController extends HttpServlet{
 			login.setPassword(seller.getPassword());
 			
 //			login.setSellerNo(seller.getSellerNo());
-			System.out.println(seller.getId() + seller.getPassword() + seller.getSellerNo());
 			int sellerNo = seller.getSellerNo();
 			String name = seller.getName();
 			String cellphoneNumber = seller.getCellphoneNumber();
 			
-//			List<BeaconVO> beacon = service.searchBeacon(sellerNo);
-//			Map<String, List<BeaconVO>> beaconList = new HashMap<String, List<BeaconVO>>();
-//			beaconList.put("beacon2", beacon);
-//			
-//			for(int i=0; i<=beaconList.size();i++) {
-//			session.setAttribute("beacon3", beaconList.get(i));
-//			System.out.println(beaconList.get(i) + "비콘정보조회");
-//			
-//			}
-			//for(int i=0; i<=beaconList.size(); i++) {
-//				map.put(beaconList);
-				//Map<String, Object> map2 = new HashMap<String, Object>();
-//				map2.put("beacon" + i, beaconList.get(i).getBeaconNo());
-//				map2.put("serial" + i, beaconList.get(i).getSerialNo());
-//				map2.put("table" + i, beaconList.get(i).getTableNo());
-				//map.putAll(map2);
-				//}
-			
-//			System.out.println(beaconList.get(0));
-//			
-//			for(int i=0; i<=beaconList.size(); i++){
-//				
-//			map.put("sellerNo", beaconList.get(i).getSellerNo());
-//			map.put("beaconNo", beaconList.get(i).getBeaconNo());
-//			map.put("serialNo", beaconList.get(i).getSerialNo());
-//			map.put("tableNo", beaconList.get(i).getTableNo());
-//			}
-			
-			System.out.println(sellerNo);
 			map.put("msg", "로그인성공");
 			session.setAttribute("seller", seller);
 			session.setAttribute("id", id);
@@ -103,7 +72,6 @@ public class LoginController extends HttpServlet{
 		// 아이디와 비밀번호 중 하나만 일치할 때
 		else {
 			map.put("msg", "입력하신 정보가 올바르지 않습니다.");
-			System.out.println("4");
 			RequestDispatcher rd = request.getRequestDispatcher("../view/login/login.jsp");
 			rd.forward(request, response);
 			return map;
@@ -114,13 +82,9 @@ public class LoginController extends HttpServlet{
 		@RequestMapping("/login/logout.do")
 		public void logout(HttpSession session,
 					HttpServletRequest request, HttpServletResponse response) throws Exception {
-//		    Map<String, Object> map = new HashMap<>();
 			session.invalidate();	
-//			map.put("msg", "로그아웃되었습니다.");
-//			response.sendRedirect("../view/login/login.jsp");
 			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 			rd.forward(request, response);
-//			return map;	
 		}
 
 	// 회원가입승인
@@ -134,7 +98,6 @@ public class LoginController extends HttpServlet{
 	@RequestMapping("/login/insertSeller.do")
 	public void insertSeller(SellerVO seller, 
 	HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println(seller);
 		service.insertSeller(seller);
 		RequestDispatcher rd = request.getRequestDispatcher("../view/login/login.jsp");
 		rd.forward(request, response);
@@ -145,7 +108,6 @@ public class LoginController extends HttpServlet{
 	@RequestMapping("/login/searchOneSeller.do")
 	public SellerVO searchOneSeller(int sellerNo, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		SellerVO seller = service.searchOneSeller(sellerNo);
-		System.out.println(seller);
 		session.setAttribute("id", seller.getId());
 		session.setAttribute("name", seller.getName());
 		session.setAttribute("cellphoneNumber", seller.getCellphoneNumber());
@@ -158,7 +120,6 @@ public class LoginController extends HttpServlet{
 	@ResponseBody
 	@RequestMapping("/login/searchSeller.do")
 	public String searchSeller(String id, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println(id);
 		String returnId = service.searchSeller(id);
 		if(id.equals(returnId)) {
 			return "exist";			
@@ -185,41 +146,6 @@ public class LoginController extends HttpServlet{
 			rd.forward(request, response);
     }
 	
-	
-//	@ResponseBody
-//	@RequestMapping("/searchSeller.do")
-//	public SellerVO searchSeller(SellerVO seller) throws Exception {
-//		System.out.println(seller);
-//		return service.searchSeller(seller);
-//	}
-//	
-//	@ResponseBody
-//	@RequestMapping("/searchBuyer.do")
-//	public Map<String, Object> searchBuyer(String id, String password) throws Exception {
-//		Map<String, Object> map = new HashMap<>();
-//		return service.searchBuyer(id, password);
-//	}
-	
-//	@ResponseBody
-//	@RequestMapping("/insertBuyer.do")
-//	public Map<String, Object> insertBuyer(BuyerVO buyer) throws Exception {
-//		Map<String, Object> map = new HashMap<>();
-//		return service.insertBuyer(buyer);
-//	}
-	
-//	@ResponseBody
-//	@RequestMapping("/modifyBuyer.do")
-//	public Map<String, Object> modifyBuyer(BuyerVO buyer) throws Exception {
-//		Map<String, Object> map = new HashMap<>();
-//		return service.modifyBuyer(buyer);
-//	}
-	
-//	@ResponseBody
-//	@RequestMapping("/deleteBuyer.do")
-//	public void deleteBuyer(int buyerNo) throws Exception {
-//		service.deleteBuyer(buyerNo);
-	
 
-	
 }
 

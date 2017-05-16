@@ -84,10 +84,8 @@ public class MenuController {
 			}
 			// 파일 사이즈
 			long fileSize = file.getSize();
-			System.out.println("파일 사이즈 : " + fileSize);
 			// 고유한 파일명 만들기	
 			String systemName = "menu-" + UUID.randomUUID().toString() + ext;
-			System.out.println("저장할 파일명 : " + systemName);
 			// 임시저장된 파일을 원하는 경로에 저장
 			file.transferTo(new File(savePath + "/" + systemName));
 			StoreFileVO menuFile = new StoreFileVO();

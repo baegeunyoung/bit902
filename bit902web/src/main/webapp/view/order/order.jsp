@@ -123,57 +123,10 @@
 		socket.emit("login", loginId);
 		socket.emit("msg", {recvId: recvId, sendId: loginId, msg: $("#msg").val()});
 		socket.on("msg", function(data) {
-			alert(data);
+			swal(data);
 			location.href = "/bit902web/order/state.do";
 		});
-		
-// 		function updateData() {
-// 			$.ajax({
-// 				url: "${pageContext.request.contextPath}/order/state.do",
-// 				type: "POST",
-// 				dataType : ""
-// 			}).done( function (result){
-// 				var html = "";
-// 				var count = 1;
-// 				for (var i = 0 ; i < result.length ; i++) {
-// 					html += '<tr>';
-// 					html += '<td>' + count + '</td>';
-// 					html += '<td>' + result[i].tableNo + '</td>';
-// 					html += '<td>';
-// 					for (var j ; j < result[i].orderMenuList.length ; j++) {
-// 						html += result[i].orderMenuList[j].name + '-' + result[i].orderMenuList[j].quantity + '개<br>';
-// 					}							
-// 					html += '</td>';
-					
-// 					var myDate = new Date(result[i].orderDate);
-// 					var myHours = myDate.getHours();
-// 					var myMinutes = myDate.getMinutes();
-// 					var mySeconds = myDate.getSeconds();
-					
-// 					html += '<td>' + myHours + ':' + myMinutes + ':' + mySeconds + '</td>'; 
-// 					html += '<td>' + result[i].orderContent + '</td>';
-// 					html += '<td>';
-					
-// 					if (result[i].orderState == 0) {
-// 						html += '<form name="receive" action="${pageContext.request.contextPath}/order/receive.do" method="post">';
-// 						html += '<input type="hidden" name="receiveNo" id="receiveNo" value="' + result[i].orderNo + '" />';
-// 						html += '<button type="submit" class="btn btn-primary">접수확인</button>';
-// 					} else if (result[i].orderState == 1) {
-// 						html += '&nbsp&nbsp접수확인완료 &nbsp/ &nbsp';
-// 					} 
-// 					html += '<form name="complete" action="${pageContext.request.contextPath}/order/complete.do" method="post">';
-// 					html += '<input type="hidden" name="completeNo" id="completeNo" value="' + result[i].orderNo + '" />';
-// 					html += '<button type="submit" class="btn btn-primary">조리완료</button>';
-// 					html += '</form>';
-// 					html += '</td>';
-// 					html += '</tr>';
-// 					count++;
-// 				}
-// 				$("#tbody").html(html);
-// 			}).fail(function(jqXhr, testStatus, errorText) {
-// 				alert("에러발생 : " + errorText);
-// 			});
-// 		}
+	
 	</script>
 </body>
 </html>

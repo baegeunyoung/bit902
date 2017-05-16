@@ -41,12 +41,10 @@
 									      <label for="title" class="col-lg-2 control-label">제목</label>
 									      <div class="col-lg-10">
 									        <textarea class="form-control" rows="2" name="title" id="title" placeholder="이벤트 제목을 적어주세요." ></textarea>
-<!-- 									        <span class="help-block">이벤트 제목을 적어주세요.</span> -->
 									      </div>
 									      <label for="content" class="col-lg-2 control-label"> 내용</label>
 									      <div class="col-lg-10">
 									        <textarea class="form-control" rows="5" name="content" id="content" placeholder="이벤트 내용을 적어주세요." ></textarea>
-<!-- 									        <span class="help-block">이벤트 내용을 적어주세요.</span> -->
 									      </div>
 									    </div>
 							      		  <label class="col-lg-2 control-label">이벤트이미지</label>
@@ -64,12 +62,9 @@
 									      <label for="textArea" class="col-lg-2 control-label">Textarea</label>
 									      <div class="col-lg-10">
 									        <textarea class="form-control" rows="5" name="title" id="textArea" placeholder="이벤트 제목을 적어주세요." >${event.eventTitle}</textarea>
-<!-- 									        <span class="help-block">이벤트 제목을 적어주세요.</span> -->
 									        <textarea class="form-control" rows="5" name="content" id="textArea" placeholder="이벤트 내용을 적어주세요." >${event.eventContent}</textarea>
-<!-- 									        <span class="help-block">이벤트 내용을 적어주세요.</span> -->
 									      </div>
 									    </div>
-<!-- 												<button type="submit" class="btn btn-primary pull-right" id="modify">수정</button> -->
 												<button type="submit" class="btn btn-primary pull-right" id="delete">삭제</button>   
 											</form>
 										</div>
@@ -85,7 +80,7 @@
 	</div>
 <script>
 	if('${msg}'){
-		alert('${msg}');
+		swal('${msg}');
 	}
 	
 	$(document).ready(function() {

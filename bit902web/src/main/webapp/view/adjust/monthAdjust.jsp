@@ -156,7 +156,7 @@
 					drawDayGraph();
 					productChangeGraph();
 			}).fail(function() {
-				alert("월별 정산 내역 호출 실패");
+				swal("월별 정산 내역 호출 실패");
 			});
 		}
 
@@ -220,7 +220,7 @@
 				drawDayGraph();
 				productChangeGraph();
 			}).fail(function() {
-				alert("월별 정산 내역 호출 실패");
+				swal("월별 정산 내역 호출 실패");
 			});
 		}
 

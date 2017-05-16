@@ -104,21 +104,21 @@ td {
 				data : {
 					id : $("#id").val()
 				}
-			}).done(function(d) {
-				if (id.value == "") {
-					alert("아이디를 입력 해 주세요.");
+			}).done(function(returnId) {
+				if (id.value === "") {
+					swal("아이디를 입력 해 주세요.");
 					id.focus();
 					return false;
 				} else if (3 > id.value.length || id.value.length > 20) {
-					alert("아이디는 최소 3자에서 최대 20자까지 입력이 가능합니다.");
+					swal("아이디는 최소 3자에서 최대 20자까지 입력이 가능합니다.");
 					id.focus();
 					return false;
-				} else if (d === "exist") {
-					alert("같은 아이디가 존재합니다.");
+				} else if (returnId === "exist") {
+					swal("같은 아이디가 존재합니다.");
 					$("#id").val("");
 					id.focus();
 				} else {
-					alert("사용 가능한 아이디 입니다.");
+					swal("사용 가능한 아이디 입니다.");
 				}
 			});
 		}
@@ -132,63 +132,74 @@ td {
 			var name = f.name;
 			var cellNo = f.cellphoneNumber;
 
-
+			if (id.value === "") {
+				swal("아이디를 입력 해 주세요.");
+				id.focus();
+				return false;
+			}
+			
+			if (3 > id.value.length || id.value.length > 20) {
+				swal("아이디는 최소 3자에서 최대 20자까지 입력이 가능합니다.");
+				id.focus();
+				return false;
+			}
+			
 			if (pw.value == "") {
-				alert("비밀번호를 입력하세요");
+				swal("비밀번호를 입력하세요");
 				pw.focus();
 				return false;
 			}
 
 			if (7 > pw.value.length || pw.value.length > 21) {
-				alert("비밀번호는 최소 8자에서 최대 20자까지 입력이 가능합니다.");
+				swal("비밀번호는 최소 8자에서 최대 20자까지 입력이 가능합니다.");
 				pw.focus();
 				return false;
 			}
 
 			if (pw2.value == "") {
-				alert("비밀번호 확인을 입력하세요");
+				swal("비밀번호 확인을 입력하세요");
 				pw2.focus();
 				return false;
 			}
 
 			if (7 > pw2.value.length || pw2.value.length > 21) {
-				alert("비밀번호는 최소 8자에서 최대 20자까지 입력이 가능합니다.");
+				swal("비밀번호는 최소 8자에서 최대 20자까지 입력이 가능합니다.");
 				pw2.focus();
 				return false;
 			}
 
 			if (pw.value != pw2.value) {
-				alert("비밀번호가 일치하지 않습니다");
+				swal("비밀번호가 일치하지 않습니다");
 				pw.focus();
 				pw.select();
 				return false;
 			}
 
 			if (name.value == "") {
-				alert("이름을 입력하세요");
+				swal("이름을 입력하세요");
 				name.focus();
 				return false;
 			}
 
 			if (1 > name.value.length || name.value.length > 6) {
-				alert("이름은 최소 2자에서 최대 5자까지 입력이 가능합니다.");
+				swal("이름은 최소 2자에서 최대 5자까지 입력이 가능합니다.");
 				name.focus();
 				return false;
 			}
 
 			if (cellNo.value == "") {
-				alert("핸드폰번호를 입력하세요");
+				swal("핸드폰번호를 입력하세요");
 				cellNo.focus();
 				return false;
 			}
 
 			if (cellNo.value.length > 11) {
-				alert("핸드폰 번호는 11자까지 입력이 가능합니다.");
+				swal("핸드폰 번호는 11자까지 입력이 가능합니다.");
 				cellNo.focus();
 				return false;
 			}
 
-			alert("회원 가입이 완료되었습니다.");
+			swal("회원 가입이 완료되었습니다.");
 			return true;
 		})
 	</script>

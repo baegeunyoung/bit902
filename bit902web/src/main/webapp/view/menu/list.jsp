@@ -154,8 +154,6 @@ function makeMenu(){
   		}).done(function (result){
 		var html="";
   	
-		
-// 		html+= "<form action='/bit902web/menu/update.do' enctype='multipart/form-data' method='post'>";
 		html+=				 "<tr id='tr" + result.menu[0].menuNo + "' style='height:100px;width:100%'>";
 		html+=                  	"<td><img src='/bit902web/upload"+result.menufile[0].filePath+"/"+result.menufile[0].systemName + "'style='height: 100px; width: 100px;'></td>";
 		html+=                      "<input type='hidden' name='menuNo' value='"+result.menu[0].menuNo+"'>";
@@ -165,14 +163,13 @@ function makeMenu(){
 		html+=                     	"<td>"+"<input name='content' class='form-control' value='"+result.menu[0].content+"'></td>";
 		html+=                     	"<td><button>수정</button></td>";              
 		html+=              "</tr>";
-//   		html+= "</form>";
   	
 		$('#tr' + result.menu[0].menuNo).replaceWith(html).trigger("create");
 
   		}).
   		
   		fail(function(jqXhr, testStatus, errorText){
-			alert("에러발생1 :" + errorText);
+			swal("에러발생1 :" + errorText);
   		});
 }
 
@@ -183,7 +180,7 @@ function makeMenu(){
 			url: "/bit902web/menu/delete.do",
 			data: {menuNo: menuNo}
 		}).done(function () {
-			alert("삭제되었습니다.");
+			swal("삭제되었습니다.");
 			makeMenu();
 		});	
 	}
@@ -207,11 +204,11 @@ function writeform(){
 		contentType: false
 	})
 		.done(function (result){
-			alert("메뉴 등록이 완료되었습니다.");
+			swal("메뉴 등록이 완료되었습니다.");
 			makeMenu();
 		})
 		.fail(function(jqXhr, testStatus, errorText){
-			alert("에러발생1 :" + errorText);
+			swal("에러발생1 :" + errorText);
 });
 	
 	}
@@ -233,9 +230,6 @@ function readURL(input) {
       reader.readAsDataURL(input.files[0]);
     }
 }
-
-
-
 </script>
 </body>
 </html>

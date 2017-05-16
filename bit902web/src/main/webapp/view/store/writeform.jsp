@@ -27,9 +27,7 @@
 </style>
 <body>
 <div class="wrapper">
-	<div>
 		<c:import url="../../include/sidebar.jsp" />
-	</div>
 	<div class="main-panel">
 		<nav class="navbar navbar-transparent navbar-absolute">
 			<div class="container-fluid">
@@ -61,7 +59,7 @@
 												<td>　</td>
 												<td style="width: 500px; text-align: right;" rowspan="8">
 													<div id="image">
-														<img id="blah" style="width: 400px; height: 400px; border-radius: 200px;"/>
+														<img id="blah" style="width: auto; height: auto; max-width: 400px; max-height: 400px; border-radius: 30px;"/>
 													</div>
 												</td>
 											</tr>
@@ -344,7 +342,7 @@
 		var frm = document.form1;
 
 		if (frm.storeName.value == "") {
-			alert("이름을 입력하세요.");
+			swal("이름을 입력하세요.");
 			frm.storeName.focus();
 			return false;
 		}

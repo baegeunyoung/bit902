@@ -56,6 +56,5 @@ input::-moz-placeholder {
 			</form>
 		</div>
 	</div>
-	<c:import url="../../include/footer.jsp" />
 </body>
 </html>

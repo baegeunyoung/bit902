@@ -13,7 +13,6 @@
 	
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
 	<!-- Bootstrap core CSS     -->
@@ -45,5 +44,10 @@
 
 	<!-- Material Dashboard DEMO methods, don't include it in your project! -->
 	<script src="${pageContext.request.contextPath}/material-dashboard-free-v1.1.0/assets/js/demo.js"></script>
+	
+	<!-- Sweetalert -->
+	<script src="${pageContext.request.contextPath}/js/sweetalert-master/dist/sweetalert.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/sweetalert-master/dist/sweetalert.css">
+
 </body>
 </html>

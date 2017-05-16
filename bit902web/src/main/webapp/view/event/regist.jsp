@@ -8,7 +8,7 @@
 </head>
 <body>
 <script>
-	alert("처리되었습니다");
+	swal("처리되었습니다");
 	location.href = "/bit902web/event/read.do";
 </script>
 </body>

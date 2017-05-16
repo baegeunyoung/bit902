@@ -42,6 +42,7 @@
 		select *
 			from tb_store
 			where seller_no = #{sellerNo}
+			limit 1
 </select>  
 
  <update id="storetModify" parameterType="StoreVO">
