@@ -76,16 +76,11 @@ input::-moz-placeholder {
 			<div class="container-fluid">
 				<div class="navbar-header">
 				<br>
-						<%
-							out.print(session.getAttribute("id") + " 님 환영합니다");
+					<%
+						out.print(session.getAttribute("id") + " 님 환영합니다");
 						int selNo = (int)session.getAttribute("sellerNo");	
-	//					for(int i=0; i<=beaconList.size(); i++) {
-		//					session.getAttribute("beacon"+ i, beaconList.get(i));
-			//			}
-						
 						session.setAttribute("selNo", selNo);
-				//		session.setAttribute("beacon", beacon);
-						%>
+					%>
 				</div>
 			</div>
 			</nav>

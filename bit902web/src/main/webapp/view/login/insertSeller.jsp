@@ -7,7 +7,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <jsp:include page="../../include/baseInclude.jsp" flush="true"></jsp:include>
-<script src="../../js/jquery-3.1.1.js"></script>
 <title>회원 가입</title>
 <style>
 input:-ms-input-placeholder {
@@ -25,107 +24,38 @@ input::-moz-placeholder {
 input::-moz-placeholder {
 	opacity: 0.3;
 }
-.form-group {
-	margin-bottom: 0px;
-	padding-bottom: 0px;
+
+td {
+	height: 60px;
 }
 </style>
 </head>
 <body>
-
-	<!--       <div class="content"> -->
-	<!-- 	            <div class="container-fluid"> -->
-	<!-- 	                <div class="row"> -->
-	<!-- 	                    <div class="col-md-8"> -->
-	<!-- 	                        <div class="card"> -->
-	<!-- 	                            <div class="card-header" data-background-color="purple"> -->
-	<!-- 	                                <h4 class="title">회원가입</h4> -->
-	<!-- 									<p class="category">회원정보를 입력해주세요</p> -->
-	<!-- 	                            </div> -->
-	<!-- 	                            <div class="card-content"> -->
-	<!-- 	                                <form> -->
-	<!-- 	                                    <div class="row"> -->
-	<!-- 	                                        <div class="col-md-1"> -->
-	<!-- 												<div class="form-group label-floating"> -->
-	<!-- 													<label class="control-label">아이디</label> -->
-	<!-- 													<input type="text" name="id" placeholder="아이디를 입력하세요" class="form-control"> -->
-	<!-- 												</div> -->
-	<!-- 	                                        </div> -->
-	<!-- 	                                        </div> -->
-
-	<!-- 	                                        <div class="row"> -->
-	<!-- 	                                        <div class="col-md-2"> -->
-	<!-- 												<div class="form-group label-floating"> -->
-	<!-- 													<label class="control-label">비밀번호</label> -->
-	<!-- 													<input type="password" name="password" placeholder="비밀번호를 입력하세요" class="form-control"> -->
-	<!-- 												</div> -->
-	<!-- 	                                        </div> -->
-	<!-- 	                                        </div> -->
-
-	<!-- 	                                        <div class="row"> -->
-	<!-- 	                                        <div class="col-md-3"> -->
-	<!-- 												<div class="form-group label-floating"> -->
-	<!-- 													<label class="control-label">비밀번호 확인</label> -->
-	<!-- 													<input type="password" name="password2" placeholder="비밀번호를 입력하세요" class="form-control"> -->
-	<!-- 												</div> -->
-	<!-- 	                                        </div> -->
-	<!-- 	                                        </div> -->
-
-	<!-- 	                                        <div class="row"> -->
-	<!-- 	                                        <div class="col-md-4"> -->
-	<!-- 												<div class="form-group label-floating"> -->
-	<!-- 													<label class="control-label">이름</label> -->
-	<!-- 													<input type="text" name="name" placeholder="이름을 입력하세요" class="form-control"> -->
-	<!-- 												</div> -->
-	<!-- 	                                        </div> -->
-	<!-- 	                                        </div> -->
-
-	<!-- 	                                        <div class="row"> -->
-	<!-- 	                                        <div class="col-md-5"> -->
-	<!-- 												<div class="form-group label-floating"> -->
-	<!-- 													<label class="control-label">핸드폰번호</label> -->
-	<!-- 													<input type="text" name="cellphoneNumber" placeholder="핸드폰번호를 입력하세요" class="form-control"> -->
-	<!-- 												</div> -->
-	<!-- 	                                        </div> -->
-	<!-- 	                                        </div> -->
-
-
-
-	<!-- 	                                    </div>	                            -->
-	<!-- 	                                    </div> -->
-	<!-- 	                                    </div> -->
-	<!-- 	                                    </div> -->
-
-	<!-- 	                                    <input type="submit" value="회원가입" onClick="return doAction()" class="btn btn-primary pull-right"/> -->
-	<!-- 	                                    <div class="clearfix"></div> -->
-	<!-- 	                                </form> -->
-	<!-- 	                            </div> -->
 	<div class="wrapper" style="text-align: center;">
 		<nav class="navbar navbar-transparent navbar-absolute">
 			<div class="content">
 				<div class="container-fluid">
-					<h1>
-						<a href="${pageContext.request.contextPath}/main/main.do" class="simple-text"> 거기서 주문해 </a>
-					</h1>
+					<a href="${pageContext.request.contextPath}/main/main.do" class="simple-text">
+						<img src="/bit902web/img/orderthere.png" width="400px" />
+					</a>
 				</div>
-				<br>
-				<br>
-				<h2>회원가입</h2>
+				<br> <br>
+				<div style="font-size: 30px;">회원가입</div>
 				<br>
 				<form name="mForm" action="${pageContext.request.contextPath}/login/insertSeller.do" method="post" class="navbar-form navbar-center">
 					<div class="form-group  is-empty">
 						<table style="text-align: left;">
 							<tr>
-								<td><br>아이디</td>
+								<td>아이디</td>
 								<td>
 									<div class="form-group">
 										<input type="text" id="id" name="id" placeholder="아이디" class="form-control">
-										<input id="search" type="button" value="중복확인" onclick="return selctId()" class="btn btn-primary pull-center">
+										<input id="search"type="button" value="중복확인" onclick="return selctId()" style="background-color: #9c27b0; border-color: #9c27b0;" class="btn-primary pull-center">
 									</div>
 								</td>
 							</tr>
 							<tr>
-								<td><br>비밀번호</td>
+								<td>비밀번호</td>
 								<td>
 									<div class="form-group">
 										<input type="password" id="password" name="password" placeholder="비밀번호" class="form-control">
@@ -133,7 +63,7 @@ input::-moz-placeholder {
 								</td>
 							</tr>
 							<tr>
-								<td><br>비밀번호 확인 &nbsp&nbsp&nbsp</td>
+								<td>비밀번호 확인 &nbsp&nbsp&nbsp</td>
 								<td>
 									<div class="form-group">
 										<input type="password" name="password2" placeholder="비밀번호 확인" class="form-control">
@@ -141,15 +71,15 @@ input::-moz-placeholder {
 								</td>
 							</tr>
 							<tr>
-								<td><br>이름</td>
+								<td>이름</td>
 								<td>
 									<div class="form-group">
 										<input type="text" id="name" name="name" placeholder="이름" class="form-control">
-								</div>
+									</div>
 								</td>
 							</tr>
 							<tr>
-								<td><br>핸드폰 번호</td>
+								<td>핸드폰 번호</td>
 								<td>
 									<div class="form-group">
 										<input type="text" id="cellphoneNumber" name="cellphoneNumber" placeholder="핸드폰번호" class="form-control">
@@ -160,34 +90,39 @@ input::-moz-placeholder {
 						<br>
 						<input id="reg" type="submit" value="회원가입" onClick="return doAction()" class="btn btn-primary pull-center" />
 					</div>
-				</form> 
+				</form>
 			</div>
 		</nav>
 	</div>
+	<c:import url="../../include/footer.jsp" />
 	<script>
-		// 	$("#reg").click(function () {
-		// 		alert("회원가입이 완료되었습니다.")
-		// 		location.href="/bit902web/login/loginForm.do"
-		// 	});
-
 		function selctId() {
 			$.ajax({
 				url : "/bit902web/login/searchSeller.do",
-				type: "POST",
+				type : "POST",
 				dataType : "text",
-				data: {
+				data : {
 					id : $("#id").val()
 				}
-			}).done(function (d) {
-				if(d === "exist") {
+			}).done(function(d) {
+				if (id.value == "") {
+					alert("아이디를 입력 해 주세요.");
+					id.focus();
+					return false;
+				} else if (3 > id.value.length || id.value.length > 20) {
+					alert("아이디는 최소 3자에서 최대 20자까지 입력이 가능합니다.");
+					id.focus();
+					return false;
+				} else if (d === "exist") {
 					alert("같은 아이디가 존재합니다.");
 					$("#id").val("");
+					id.focus();
 				} else {
 					alert("사용 가능한 아이디 입니다.");
 				}
 			});
 		}
-		
+
 		$("#reg").click(function doAction() {
 
 			var f = document.mForm;
@@ -196,25 +131,7 @@ input::-moz-placeholder {
 			var pw2 = f.password2;
 			var name = f.name;
 			var cellNo = f.cellphoneNumber;
-			
 
-			// 			var pattern1 = /[0-9]/;
-			// 			var pattern2 = /[a-zA-Z]/;
-
-			
-			if (id.value == "") {
-				alert("insert your id");
-				id.focus();
-				return false;
-			}
-
-			
-			if (2 > id.value.length || id.value.length > 21) {
-				alert("아이디는 최소 3자에서 최대 20자까지 입력이 가능합니다.");
-				id.focus();
-				return false;
-			}
-			
 
 			if (pw.value == "") {
 				alert("비밀번호를 입력하세요");
@@ -259,16 +176,6 @@ input::-moz-placeholder {
 				return false;
 			}
 
-// 			$(document).ready(function() {
-// 				$('#cellphoneNumber').on('keyup', function() {
-// 					if ($(this).val().length > 140) {
-// 						alert('글자수는 140자 까지입니다.');
-// 						$(this).val($(this).val().substring(0, 140));
-// 					}
-// 					$('#count').html($(this).val().length + '/140');
-// 				});
-// 			});
-			
 			if (cellNo.value == "") {
 				alert("핸드폰번호를 입력하세요");
 				cellNo.focus();
@@ -281,43 +188,9 @@ input::-moz-placeholder {
 				return false;
 			}
 
-			// 			$("form[name='mForm']").submit(function () {
-			// 				if(!confirm('회원가입이 완료됩니다')) {
-			// 				return false;		
-			// 			}
-			// 			})
-
-// 			function insertSeller() {
-// 			$.ajax({
-// 				url : "/bit902web/login/insertSeller.do",
-// 				type: "POST",
-// 				dataType : "json",
-// 				data: {
-// 					id: $("#id").val(),
-// 					password: $("#password").val(),
-// 					name: $("#name").val(),
-// 					cellphoneNumber: $("#cellphoneNumber").val()
-// 				}
-// 				})
-// 			}
 			alert("회원 가입이 완료되었습니다.");
 			return true;
 		})
-// 		.done(function() {
-// 			$.ajax({
-// 				url : "/bit902web/login/insertSeller.do",
-// 				type: "POST",
-// 				dataType : "json",
-// 				data: {
-// 					id: $("#id").val(),
-// 					password: $("#password").val(),
-// 					name: $("#name").val(),
-// 					cellphoneNumber: $("#cellphoneNumber").val()
-// 				}
-// 			}).done(function() {
-// 				alert("회원 가입이 완료되었습니다.");
-// 			});
-// 		});
-</script>
+	</script>
 </body>
 </html>

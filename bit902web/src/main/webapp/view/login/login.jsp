@@ -26,19 +26,15 @@ input::-moz-placeholder {
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <jsp:include page="../../include/baseInclude.jsp" flush="true"></jsp:include>
-<script src="../../js/jquery-3.1.1.js"></script>
 </head>
 <body>
 	<div class="wrapper" style="text-align: center;">
 		<div class="container-fluid">
-			<div class="logo">
-				<h1>
-					<a href="${pageContext.request.contextPath}/main/main.do" class="simple-text"> 거기서 주문해 </a>
-				</h1>
-			</div>
 			<br>
 			<br>
-			<h2>판매자 페이지</h2>
+			<a href="${pageContext.request.contextPath}/main/main.do" class="simple-text">
+				<img src="/bit902web/img/orderthere.png" width="400px"/>
+			</a>
 			<br>
 
 			<div id="success"></div>
@@ -50,54 +46,16 @@ input::-moz-placeholder {
 					</div>
 					<br>
 					<div class="form-group">
-						<input type="password" name="password" placeholder="비밀번호를 입력하세요" class="form-control"><br>
+						<input type="password" name="password" placeholder="비밀번호를 입력하세요" class="form-control" style="margin-bottom: 10px;">
 						<span class="material-input"></span><br>
 					</div>
 					<br>
 					<button id="login" class="btn btn-primary pull-center">로그인</button>
-					<a href="/bit902web/view/login/insertSeller.jsp" role='button' class="btn btn-primary pull-center">회원가입</a>
+					<a href="${pageContext.request.contextPath}/login/joinForm.do" role='button' class="btn btn-primary pull-center">회원가입</a>
 				</div>
 			</form>
 		</div>
 	</div>
-
-	<%-- <form action="${pageContext.request.contextPath}/login/logout.do" method="post"> --%>
-	<!-- <button id="logout">로그아웃</button> -->
-	<!-- </form> -->
-
-
-
-	<script>
-		// alert("입력하신 회원정보가 일치하지 않습니다");
-		
-		// 	$(document).ready(function () {
-		// 		alert("입력하신 회원정보가 일치하지 않습니다");
-		// 	})
-		// $("#login").click(function () {
-		// 	$.ajax({
-		// 		url: "/bit902web/login/login.do",
-		// 		type: "POST"
-
-		// 	}).done(function (msg) {
-		// 		alert(msg);
-		// 	})
-		// })
-
-		$("#login").on("click", function () {
-			$.ajax({
-				url: "/bit902web/login/login.do",
-				type: "POST",
-				dataType: "json",
-				data: {
-					id: $("#id").val(),
-					password: $("#pw").val()                                                                               
-				}
-
-			}).done(function (result) {
-				alert(result.msg);
-				location.href="/bit902web/index.jsp";
-			})
-		});
-	</script>
+	<c:import url="../../include/footer.jsp" />
 </body>
 </html>

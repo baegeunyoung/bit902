@@ -5,9 +5,10 @@
 <html>
 <head>
 <style>
-	@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
-	html, body, table, div, p, h3, tr, td {
-		font-family: 'Jeju Hallasan', serif;
+	@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+	html, body, table, div, p, h3, tr, td, .title {
+		font-family: 'Hanna', serif;
+		font-size: 16px;
 	}
 	
 </style>

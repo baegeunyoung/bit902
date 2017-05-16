@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>이벤트 관리</title>
 </head>
 <script src="../../js/jquery-3.1.1.js"></script>
 <body>
@@ -80,6 +80,7 @@
 					</div>
 				</div>
 			</div>
+			<c:import url="../../include/footer.jsp" />
 		</div>
 	</div>
 <script>

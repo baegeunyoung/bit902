@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>월 누적 판매량</title>
 </head>
 <body>
 	<div class="wrapper">
@@ -62,9 +62,6 @@
 							</div>
 						</div>
 
-
-
-
 						<!-- 월 누적 매출 그래프 -->
 						<div class="col-md-12">
 							<div class="card">
@@ -79,21 +76,6 @@
 								</div>
 							</div>
 						</div>
-
-						<!-- 상품별 월 매출 추이 그래프 -->
-<!-- 						<div class="col-md-12"> -->
-<!-- 							<div class="card"> -->
-<!-- 								<div class="card-header card-chart"	data-background-color="green" style="height: 300px"> -->
-<!-- 									<div class="ct-chart" id="completedTasksChart" style="height: 300px"></div> -->
-<!-- 								</div> -->
-<!-- 								<div class="card-content"> -->
-<!-- 									<h4 class="title">상품별 일일 판매량 변화</h4> -->
-<!-- 								</div> -->
-<!-- 								<div class="card-footer"> -->
-<!-- 									<div class="stats">판매 갯수 변화 추이</div> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
 					</div>
 				</div>
 			</div>
@@ -290,54 +272,6 @@
 			//start animation for the Emails Subscription Chart
 			md.startAnimationForBarChart(emailsSubscriptionChart);
 		}
-
-		// 상품별 일 매출 추이 그래프
-// 		$.ajax({
-			
-// 			url : "${pageContext.request.contextPath}/adjust/productGraph.do",
-// 			type : "POST",
-// 			data : {cYear : cYear, cMonth : cMonth },
-// 			dataType : "JSON"
-			
-// 		}).done(function(result) {
-// 			var rowsCount = $('#tbody tr').length;
-// 			var arr1 = new Array(rowsCount);
-
-// 			for (var i = 0; i < rowsCount; i++) {
-// 				arr1[i] = document.getElementById("table").rows[i + 1].cells[0].innerHTML.split('-')[2];
-// 			}
-			
-			
-			
-// 			dataCompletedTasksChart = {
-// 				labels : arr1,
-// 				series : [
-// 							[ 230, 750, 450, 300, 280, 240, 200, 190, 230, 750, 450, 300, 280, 240, 200, 190, 231, 430, 298, 492, 354, 523, 245, 244, 233, 452, 563, 123, 142, 321, 423 ],
-// 							[ 430, 298, 492, 354, 523, 245, 244, 233, 452, 563, 123, 142, 321, 423, 213, 235, 273, 750, 450, 300, 280, 240, 200, 190, 231, 430, 298, 492, 354, 523, 245 ],
-// 							[ 452, 563, 123, 142, 321, 423, 213, 235, 244, 233, 452, 563, 244, 214, 424, 242, 421, 523, 245, 244, 233, 452, 563, 123, 142, 321, 423, 213, 235, 273, 750 ],
-// 							[ 355, 342, 355, 323, 335, 352, 412, 175, 154, 123, 218, 235, 163, 421, 243, 521, 623, 343, 364, 634, 345, 123, 534, 342, 453, 245, 354, 378, 237, 345, 452 ]
-// 				]
-// 			};
-
-// 			optionsCompletedTasksChart = {
-// 				lineSmooth : Chartist.Interpolation.cardinal({
-// 					tension : 0
-// 				}),
-// 				low : 0,
-// 				high : 1000, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-// 				chartPadding : {
-// 					top : 0,
-// 					right : 0,
-// 					bottom : 0,
-// 					left : 0
-// 				}
-// 			}
-// 			var completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
-
-// 			// start animation for the Completed Tasks Chart - Line Chart
-// 			md.startAnimationForLineChart(completedTasksChart);
-
-// 		});
 	</script>
 </body>
 </html>

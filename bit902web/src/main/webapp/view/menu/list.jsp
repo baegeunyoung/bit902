@@ -5,11 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>메뉴 관리</title>
 </head>
 <body>
 	<div class="wrapper">
-
 	<div>
 		<c:import url="../../include/sidebar.jsp" />
 	</div>
@@ -97,6 +96,7 @@
 	                        </div>
 	                    </div>
 	  	 			 </div>
+	  	 			 <c:import url="../../include/footer.jsp" />
 				</div>
 			</div>
 <script>
@@ -118,18 +118,13 @@ function makeMenu(){
 		
 		var menus = result.menu;
 		var file = result.menuFile;
-		
-		console.log(menus.length);
-		console.log(file.length);
-		
+				
 		for(var i=0; i < menus.length; i++){
-  		console.log("메뉴:" + menus[i].menuNo);
 		html+= "<tr id='tr" + menus[i].menuNo + "' style='height:100px;width:100%''>";
 			
 				html += "<td>";
 			for(var j=0; j < file.length; j++){
 				if(menus[i].menuNo == file[j].menuNo){
- 			console.log("파일:" + file[j].menuNo);
 		html+=                  	"<img src='/bit902web/upload"+file[j].filePath+"/"+file[j].systemName + "'style='height: 100px; width: 100px;'>";
 				}
 			}
@@ -212,7 +207,7 @@ function writeform(){
 		contentType: false
 	})
 		.done(function (result){
-			alert("메뉴가 등록이 완료되었습니다.");
+			alert("메뉴 등록이 완료되었습니다.");
 			makeMenu();
 		})
 		.fail(function(jqXhr, testStatus, errorText){
