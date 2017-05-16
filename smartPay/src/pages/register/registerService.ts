@@ -26,17 +26,17 @@ export class validityCheck {
                 console.log('성공 : ' + JSON.stringify(data));
                 this.idCheckFlag = data.flag;
                 console.log('왜안됨? : ' + this.idCheckFlag)
-                this.openFilters();
+                this.openFilters(data.msg);
                 
             }, (error) => {
                 console.log('에러 : ' + JSON.stringify(error));
             })
 
     }
-openFilters() {
+openFilters(msg:string) {
     let alert = this.alertController.create({
-        title: 'Example',
-        subTitle: 'Example subtitle',
+      
+        subTitle: msg,
         buttons: ['OK']
     });
 
