@@ -18,7 +18,7 @@
 				document.write(date.getFullYear());
 			</script>
 			<a href="${pageContext.request.contextPath}/main/main.do">2조</a>
-			, made with love for a better web
+			, made with bitcamp bit90 members 
 		</p>
 	</div>
 	</footer>

@@ -14,7 +14,7 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	OrderMapper mapper;
 	
-	public int registOrder(ArrayList<HashMap<String,String>> order){
+	public void registOrder(ArrayList<HashMap<String,String>> order){
 		
 		Map<String, Object> myMap = new HashMap<>();
 		
@@ -54,6 +54,5 @@ public class OrderServiceImpl implements OrderService {
 				}
 			}
 		}
-		return sNo;
 	}
 }

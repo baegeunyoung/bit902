@@ -61,7 +61,7 @@
 													<input type="file" name="attachFile" id="imgInp">
 												</div>
 	                                        </div>
-	                               			<div><img id="blah"  style="width:300px;height:150px;"/></div>
+	                               			<div><img id="blah"  style="max-width:300px;max-height:150px;"/></div>
 	                               </div>
 	                               <button type="submit" class="btn btn-primary pull-right">등록하기</button>    
 								   </form>
@@ -125,7 +125,7 @@ function makeMenu(){
 				html += "<td>";
 			for(var j=0; j < file.length; j++){
 				if(menus[i].menuNo == file[j].menuNo){
-		html+=                  	"<img src='/bit902web/upload"+file[j].filePath+"/"+file[j].systemName + "'style='height: 100px; width: 100px;'>";
+		html+=                  	"<img src='/bit902web/upload"+file[j].filePath+"/"+file[j].systemName + "'style='max-height: 100px; max-width: 100px;'>";
 				}
 			}
 			html += "</td>";
@@ -155,7 +155,7 @@ function makeMenu(){
 		var html="";
   	
 		html+=				 "<tr id='tr" + result.menu[0].menuNo + "' style='height:100px;width:100%'>";
-		html+=                  	"<td><img src='/bit902web/upload"+result.menufile[0].filePath+"/"+result.menufile[0].systemName + "'style='height: 100px; width: 100px;'></td>";
+		html+=                  	"<td><img src='/bit902web/upload"+result.menufile[0].filePath+"/"+result.menufile[0].systemName + "'style='max-height: 100px; max-width: 100px;'></td>";
 		html+=                      "<input type='hidden' name='menuNo' value='"+result.menu[0].menuNo+"'>";
 		html+=                      "<td>"+"<input type='text' class='form-control' name='name' value='"+result.menu[0].name+"'></td>";
 		html+=                      "<td>"+"<input name='size'class='form-control' value='"+result.menu[0].size+"'></td>";
@@ -169,7 +169,7 @@ function makeMenu(){
   		}).
   		
   		fail(function(jqXhr, testStatus, errorText){
-			swal("에러발생1 :" + errorText);
+			alert("에러발생1 :" + errorText);
   		});
 }
 
@@ -208,7 +208,7 @@ function writeform(){
 			makeMenu();
 		})
 		.fail(function(jqXhr, testStatus, errorText){
-			swal("에러발생1 :" + errorText);
+			alert("에러발생1 :" + errorText);
 });
 	
 	}

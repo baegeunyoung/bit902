@@ -84,7 +84,7 @@ input::-moz-placeholder {
 				</div>
 			</div>
 			</nav>
-			<div class="content" style="background: url('/bit902web/img/business.gif') no-repeat center center;">
+			<div class="content" style="background: url('/bit902web/img/worldmap.png') no-repeat center center ;">
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-md-12">
@@ -94,7 +94,7 @@ input::-moz-placeholder {
 							<%
 								if (session.getAttribute("permitYn").equals("n") || session.getAttribute("permitYn").equals("r")) {
 							%>
-							<h3>관리자 승인 후 이용하실 수 있습니다.</h3>
+							<div style="font-size: 30px;">관리자 승인 후 이용하실 수 있습니다.</div><br>
 							<a href="${pageContext.request.contextPath}/login/logout.do">
 							<i class="material-icons">power_settings_new</i>
 							로그아웃

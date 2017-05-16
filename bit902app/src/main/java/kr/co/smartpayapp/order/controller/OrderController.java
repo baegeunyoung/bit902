@@ -23,13 +23,7 @@ public class OrderController {
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
-	public ModelAndView orderRegist(@RequestBody ArrayList<HashMap<String,String>> order) throws Exception {
-		System.out.println("옴");
-		int sNo = orderService.registOrder(order);
-		
-		ModelAndView mav = new ModelAndView("/bit902app/view/book/a.jsp");
-		mav.addObject("sNo", sNo);
-		
-		return mav;
+	public void orderRegist(@RequestBody ArrayList<HashMap<String,String>> order) throws Exception {
+		orderService.registOrder(order);
 	}
 }

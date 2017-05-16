@@ -5,9 +5,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<jsp:include page="../../include/baseInclude.jsp" flush="true"></jsp:include>
 <title>이벤트 관리</title>
 </head>
-<script src="../../js/jquery-3.1.1.js"></script>
 <body>
 
 <div class="wrapper">
@@ -80,7 +80,7 @@
 	</div>
 <script>
 	if('${msg}'){
-		swal('${msg}');
+		alert('${msg}');
 	}
 	
 	$(document).ready(function() {

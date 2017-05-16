@@ -188,7 +188,7 @@ input::-moz-placeholder {
 				return false;
 			}
 
-			swal("회원 정보 수정이 완료되었습니다.");
+			alert("회원 정보 수정이 완료되었습니다.");
 			return true;
 		});
 	</script>
