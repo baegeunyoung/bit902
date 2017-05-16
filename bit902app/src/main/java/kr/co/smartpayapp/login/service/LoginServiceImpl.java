@@ -24,7 +24,6 @@ public class LoginServiceImpl implements LoginService{
 	
 	@Override
 	public String retrieveBuyer(String userID) {
-		System.out.println("Move Service " + userID);
 		return mapper.retrieveBuyer(userID);
 	}
 }
