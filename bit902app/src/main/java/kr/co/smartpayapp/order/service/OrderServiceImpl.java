@@ -29,7 +29,7 @@ public class OrderServiceImpl implements OrderService {
 		
 		int maxOrderNo = mapper.selectMaxOrderNo();
 		
-		for (int i = 0 ; i < order.size() - 4; i++) {
+		for (int i = 0 ; i < order.size() - 5; i++) {
 			Map<String, Object> menu = new HashMap<>();
 			if (Integer.parseInt(order.get(i).get("quantity")) != 0) {
 				menu.put("orderNo", maxOrderNo);
