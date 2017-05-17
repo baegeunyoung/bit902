@@ -29,22 +29,7 @@ from tb_seller
 where seller_no = #{sellerNo}
 </select>
 
-<select id="findSellerId" resultType="String" parameterType="sellerVO">
-select id
-from tb_seller
-where name = #{name},
-and cellphone_number = #{cellphoneNumber}
-</select>
-
-<select id="findSellerPassword" resultType="String" parameterType="sellerVO">
-select password
-from tb_seller
-where id = #{id},
-and name = #{name},
-and cellphone_number = #{cellphoneNumber}
-</select>
-
-<select id="searchSeller" resultType="String" parameterType="String">
+<select id="searchSeller" resultType="string" parameterType="String">
 select id
 from tb_seller
 where id = #{id}

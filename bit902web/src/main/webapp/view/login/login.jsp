@@ -49,13 +49,15 @@ input::-moz-placeholder {
 						<input type="password" name="password" placeholder="비밀번호를 입력하세요" class="form-control" style="margin-bottom: 10px;">
 						<span class="material-input"></span><br>
 					</div>
+					<br>
 					<button id="login" class="btn btn-primary pull-center">로그인</button>
 					<a href="${pageContext.request.contextPath}/login/joinForm.do" role='button' class="btn btn-primary pull-center">회원가입</a>
-					<br>
 				</div>
 			</form>
 		</div>
 	</div>
-	<c:import url="../../include/footer.jsp" />
+	<script>
+		swal("로그인 정보가 잘못되었습니다.");
+	</script>
 </body>
 </html>
