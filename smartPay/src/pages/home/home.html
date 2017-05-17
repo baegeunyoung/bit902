@@ -53,6 +53,7 @@
  <!--   <ion-input type="text" [(ngModel)]="data.search" placeholder="매장이름을 입력하세요" ></ion-input> -->
  <ion-searchbar
       [(ngModel)]="data.search"
+      placeholder="상점이름을 입력하세요"
      [showCancelButton]="shouldShowCancel"
   (ionInput)="search()"
   (ionCancel)="search()">
@@ -95,7 +96,7 @@
     </ion-thumbnail>
     <h2>{{search.name}}</h2>
     <p>{{search.adress}}</p>
-    <button ion-button clear item-right (click)="detailStore(i)" color="danger">View</button>
+    <button ion-button clear item-right (click)="detailStore(i)" color="danger"> <ion-icon style="zoom:3;" name="arrow-dropright"></ion-icon></button>
   </ion-item>
       </div>
    </div>

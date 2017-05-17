@@ -421,8 +421,8 @@ export class HomePage {
 openFilters() {
     let alert = this.alertCtrl.create({
        
-        title: 'Example',
-        subTitle: 'Example subtitle',
+        title: '주문알림',
+        subTitle: '주문이 완료되었습니다.',
         buttons: ['OK']
     });
     alert.present();
