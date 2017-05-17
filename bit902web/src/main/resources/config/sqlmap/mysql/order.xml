@@ -64,18 +64,5 @@
 		   set order_state = 2
 		 where order_no = #{completeNo}
 	</update>
-	
-<!-- 	<select id="trigger" resultType="int"> -->
-<!-- 		delimiter // -->
-<!-- 		create trigger order_trigger -->
-<!-- 		after insert -->
-<!-- 		on tb_order -->
-<!-- 		for each row -->
-<!-- 			begin -->
-<!-- 				set @msg = 'select seller_no -->
-<!-- 							  from tb_order -->
-<!-- 							 limit 0, 1'; -->
-<!-- 			end // -->
-<!-- 		delimiter; -->
-<!-- 	</select> -->
+
 </mapper>
