@@ -37,7 +37,9 @@ input::-moz-placeholder {
 		<div class="container-fluid">
 			<br>
 			<br>
-			<img src="/bit902web/img/orderthere.png" width="400px"/>
+			<a href="${pageContext.request.contextPath}/main/main.do" class="simple-text">
+				<img src="/bit902web/img/orderthere.png" width="400px"/>
+			</a>
 			<br>
 
 			<div id="success"></div>

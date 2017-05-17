@@ -56,5 +56,8 @@ input::-moz-placeholder {
 			</form>
 		</div>
 	</div>
+	<script>
+		swal("로그인 정보가 잘못되었습니다.");
+	</script>
 </body>
 </html>
