@@ -6,6 +6,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>메뉴 관리</title>
+<style>
+	.filebox label {
+		display: inline-block;
+		padding: .5em .75em;
+		color: #fff;
+		font-size: 13px;
+		line-height: normal;
+		vertical-align: middle;
+		background-color: #9c27b0;
+		cursor: pointer;
+		border: 1px solid #9c27b0;
+		border-bottom-color: #9c27b0;
+		border-radius: .25em;
+	}
+	.filebox input[type="file"] {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip:rect(0,0,0,0);
+		border: 0;
+	}
+</style>
 </head>
 <body>
 	<div class="wrapper">
@@ -56,9 +81,9 @@
 												</div>
 	                                        </div>
 	                                        <div class="col-md-3">
-												<div >
-													<label class="control-label">메뉴이미지</label>
-													<input type="file" name="attachFile" id="imgInp">
+												<div class="filebox">
+													<label for="imgInp">이미지 등록</label>
+													<input type="file" name="attachFile" id="imgInp"/>
 												</div>
 	                                        </div>
 	                               			<div><img id="blah"  style="max-width:300px;max-height:150px;"/></div>

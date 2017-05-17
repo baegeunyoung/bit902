@@ -50,7 +50,7 @@ td {
 								<td>
 									<div class="form-group">
 										<input type="text" id="id" name="id" placeholder="아이디" class="form-control">
-										<input id="search"type="button" value="중복확인" onclick="return selctId()" style="background-color: #9c27b0; border-color: #9c27b0;" class="btn-primary pull-center">
+										<input id="search" type="button" value="중복확인" onclick="return selctId()" style="background-color: #9c27b0; border-color: #9c27b0;" class="btn-primary pull-center">
 									</div>
 								</td>
 							</tr>

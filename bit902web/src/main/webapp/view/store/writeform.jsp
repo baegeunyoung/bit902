@@ -24,6 +24,29 @@
 	#sample5_address2 {
 		font-size: 25px;
 	}
+	.filebox label {
+		display: inline-block;
+		padding: .5em .75em;
+		color: #fff;
+		font-size: 13px;
+		line-height: normal;
+		vertical-align: middle;
+		background-color: #9c27b0;
+		cursor: pointer;
+		border: 1px solid #9c27b0;
+		border-bottom-color: #9c27b0;
+		border-radius: .25em;
+	}
+	.filebox input[type="file"] {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip:rect(0,0,0,0);
+		border: 0;
+	}
 </style>
 <body>
 <div class="wrapper">
@@ -91,7 +114,10 @@
 												<td>　</td>
 												<td></td>
 												<td>상점 이미지</td>
-												<td><input type="file" name="attachFile" id="imgInp" /></td>
+												<td class="filebox">
+													<label for="imgInp">이미지 등록</label>
+													<input type="file" name="attachFile" id="imgInp"/>
+												</td>
 												<td>　</td>
 											</tr>
 											<tr><td>　</td></tr>
@@ -191,7 +217,10 @@
 												<td>　</td>
 												<td></td>
 												<td>상점 이미지</td>
-												<td><input type="file" name="attachFile" id="imgInp" /></td>
+												<td class="filebox">
+													<label for="imgInp">이미지 등록</label>
+													<input type="file" name="attachFile" id="imgInp"/>
+												</td>
 												<td>　</td>
 											</tr>
 											<tr><td>　</td></tr>
@@ -204,7 +233,7 @@
 												<td colspan="3">
 													<div style="float: left; height:100%; display:table-cell;">
 														<input type="text" id="sample5_address" name="adress" style="display: none" value="${store.adress}"/>
-														<input class="btn btn-default btn-lg" type="button" onclick="sample5_execDaumPostcode()" value="주소 검색" style="float: left;">
+														<input class="btn btn-primary btn-lg" type="button" onclick="sample5_execDaumPostcode()" value="주소 검색" style="float: left;">
 													</div>
 													<div id="sample5_address2" style="float: left; height:100%; display:table-cell;"><br>${store.adress}</div>
 												</td>

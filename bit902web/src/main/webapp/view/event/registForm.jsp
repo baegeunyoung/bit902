@@ -7,6 +7,31 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <jsp:include page="../../include/baseInclude.jsp" flush="true"></jsp:include>
 <title>이벤트 관리</title>
+<style>
+	.filebox label {
+		display: inline-block;
+		padding: .5em .75em;
+		color: #fff;
+		font-size: 13px;
+		line-height: normal;
+		vertical-align: middle;
+		background-color: #9c27b0;
+		cursor: pointer;
+		border: 1px solid #9c27b0;
+		border-bottom-color: #9c27b0;
+		border-radius: .25em;
+	}
+	.filebox input[type="file"] {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip:rect(0,0,0,0);
+		border: 0;
+	}
+</style>
 </head>
 <body>
 
@@ -48,9 +73,10 @@
 									      </div>
 									    </div>
 							      		  <label class="col-lg-2 control-label">이벤트이미지</label>
-									      <div>
-							         		<input type="file" name="attachFile" id="imgInp"/>
-							    		  </div>
+									      <div class="filebox">
+												<label for="imgInp">이미지 등록</label>
+												<input type="file" name="attachFile" id="imgInp"/>
+										  </div>
 												<button class="btn btn-primary pull-right">저장</button>   
 											</form>
 										</div>
