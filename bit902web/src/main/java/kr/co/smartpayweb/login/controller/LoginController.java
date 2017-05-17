@@ -37,6 +37,7 @@ public class LoginController extends HttpServlet{
 		// 아이디나 비밀번호가 db에 없을 때
 		if(seller == null) {
 			map.put("msg", "입력하신 정보가 올바르지 않습니다.");
+			System.out.println("2");
 			RequestDispatcher rd = request.getRequestDispatcher("../view/login/login.jsp");
 			rd.forward(request, response);
 			return map;
@@ -50,11 +51,17 @@ public class LoginController extends HttpServlet{
 			login.setId(seller.getId());
 			login.setPassword(seller.getPassword());
 			
+//			login.setSellerNo(seller.getSellerNo());
+			System.out.println(seller.getId() + seller.getPassword() + seller.getSellerNo());
 			int sellerNo = seller.getSellerNo();
 			String name = seller.getName();
 			String cellphoneNumber = seller.getCellphoneNumber();
 			
+
+			
+			System.out.println(sellerNo);
 			map.put("msg", "로그인성공");
+			System.out.println(cellphoneNumber+"핸드폰번호");
 			session.setAttribute("seller", seller);
 			session.setAttribute("id", id);
 			session.setAttribute("name", name);
@@ -62,6 +69,8 @@ public class LoginController extends HttpServlet{
 			session.setAttribute("sellerNo", sellerNo);
 			session.setAttribute("permitYn", seller.getPermitYn());
 			
+			
+//			request.setAttribute("id", id);
 			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 			rd.forward(request, response);
 			return map;
@@ -70,6 +79,7 @@ public class LoginController extends HttpServlet{
 		// 아이디와 비밀번호 중 하나만 일치할 때
 		else {
 			map.put("msg", "입력하신 정보가 올바르지 않습니다.");
+			System.out.println("4");
 			RequestDispatcher rd = request.getRequestDispatcher("../view/login/login.jsp");
 			rd.forward(request, response);
 			return map;
@@ -80,24 +90,23 @@ public class LoginController extends HttpServlet{
 		@RequestMapping("/login/logout.do")
 		public void logout(HttpSession session,
 					HttpServletRequest request, HttpServletResponse response) throws Exception {
+//		    Map<String, Object> map = new HashMap<>();
 			session.invalidate();	
+//			map.put("msg", "로그아웃되었습니다.");
+//			response.sendRedirect("../view/login/login.jsp");
 			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 			rd.forward(request, response);
+//			return map;	
 		}
-
-	// 회원가입승인
-	@RequestMapping("/login/permitSeller.do")
-	public void permitSeller(String permit) throws Exception {
-		service.permitSeller(permit);
-	}
 
 		
 	// 회원가입
 	@RequestMapping("/login/insertSeller.do")
 	public void insertSeller(SellerVO seller, 
 	HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println(seller);
 		service.insertSeller(seller);
-		RequestDispatcher rd = request.getRequestDispatcher("../view/main/main.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("../view/login/login.jsp");
 		rd.forward(request, response);
 	}
 	
@@ -105,19 +114,41 @@ public class LoginController extends HttpServlet{
 	@ResponseBody
 	@RequestMapping("/login/searchOneSeller.do")
 	public SellerVO searchOneSeller(int sellerNo, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
 		SellerVO seller = service.searchOneSeller(sellerNo);
+		
+		System.out.println(seller+"주소값");
 		session.setAttribute("id", seller.getId());
 		session.setAttribute("name", seller.getName());
 		session.setAttribute("cellphoneNumber", seller.getCellphoneNumber());
+		System.out.println(seller.getCellphoneNumber()+"핸");
+		System.out.println(seller.getId()+"아이디");
+		System.out.println(seller.getName()+"이름");
 		return seller;
 	}
 	
+	// id 찾기
+	@ResponseBody
+	@RequestMapping("/login/findSellerId.do")
+	public String findSellerId(SellerVO seller, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String id = service.findSellerId(seller);
+		System.out.println(id);
+		return id;
+	}
 	
+	// 비밀번호 찾기
+	@ResponseBody
+	@RequestMapping("/login/findSellerPassword.do")
+	public String findSellerPassword(SellerVO seller, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String password = service.findSellerPassword(seller);
+		return password;
+	}
 	
     //id로 회원정보 찾기 
 	@ResponseBody
 	@RequestMapping("/login/searchSeller.do")
 	public String searchSeller(String id, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println(id);
 		String returnId = service.searchSeller(id);
 		if(id.equals(returnId)) {
 			return "exist";			
@@ -143,7 +174,5 @@ public class LoginController extends HttpServlet{
 			RequestDispatcher rd = request.getRequestDispatcher("../view/login/login.jsp");
 			rd.forward(request, response);
     }
-	
-
 }
-
+	

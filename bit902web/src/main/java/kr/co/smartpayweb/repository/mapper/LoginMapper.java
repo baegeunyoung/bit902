@@ -14,6 +14,12 @@ public interface LoginMapper {
 	// 회원 정보 조회
 	public SellerVO searchOneSeller(int sellerNo) throws Exception;
 	
+	// id 찾기
+    public String findSellerId(SellerVO seller) throws Exception;
+
+    // password 찾기
+    public String findSellerPassword(SellerVO seller) throws Exception;
+	
 	// id로 회원정보 찾기
 	public String searchSeller(String id) throws Exception;
 	
@@ -26,4 +32,7 @@ public interface LoginMapper {
 	// 회원가입승인
 	public void permitSeller(String permit) throws Exception;
 
+
+	
+	
 }
