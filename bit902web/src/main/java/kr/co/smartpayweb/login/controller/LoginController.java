@@ -50,7 +50,6 @@ public class LoginController extends HttpServlet{
 			login.setId(seller.getId());
 			login.setPassword(seller.getPassword());
 			
-//			login.setSellerNo(seller.getSellerNo());
 			int sellerNo = seller.getSellerNo();
 			String name = seller.getName();
 			String cellphoneNumber = seller.getCellphoneNumber();
@@ -63,7 +62,6 @@ public class LoginController extends HttpServlet{
 			session.setAttribute("sellerNo", sellerNo);
 			session.setAttribute("permitYn", seller.getPermitYn());
 			
-//			request.setAttribute("id", id);
 			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 			rd.forward(request, response);
 			return map;
@@ -99,7 +97,7 @@ public class LoginController extends HttpServlet{
 	public void insertSeller(SellerVO seller, 
 	HttpServletRequest request, HttpServletResponse response) throws Exception {
 		service.insertSeller(seller);
-		RequestDispatcher rd = request.getRequestDispatcher("../view/login/login.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("../view/main/main.jsp");
 		rd.forward(request, response);
 	}
 	

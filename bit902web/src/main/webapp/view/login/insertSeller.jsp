@@ -132,6 +132,13 @@ td {
 			var name = f.name;
 			var cellNo = f.cellphoneNumber;
 
+			if (returnId === "exist") {
+				swal("같은 아이디가 존재합니다.");
+				$("#id").val("");
+				id.focus();
+				return false;
+			}
+			
 			if (id.value === "") {
 				swal("아이디를 입력 해 주세요.");
 				id.focus();
