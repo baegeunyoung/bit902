@@ -9,7 +9,7 @@
         </div>
           </ion-list-header>
         <button id="background" class="homebutton" ion-item (click)="openPage(rootPage)"> <ion-icon ios="ios-home" md="md-home"></ion-icon>&nbsp;&nbsp;홈으로</button>
-        <button *ngIf="userName == null" id="background" class="registbutton" ion-item (click)="openPage(registerPage)"> <ion-icon ios="ios-person-add" md="md-person-add"></ion-icon>&nbsp;&nbsp;회원등록</button>
+        <button *ngIf="userName == null" id="background" class="registbutton" ion-item (click)="openPage(registerPage)"> <ion-icon ios="ios-person-add" md="md-person-add"></ion-icon>&nbsp;&nbsp;회원가입</button>
         <button id="background" class="loginbutton" *ngIf="userName==null" ion-item (click)="openPage(loginPage)">  <ion-icon name="power"></ion-icon>&nbsp;&nbsp;로그인</button>
         <button id="background" class="logoutbutton" *ngIf="userName!=null" ion-item (click)="openPage(logoutPage)"><ion-icon name="power"></ion-icon>&nbsp;&nbsp;로그아웃</button>
       </ion-list>
