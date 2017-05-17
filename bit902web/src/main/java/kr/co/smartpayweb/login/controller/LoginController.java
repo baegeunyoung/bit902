@@ -57,7 +57,33 @@ public class LoginController extends HttpServlet{
 			String name = seller.getName();
 			String cellphoneNumber = seller.getCellphoneNumber();
 			
-
+//			List<BeaconVO> beacon = service.searchBeacon(sellerNo);
+//			Map<String, List<BeaconVO>> beaconList = new HashMap<String, List<BeaconVO>>();
+//			beaconList.put("beacon2", beacon);
+//			
+//			for(int i=0; i<=beaconList.size();i++) {
+//			session.setAttribute("beacon3", beaconList.get(i));
+//			System.out.println(beaconList.get(i) + "비콘정보조회");
+//			
+//			}
+			//for(int i=0; i<=beaconList.size(); i++) {
+//				map.put(beaconList);
+				//Map<String, Object> map2 = new HashMap<String, Object>();
+//				map2.put("beacon" + i, beaconList.get(i).getBeaconNo());
+//				map2.put("serial" + i, beaconList.get(i).getSerialNo());
+//				map2.put("table" + i, beaconList.get(i).getTableNo());
+				//map.putAll(map2);
+				//}
+			
+//			System.out.println(beaconList.get(0));
+//			
+//			for(int i=0; i<=beaconList.size(); i++){
+//				
+//			map.put("sellerNo", beaconList.get(i).getSellerNo());
+//			map.put("beaconNo", beaconList.get(i).getBeaconNo());
+//			map.put("serialNo", beaconList.get(i).getSerialNo());
+//			map.put("tableNo", beaconList.get(i).getTableNo());
+//			}
 			
 			System.out.println(sellerNo);
 			map.put("msg", "로그인성공");
@@ -99,6 +125,12 @@ public class LoginController extends HttpServlet{
 //			return map;	
 		}
 
+	// 회원가입승인
+	@RequestMapping("/login/permitSeller.do")
+	public void permitSeller(String permit) throws Exception {
+		service.permitSeller(permit);
+	}
+
 		
 	// 회원가입
 	@RequestMapping("/login/insertSeller.do")
@@ -132,7 +164,7 @@ public class LoginController extends HttpServlet{
 	@RequestMapping("/login/findSellerId.do")
 	public String findSellerId(SellerVO seller, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String id = service.findSellerId(seller);
-		System.out.println(id);
+		System.out.println(2);
 		return id;
 	}
 	
@@ -174,5 +206,42 @@ public class LoginController extends HttpServlet{
 			RequestDispatcher rd = request.getRequestDispatcher("../view/login/login.jsp");
 			rd.forward(request, response);
     }
-}
 	
+	
+//	@ResponseBody
+//	@RequestMapping("/searchSeller.do")
+//	public SellerVO searchSeller(SellerVO seller) throws Exception {
+//		System.out.println(seller);
+//		return service.searchSeller(seller);
+//	}
+//	
+//	@ResponseBody
+//	@RequestMapping("/searchBuyer.do")
+//	public Map<String, Object> searchBuyer(String id, String password) throws Exception {
+//		Map<String, Object> map = new HashMap<>();
+//		return service.searchBuyer(id, password);
+//	}
+	
+//	@ResponseBody
+//	@RequestMapping("/insertBuyer.do")
+//	public Map<String, Object> insertBuyer(BuyerVO buyer) throws Exception {
+//		Map<String, Object> map = new HashMap<>();
+//		return service.insertBuyer(buyer);
+//	}
+	
+//	@ResponseBody
+//	@RequestMapping("/modifyBuyer.do")
+//	public Map<String, Object> modifyBuyer(BuyerVO buyer) throws Exception {
+//		Map<String, Object> map = new HashMap<>();
+//		return service.modifyBuyer(buyer);
+//	}
+	
+//	@ResponseBody
+//	@RequestMapping("/deleteBuyer.do")
+//	public void deleteBuyer(int buyerNo) throws Exception {
+//		service.deleteBuyer(buyerNo);
+	
+
+	
+}
+

@@ -58,7 +58,32 @@ public class LoginServiceImpl implements LoginService {
 			dao.permitSeller(permit);
 		}
 		
+		//비콘 정보 조회
+//		public List<BeaconVO> searchBeacon(int sellerNo) throws Exception {
+//			return dao.searchBeacon(sellerNo);
+//		}
+//	
+//	public Map<String, Object> searchBuyer(String id, String password) throws Exception {
+//	Map<String, Object> map = new HashMap<>();
+//	map.put("list", dao.searchBuyer(id, password));
+//	return map;
+//}
 
+//	public Map<String, Object> insertBuyer(BuyerVO buyer) throws Exception {
+//		Map<String, Object> map = new HashMap<>();
+//		map.put("list" , dao.insertBuyer(buyer));
+//		return map;
+//    }
+	
+//	public Map<String, Object> modifyBuyer(BuyerVO buyer) throws Exception {
+//		Map<String, Object> map = new HashMap<>();
+//		map.put("list", dao.modifyBuyer(buyer));
+//		return map;
+//	}
+	
+//	public void deleteBuyer(int buyerNo) throws Exception {
+//		dao.deleteBuyer(buyerNo);
+//	}
 
 }
 

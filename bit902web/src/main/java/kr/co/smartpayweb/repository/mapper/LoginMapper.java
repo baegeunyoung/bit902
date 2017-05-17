@@ -32,7 +32,16 @@ public interface LoginMapper {
 	// 회원가입승인
 	public void permitSeller(String permit) throws Exception;
 
-
+	// 비콘정보조회
+//	public List<BeaconVO> searchBeacon(int sellerNo) throws Exception;
+	
+//	public List<BuyerVO> searchBuyer(String id, String password) throws Exception;
+	
+//	public BuyerVO insertBuyer(BuyerVO Buyer) throws Exception;
+		
+//	public BuyerVO modifyBuyer(BuyerVO Buyer) throws Exception;
+	
+//	public void deleteBuyer(int buyerNo) throws Exception;
 	
 	
 }
