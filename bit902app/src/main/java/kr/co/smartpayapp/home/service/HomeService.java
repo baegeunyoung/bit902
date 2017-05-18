@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.co.smartpayapp.repository.vo.EventVO;
 import kr.co.smartpayapp.repository.vo.HomeEventInfoVO;
+import kr.co.smartpayapp.repository.vo.OrderHistoryVO;
 import kr.co.smartpayapp.repository.vo.StoreVO;
 
 public interface HomeService {
@@ -19,4 +20,6 @@ public interface HomeService {
 	public List<HomeEventInfoVO> retrieveHomeInfo();
 	
 	public List<StoreVO> retrieveHomeSearch(String search);
+	
+	public List<OrderHistoryVO> retrieveOrderHistory(String userName);
 }

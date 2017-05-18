@@ -13,6 +13,7 @@ import { BuyerPage } from '../pages/buyer/buyer';
 import { StampPage } from '../pages/stamp/stamp';
 import { FoodReadyPage } from '../pages/foodReady/foodReady';
 import { Storage } from '@ionic/storage';
+import { OrderHistoryPage }  from '../pages/orderHistory/orderHistory';
 
 @Component({
   templateUrl: 'app.html'
@@ -31,6 +32,7 @@ export class MyApp {
   buyerPage = BuyerPage;
   stampPage = StampPage;
   foodReadyPage = FoodReadyPage;
+  orderHistoryPage = OrderHistoryPage;
   
   constructor(public menu: MenuController, platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public storage: Storage, private events: Events) {
     events.subscribe('login', (userEventData) => {

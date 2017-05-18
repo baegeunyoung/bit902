@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu" id="menuicon"></ion-icon>
+    </button>
+    <ion-title>
+      주문확인
+    </ion-title>     
+  </ion-navbar> 
+</ion-header>
+
+ <ion-content>
+    <ion-list>
+    <div *ngFor="let history of historyList; let i = index">
+    <ion-item>
+        <ion-thumbnail item-left>
+            <img src = "http://14.32.66.123:10002/bit902web/upload/{{history.filePath}}/{{history.systemName}}"/>
+        </ion-thumbnail>
+        <div>
+         <p>{{history.orderDate | date: 'yyyy/MM/dd H:mm' }}</p>
+         <p>{{ history.storeName }} {{ history.menuName }} {{ history.quantity }}개 </p>
+        </div>
+        <p id="orderComplete" *ngIf="history.orderState == 0">주문접수중</p>
+        <p id="cooking" *ngIf="history.orderState == 1">조리중</p>
+        <p id="cookComplete" *ngIf="history.orderState == 2">조리완료</p>
+    </ion-item>
+    </div>
+    </ion-list>
+</ion-content>

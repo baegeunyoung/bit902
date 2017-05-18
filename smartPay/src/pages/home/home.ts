@@ -102,7 +102,7 @@ export class HomePage {
        this.listenToBeaconEvents();
     }
   }
-//비콘검색중지
+  //비콘검색중지
   stopScanning() {
      IBeacon.stopRangingBeaconsInRegion(this.region) 
             .then(
@@ -308,18 +308,18 @@ export class HomePage {
  }
 
 
-   //디바이스토큰 저장하기 + 푸시알림시 이벤트
-   initPushNotification() {
-     const options: PushOptions = {
-      android: {
-        senderID: "214091746342"
-      },
-      ios: {
-        alert: "true",
-        badge: false,
-        sound: "true"
-      },
-      windows: {}
+  //디바이스토큰 저장하기 + 푸시알림시 이벤트
+  initPushNotification() {
+    const options: PushOptions = {
+    android: {
+      senderID: "214091746342"
+    },
+    ios: {
+      alert: "true",
+      badge: false,
+      sound: "true"
+    },
+    windows: {}
     };
     const pushObject: PushObject = this.push.init(options);
 
@@ -417,8 +417,9 @@ export class HomePage {
 	}
 		})
 	}
-//alert 변경
-openFilters() {
+
+  //alert 변경
+  openFilters() {
     let alert = this.alertCtrl.create({
        
         title: '주문알림',
@@ -426,12 +427,10 @@ openFilters() {
         buttons: ['OK']
     });
     alert.present();
-}
+  }
 
   //주문내역 보내기
   order(){
-
-
    this.tokenObj = {"token": this.token};
    this.majorObj = {"sellerNo": this.major};
    this.minorObj = {"tableNo": this.minor-5000};
@@ -465,7 +464,6 @@ openFilters() {
 
 //노드에 신호 전달
   nodeCall(){
-
     var socket = io.connect("http://14.32.66.123:8888");
 	  var loginId = this.token;
     var recvId = this.major;

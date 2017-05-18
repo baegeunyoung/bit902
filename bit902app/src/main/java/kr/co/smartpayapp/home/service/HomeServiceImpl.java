@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import kr.co.smartpayapp.repository.mapper.HomeMapper;
 import kr.co.smartpayapp.repository.vo.EventVO;
 import kr.co.smartpayapp.repository.vo.HomeEventInfoVO;
+import kr.co.smartpayapp.repository.vo.OrderHistoryVO;
 import kr.co.smartpayapp.repository.vo.StoreVO;
 
 @Service
@@ -43,5 +44,9 @@ public class HomeServiceImpl implements HomeService{
 	
 	public List<StoreVO> retrieveHomeSearch(String search) {
 		return dao.selectHomeSearch(search);
+	}
+	
+	public List<OrderHistoryVO> retrieveOrderHistory(String userName) {
+		return dao.selectOrderHistory(userName);
 	}
 }

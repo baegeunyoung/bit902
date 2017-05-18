@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.smartpayapp.home.service.HomeService;
 import kr.co.smartpayapp.repository.vo.HomeEventInfoVO;
+import kr.co.smartpayapp.repository.vo.OrderHistoryVO;
 import kr.co.smartpayapp.repository.vo.StoreVO;
 
 @RestController
@@ -31,6 +32,13 @@ public class HomeController {
     	List<StoreVO> infoList = new ArrayList<>();
     	infoList = homeService.retrieveHomeSearch(search);
     	return infoList;
+    }
+    
+    @RequestMapping("/orderHistory.do")
+    public List<OrderHistoryVO> getOrderHistory(@RequestBody String userName) throws Exception {
+    	List<OrderHistoryVO> orderHistoryList = new ArrayList<>();
+    	orderHistoryList = homeService.retrieveOrderHistory(userName);
+    	return orderHistoryList;
     }
 
 }

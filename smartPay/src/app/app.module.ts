@@ -17,6 +17,7 @@ import { StampPage } from  '../pages/stamp/stamp';
 import { FoodReadyPage } from  '../pages/foodReady/foodReady';
 import { DetailsPage } from '../pages/details/details';
 import { validityCheck } from '../pages/register/registerService';
+import { OrderHistoryPage }  from '../pages/orderHistory/orderHistory';
 //providers
 import { HttpWithToken } from '../providers/http-with-token';
 import { HttpModule, JsonpModule} from '@angular/http';
@@ -36,7 +37,8 @@ import { Facebook } from '@ionic-native/facebook';
     StampPage,
     FoodReadyPage,
     DetailsPage,
-    LogoutPage
+    LogoutPage,
+    OrderHistoryPage
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,8 @@ import { Facebook } from '@ionic-native/facebook';
     StampPage,
     FoodReadyPage,
     DetailsPage,
-    LogoutPage
+    LogoutPage,
+    OrderHistoryPage
   ],
   providers: [
     StatusBar,
