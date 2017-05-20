@@ -6,10 +6,13 @@ import {NavParams} from "ionic-angular";
 })
 export class DetailsPage {
   pushMessage: string = "push message will be displayed here";
-
+  filePath: string;
   constructor(public params: NavParams) {
     if (params.data.message) {
       this.pushMessage = params.data.message;
+    }
+    if (params.data.filePath) {
+      this.filePath = params.data.filePath;
     }
   }
 }

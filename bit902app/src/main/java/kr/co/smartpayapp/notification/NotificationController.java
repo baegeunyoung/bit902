@@ -31,12 +31,12 @@ public class NotificationController {
      */
     @RequestMapping("/push.do")
 	public void pushToFCM(@RequestBody EventVO eventVO) throws Exception {
-    	System.out.println(eventVO.getSellerNo());
-    	System.out.println("토큰길이 :" + eventVO.getToken().length());
+    	
     	DEVICE_TOKEN = eventVO.getToken();
     	
-    	String title = eventVO.getSellerNo() + "Notification";
-    	String message = homeService.readEvent(eventVO.getSellerNo()).getEventContent();
+    	EventVO event = homeService.readEvent(eventVO.getSellerNo());
+    	String title = event.getFilePath() + "/" + event.getSystemName();
+    	String message = event.getEventContent();
     	sendPushNotification(title, message);
 	}
 

@@ -335,16 +335,16 @@ export class HomePage {
       if (data.additionalData.foreground) {
         // if application open, show popup
         let confirmAlert = this.alertCtrl.create({
-          title: 'New Notification',
+          title: '새로운알림',
           message: data.message,
           buttons: [{
-            text: 'Ignore',
+            text: '취소',
             role: 'cancel'
           }, {
-            text: 'View',
+            text: '보기',
             handler: () => {
               //TODO: Your logic here
-              this.navCtrl.push(DetailsPage, {message: data.message});
+              this.navCtrl.push(DetailsPage, {message: data.message, filePath: data.title});
             }
           }]
         });
@@ -368,7 +368,7 @@ export class HomePage {
     let token = this.token;
     //alert(token);
     let data = JSON.stringify({token, sellerNo});
-    let link = "http://14.32.66.123:10001/bit902app/notification/push.do";
+    let link = "http://192.168.0.200:9090/bit902app/notification/push.do";
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers: headers});
     
