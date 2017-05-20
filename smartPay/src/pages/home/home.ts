@@ -368,7 +368,7 @@ export class HomePage {
     let token = this.token;
     //alert(token);
     let data = JSON.stringify({token, sellerNo});
-    let link = "http://192.168.0.200:9090/bit902app/notification/push.do";
+    let link = "http://14.32.66.123:10002/bit902app/notification/push.do";
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers: headers});
     
