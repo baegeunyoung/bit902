@@ -86,7 +86,7 @@
 													<input type="file" name="attachFile" id="imgInp"/>
 												</div>
 	                                        </div>
-	                               			<div><img id="blah"  style="max-width:300px;max-height:150px;"/></div>
+	                               			<div><img id="blah"  style="max-height: 170px; max-width: 150px;"/></div>
 	                               </div>
 	                               <button type="submit" class="btn btn-primary pull-right">등록하기</button>    
 								   </form>
@@ -150,7 +150,7 @@ function makeMenu(){
 				html += "<td>";
 			for(var j=0; j < file.length; j++){
 				if(menus[i].menuNo == file[j].menuNo){
-		html+=                  	"<img src='/bit902web/upload"+file[j].filePath+"/"+file[j].systemName + "'style='max-height: 100px; max-width: 100px;'>";
+		html+=                  	"<img src='/bit902web/upload"+file[j].filePath+"/"+file[j].systemName + "'style='max-height: 170px; max-width: 150px;'>";
 				}
 			}
 			html += "</td>";
