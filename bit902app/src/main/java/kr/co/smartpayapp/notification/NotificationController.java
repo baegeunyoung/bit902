@@ -35,17 +35,23 @@ public class NotificationController {
     	DEVICE_TOKEN = eventVO.getToken();
     	
     	EventVO event = homeService.readEvent(eventVO.getSellerNo());
-    	String title = event.getFilePath() + "/" + event.getSystemName();
+    	String title = event.getEventTitle();
     	String message = event.getEventContent();
-    	sendPushNotification(title, message);
+    	String storeName = event.getStoreName();
+    	String filePath = event.getFilePath() + "/" + event.getSystemName();
+    	sendPushNotification(title, message, filePath, storeName);
 	}
 
     /**
      * Sends notification to mobile, YOU DON'T NEED TO UNDERSTAND THIS METHOD
      */
-    private static void sendPushNotification(String title, String message) throws Exception {
+    private static void sendPushNotification(String title, String message, String filePath, String storeName) throws Exception {
         String pushMessage = "{\"data\":{\"title\":\"" +
                 title +
+                "\",\"filePath\":\"" +
+                filePath +
+                "\",\"storeName\":\"" +
+                storeName +
                 "\",\"message\":\"" +
                 message +
                 "\"},\"to\":\"" +

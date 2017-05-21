@@ -8,11 +8,17 @@
 
 <ion-content padding>
   <ion-card>
+    <ion-card-content>
+    <p id="storeName">{{ storeName }}</p>
+  </ion-card-content>  
+    <ion-card-content>
+    <p>{{ title }}</p>
+  </ion-card-content>  
      <ion-thumbnail> 
        <img src = "http://14.32.66.123:10002/bit902web/upload{{filePath}}"/>
     </ion-thumbnail>
    <ion-card-content>
-    <p>{{pushMessage}}</p>
+    <p>{{ pushMessage }}</p>
   </ion-card-content>  
 </ion-card>
 </ion-content>

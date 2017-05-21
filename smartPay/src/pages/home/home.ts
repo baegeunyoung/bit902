@@ -335,7 +335,7 @@ export class HomePage {
       if (data.additionalData.foreground) {
         // if application open, show popup
         let confirmAlert = this.alertCtrl.create({
-          title: '새로운알림',
+          title: '알림',
           message: data.message,
           buttons: [{
             text: '취소',
@@ -344,7 +344,7 @@ export class HomePage {
             text: '보기',
             handler: () => {
               //TODO: Your logic here
-              this.navCtrl.push(DetailsPage, {message: data.message, filePath: data.title});
+              this.navCtrl.push(DetailsPage, {message: data.message, title: data.title, filePath: data.additionalData.filePath, storeName: data.additionalData.storeName});
             }
           }]
         });
@@ -352,7 +352,7 @@ export class HomePage {
       } else {
         //if user NOT using app and push notification comes
         //TODO: Your logic on click of push notification directly
-        this.navCtrl.push(DetailsPage, {message: data.message});
+        this.navCtrl.push(DetailsPage, {message: data.message, title: data.title, filePath: data.additionalData.filePath, storeName: data.additionalData.storeName});
         console.log("Push notification clicked");
       }
     });
