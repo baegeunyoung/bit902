@@ -74,7 +74,7 @@ public class OrderController {
 		
 		DEVICE_TOKEN = orderVO.getDeviceToken();
 		
-		String title = orderVO.getTableNo() + "번 테이블";
+		String title = orderVO.getOrderContent();
     	String message = orderVO.getOrderContent();
     	sendPushNotification(title, message);
     	
