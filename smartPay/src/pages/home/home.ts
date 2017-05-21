@@ -11,6 +11,7 @@ import { Facebook } from '@ionic-native/facebook';
 import { DetailsPage } from '../details/details';
 import { StampPage } from '../stamp/stamp';
 import { PlaygroundPage } from '../Playground/Playground';
+import { OrderHistoryPage } from '../orderHistory/orderHistory';
 declare var IMP: any;
 declare var io: any;
 
@@ -336,7 +337,7 @@ export class HomePage {
         // if application open, show popup
         let confirmAlert = this.alertCtrl.create({
           title: '알림',
-          message: data.message,
+          message: data.title,
           buttons: [{
             text: '취소',
             role: 'cancel'
@@ -344,7 +345,12 @@ export class HomePage {
             text: '보기',
             handler: () => {
               //TODO: Your logic here
-              this.navCtrl.push(DetailsPage, {message: data.message, title: data.title, filePath: data.additionalData.filePath, storeName: data.additionalData.storeName});
+              if(data.additionalData.filePath) {
+                this.navCtrl.push(DetailsPage, {message: data.message, title: data.title, filePath: data.additionalData.filePath, storeName: data.additionalData.storeName});
+              }
+              else {
+                this.navCtrl.push(OrderHistoryPage);
+              }
             }
           }]
         });
@@ -352,7 +358,12 @@ export class HomePage {
       } else {
         //if user NOT using app and push notification comes
         //TODO: Your logic on click of push notification directly
-        this.navCtrl.push(DetailsPage, {message: data.message, title: data.title, filePath: data.additionalData.filePath, storeName: data.additionalData.storeName});
+         if(data.additionalData.filePath) {
+                this.navCtrl.push(DetailsPage, {message: data.message, title: data.title, filePath: data.additionalData.filePath, storeName: data.additionalData.storeName});
+              }
+              else {
+                this.navCtrl.push(OrderHistoryPage);
+              }
         console.log("Push notification clicked");
       }
     });
