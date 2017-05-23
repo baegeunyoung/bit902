@@ -13,14 +13,6 @@
 		<result column="file_path" property="filePath"/>
 	</resultMap>
 	
-	<resultMap type="HomeEventInfoVO" id="homeEventInfoMap">
-		<result column="name" property="storeName"/>
-		<result column="event_title" property="eventTitle"/>
-		<result column="event_content" property="eventContent"/>
-		<result column="system_name" property="systemName"/>
-		<result column="file_path" property="filePath"/>
-	</resultMap>
-	
 	<resultMap type="StoreVO" id="storeMap">
 		<result column="store_no" property="storeNo"/>
 		<result column="name" property="name"/>
