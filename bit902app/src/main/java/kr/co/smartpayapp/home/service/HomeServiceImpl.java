@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import kr.co.smartpayapp.repository.mapper.HomeMapper;
 import kr.co.smartpayapp.repository.vo.EventVO;
-import kr.co.smartpayapp.repository.vo.HomeEventInfoVO;
 import kr.co.smartpayapp.repository.vo.OrderHistoryVO;
 import kr.co.smartpayapp.repository.vo.StoreVO;
 
