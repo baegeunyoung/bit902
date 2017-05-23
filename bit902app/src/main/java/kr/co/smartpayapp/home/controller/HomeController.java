@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.smartpayapp.home.service.HomeService;
-import kr.co.smartpayapp.repository.vo.HomeEventInfoVO;
+import kr.co.smartpayapp.repository.vo.EventVO;
 import kr.co.smartpayapp.repository.vo.OrderHistoryVO;
 import kr.co.smartpayapp.repository.vo.StoreVO;
 
@@ -22,8 +22,8 @@ public class HomeController {
 	private HomeService homeService;
     
     @RequestMapping("/homeInfo.do")
-    public List<HomeEventInfoVO> HomeInfo() throws Exception {
-    	List<HomeEventInfoVO> infoList = new ArrayList<>();
+    public List<EventVO> HomeInfo() throws Exception {
+    	List<EventVO> infoList = new ArrayList<>();
     	infoList = homeService.retrieveHomeInfo();
     	return infoList;
     }

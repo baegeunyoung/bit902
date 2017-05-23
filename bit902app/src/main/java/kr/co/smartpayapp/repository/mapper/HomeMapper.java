@@ -16,7 +16,7 @@ public interface HomeMapper {
 	
 	public void eventModify(EventVO event);
 	
-	public List<HomeEventInfoVO> selectHomeEventInfo();
+	public List<EventVO> selectHomeEventInfo();
 	
 	public List<StoreVO> selectHomeSearch(String search);
 	

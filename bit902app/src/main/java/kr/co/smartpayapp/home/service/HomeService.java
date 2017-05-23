@@ -17,7 +17,7 @@ public interface HomeService {
 	
 	public void eventModify(EventVO event);
 	
-	public List<HomeEventInfoVO> retrieveHomeInfo();
+	public List<EventVO> retrieveHomeInfo();
 	
 	public List<StoreVO> retrieveHomeSearch(String search);
 	

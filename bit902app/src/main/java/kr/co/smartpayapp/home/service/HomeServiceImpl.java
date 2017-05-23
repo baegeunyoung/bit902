@@ -38,7 +38,7 @@ public class HomeServiceImpl implements HomeService{
 		dao.eventModify(event);	
 	}	
 	
-	public List<HomeEventInfoVO> retrieveHomeInfo() {
+	public List<EventVO> retrieveHomeInfo() {
 		return dao.selectHomeEventInfo();
 	}
 	

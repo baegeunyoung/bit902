@@ -435,7 +435,7 @@ export class HomePage {
        
         title: '주문알림',
         subTitle: '주문이 완료되었습니다.',
-        buttons: ['OK']
+        buttons: ['확인']
     });
     alert.present();
   }

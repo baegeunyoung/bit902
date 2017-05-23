@@ -61,7 +61,7 @@
 	</update>
 	
 	<!-- //앱 홈화면에 이벤트정보 가져오기 -->
-	<select id="selectHomeEventInfo" resultMap="homeEventInfoMap">
+	<select id="selectHomeEventInfo" resultMap="eventMap">
 		select 	e.event_title,
 				e.event_content, 
 				s.name, 

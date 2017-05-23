@@ -10,7 +10,14 @@
 </ion-header>
 
  <ion-content>
-    <ion-list>
+   <div *ngIf="userName==undefined">
+    <br>
+    <br>
+    <br>
+    <br>
+    <p id="noLogin">비로그인 주문은 확인할 수 없습니다.</p>
+   </div>
+   <ion-list *ngIf="userName!=undefined">
     <div *ngFor="let history of historyList; let i = index">
     <ion-item>
         <ion-thumbnail item-left>
@@ -25,5 +32,5 @@
         <p id="cookComplete" *ngIf="history.orderState == 2">조리완료</p>
     </ion-item>
     </div>
-    </ion-list>
+  </ion-list>
 </ion-content>
