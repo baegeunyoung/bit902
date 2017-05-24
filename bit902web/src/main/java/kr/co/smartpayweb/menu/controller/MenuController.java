@@ -122,7 +122,7 @@ public class MenuController {
 	@RequestMapping("/update.do")
 	public String menuUpdate(MenuVO menu) throws Exception{
 		service.menuUpdate(menu);
-		return "redirect:/view/menu/list.jsp";
+		return "redirect:firstPage.do";
 	}
 }
 
